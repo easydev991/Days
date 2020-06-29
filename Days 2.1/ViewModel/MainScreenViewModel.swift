@@ -19,7 +19,7 @@ class MainScreenViewModel {
     
     func dateToTextDays(item: ItemToRemember) -> String {
         let today = Date().timeIntervalSince(item.date)
-        return "\(Int(today)/86400) days ago"
+        return "\(Int(today)/86400) days"
     }
 // MARK: - Methods to load and save items
     func loadItems() {
