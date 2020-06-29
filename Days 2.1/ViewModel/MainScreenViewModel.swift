@@ -15,13 +15,14 @@ class MainScreenViewModel {
     
     weak var mainView: MainViewController?
 
-    let calendar = Calendar(identifier: .gregorian)
+// MARK: - Convert Date() to string
+    private let calendar = Calendar(identifier: .gregorian)
     
     func dateToTextDays(item: ItemToRemember) -> String {
         let today = Date().timeIntervalSince(item.date)
         return "\(Int(today)/86400) days"
     }
-// MARK: - Methods to load and save items
+// MARK: - Methods for loading and saving items
     func loadItems() {
         items = realm.objects(ItemToRemember.self).sorted(byKeyPath: "date", ascending: true)
         mainView!.tableView.reloadData()

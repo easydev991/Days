@@ -36,7 +36,7 @@ extension MainViewController: UITableViewDataSource {
                     print("Error deleting item, \(error)")
                 }
             }
-            tableView.deleteRows(at: [indexPath], with: .left) //deleteRows дополнительно выполняет reloadData()
+            tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
 }

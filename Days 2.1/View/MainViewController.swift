@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    
     var viewModel: MainScreenViewModel?
     
     override func viewDidLoad() {
