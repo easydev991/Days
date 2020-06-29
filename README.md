@@ -6,3 +6,5 @@ This is my first own project. The app uses Realm to store your data and shows ho
 1. Create records with "+" button
 2. See how many days ago the recorded event took place
 3. Remove records with a swipe
+
+Also the app will not allow to save your record if it does not contain at least 1 letter.
