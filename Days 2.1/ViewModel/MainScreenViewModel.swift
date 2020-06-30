@@ -11,6 +11,7 @@ import RealmSwift
 class MainScreenViewModel {
     
     let realm = try! Realm()
+    
     var items: Results<ItemToRemember>?
     
     weak var mainView: MainViewController?
@@ -22,6 +23,7 @@ class MainScreenViewModel {
         let today = Date().timeIntervalSince(item.date)
         return "\(Int(today)/86400) days"
     }
+    
 // MARK: - Methods for loading and saving items
     func loadItems() {
         items = realm.objects(ItemToRemember.self).sorted(byKeyPath: "date", ascending: true)
@@ -34,24 +36,4 @@ class MainScreenViewModel {
         }
         mainView!.tableView.reloadData()
     }
-    
-// MARK: - Pop-up alert
-
-//    func addItem(){
-//        var textField = UITextField()
-//        let alert = UIAlertController(title: "Add new record", message: "", preferredStyle: .alert)
-//        let action1 = UIAlertAction(title: "Save", style: .default) { action in
-//            let newItem = ItemToRemember()
-//            newItem.itemName = textField.text!
-//            newItem.date = Date()
-//            print("Saved date is \(newItem.date)")
-//            self.saveItem(item: newItem)
-//        }
-//        alert.addAction(action1)
-//        alert.addTextField { field in
-//            textField = field
-//            textField.placeholder = "Enter a new record"
-//        }
-//        mainView!.present(alert, animated: true)
-//    }
 }

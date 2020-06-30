@@ -25,9 +25,5 @@ class MainViewController: UIViewController {
             vc.delegate = self
         }
     }
-    
-    //    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-    //        viewModel?.addItem()
-    //    }
 }
 
