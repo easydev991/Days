@@ -21,9 +21,7 @@ class MainViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? AddItemViewController, segue.identifier == "AddNewItem"{
-            vc.delegate = self
-        }
+        viewModel?.prepareSegue(segue)
     }
 }
 

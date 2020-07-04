@@ -36,4 +36,10 @@ class MainScreenViewModel {
         }
         mainView!.tableView.reloadData()
     }
+    
+    func prepareSegue(_ segue: UIStoryboardSegue){
+        if let vc = segue.destination as? AddItemViewController, segue.identifier == "AddNewItem"{
+            vc.delegate = mainView
+        }
+    }
 }
