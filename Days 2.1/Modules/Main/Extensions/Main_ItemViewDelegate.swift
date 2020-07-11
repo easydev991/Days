@@ -8,12 +8,11 @@
 
 import Foundation
 
-extension MainViewController: AddItemDelegate {
+extension MainViewController: ItemViewDelegate {    
     func setItemData(label: String, date: Date) {
-        let newItem = ItemToRemember()
+        let newItem = Item()
         newItem.itemName = label
         newItem.date = date
-        print("\(date)")
-        viewModel?.saveItem(item: newItem)
+        presenter.saveItem(item: newItem)
     }
 }

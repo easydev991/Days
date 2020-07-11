@@ -10,7 +10,7 @@ import Foundation
 
 import RealmSwift
 
-class ItemToRemember: Object {
+class Item: Object {
     @objc dynamic var itemName = ""
     @objc dynamic var date = Date()
 }

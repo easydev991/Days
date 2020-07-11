@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hMg-ve-vMC">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +11,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Days_2_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="IGI-Ue-Xfw">
@@ -77,7 +76,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z6h-yM-WEr">
                             <connections>
                                 <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="3oS-Pq-0eX"/>
-                                <segue destination="U2c-yj-kY4" kind="show" identifier="AddNewItem" id="ue4-0m-8Xl"/>
+                                <segue destination="U2c-yj-kY4" kind="show" identifier="MainToItemSegue" id="ue4-0m-8Xl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -89,16 +88,16 @@
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="116.51785714285714"/>
         </scene>
-        <!--Add Item View Controller-->
+        <!--Item View Controller-->
         <scene sceneID="p7E-pM-aLG">
             <objects>
-                <viewController storyboardIdentifier="NewItemVC" id="U2c-yj-kY4" customClass="AddItemViewController" customModule="Days_2_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewItemVC" id="U2c-yj-kY4" customClass="ItemViewController" customModule="Days_2_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="33A-S2-bvz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="JuA-h2-7BF">
-                                <rect key="frame" x="47" y="190" width="320" height="280"/>
+                                <rect key="frame" x="140" y="146" width="320" height="280"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter record title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-wM-fgu">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
@@ -124,7 +123,7 @@
                     <navigationItem key="navigationItem" id="pgn-rC-vHK">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="juB-UI-Vb5">
                             <connections>
-                                <action selector="saveItem:" destination="U2c-yj-kY4" id="RAD-vz-w1s"/>
+                                <action selector="saveButtonClicked:" destination="U2c-yj-kY4" id="RAD-vz-w1s"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -149,6 +148,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ubh-ax-b92">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
