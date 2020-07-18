@@ -9,4 +9,5 @@ This is my first own project. The app uses Realm to store your data and shows ho
 4. Remove records with a swipe
 
 ## Screenshots
-shorturl.at/aefO4
+
+[Link to google drive](shorturl.at/aefO4)
