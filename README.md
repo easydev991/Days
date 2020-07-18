@@ -10,4 +10,4 @@ This is my first own project. The app uses Realm to store your data and shows ho
 
 ## Screenshots
 
-[Link to google drive](shorturl.at/aefO4)
+[Link to google drive](https://drive.google.com/drive/folders/11qKoiW-NsSw-w0fzYa6Lqfa8-OciYCuJ?usp=sharing)
