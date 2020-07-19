@@ -19,7 +19,7 @@ extension MainViewController: UITableViewDataSource {
         if let item = presenter.items?[indexPath.row] {
             cell.itemNameLabel.text = item.itemName
             cell.itemDaysLabel.text = presenter.dateToTextDays(item: item)
-            addGradient(cell: cell, indexPath: indexPath)
+            addGradient(to: cell, at: indexPath)
         } else {
             cell.itemNameLabel.text = "Nothing added yet"
         }
@@ -32,13 +32,6 @@ extension MainViewController: UITableViewDataSource {
                 self.presenter.removeItem(item: itemForRemoval)
             }
             tableView.deleteRows(at: [indexPath], with: .left)
-        }
-    }
-    
-    func addGradient(cell: TableViewCell, indexPath: IndexPath){
-        let calculation = CGFloat(indexPath.row) / 25
-        if let colour = UIColor.systemYellow.darkened(amount: calculation) as? UIColor {
-            cell.backgroundColor = colour
         }
     }
 }

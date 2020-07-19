@@ -31,5 +31,12 @@ class MainViewController: UIViewController, MainViewProtocol {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         presenter.router.prepare(for: segue, sender: sender)
     }
+    
+    func addGradient(to cell: TableViewCell, at indexPath: IndexPath){
+        let calculation = CGFloat(indexPath.row) / 25
+        if let colour = UIColor.systemYellow.darkened(amount: calculation) as? UIColor {
+            cell.backgroundColor = colour
+        }
+    }
 }
 
