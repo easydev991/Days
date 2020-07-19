@@ -17,6 +17,7 @@
 		6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13924B9895300A07BDC /* ItemConfigurator.swift */; };
 		6705D13C24B9895B00A07BDC /* ItemProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13B24B9895B00A07BDC /* ItemProtocols.swift */; };
 		6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13E24B9896E00A07BDC /* ItemRouter.swift */; };
+		6725DAE924C43A9E00249DB4 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6725DAE824C43A9E00249DB4 /* DynamicColor */; };
 		6728A4BF24A917C1008C10E3 /* Main_ItemViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6728A4BE24A917C1008C10E3 /* Main_ItemViewDelegate.swift */; };
 		67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8C24A8D74400F9ED26 /* AppDelegate.swift */; };
 		67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8E24A8D74400F9ED26 /* SceneDelegate.swift */; };
@@ -66,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67D5FBA424A8DF7100F9ED26 /* RealmSwift in Frameworks */,
+				6725DAE924C43A9E00249DB4 /* DynamicColor in Frameworks */,
 				67D5FBA224A8DF7100F9ED26 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +188,7 @@
 			packageProductDependencies = (
 				67D5FBA124A8DF7100F9ED26 /* Realm */,
 				67D5FBA324A8DF7100F9ED26 /* RealmSwift */,
+				6725DAE824C43A9E00249DB4 /* DynamicColor */,
 			);
 			productName = "Days 2.1";
 			productReference = 67D5FB8924A8D74400F9ED26 /* Days 2.1.app */;
@@ -217,6 +220,7 @@
 			mainGroup = 67D5FB8024A8D74400F9ED26;
 			packageReferences = (
 				67D5FBA024A8DF7100F9ED26 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				6725DAE724C43A9E00249DB4 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = 67D5FB8A24A8D74400F9ED26 /* Products */;
 			projectDirPath = "";
@@ -463,6 +467,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6725DAE724C43A9E00249DB4 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		67D5FBA024A8DF7100F9ED26 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
@@ -474,6 +486,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6725DAE824C43A9E00249DB4 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6725DAE724C43A9E00249DB4 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
+		};
 		67D5FBA124A8DF7100F9ED26 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67D5FBA024A8DF7100F9ED26 /* XCRemoteSwiftPackageReference "realm-cocoa" */;

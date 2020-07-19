@@ -23,6 +23,7 @@ class ItemViewController: UIViewController, ItemViewProtocol {
         super.viewDidLoad()
         configurator.configure(with: self)
         presenter.configureViewElements()
+        setupPlaceholder()
     }   
     
     @IBAction func editingChanged(_ sender: UITextField) {
@@ -32,6 +33,9 @@ class ItemViewController: UIViewController, ItemViewProtocol {
     @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
         delegate?.setItemData(label: itemNameTextField.text!, date: itemDatePicker.date)
         presenter.saveButtonClicked()
+    }
+    @IBAction func backButtonClicked(_ sender: UIBarButtonItem) {
+        presenter.router.closeCurrentViewController()
     }
     
     func configureViewElements(){
@@ -45,5 +49,9 @@ class ItemViewController: UIViewController, ItemViewProtocol {
     
     func disableSaveButton(){
         saveButton.isEnabled = false
+    }
+    
+    func setupPlaceholder(){
+        itemNameTextField.attributedPlaceholder = NSAttributedString(string: "Enter record title", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
     }
 }

@@ -48,4 +48,5 @@ class MainInteractor: MainInteractorProtocol {
         let today = Date().timeIntervalSince(item.date)
         return "\(Int(today)/86400) days"
     }
+    
 }
