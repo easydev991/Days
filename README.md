@@ -7,3 +7,7 @@ This is my first own project. The app uses Realm to store your data and shows ho
 2. Save records with "Save" button (record name must contain at least 1 letter, otherwise "Save" button will not be active)
 3. See how many days ago the recorded event took place
 4. Remove records with a swipe
+
+## Screenshots
+
+[Link to google drive](https://drive.google.com/drive/folders/11qKoiW-NsSw-w0fzYa6Lqfa8-OciYCuJ?usp=sharing)
