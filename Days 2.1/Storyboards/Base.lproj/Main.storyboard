@@ -75,7 +75,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="How many days?" largeTitleDisplayMode="always" id="aPr-fD-Qpj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z6h-yM-WEr">
+                        <barButtonItem key="rightBarButtonItem" image="plus.app.fill" catalog="system" id="Z6h-yM-WEr">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="3oS-Pq-0eX"/>
@@ -131,13 +131,13 @@
                         <viewLayoutGuide key="safeArea" id="p1d-eV-ilW"/>
                     </view>
                     <navigationItem key="navigationItem" id="pgn-rC-vHK">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="R6B-EW-M5d">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="return" catalog="system" id="R6B-EW-M5d">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="backButtonClicked:" destination="U2c-yj-kY4" id="Gqd-UX-ytu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="juB-UI-Vb5">
+                        <barButtonItem key="rightBarButtonItem" image="checkmark.square.fill" catalog="system" id="juB-UI-Vb5">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="saveButtonClicked:" destination="U2c-yj-kY4" id="RAD-vz-w1s"/>
@@ -183,4 +183,9 @@
             <point key="canvasLocation" x="201" y="117"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
+        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <image name="return" catalog="system" width="128" height="101"/>
+    </resources>
 </document>

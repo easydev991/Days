@@ -17,7 +17,7 @@ class MainInteractor: MainInteractorProtocol {
     }
     
     func loadItems() {
-        presenter.items = presenter.realm.objects(Item.self).sorted(byKeyPath: "itemName", ascending: true)
+        presenter.items = presenter.realm.objects(Item.self).sorted(byKeyPath: "date", ascending: false)
         presenter.reloadTVData()
     }
     
