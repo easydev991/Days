@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-Days 2.1/Pods-Days 2.1-frameworks.sh
+${BUILT_PRODUCTS_DIR}/DynamicColor/DynamicColor.framework
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework

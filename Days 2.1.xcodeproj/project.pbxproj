@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,6 @@
 		6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13924B9895300A07BDC /* ItemConfigurator.swift */; };
 		6705D13C24B9895B00A07BDC /* ItemProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13B24B9895B00A07BDC /* ItemProtocols.swift */; };
 		6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13E24B9896E00A07BDC /* ItemRouter.swift */; };
-		6725DAE924C43A9E00249DB4 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 6725DAE824C43A9E00249DB4 /* DynamicColor */; };
 		6728A4BF24A917C1008C10E3 /* Main_ItemViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6728A4BE24A917C1008C10E3 /* Main_ItemViewDelegate.swift */; };
 		67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8C24A8D74400F9ED26 /* AppDelegate.swift */; };
 		67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8E24A8D74400F9ED26 /* SceneDelegate.swift */; };
@@ -25,16 +24,17 @@
 		67D5FB9424A8D74400F9ED26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67D5FB9224A8D74400F9ED26 /* Main.storyboard */; };
 		67D5FB9624A8D74A00F9ED26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67D5FB9524A8D74A00F9ED26 /* Assets.xcassets */; };
 		67D5FB9924A8D74A00F9ED26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67D5FB9724A8D74A00F9ED26 /* LaunchScreen.storyboard */; };
-		67D5FBA224A8DF7100F9ED26 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 67D5FBA124A8DF7100F9ED26 /* Realm */; };
-		67D5FBA424A8DF7100F9ED26 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67D5FBA324A8DF7100F9ED26 /* RealmSwift */; };
 		67D5FBA924A8E07D00F9ED26 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBA824A8E07D00F9ED26 /* Item.swift */; };
 		67D5FBAB24A8E1CD00F9ED26 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBAA24A8E1CD00F9ED26 /* TableViewCell.swift */; };
 		67D5FBB024A8E47100F9ED26 /* Main_UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBAF24A8E47100F9ED26 /* Main_UITableViewDataSource.swift */; };
 		67D5FBB224A8E4B400F9ED26 /* Main_UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBB124A8E4B400F9ED26 /* Main_UITableViewDelegate.swift */; };
 		67D5FBB424A8FEE100F9ED26 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBB324A8FEE100F9ED26 /* ItemViewController.swift */; };
+		6B91E4843377C914BCE22968 /* Pods_Days_2_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F1E82D68719F3E6C6E58D /* Pods_Days_2_1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D1CCA59B64261BE52753A13 /* Pods-Days 2.1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Days 2.1.release.xcconfig"; path = "Target Support Files/Pods-Days 2.1/Pods-Days 2.1.release.xcconfig"; sourceTree = "<group>"; };
+		633F1E82D68719F3E6C6E58D /* Pods_Days_2_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Days_2_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705D12B24B988B300A07BDC /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		6705D12D24B988BC00A07BDC /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		6705D12F24B988CD00A07BDC /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
@@ -59,6 +59,7 @@
 		67D5FBAF24A8E47100F9ED26 /* Main_UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_UITableViewDataSource.swift; sourceTree = "<group>"; };
 		67D5FBB124A8E4B400F9ED26 /* Main_UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_UITableViewDelegate.swift; sourceTree = "<group>"; };
 		67D5FBB324A8FEE100F9ED26 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		F0F1E3E90AA5AF285D413352 /* Pods-Days 2.1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Days 2.1.debug.xcconfig"; path = "Target Support Files/Pods-Days 2.1/Pods-Days 2.1.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,15 +67,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67D5FBA424A8DF7100F9ED26 /* RealmSwift in Frameworks */,
-				6725DAE924C43A9E00249DB4 /* DynamicColor in Frameworks */,
-				67D5FBA224A8DF7100F9ED26 /* Realm in Frameworks */,
+				6B91E4843377C914BCE22968 /* Pods_Days_2_1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3968E7567D3CF8EE42ACFD3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				633F1E82D68719F3E6C6E58D /* Pods_Days_2_1.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6705D12724B9884E00A07BDC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +133,8 @@
 			children = (
 				67D5FB8B24A8D74400F9ED26 /* Days 2.1 */,
 				67D5FB8A24A8D74400F9ED26 /* Products */,
+				F522FE3985D5D1BA0B1E204B /* Pods */,
+				3968E7567D3CF8EE42ACFD3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +178,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F522FE3985D5D1BA0B1E204B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F0F1E3E90AA5AF285D413352 /* Pods-Days 2.1.debug.xcconfig */,
+				3D1CCA59B64261BE52753A13 /* Pods-Days 2.1.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,20 +195,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67D5FB9D24A8D74A00F9ED26 /* Build configuration list for PBXNativeTarget "Days 2.1" */;
 			buildPhases = (
+				528B17E565B665F3219B6990 /* [CP] Check Pods Manifest.lock */,
 				67D5FB8524A8D74400F9ED26 /* Sources */,
 				67D5FB8624A8D74400F9ED26 /* Frameworks */,
 				67D5FB8724A8D74400F9ED26 /* Resources */,
+				FE374082190058618B3C66CC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Days 2.1";
-			packageProductDependencies = (
-				67D5FBA124A8DF7100F9ED26 /* Realm */,
-				67D5FBA324A8DF7100F9ED26 /* RealmSwift */,
-				6725DAE824C43A9E00249DB4 /* DynamicColor */,
-			);
 			productName = "Days 2.1";
 			productReference = 67D5FB8924A8D74400F9ED26 /* Days 2.1.app */;
 			productType = "com.apple.product-type.application";
@@ -218,10 +234,6 @@
 				Base,
 			);
 			mainGroup = 67D5FB8024A8D74400F9ED26;
-			packageReferences = (
-				67D5FBA024A8DF7100F9ED26 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-				6725DAE724C43A9E00249DB4 /* XCRemoteSwiftPackageReference "DynamicColor" */,
-			);
 			productRefGroup = 67D5FB8A24A8D74400F9ED26 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -243,6 +255,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		528B17E565B665F3219B6990 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Days 2.1-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE374082190058618B3C66CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Days 2.1/Pods-Days 2.1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Days 2.1/Pods-Days 2.1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Days 2.1/Pods-Days 2.1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		67D5FB8524A8D74400F9ED26 /* Sources */ = {
@@ -409,11 +463,13 @@
 		};
 		67D5FB9E24A8D74A00F9ED26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0F1E3E90AA5AF285D413352 /* Pods-Days 2.1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3PHS45582J;
 				INFOPLIST_FILE = "Days 2.1/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,17 +477,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oleg991.Days-2-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		67D5FB9F24A8D74A00F9ED26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D1CCA59B64261BE52753A13 /* Pods-Days 2.1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3PHS45582J;
 				INFOPLIST_FILE = "Days 2.1/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -439,7 +497,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oleg991.Days-2-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -465,43 +523,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		6725DAE724C43A9E00249DB4 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/yannickl/DynamicColor";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
-		67D5FBA024A8DF7100F9ED26 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-cocoa";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6725DAE824C43A9E00249DB4 /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6725DAE724C43A9E00249DB4 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
-		67D5FBA124A8DF7100F9ED26 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 67D5FBA024A8DF7100F9ED26 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = Realm;
-		};
-		67D5FBA324A8DF7100F9ED26 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 67D5FBA024A8DF7100F9ED26 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = RealmSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 67D5FB8124A8D74400F9ED26 /* Project object */;
 }

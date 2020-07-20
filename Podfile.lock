@@ -1,0 +1,26 @@
+PODS:
+  - DynamicColor (5.0.1)
+  - Realm (4.4.1):
+    - Realm/Headers (= 4.4.1)
+  - Realm/Headers (4.4.1)
+  - RealmSwift (4.4.1):
+    - Realm (= 4.4.1)
+
+DEPENDENCIES:
+  - DynamicColor (~> 5.0.0)
+  - RealmSwift
+
+SPEC REPOS:
+  trunk:
+    - DynamicColor
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  DynamicColor: d049834ef86d8ecf150b0ca1ebe54ee733a0ec22
+  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
+  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
+
+PODFILE CHECKSUM: 3e44aa79e4bdb83f581cb8922465942cf8db5bfd
+
+COCOAPODS: 1.9.1
