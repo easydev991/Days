@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hMg-ve-vMC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -76,7 +75,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="How many days?" largeTitleDisplayMode="always" id="aPr-fD-Qpj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z6h-yM-WEr">
+                        <barButtonItem key="rightBarButtonItem" image="plus.circle.fill" catalog="system" id="Z6h-yM-WEr">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="3oS-Pq-0eX"/>
@@ -103,7 +102,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="JuA-h2-7BF">
                                 <rect key="frame" x="47" y="150" width="320" height="280"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-wM-fgu">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-wM-fgu">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,6 +110,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <action selector="editingChanged:" destination="U2c-yj-kY4" eventType="editingChanged" id="EJl-WB-QZi"/>
+                                            <outlet property="delegate" destination="U2c-yj-kY4" id="aUD-bT-CK1"/>
                                         </connections>
                                     </textField>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="hyO-Sj-2YO">
@@ -125,6 +125,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="JuA-h2-7BF" firstAttribute="centerX" secondItem="33A-S2-bvz" secondAttribute="centerX" id="q2K-SB-63S"/>
                             <constraint firstItem="JuA-h2-7BF" firstAttribute="top" secondItem="p1d-eV-ilW" secondAttribute="top" constant="10" id="u2X-Vr-ZWY"/>
@@ -132,13 +133,13 @@
                         <viewLayoutGuide key="safeArea" id="p1d-eV-ilW"/>
                     </view>
                     <navigationItem key="navigationItem" id="pgn-rC-vHK">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="R6B-EW-M5d">
+                        <barButtonItem key="leftBarButtonItem" image="return" catalog="system" id="R6B-EW-M5d">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="backButtonClicked:" destination="U2c-yj-kY4" id="Gqd-UX-ytu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="juB-UI-Vb5">
+                        <barButtonItem key="rightBarButtonItem" image="checkmark.circle.fill" catalog="system" id="juB-UI-Vb5">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="saveButtonClicked:" destination="U2c-yj-kY4" id="RAD-vz-w1s"/>
@@ -184,4 +185,9 @@
             <point key="canvasLocation" x="201" y="117"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="return" catalog="system" width="128" height="101"/>
+    </resources>
 </document>

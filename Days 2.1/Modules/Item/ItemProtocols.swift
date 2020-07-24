@@ -16,6 +16,7 @@ protocol ItemViewProtocol: AnyObject {
     func configureViewElements()
     func enableSaveButton()
     func disableSaveButton()
+    func saveAction()
 }
 
 protocol ItemPresenterProtocol: AnyObject {

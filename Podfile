@@ -9,5 +9,6 @@ target 'Days 2.1' do
   
   pod 'DynamicColor', '~> 5.0.0'
   pod 'RealmSwift'
+  pod 'OnboardKit'
 
 end

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OnboardKit
 
 class MainViewController: UIViewController, MainViewProtocol {
     
@@ -34,9 +35,37 @@ class MainViewController: UIViewController, MainViewProtocol {
     
     func addGradient(to cell: TableViewCell, at indexPath: IndexPath){
         let calculation = CGFloat(indexPath.row) / 25
-        if let colour = UIColor.systemYellow.darkened(amount: calculation) as? UIColor {
-            cell.backgroundColor = colour
+        if let color = UIColor.systemYellow.darkened(amount: calculation) as? UIColor {
+            cell.backgroundColor = color
         }
     }
+    
+// MARK: -  Onboarding stuff
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if NewUserCheck.shared.isNewUser() {
+            let onboardingVC = OnboardViewController(pageItems: onboardingPages, appearanceConfiguration: appearance())
+            onboardingVC.modalPresentationStyle = .formSheet
+            onboardingVC.presentFrom(self, animated: true)
+        }
+    }
+    
+    private var onboardingPages: [OnboardPage] {
+        let pageOne = OnboardPage(title: "Add a record", imageName: "add", description: "Use plus button to create a new record you would like to track")
+        let pageTwo = OnboardPage(title: "Delete a record", imageName: "swipe-left", description: "Swipe left on the record to delete it", advanceButtonTitle: "Get started!")
+        return [pageOne, pageTwo]
+    }
+    
+    private func appearance() -> OnboardViewController.AppearanceConfiguration {
+        return OnboardViewController.AppearanceConfiguration(tintColor: .black, backgroundColor: .systemOrange, imageContentMode: .scaleAspectFit, advanceButtonStyling: advanceButtonStyling)
+    }
+    
+    private let advanceButtonStyling: OnboardViewController.ButtonStyling = { button in
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
+    }
+    
 }
 

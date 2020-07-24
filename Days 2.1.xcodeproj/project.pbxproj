@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		6705D13C24B9895B00A07BDC /* ItemProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13B24B9895B00A07BDC /* ItemProtocols.swift */; };
 		6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13E24B9896E00A07BDC /* ItemRouter.swift */; };
 		6728A4BF24A917C1008C10E3 /* Main_ItemViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6728A4BE24A917C1008C10E3 /* Main_ItemViewDelegate.swift */; };
+		67C91FC924CB5F4B0005F9C3 /* Item_UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C91FC824CB5F4B0005F9C3 /* Item_UITextFieldDelegate.swift */; };
+		67C91FCB24CB63D60005F9C3 /* NewUserCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C91FCA24CB63D60005F9C3 /* NewUserCheck.swift */; };
 		67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8C24A8D74400F9ED26 /* AppDelegate.swift */; };
 		67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8E24A8D74400F9ED26 /* SceneDelegate.swift */; };
 		67D5FB9124A8D74400F9ED26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB9024A8D74400F9ED26 /* MainViewController.swift */; };
@@ -46,6 +48,8 @@
 		6705D13B24B9895B00A07BDC /* ItemProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProtocols.swift; sourceTree = "<group>"; };
 		6705D13E24B9896E00A07BDC /* ItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRouter.swift; sourceTree = "<group>"; };
 		6728A4BE24A917C1008C10E3 /* Main_ItemViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_ItemViewDelegate.swift; sourceTree = "<group>"; };
+		67C91FC824CB5F4B0005F9C3 /* Item_UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_UITextFieldDelegate.swift; sourceTree = "<group>"; };
+		67C91FCA24CB63D60005F9C3 /* NewUserCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserCheck.swift; sourceTree = "<group>"; };
 		67D5FB8924A8D74400F9ED26 /* Days 2.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Days 2.1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D5FB8C24A8D74400F9ED26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67D5FB8E24A8D74400F9ED26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,13 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				67D5FB9024A8D74400F9ED26 /* MainViewController.swift */,
+				67D5FBAE24A8E46700F9ED26 /* Extensions */,
 				6705D12B24B988B300A07BDC /* MainPresenter.swift */,
 				6705D12D24B988BC00A07BDC /* MainInteractor.swift */,
 				6705D12F24B988CD00A07BDC /* MainConfigurator.swift */,
 				6705D13324B988E500A07BDC /* MainRouter.swift */,
 				67D5FBAA24A8E1CD00F9ED26 /* TableViewCell.swift */,
 				6705D13124B988D900A07BDC /* MainProtocols.swift */,
-				67D5FBAE24A8E46700F9ED26 /* Extensions */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				67D5FBB324A8FEE100F9ED26 /* ItemViewController.swift */,
+				67C91FC724CB5EDE0005F9C3 /* Extenensions */,
 				6705D13524B9893400A07BDC /* ItemPresenter.swift */,
 				6705D13724B9894400A07BDC /* ItemInteractor.swift */,
 				6705D13924B9895300A07BDC /* ItemConfigurator.swift */,
@@ -126,6 +131,14 @@
 				6705D13B24B9895B00A07BDC /* ItemProtocols.swift */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		67C91FC724CB5EDE0005F9C3 /* Extenensions */ = {
+			isa = PBXGroup;
+			children = (
+				67C91FC824CB5F4B0005F9C3 /* Item_UITextFieldDelegate.swift */,
+			);
+			path = Extenensions;
 			sourceTree = "<group>";
 		};
 		67D5FB8024A8D74400F9ED26 = {
@@ -164,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				67D5FBA824A8E07D00F9ED26 /* Item.swift */,
+				67C91FCA24CB63D60005F9C3 /* NewUserCheck.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -184,7 +198,6 @@
 				F0F1E3E90AA5AF285D413352 /* Pods-Days 2.1.debug.xcconfig */,
 				3D1CCA59B64261BE52753A13 /* Pods-Days 2.1.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,10 +321,12 @@
 				6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */,
 				67D5FB9124A8D74400F9ED26 /* MainViewController.swift in Sources */,
 				6705D13C24B9895B00A07BDC /* ItemProtocols.swift in Sources */,
+				67C91FCB24CB63D60005F9C3 /* NewUserCheck.swift in Sources */,
 				6705D13424B988E500A07BDC /* MainRouter.swift in Sources */,
 				67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */,
 				67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */,
 				6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */,
+				67C91FC924CB5F4B0005F9C3 /* Item_UITextFieldDelegate.swift in Sources */,
 				6705D12E24B988BC00A07BDC /* MainInteractor.swift in Sources */,
 				6728A4BF24A917C1008C10E3 /* Main_ItemViewDelegate.swift in Sources */,
 				6705D12C24B988B300A07BDC /* MainPresenter.swift in Sources */,
@@ -469,7 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3PHS45582J;
 				INFOPLIST_FILE = "Days 2.1/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -489,7 +504,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3PHS45582J;
 				INFOPLIST_FILE = "Days 2.1/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

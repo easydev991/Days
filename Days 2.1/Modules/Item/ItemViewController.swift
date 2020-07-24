@@ -31,9 +31,15 @@ class ItemViewController: UIViewController, ItemViewProtocol {
     }
     
     @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
+        saveAction()
+    }
+    
+    func saveAction(){
+        NewUserCheck.shared.setIsNotNewUser()
         delegate?.setItemData(label: itemNameTextField.text!, date: itemDatePicker.date)
         presenter.saveButtonClicked()
     }
+    
     @IBAction func backButtonClicked(_ sender: UIBarButtonItem) {
         presenter.router.closeCurrentViewController()
     }
