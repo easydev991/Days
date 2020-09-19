@@ -8,7 +8,8 @@
 
 import Foundation
 
-class NewUserCheck {
+final class NewUserCheck {
+    
     static let shared = NewUserCheck()
     
     private let isNewUserKey = "isNewUser"

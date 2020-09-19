@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hMg-ve-vMC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hMg-ve-vMC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="IGI-Ue-Xfw">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="bzL-2y-jDV" customClass="TableViewCell" customModule="Days_2_1" customModuleProvider="target">
                                         <rect key="frame" x="20" y="55.5" width="374" height="44"/>
@@ -29,7 +31,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RA-9j-FiZ">
                                                     <rect key="frame" x="25" y="12" width="200" height="20.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="FZi-nL-ZEg"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="220" id="FZi-nL-ZEg"/>
                                                         <constraint firstAttribute="width" constant="200" id="wP8-St-F4u"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,7 +39,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDY-Q0-nwm">
-                                                    <rect key="frame" x="264" y="11.5" width="90" height="21.5"/>
+                                                    <rect key="frame" x="225" y="11.5" width="129" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="ejC-3l-YZr"/>
                                                     </constraints>
@@ -49,6 +51,7 @@
                                             <constraints>
                                                 <constraint firstItem="5RA-9j-FiZ" firstAttribute="leading" secondItem="0Be-8z-0aI" secondAttribute="leadingMargin" constant="5" id="0sw-sW-rIF"/>
                                                 <constraint firstItem="sDY-Q0-nwm" firstAttribute="centerY" secondItem="0Be-8z-0aI" secondAttribute="centerY" id="8ic-7B-Rok"/>
+                                                <constraint firstItem="sDY-Q0-nwm" firstAttribute="leading" secondItem="5RA-9j-FiZ" secondAttribute="trailing" id="Lnl-Mu-7Z4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="sDY-Q0-nwm" secondAttribute="trailing" id="c8W-wH-Fm1"/>
                                                 <constraint firstItem="5RA-9j-FiZ" firstAttribute="centerY" secondItem="0Be-8z-0aI" secondAttribute="centerY" id="kIA-78-JRE"/>
                                             </constraints>
@@ -65,14 +68,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IGI-Ue-Xfw" secondAttribute="trailing" id="0Dg-tp-DzK"/>
                             <constraint firstItem="IGI-Ue-Xfw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Dz3-aT-2gM"/>
                             <constraint firstAttribute="bottom" secondItem="IGI-Ue-Xfw" secondAttribute="bottom" id="S9T-Ja-zT7"/>
                             <constraint firstItem="IGI-Ue-Xfw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fZa-Ao-gc7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="How many days?" largeTitleDisplayMode="always" id="aPr-fD-Qpj">
                         <barButtonItem key="rightBarButtonItem" image="plus.circle.fill" catalog="system" id="Z6h-yM-WEr">
@@ -100,10 +103,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="JuA-h2-7BF">
-                                <rect key="frame" x="47" y="150" width="320" height="280"/>
+                                <rect key="frame" x="45" y="150" width="324" height="280"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-wM-fgu">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -114,7 +117,7 @@
                                         </connections>
                                     </textField>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="hyO-Sj-2YO">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="64" width="324" height="216"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                 <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,13 +127,15 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="p1d-eV-ilW"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="p1d-eV-ilW" firstAttribute="trailing" secondItem="JuA-h2-7BF" secondAttribute="trailing" constant="45" id="hry-ow-PyA"/>
+                            <constraint firstItem="JuA-h2-7BF" firstAttribute="leading" secondItem="p1d-eV-ilW" secondAttribute="leading" constant="45" id="jW8-NH-ShH"/>
                             <constraint firstItem="JuA-h2-7BF" firstAttribute="centerX" secondItem="33A-S2-bvz" secondAttribute="centerX" id="q2K-SB-63S"/>
                             <constraint firstItem="JuA-h2-7BF" firstAttribute="top" secondItem="p1d-eV-ilW" secondAttribute="top" constant="10" id="u2X-Vr-ZWY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="p1d-eV-ilW"/>
                     </view>
                     <navigationItem key="navigationItem" id="pgn-rC-vHK">
                         <barButtonItem key="leftBarButtonItem" image="return" catalog="system" id="R6B-EW-M5d">
@@ -164,7 +169,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="PyS-XK-nyc">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" systemColor="systemOrangeColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -189,5 +194,11 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="return" catalog="system" width="128" height="101"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

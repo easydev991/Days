@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemRouter: ItemRouterProtocol {
+final class ItemRouter: ItemRouterProtocol {
     
     weak var viewController: ItemViewController!
     
@@ -19,4 +19,5 @@ class ItemRouter: ItemRouterProtocol {
     func closeCurrentViewController() {
         viewController.navigationController?.popToRootViewController(animated: true)
     }
+    
 }

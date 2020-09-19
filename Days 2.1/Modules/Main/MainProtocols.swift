@@ -6,7 +6,6 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
-import UIKit
 import RealmSwift
 
 protocol MainViewProtocol: AnyObject {

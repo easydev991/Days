@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemInteractor: ItemInteractorProtocol {
+final class ItemInteractor: ItemInteractorProtocol {
     
     weak var presenter: ItemPresenterProtocol!
     
@@ -23,4 +23,5 @@ class ItemInteractor: ItemInteractorProtocol {
             presenter.disableSaveButton()
         }
     }
+    
 }

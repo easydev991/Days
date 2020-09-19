@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class MainPresenter: MainPresenterProtocol {  
+final class MainPresenter: MainPresenterProtocol {  
 
     let realm = try! Realm()
     weak var view: MainViewProtocol!

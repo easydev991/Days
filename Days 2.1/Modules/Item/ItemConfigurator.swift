@@ -6,10 +6,7 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
-class ItemConfigurator: ItemConfiguratorProtocol {
+final class ItemConfigurator: ItemConfiguratorProtocol {
     
     func configure(with viewController: ItemViewController) {
         let presenter = ItemPresenter(view: viewController)
@@ -20,4 +17,5 @@ class ItemConfigurator: ItemConfiguratorProtocol {
         presenter.interactor = interactor
         presenter.router = router
     }
+    
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainInteractor: MainInteractorProtocol {
+final class MainInteractor: MainInteractorProtocol {
     
     weak var presenter: MainPresenterProtocol!
     

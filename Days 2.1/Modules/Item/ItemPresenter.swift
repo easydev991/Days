@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemPresenter: ItemPresenterProtocol {
+final class ItemPresenter: ItemPresenterProtocol {
    
     weak var view: ItemViewProtocol!
     var interactor: ItemInteractorProtocol!
@@ -37,4 +37,5 @@ class ItemPresenter: ItemPresenterProtocol {
     func disableSaveButton() {
         view.disableSaveButton()
     }
+    
 }

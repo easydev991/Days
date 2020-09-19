@@ -6,11 +6,9 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
-import Foundation
-
 import RealmSwift
 
-class Item: Object {
+final class Item: Object {
     @objc dynamic var itemName = ""
     @objc dynamic var date = Date()
 }
