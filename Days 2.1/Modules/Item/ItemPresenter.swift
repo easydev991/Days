@@ -9,14 +9,23 @@
 import UIKit
 
 final class ItemPresenter: ItemPresenterProtocol {
-   
+
+// MARK: Public properties
+    
     weak var view: ItemViewProtocol!
     var interactor: ItemInteractorProtocol!
+    
+// MARK: Protocol properties
+    
     var router: ItemRouterProtocol!
+    
+// MARK: Init
     
     required init(view: ItemViewProtocol) {
         self.view = view
     }
+    
+// MARK: Protocol methods
     
     func configureViewElements(){
         view.configureViewElements()

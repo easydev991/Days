@@ -10,8 +10,12 @@ import UIKit
 
 final class TableViewCell: UITableViewCell {
 
+// MARK: IBOutlets
+    
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var itemDaysLabel: UILabel!
+    
+// MARK: Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,7 +23,6 @@ final class TableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
 
 }

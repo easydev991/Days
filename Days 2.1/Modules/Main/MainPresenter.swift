@@ -11,15 +11,24 @@ import RealmSwift
 
 final class MainPresenter: MainPresenterProtocol {  
 
-    let realm = try! Realm()
+// MARK: Public properties
+    
     weak var view: MainViewProtocol!
     var interactor: MainInteractorProtocol!
+    
+// MARK: Protocol properties
+    
+    let realm = try! Realm()
     var router: MainRouterProtocol!
     var items: Results<Item>?
+    
+// MARK: Init
     
     required init(view: MainViewProtocol) {
         self.view = view
     }
+    
+// MARK: Protocol methods
     
     func configureView() {
         interactor.loadItems()

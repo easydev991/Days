@@ -123,13 +123,13 @@
 			path = Item;
 			sourceTree = "<group>";
 		};
-		678AFCF825164BD100C3DF53 /* Support */ = {
+		678AFCF825164BD100C3DF53 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				67D5FB8C24A8D74400F9ED26 /* AppDelegate.swift */,
 				67D5FB8E24A8D74400F9ED26 /* SceneDelegate.swift */,
 			);
-			path = Support;
+			path = App;
 			sourceTree = "<group>";
 		};
 		67D5FB8024A8D74400F9ED26 = {
@@ -153,10 +153,10 @@
 		67D5FB8B24A8D74400F9ED26 /* Days 2.1 */ = {
 			isa = PBXGroup;
 			children = (
+				678AFCF825164BD100C3DF53 /* App */,
 				6705D12724B9884E00A07BDC /* Modules */,
 				67D5FBA524A8DF7E00F9ED26 /* Entities */,
 				6705D12824B9885700A07BDC /* Storyboards */,
-				678AFCF825164BD100C3DF53 /* Support */,
 				67D5FB9524A8D74A00F9ED26 /* Assets.xcassets */,
 				67D5FB9A24A8D74A00F9ED26 /* Info.plist */,
 			);

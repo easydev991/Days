@@ -10,11 +10,17 @@ import UIKit
 
 final class MainInteractor: MainInteractorProtocol {
     
+// MARK: Public properties
+    
     weak var presenter: MainPresenterProtocol!
+    
+// MARK: Init
     
     required init(presenter: MainPresenterProtocol) {
         self.presenter = presenter
     }
+    
+// MARK: Protocol methods
     
     func loadItems() {
         presenter.items = presenter.realm.objects(Item.self).sorted(byKeyPath: "date", ascending: false)

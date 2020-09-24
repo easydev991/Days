@@ -10,10 +10,16 @@ import Foundation
 
 final class NewUserCheck {
     
+// MARK: Public properties
+    
     static let shared = NewUserCheck()
     
+// MARK: Private properties
+
     private let isNewUserKey = "isNewUser"
     
+// MARK: Public methods
+
     func isNewUser() -> Bool {
         return !UserDefaults.standard.bool(forKey: isNewUserKey)
     }

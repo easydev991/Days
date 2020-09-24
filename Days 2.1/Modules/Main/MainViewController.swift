@@ -26,7 +26,6 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configurator.configure(with: self)
         presenter.configureView()
     }
@@ -95,7 +94,6 @@ extension MainViewController: ItemViewDelegate {
         newItem.date = date
         presenter.saveItem(item: newItem)
     }
-    
 }
 
 // MARK: UITableViewDataSource

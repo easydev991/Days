@@ -10,11 +10,17 @@ import UIKit
 
 final class ItemRouter: ItemRouterProtocol {
     
+// MARK: Public properties
+    
     weak var viewController: ItemViewController!
+    
+// MARK: Init
     
     init(viewController: ItemViewController) {
         self.viewController = viewController
     }
+
+// MARK: Protocol methods
     
     func closeCurrentViewController() {
         viewController.navigationController?.popToRootViewController(animated: true)

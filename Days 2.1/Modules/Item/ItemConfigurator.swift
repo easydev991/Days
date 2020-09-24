@@ -8,6 +8,8 @@
 
 final class ItemConfigurator: ItemConfiguratorProtocol {
     
+// MARK: Protocol methods
+    
     func configure(with viewController: ItemViewController) {
         let presenter = ItemPresenter(view: viewController)
         let interactor = ItemInteractor(presenter: presenter)

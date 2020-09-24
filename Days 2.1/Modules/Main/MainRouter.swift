@@ -9,11 +9,18 @@
 import UIKit
 
 final class MainRouter: MainRouterProtocol {
+    
+// MARK: Public properties
+    
     weak var viewController: MainViewController!
+    
+// MARK: Init
     
     init(viewController: MainViewController) {
         self.viewController = viewController
     }
+    
+// MARK: Protocol methods
     
     func showItemScene() {
         viewController.performSegue(withIdentifier: viewController.selfToItemSegueName, sender: nil)
