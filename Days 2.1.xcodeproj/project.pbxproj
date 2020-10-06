@@ -132,6 +132,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		67AC3F0C252C892300217541 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				67C91FCA24CB63D60005F9C3 /* NewUserCheck.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		67D5FB8024A8D74400F9ED26 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +161,7 @@
 		67D5FB8B24A8D74400F9ED26 /* Days 2.1 */ = {
 			isa = PBXGroup;
 			children = (
+				67AC3F0C252C892300217541 /* Support */,
 				678AFCF825164BD100C3DF53 /* App */,
 				6705D12724B9884E00A07BDC /* Modules */,
 				67D5FBA524A8DF7E00F9ED26 /* Entities */,
@@ -167,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				67D5FBA824A8E07D00F9ED26 /* Item.swift */,
-				67C91FCA24CB63D60005F9C3 /* NewUserCheck.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";

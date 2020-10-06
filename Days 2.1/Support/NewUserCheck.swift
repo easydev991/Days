@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class NewUserCheck {
+final public class NewUserCheck {
     
 // MARK: Public properties
     
