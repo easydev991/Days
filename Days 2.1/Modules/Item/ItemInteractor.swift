@@ -22,8 +22,8 @@ final class ItemInteractor: ItemInteractorProtocol {
     
 // MARK: Protocol methods
     
-    func checkNameForLetters(textField: UITextField){
-        if let _ = textField.text!.rangeOfCharacter(from: NSCharacterSet.letters){
+    func checkNameForLetters(textField: UITextField) {
+        if let _ = textField.text!.rangeOfCharacter(from: NSCharacterSet.letters) {
             presenter.enableSaveButton()
         } else {
             presenter.disableSaveButton()

@@ -14,13 +14,12 @@ final class MainViewController: UIViewController {
 
 // MARK: IBOutlets
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
 // MARK: Public properties
     
     var presenter: MainPresenterProtocol!
     var configurator: MainConfiguratorProtocol = MainConfigurator()
-    let selfToItemSegueName = "MainToItemSegue"
     
 // MARK: Lifecycle
     
@@ -32,7 +31,7 @@ final class MainViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        checkNewUser()
+        onboarding()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,26 +46,11 @@ final class MainViewController: UIViewController {
         cell.backgroundColor = color
     }
     
-// MARK: Onboarding properties and methods
+// MARK: Private methods
     
-    private var onboardingPages: [OnboardPage] {
-        let pageOne = OnboardPage(title: "Add a record", imageName: "add", description: "Use plus button to create a new record you would like to track")
-        let pageTwo = OnboardPage(title: "Delete a record", imageName: "swipe-left", description: "Swipe left on the record to delete it", advanceButtonTitle: "Get started!")
-        return [pageOne, pageTwo]
-    }
-    
-    private let advanceButtonStyling: OnboardViewController.ButtonStyling = { button in
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
-    }
-    
-    private func appearance() -> OnboardViewController.AppearanceConfiguration {
-        return OnboardViewController.AppearanceConfiguration(tintColor: .black, backgroundColor: .systemOrange, imageContentMode: .scaleAspectFit, advanceButtonStyling: advanceButtonStyling)
-    }
-    
-    private func checkNewUser() {
-        if NewUserCheck.shared.isNewUser() {
-            let onboardingVC = OnboardViewController(pageItems: onboardingPages, appearanceConfiguration: appearance())
+    private func onboarding() {
+        if OnboardingService.shared.isNewUser() {
+            let onboardingVC = OnboardViewController(pageItems: OnboardingService.shared.pages, appearanceConfiguration: OnboardingService.shared.appearance())
             onboardingVC.modalPresentationStyle = .formSheet
             onboardingVC.presentFrom(self, animated: true)
         }
@@ -88,10 +72,10 @@ extension MainViewController: MainViewProtocol {
 
 extension MainViewController: ItemViewDelegate {
     
-    func setItemData(label: String, date: Date) {
+    func setItemData(itemName: String, itemDate: Date) {
         let newItem = Item()
-        newItem.itemName = label
-        newItem.date = date
+        newItem.itemName = itemName
+        newItem.date = itemDate
         presenter.saveItem(item: newItem)
     }
 }
@@ -101,18 +85,17 @@ extension MainViewController: ItemViewDelegate {
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.items?.count ?? 1
+        return presenter.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.cellID) as! TableViewCell
+        
         if let item = presenter.items?[indexPath.row] {
-            cell.itemNameLabel.text = item.itemName
-            cell.itemDaysLabel.text = presenter.dateToTextDays(item: item)
+            cell.setupCell(itemName: item.itemName, itemDays: presenter.dateToTextDays(item: item))
             addGradient(to: cell, at: indexPath)
-        } else {
-            cell.itemNameLabel.text = "Nothing added yet"
         }
+        
         return cell
     }
     
@@ -129,7 +112,7 @@ extension MainViewController: UITableViewDataSource {
 
 // MARK: UITableViewDelegate
 
-extension MainViewController: UITableViewDelegate{
+extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

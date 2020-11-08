@@ -34,7 +34,7 @@ final class MainPresenter: MainPresenterProtocol {
         interactor.loadItems()
     }
     
-    func addItem(with title: String){
+    func addItem(with title: String) {
         interactor.addItem(with: title)
     }
     
@@ -42,19 +42,19 @@ final class MainPresenter: MainPresenterProtocol {
         view.reloadTableViewData()
     }
     
-    func removeItem(item: Item){
+    func removeItem(item: Item) {
         interactor.removeItem(item: item)
     }
     
-    func saveItem(item: Item){
+    func saveItem(item: Item) {
         interactor.saveItem(item: item)
     }
     
-    func dateToTextDays(item: Item) -> String{
+    func dateToTextDays(item: Item) -> String {
         return interactor.dateToTextDays(item: item)
     }
     
-    func addButtonClicked(){
+    func addButtonClicked() {
         router.showItemScene()
     }
 

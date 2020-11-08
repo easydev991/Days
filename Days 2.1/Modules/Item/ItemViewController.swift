@@ -12,14 +12,14 @@ final class ItemViewController: UIViewController {
    
 // MARK: IBOutlets
     
-    @IBOutlet weak var itemNameTextField: UITextField!
-    @IBOutlet weak var itemDatePicker: UIDatePicker!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet private weak var itemNameTextField: UITextField!
+    @IBOutlet private weak var itemDatePicker: UIDatePicker!
+    @IBOutlet private weak var saveButton: UIBarButtonItem!
     
 // MARK: Public properties
     
     var presenter: ItemPresenterProtocol!
-    var delegate: ItemViewDelegate?
+    weak var delegate: ItemViewDelegate?
     
 // MARK: Private properties
     
@@ -55,7 +55,7 @@ final class ItemViewController: UIViewController {
     }
     
     private func setupPlaceholder() {
-        itemNameTextField.attributedPlaceholder = NSAttributedString(string: "Enter record title", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
+        itemNameTextField.attributedPlaceholder = NSAttributedString(string: "Enter a title", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
     }
     
 }
@@ -65,21 +65,21 @@ final class ItemViewController: UIViewController {
 extension ItemViewController: ItemViewProtocol {
     
     func saveAction(){
-        NewUserCheck.shared.setIsNotNewUser()
-        delegate?.setItemData(label: itemNameTextField.text!, date: itemDatePicker.date)
+        OnboardingService.shared.setIsNotNewUser() // disable onboarding
+        delegate?.setItemData(itemName: itemNameTextField.text!, itemDate: itemDatePicker.date)
         presenter.saveButtonClicked()
     }
     
-    func configureViewElements(){
+    func configureViewElements() {
         disableSaveButton()
         itemDatePicker.datePickerMode = .date
     }
     
-    func enableSaveButton(){
+    func enableSaveButton() {
         saveButton.isEnabled = true
     }
     
-    func disableSaveButton(){
+    func disableSaveButton() {
         saveButton.isEnabled = false
     }
 }

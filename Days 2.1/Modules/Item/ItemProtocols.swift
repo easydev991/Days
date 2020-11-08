@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol ItemViewDelegate {
-    func setItemData(label: String, date: Date)
+protocol ItemViewDelegate: AnyObject {
+    func setItemData(itemName: String, itemDate: Date)
 }
 
 protocol ItemViewProtocol: AnyObject {

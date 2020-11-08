@@ -10,10 +10,14 @@ import UIKit
 
 final class TableViewCell: UITableViewCell {
 
+// MARK: Public properties
+    
+    static let cellID = "Cell"
+    
 // MARK: IBOutlets
     
-    @IBOutlet weak var itemNameLabel: UILabel!
-    @IBOutlet weak var itemDaysLabel: UILabel!
+    @IBOutlet private weak var itemNameLabel: UILabel!
+    @IBOutlet private weak var itemDaysLabel: UILabel!
     
 // MARK: Lifecycle
     
@@ -23,6 +27,13 @@ final class TableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+// MARK: Public methods
+    
+    func setupCell(itemName: String, itemDays: String) {
+        itemNameLabel.text = itemName
+        itemDaysLabel.text = itemDays
     }
 
 }

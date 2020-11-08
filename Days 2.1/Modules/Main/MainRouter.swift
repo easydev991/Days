@@ -14,6 +14,10 @@ final class MainRouter: MainRouterProtocol {
     
     weak var viewController: MainViewController!
     
+// MARK: Private properties
+    
+    private let mainToItemSegue = "MainToItemSegue"
+    
 // MARK: Init
     
     init(viewController: MainViewController) {
@@ -23,7 +27,7 @@ final class MainRouter: MainRouterProtocol {
 // MARK: Protocol methods
     
     func showItemScene() {
-        viewController.performSegue(withIdentifier: viewController.selfToItemSegueName, sender: nil)
+        viewController.performSegue(withIdentifier: mainToItemSegue, sender: nil)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {

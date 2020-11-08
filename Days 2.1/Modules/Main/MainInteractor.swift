@@ -34,13 +34,13 @@ final class MainInteractor: MainInteractorProtocol {
         presenter.reloadTVData()
     }
     
-    func addItem(with title: String){
+    func addItem(with title: String) {
         let newItem = Item()
         newItem.itemName = title
         saveItem(item: newItem)
     }
     
-    func removeItem(item: Item){
+    func removeItem(item: Item) {
         do {
             try presenter.realm.write {
                 presenter.realm.delete(item)

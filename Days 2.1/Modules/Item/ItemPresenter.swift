@@ -27,7 +27,7 @@ final class ItemPresenter: ItemPresenterProtocol {
     
 // MARK: Protocol methods
     
-    func configureViewElements(){
+    func configureViewElements() {
         view.configureViewElements()
     }
     
@@ -35,7 +35,7 @@ final class ItemPresenter: ItemPresenterProtocol {
         router.closeCurrentViewController()
     }
     
-    func checkNameForLetters(textField: UITextField){
+    func checkNameForLetters(textField: UITextField) {
         interactor.checkNameForLetters(textField: textField)
     }
     
