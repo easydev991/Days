@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ItemInteractorProtocol: AnyObject {
+    func checkNameForLetters(textField: UITextField)
+}
+
 final class ItemInteractor: ItemInteractorProtocol {
     
 // MARK: Public properties

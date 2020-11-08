@@ -6,6 +6,10 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
+protocol MainConfiguratorProtocol: AnyObject {
+    func configure(with viewController: MainViewController)
+}
+
 final class MainConfigurator: MainConfiguratorProtocol {
     
 // MARK: Protocol methods

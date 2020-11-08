@@ -6,6 +6,10 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
+protocol ItemConfiguratorProtocol: AnyObject {
+    func configure(with viewController: ItemViewController)
+}
+
 final class ItemConfigurator: ItemConfiguratorProtocol {
     
 // MARK: Protocol methods

@@ -8,6 +8,17 @@
 
 import UIKit
 
+protocol ItemDelegate: AnyObject {
+    func setItemData(itemName: String, itemDate: Date)
+}
+
+protocol ItemViewControllerProtocol: AnyObject {
+    func configureViewElements()
+    func enableSaveButton()
+    func disableSaveButton()
+    func saveAction()
+}
+
 final class ItemViewController: UIViewController {
    
 // MARK: IBOutlets
@@ -19,7 +30,7 @@ final class ItemViewController: UIViewController {
 // MARK: Public properties
     
     var presenter: ItemPresenterProtocol!
-    weak var delegate: ItemViewDelegate?
+    weak var delegate: ItemDelegate?
     
 // MARK: Private properties
     
@@ -62,10 +73,9 @@ final class ItemViewController: UIViewController {
 
 // MARK: ItemViewProtocol
 
-extension ItemViewController: ItemViewProtocol {
+extension ItemViewController: ItemViewControllerProtocol {
     
     func saveAction(){
-        OnboardingService.shared.setIsNotNewUser() // disable onboarding
         delegate?.setItemData(itemName: itemNameTextField.text!, itemDate: itemDatePicker.date)
         presenter.saveButtonClicked()
     }

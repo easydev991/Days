@@ -7,8 +7,11 @@
 //
 
 import UIKit
-import OnboardKit
 import DynamicColor
+
+protocol MainViewControllerProtocol: AnyObject {
+    func reloadTableViewData()
+}
 
 final class MainViewController: UIViewController {
 
@@ -28,11 +31,6 @@ final class MainViewController: UIViewController {
         configurator.configure(with: self)
         presenter.configureView()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        onboarding()
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         presenter.router.prepare(for: segue, sender: sender)
@@ -46,31 +44,20 @@ final class MainViewController: UIViewController {
         cell.backgroundColor = color
     }
     
-// MARK: Private methods
-    
-    private func onboarding() {
-        if OnboardingService.shared.isNewUser() {
-            let onboardingVC = OnboardViewController(pageItems: OnboardingService.shared.pages, appearanceConfiguration: OnboardingService.shared.appearance())
-            onboardingVC.modalPresentationStyle = .formSheet
-            onboardingVC.presentFrom(self, animated: true)
-        }
-    }
-    
 }
 
 // MARK: MainViewProtocol
 
-extension MainViewController: MainViewProtocol {
+extension MainViewController: MainViewControllerProtocol {
     
     func reloadTableViewData() {
         tableView.reloadData()
     }
-    
 }
 
 // MARK: ItemViewDelegate
 
-extension MainViewController: ItemViewDelegate {
+extension MainViewController: ItemDelegate {
     
     func setItemData(itemName: String, itemDate: Date) {
         let newItem = Item()
@@ -86,6 +73,10 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.items?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(45)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

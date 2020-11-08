@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ItemRouterProtocol: AnyObject {
+    func closeCurrentViewController()
+}
+
 final class ItemRouter: ItemRouterProtocol {
     
 // MARK: Public properties

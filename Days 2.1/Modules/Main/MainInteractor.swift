@@ -6,7 +6,15 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
-import UIKit
+import Foundation
+
+protocol MainInteractorProtocol: AnyObject {
+    func loadItems()
+    func saveItem(item: Item)
+    func removeItem(item: Item)
+    func addItem(with title: String)
+    func dateToTextDays(item: Item) -> String
+}
 
 final class MainInteractor: MainInteractorProtocol {
     

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol MainRouterProtocol: AnyObject {
+    func showItemScene()
+    func prepare(for segue: UIStoryboardSegue, sender: Any?)
+}
+
 final class MainRouter: MainRouterProtocol {
     
 // MARK: Public properties

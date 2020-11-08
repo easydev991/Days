@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -102,39 +102,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="JuA-h2-7BF">
-                                <rect key="frame" x="45" y="150" width="324" height="280"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-wM-fgu">
-                                        <rect key="frame" x="0.0" y="0.0" width="324" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <connections>
-                                            <action selector="editingChanged:" destination="U2c-yj-kY4" eventType="editingChanged" id="EJl-WB-QZi"/>
-                                            <outlet property="delegate" destination="U2c-yj-kY4" id="aUD-bT-CK1"/>
-                                        </connections>
-                                    </textField>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="hyO-Sj-2YO">
-                                        <rect key="frame" x="0.0" y="64" width="324" height="216"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </datePicker>
-                                </subviews>
-                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-wM-fgu">
+                                <rect key="frame" x="45" y="155" width="324" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="U2c-yj-kY4" eventType="editingChanged" id="EJl-WB-QZi"/>
+                                    <outlet property="delegate" destination="U2c-yj-kY4" id="aUD-bT-CK1"/>
+                                </connections>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="hyO-Sj-2YO">
+                                <rect key="frame" x="47" y="219" width="320" height="216"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="p1d-eV-ilW"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="p1d-eV-ilW" firstAttribute="trailing" secondItem="JuA-h2-7BF" secondAttribute="trailing" constant="45" id="hry-ow-PyA"/>
-                            <constraint firstItem="JuA-h2-7BF" firstAttribute="leading" secondItem="p1d-eV-ilW" secondAttribute="leading" constant="45" id="jW8-NH-ShH"/>
-                            <constraint firstItem="JuA-h2-7BF" firstAttribute="centerX" secondItem="33A-S2-bvz" secondAttribute="centerX" id="q2K-SB-63S"/>
-                            <constraint firstItem="JuA-h2-7BF" firstAttribute="top" secondItem="p1d-eV-ilW" secondAttribute="top" constant="10" id="u2X-Vr-ZWY"/>
+                            <constraint firstItem="2zn-wM-fgu" firstAttribute="top" secondItem="p1d-eV-ilW" secondAttribute="top" constant="15" id="Dv1-my-Yvh"/>
+                            <constraint firstItem="hyO-Sj-2YO" firstAttribute="centerX" secondItem="33A-S2-bvz" secondAttribute="centerX" id="O2K-zG-Pcb"/>
+                            <constraint firstItem="hyO-Sj-2YO" firstAttribute="top" secondItem="2zn-wM-fgu" secondAttribute="bottom" constant="30" id="aBq-4k-22w"/>
+                            <constraint firstItem="p1d-eV-ilW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2zn-wM-fgu" secondAttribute="trailing" constant="45" id="hSZ-fO-S8c"/>
+                            <constraint firstItem="2zn-wM-fgu" firstAttribute="centerX" secondItem="33A-S2-bvz" secondAttribute="centerX" id="j09-6n-rLp"/>
+                            <constraint firstItem="2zn-wM-fgu" firstAttribute="leading" relation="lessThanOrEqual" secondItem="p1d-eV-ilW" secondAttribute="leading" constant="45" id="viW-M9-lNc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pgn-rC-vHK">

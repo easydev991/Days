@@ -8,11 +8,20 @@
 
 import UIKit
 
+protocol ItemPresenterProtocol: AnyObject {
+    var router: ItemRouterProtocol! { get set }
+    func configureViewElements()
+    func saveButtonClicked()
+    func checkNameForLetters(textField: UITextField)
+    func enableSaveButton()
+    func disableSaveButton()
+}
+
 final class ItemPresenter: ItemPresenterProtocol {
 
 // MARK: Public properties
     
-    weak var view: ItemViewProtocol!
+    weak var view: ItemViewControllerProtocol!
     var interactor: ItemInteractorProtocol!
     
 // MARK: Protocol properties
@@ -21,7 +30,7 @@ final class ItemPresenter: ItemPresenterProtocol {
     
 // MARK: Init
     
-    required init(view: ItemViewProtocol) {
+    required init(view: ItemViewControllerProtocol) {
         self.view = view
     }
     

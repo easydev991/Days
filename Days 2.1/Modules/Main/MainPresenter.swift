@@ -6,14 +6,26 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
+
+protocol MainPresenterProtocol: AnyObject {
+    func configureView()
+    func reloadTVData()
+    func addItem(with title: String)
+    func removeItem(item: Item)
+    func saveItem(item: Item)
+    func dateToTextDays(item: Item) -> String
+    func addButtonClicked()
+    var router: MainRouterProtocol! { set get }
+    var items: Results<Item>? { get set }
+    var realm: Realm { get }
+}
 
 final class MainPresenter: MainPresenterProtocol {  
 
 // MARK: Public properties
     
-    weak var view: MainViewProtocol!
+    weak var view: MainViewControllerProtocol!
     var interactor: MainInteractorProtocol!
     
 // MARK: Protocol properties
@@ -24,7 +36,7 @@ final class MainPresenter: MainPresenterProtocol {
     
 // MARK: Init
     
-    required init(view: MainViewProtocol) {
+    required init(view: MainViewControllerProtocol) {
         self.view = view
     }
     

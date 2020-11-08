@@ -6,6 +6,7 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
+import Foundation
 import RealmSwift
 
 final class Item: Object {
