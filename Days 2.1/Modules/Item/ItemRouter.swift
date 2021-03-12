@@ -14,17 +14,17 @@ protocol ItemRouterProtocol: AnyObject {
 
 final class ItemRouter: ItemRouterProtocol {
     
-// MARK: Public properties
+    // MARK: - Public properties
     
     weak var viewController: ItemViewController!
     
-// MARK: Init
+    // MARK: - Init
     
     init(viewController: ItemViewController) {
         self.viewController = viewController
     }
 
-// MARK: Protocol methods
+    // MARK: - Methods
     
     func closeCurrentViewController() {
         viewController.navigationController?.popToRootViewController(animated: true)

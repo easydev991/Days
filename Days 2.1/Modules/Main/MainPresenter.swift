@@ -23,24 +23,21 @@ protocol MainPresenterProtocol: AnyObject {
 
 final class MainPresenter: MainPresenterProtocol {  
 
-// MARK: Public properties
+    // MARK: - Public properties
     
     weak var view: MainViewControllerProtocol!
     var interactor: MainInteractorProtocol!
-    
-// MARK: Protocol properties
-    
     let realm = try! Realm()
     var router: MainRouterProtocol!
     var items: Results<Item>?
     
-// MARK: Init
+    // MARK: - Init
     
     required init(view: MainViewControllerProtocol) {
         self.view = view
     }
     
-// MARK: Protocol methods
+    // MARK: - Methods
     
     func configureView() {
         interactor.loadItems()

@@ -14,17 +14,17 @@ protocol ItemInteractorProtocol: AnyObject {
 
 final class ItemInteractor: ItemInteractorProtocol {
     
-// MARK: Public properties
+    // MARK: - Public properties
     
     weak var presenter: ItemPresenterProtocol!
     
-// MARK: Init
+    // MARK: - Init
     
     required init(presenter: ItemPresenterProtocol) {
         self.presenter = presenter
     }
     
-// MARK: Protocol methods
+    // MARK: - Methods
     
     func checkNameForLetters(textField: UITextField) {
         if let _ = textField.text!.rangeOfCharacter(from: NSCharacterSet.letters) {

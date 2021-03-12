@@ -15,21 +15,21 @@ protocol MainRouterProtocol: AnyObject {
 
 final class MainRouter: MainRouterProtocol {
     
-// MARK: Public properties
+    // MARK: - Public properties
     
     weak var viewController: MainViewController!
     
-// MARK: Private properties
+    // MARK: - Private properties
     
     private let mainToItemSegue = "MainToItemSegue"
     
-// MARK: Init
+    // MARK: - Init
     
     init(viewController: MainViewController) {
         self.viewController = viewController
     }
     
-// MARK: Protocol methods
+    // MARK: - Methods
     
     func showItemScene() {
         viewController.performSegue(withIdentifier: mainToItemSegue, sender: nil)

@@ -146,7 +146,7 @@
 			children = (
 				678AFCF825164BD100C3DF53 /* App */,
 				6705D12724B9884E00A07BDC /* Modules */,
-				67D5FBA524A8DF7E00F9ED26 /* Entities */,
+				67D5FBA524A8DF7E00F9ED26 /* Entity */,
 				6705D12824B9885700A07BDC /* Storyboards */,
 				67D5FB9524A8D74A00F9ED26 /* Assets.xcassets */,
 				67D5FB9A24A8D74A00F9ED26 /* Info.plist */,
@@ -154,12 +154,12 @@
 			path = "Days 2.1";
 			sourceTree = "<group>";
 		};
-		67D5FBA524A8DF7E00F9ED26 /* Entities */ = {
+		67D5FBA524A8DF7E00F9ED26 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				67D5FBA824A8E07D00F9ED26 /* Item.swift */,
 			);
-			path = Entities;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -10,26 +10,23 @@ import UIKit
 
 final class TableViewCell: UITableViewCell {
 
-// MARK: Public properties
+    // MARK: - Public properties
     
     static let cellID = "Cell"
     
-// MARK: IBOutlets
+    // MARK: - IBOutlets
     
     @IBOutlet private weak var itemNameLabel: UILabel!
     @IBOutlet private weak var itemDaysLabel: UILabel!
     
-// MARK: Lifecycle
-    
+    // MARK: - Lifecycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        selectionStyle = .none
     }
     
-// MARK: Public methods
+    // MARK: - Public methods
     
     func setupCell(itemName: String, itemDays: String) {
         itemNameLabel.text = itemName

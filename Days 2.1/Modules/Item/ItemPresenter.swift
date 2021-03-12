@@ -19,22 +19,19 @@ protocol ItemPresenterProtocol: AnyObject {
 
 final class ItemPresenter: ItemPresenterProtocol {
 
-// MARK: Public properties
+    // MARK: - Public properties
     
     weak var view: ItemViewControllerProtocol!
     var interactor: ItemInteractorProtocol!
-    
-// MARK: Protocol properties
-    
     var router: ItemRouterProtocol!
     
-// MARK: Init
+    // MARK: - Init
     
     required init(view: ItemViewControllerProtocol) {
         self.view = view
     }
     
-// MARK: Protocol methods
+    // MARK: - Methods
     
     func configureViewElements() {
         view.configureViewElements()

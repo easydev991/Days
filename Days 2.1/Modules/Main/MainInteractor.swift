@@ -18,17 +18,17 @@ protocol MainInteractorProtocol: AnyObject {
 
 final class MainInteractor: MainInteractorProtocol {
     
-// MARK: Public properties
+    // MARK: - Public properties
     
     weak var presenter: MainPresenterProtocol!
     
-// MARK: Init
+    // MARK: - Init
     
     required init(presenter: MainPresenterProtocol) {
         self.presenter = presenter
     }
     
-// MARK: Protocol methods
+    // MARK: - Methods
     
     func loadItems() {
         presenter.items = presenter.realm.objects(Item.self).sorted(byKeyPath: "date", ascending: false)

@@ -12,8 +12,6 @@ protocol MainConfiguratorProtocol: AnyObject {
 
 final class MainConfigurator: MainConfiguratorProtocol {
     
-// MARK: Protocol methods
-    
     func configure(with viewController: MainViewController) {
         let presenter = MainPresenter(view: viewController)
         let interactor = MainInteractor(presenter: presenter)

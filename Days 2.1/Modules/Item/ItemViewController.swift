@@ -21,22 +21,22 @@ protocol ItemViewControllerProtocol: AnyObject {
 
 final class ItemViewController: UIViewController {
    
-// MARK: IBOutlets
+    // MARK: - IBOutlets
     
     @IBOutlet private weak var itemNameTextField: UITextField!
     @IBOutlet private weak var itemDatePicker: UIDatePicker!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
     
-// MARK: Public properties
+    // MARK: - Public properties
     
     var presenter: ItemPresenterProtocol!
     weak var delegate: ItemDelegate?
     
-// MARK: Private properties
+    // MARK: - Private properties
     
     private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
     
-// MARK: Lifecycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ final class ItemViewController: UIViewController {
         setupPlaceholder()
     }   
     
-// MARK: IBActions
+    // MARK: - IBActions
     
     @IBAction func editingChanged(_ sender: UITextField) {
         presenter.checkNameForLetters(textField: sender)
@@ -58,7 +58,7 @@ final class ItemViewController: UIViewController {
         saveAction()
     }
        
-// MARK: Private methods
+    // MARK: - Private methods
     
     private func initialSetup() {
         configurator.configure(with: self)
@@ -66,15 +66,16 @@ final class ItemViewController: UIViewController {
     }
     
     private func setupPlaceholder() {
-        itemNameTextField.attributedPlaceholder = NSAttributedString(string: "Enter a title", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
+        itemNameTextField.attributedPlaceholder = NSAttributedString(string: "Enter a title",
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
     }
     
 }
 
-// MARK: ItemViewProtocol
+// MARK: - ItemViewControllerProtocol
 
 extension ItemViewController: ItemViewControllerProtocol {
-    
+
     func saveAction(){
         delegate?.setItemData(itemName: itemNameTextField.text!, itemDate: itemDatePicker.date)
         presenter.saveButtonClicked()
@@ -94,10 +95,9 @@ extension ItemViewController: ItemViewControllerProtocol {
     }
 }
 
-// MARK: UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 
 extension ItemViewController: UITextFieldDelegate {
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text!.isEmpty { return false }
         saveAction()

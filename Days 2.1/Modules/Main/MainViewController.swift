@@ -15,16 +15,16 @@ protocol MainViewControllerProtocol: AnyObject {
 
 final class MainViewController: UIViewController {
 
-// MARK: IBOutlets
+    // MARK: - IBOutlets
     
     @IBOutlet private weak var tableView: UITableView!
     
-// MARK: Public properties
+    // MARK: - Public properties
     
     var presenter: MainPresenterProtocol!
     var configurator: MainConfiguratorProtocol = MainConfigurator()
     
-// MARK: Lifecycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ final class MainViewController: UIViewController {
         presenter.router.prepare(for: segue, sender: sender)
     }
     
-// MARK: Public methods
+    // MARK: - Public methods
     
     func addGradient(to cell: TableViewCell, at indexPath: IndexPath){
         let calculation = CGFloat(indexPath.row) / 25
@@ -46,19 +46,17 @@ final class MainViewController: UIViewController {
     
 }
 
-// MARK: MainViewProtocol
+// MARK: - MainViewControllerProtocol
 
 extension MainViewController: MainViewControllerProtocol {
-    
     func reloadTableViewData() {
         tableView.reloadData()
     }
 }
 
-// MARK: ItemViewDelegate
+// MARK: - ItemDelegate
 
 extension MainViewController: ItemDelegate {
-    
     func setItemData(itemName: String, itemDate: Date) {
         let newItem = Item()
         newItem.itemName = itemName
@@ -67,16 +65,16 @@ extension MainViewController: ItemDelegate {
     }
 }
 
-// MARK: UITableViewDataSource
+// MARK: - UITableViewDataSource
 
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.items?.count ?? 0
+        presenter.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(45)
+        CGFloat(45)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +84,6 @@ extension MainViewController: UITableViewDataSource {
             cell.setupCell(itemName: item.itemName, itemDays: presenter.dateToTextDays(item: item))
             addGradient(to: cell, at: indexPath)
         }
-        
         return cell
     }
     
@@ -98,15 +95,12 @@ extension MainViewController: UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
-    
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }
