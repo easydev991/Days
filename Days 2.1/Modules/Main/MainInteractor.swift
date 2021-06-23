@@ -60,7 +60,8 @@ final class MainInteractor: MainInteractorProtocol {
     
     func dateToTextDays(item: Item) -> String {
         let today = Date().timeIntervalSince(item.date)
-        return "\(Int(today)/86400) days"
+        let daysCount = Int(today)/86400
+        return daysCount > 0 ? "\(daysCount) days ago" : "\(-daysCount) days left"
     }
     
 }

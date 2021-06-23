@@ -16,20 +16,20 @@ protocol MainPresenterProtocol: AnyObject {
     func saveItem(item: Item)
     func dateToTextDays(item: Item) -> String
     func addButtonClicked()
-    var router: MainRouterProtocol! { set get }
-    var items: Results<Item>? { get set }
-    var realm: Realm { get }
+    var realm      : Realm { get }
+    var router     : MainRouterProtocol! { set get }
+    var items      : Results<Item>? { get set }
 }
 
 final class MainPresenter: MainPresenterProtocol {  
 
     // MARK: - Public properties
     
-    weak var view: MainViewControllerProtocol!
-    var interactor: MainInteractorProtocol!
-    let realm = try! Realm()
-    var router: MainRouterProtocol!
-    var items: Results<Item>?
+    weak var view  : MainViewControllerProtocol!
+    var interactor : MainInteractorProtocol!
+    let realm      = try! Realm()
+    var router     : MainRouterProtocol!
+    var items      : Results<Item>?
     
     // MARK: - Init
     
@@ -60,7 +60,7 @@ final class MainPresenter: MainPresenterProtocol {
     }
     
     func dateToTextDays(item: Item) -> String {
-        return interactor.dateToTextDays(item: item)
+        interactor.dateToTextDays(item: item)
     }
     
     func addButtonClicked() {

@@ -16,8 +16,18 @@ final class TableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var itemNameLabel: UILabel!
-    @IBOutlet private weak var itemDaysLabel: UILabel!
+    @IBOutlet private weak var itemNameLabel: UILabel! {
+        didSet {
+            itemNameLabel.numberOfLines             = 2
+            itemNameLabel.adjustsFontSizeToFitWidth = true
+        }
+    }
+    @IBOutlet private weak var itemDaysLabel: UILabel! {
+        didSet {
+            itemDaysLabel.numberOfLines             = 1
+            itemDaysLabel.adjustsFontSizeToFitWidth = true
+        }
+    }
     
     // MARK: - Lifecycle
 

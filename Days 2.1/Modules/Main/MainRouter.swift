@@ -17,7 +17,7 @@ final class MainRouter: MainRouterProtocol {
     
     // MARK: - Public properties
     
-    weak var viewController: MainViewController!
+    weak var viewController     : MainViewController!
     
     // MARK: - Private properties
     

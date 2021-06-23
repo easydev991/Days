@@ -21,9 +21,9 @@ final class ItemPresenter: ItemPresenterProtocol {
 
     // MARK: - Public properties
     
-    weak var view: ItemViewControllerProtocol!
-    var interactor: ItemInteractorProtocol!
-    var router: ItemRouterProtocol!
+    weak var view  : ItemViewControllerProtocol!
+    var interactor : ItemInteractorProtocol!
+    var router     : ItemRouterProtocol!
     
     // MARK: - Init
     

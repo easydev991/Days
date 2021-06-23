@@ -2,30 +2,21 @@
   "object": {
     "pins": [
       {
-        "package": "DynamicColor",
-        "repositoryURL": "https://github.com/yannickl/DynamicColor",
-        "state": {
-          "branch": null,
-          "revision": "d9beca13ca85baa50ee29832d0db5129fba69630",
-          "version": "5.0.1"
-        }
-      },
-      {
         "package": "Realm",
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
-          "revision": "efaf9c31dd042274a8b38f021ab19c33047a8a6a",
-          "version": "10.1.2"
+          "revision": "827f9bf97f44e40fda8a750698f3e096734629ee",
+          "version": "10.8.1"
         }
       },
       {
-        "package": "RealmCore",
+        "package": "RealmDatabase",
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "63b42fc6835efdd27b706a6a6b629edc36018d43",
-          "version": "10.1.1"
+          "revision": "d85d071cc25b6f64fabbbebbaaae20f367ef64ae",
+          "version": "11.0.3"
         }
       }
     ]

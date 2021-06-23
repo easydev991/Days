@@ -23,18 +23,22 @@ final class ItemViewController: UIViewController {
    
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var itemNameTextField: UITextField!
-    @IBOutlet private weak var itemDatePicker: UIDatePicker!
-    @IBOutlet private weak var saveButton: UIBarButtonItem!
+    @IBOutlet private weak var itemNameTextField : UITextField!
+    @IBOutlet private weak var itemDatePicker    : UIDatePicker! {
+        didSet {
+            itemDatePicker.preferredDatePickerStyle = .wheels
+        }
+    }
+    @IBOutlet private weak var saveButton        : UIBarButtonItem!
     
     // MARK: - Public properties
     
-    var presenter: ItemPresenterProtocol!
-    weak var delegate: ItemDelegate?
+    var presenter                                : ItemPresenterProtocol!
+    weak var delegate                            : ItemDelegate?
     
     // MARK: - Private properties
     
-    private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
+    private let configurator                     : ItemConfiguratorProtocol = ItemConfigurator()
     
     // MARK: - Lifecycle
     
@@ -77,7 +81,9 @@ final class ItemViewController: UIViewController {
 extension ItemViewController: ItemViewControllerProtocol {
 
     func saveAction(){
-        delegate?.setItemData(itemName: itemNameTextField.text!, itemDate: itemDatePicker.date)
+        guard let text = itemNameTextField.text else { return }
+        delegate?.setItemData(itemName: text,
+                              itemDate: itemDatePicker.date)
         presenter.saveButtonClicked()
     }
     
@@ -99,7 +105,10 @@ extension ItemViewController: ItemViewControllerProtocol {
 
 extension ItemViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.text!.isEmpty { return false }
+        guard let text = textField.text,
+              !text.isEmpty else {
+            return false
+        }
         saveAction()
         return true
     }

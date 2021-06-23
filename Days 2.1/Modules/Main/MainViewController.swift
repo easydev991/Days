@@ -17,12 +17,12 @@ final class MainViewController: UIViewController {
 
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView : UITableView!
     
     // MARK: - Public properties
     
-    var presenter: MainPresenterProtocol!
-    var configurator: MainConfiguratorProtocol = MainConfigurator()
+    var presenter                        : MainPresenterProtocol!
+    var configurator                     : MainConfiguratorProtocol = MainConfigurator()
     
     // MARK: - Lifecycle
     
