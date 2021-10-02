@@ -7,6 +7,7 @@
 //
 
 import RealmSwift
+import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
     func requestItems()

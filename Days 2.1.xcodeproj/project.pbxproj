@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,9 @@
 		6705D13824B9894400A07BDC /* ItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13724B9894400A07BDC /* ItemInteractor.swift */; };
 		6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13924B9895300A07BDC /* ItemConfigurator.swift */; };
 		6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13E24B9896E00A07BDC /* ItemRouter.swift */; };
+		67C90F0F2708697300F257C9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F0E2708697300F257C9 /* SwiftPackageProductDependency */; };
+		67C90F1227086A4A00F257C9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1127086A4A00F257C9 /* SwiftPackageProductDependency */; };
+		67C90F1427086A4A00F257C9 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1327086A4A00F257C9 /* SwiftPackageProductDependency */; };
 		67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8C24A8D74400F9ED26 /* AppDelegate.swift */; };
 		67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8E24A8D74400F9ED26 /* SceneDelegate.swift */; };
 		67D5FB9124A8D74400F9ED26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB9024A8D74400F9ED26 /* MainViewController.swift */; };
@@ -24,11 +27,9 @@
 		67D5FBA924A8E07D00F9ED26 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBA824A8E07D00F9ED26 /* Item.swift */; };
 		67D5FBAB24A8E1CD00F9ED26 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBAA24A8E1CD00F9ED26 /* TableViewCell.swift */; };
 		67D5FBB424A8FEE100F9ED26 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBB324A8FEE100F9ED26 /* ItemViewController.swift */; };
-		D2A7AF6CBF359B30C287AEFC /* Pods_Days_2_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2346EB289B7AA560C9574C7 /* Pods_Days_2_1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0103B75EDB009F55D49B6470 /* Pods-Days 2.1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Days 2.1.debug.xcconfig"; path = "Target Support Files/Pods-Days 2.1/Pods-Days 2.1.debug.xcconfig"; sourceTree = "<group>"; };
 		6705D12B24B988B300A07BDC /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		6705D12D24B988BC00A07BDC /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		6705D12F24B988CD00A07BDC /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
@@ -48,8 +49,6 @@
 		67D5FBA824A8E07D00F9ED26 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		67D5FBAA24A8E1CD00F9ED26 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		67D5FBB324A8FEE100F9ED26 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
-		C2346EB289B7AA560C9574C7 /* Pods_Days_2_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Days_2_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5A3B76EBABBC68ED79373EC /* Pods-Days 2.1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Days 2.1.release.xcconfig"; path = "Target Support Files/Pods-Days 2.1/Pods-Days 2.1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,30 +56,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2A7AF6CBF359B30C287AEFC /* Pods_Days_2_1.framework in Frameworks */,
+				67C90F1427086A4A00F257C9 /* BuildFile in Frameworks */,
+				67C90F1227086A4A00F257C9 /* BuildFile in Frameworks */,
+				67C90F0F2708697300F257C9 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F5CA4B75E1F0B54ACAC0B72 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0103B75EDB009F55D49B6470 /* Pods-Days 2.1.debug.xcconfig */,
-				D5A3B76EBABBC68ED79373EC /* Pods-Days 2.1.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		506F79E174DA2C00F62AF144 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C2346EB289B7AA560C9574C7 /* Pods_Days_2_1.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		6705D12724B9884E00A07BDC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,8 +130,6 @@
 			children = (
 				67D5FB8B24A8D74400F9ED26 /* Days 2.1 */,
 				67D5FB8A24A8D74400F9ED26 /* Products */,
-				3F5CA4B75E1F0B54ACAC0B72 /* Pods */,
-				506F79E174DA2C00F62AF144 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,11 +169,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67D5FB9D24A8D74A00F9ED26 /* Build configuration list for PBXNativeTarget "Days 2.1" */;
 			buildPhases = (
-				884695B33F0FFDEE2141CC75 /* [CP] Check Pods Manifest.lock */,
 				67D5FB8524A8D74400F9ED26 /* Sources */,
 				67D5FB8624A8D74400F9ED26 /* Frameworks */,
 				67D5FB8724A8D74400F9ED26 /* Resources */,
-				95A0F67C159645D786A100E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,6 +179,9 @@
 			);
 			name = "Days 2.1";
 			packageProductDependencies = (
+				67C90F0E2708697300F257C9 /* SwiftPackageProductDependency */,
+				67C90F1127086A4A00F257C9 /* SwiftPackageProductDependency */,
+				67C90F1327086A4A00F257C9 /* SwiftPackageProductDependency */,
 			);
 			productName = "Days 2.1";
 			productReference = 67D5FB8924A8D74400F9ED26 /* Days 2.1.app */;
@@ -229,6 +212,8 @@
 			);
 			mainGroup = 67D5FB8024A8D74400F9ED26;
 			packageReferences = (
+				67C90F0D2708697300F257C9 /* RemoteSwiftPackageReference */,
+				67C90F1027086A4A00F257C9 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 67D5FB8A24A8D74400F9ED26 /* Products */;
 			projectDirPath = "";
@@ -251,48 +236,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		884695B33F0FFDEE2141CC75 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Days 2.1-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		95A0F67C159645D786A100E9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Days 2.1/Pods-Days 2.1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Days 2.1/Pods-Days 2.1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Days 2.1/Pods-Days 2.1-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		67D5FB8524A8D74400F9ED26 /* Sources */ = {
@@ -459,7 +402,6 @@
 		};
 		67D5FB9E24A8D74A00F9ED26 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0103B75EDB009F55D49B6470 /* Pods-Days 2.1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -479,7 +421,6 @@
 		};
 		67D5FB9F24A8D74A00F9ED26 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5A3B76EBABBC68ED79373EC /* Pods-Days 2.1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -519,6 +460,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		67C90F0D2708697300F257C9 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		67C90F1027086A4A00F257C9 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67C90F0E2708697300F257C9 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67C90F0D2708697300F257C9 /* RemoteSwiftPackageReference */;
+			productName = DynamicColor;
+		};
+		67C90F1127086A4A00F257C9 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67C90F1027086A4A00F257C9 /* RemoteSwiftPackageReference */;
+			productName = Realm;
+		};
+		67C90F1327086A4A00F257C9 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67C90F1027086A4A00F257C9 /* RemoteSwiftPackageReference */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 67D5FB8124A8D74400F9ED26 /* Project object */;
 }
