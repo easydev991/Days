@@ -12,22 +12,16 @@ protocol ItemRouterProtocol: AnyObject {
     func closeCurrentViewController()
 }
 
-final class ItemRouter: ItemRouterProtocol {
-    
-    // MARK: - Public properties
-    
-    weak var viewController: ItemViewController!
-    
-    // MARK: - Init
-    
-    init(viewController: ItemViewController) {
-        self.viewController = viewController
-    }
+final class ItemRouter {
+    weak var viewController: ItemViewController?
+//
+//    init(viewController: ItemViewController) {
+//        self.viewController = viewController
+//    }
+}
 
-    // MARK: - Methods
-    
+extension ItemRouter: ItemRouterProtocol {
     func closeCurrentViewController() {
-        viewController.navigationController?.popToRootViewController(animated: true)
+        viewController?.navigationController?.popToRootViewController(animated: true)
     }
-    
 }

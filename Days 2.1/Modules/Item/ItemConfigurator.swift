@@ -11,14 +11,15 @@ protocol ItemConfiguratorProtocol: AnyObject {
 }
 
 final class ItemConfigurator: ItemConfiguratorProtocol {
-    
     func configure(with viewController: ItemViewController) {
-        let presenter            = ItemPresenter(view: viewController)
-        let interactor           = ItemInteractor(presenter: presenter)
-        let router               = ItemRouter(viewController: viewController)
+        let presenter            = ItemPresenter()
+        let interactor           = ItemInteractor()
+        let router               = ItemRouter()
+        presenter.view           = viewController
         viewController.presenter = presenter
         presenter.interactor     = interactor
+        interactor.presenter     = presenter
         presenter.router         = router
+        router.viewController    = viewController
     }
-    
 }

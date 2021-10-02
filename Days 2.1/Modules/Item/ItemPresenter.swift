@@ -9,48 +9,33 @@
 import UIKit
 
 protocol ItemPresenterProtocol: AnyObject {
-    var router: ItemRouterProtocol! { get set }
-    func configureViewElements()
+    var router: ItemRouterProtocol? { get set }
+    func viewDidLoad()
     func saveButtonClicked()
     func checkNameForLetters(textField: UITextField)
-    func enableSaveButton()
-    func disableSaveButton()
+    func setSaveButton(enabled: Bool)
 }
 
-final class ItemPresenter: ItemPresenterProtocol {
+final class ItemPresenter {
+    weak var view: ItemViewControllerProtocol?
+    var interactor: ItemInteractorProtocol?
+    var router: ItemRouterProtocol?
+}
 
-    // MARK: - Public properties
-    
-    weak var view  : ItemViewControllerProtocol!
-    var interactor : ItemInteractorProtocol!
-    var router     : ItemRouterProtocol!
-    
-    // MARK: - Init
-    
-    required init(view: ItemViewControllerProtocol) {
-        self.view = view
+extension ItemPresenter: ItemPresenterProtocol {
+    func viewDidLoad() {
+        view?.setSaveButton(enabled: false)
     }
-    
-    // MARK: - Methods
-    
-    func configureViewElements() {
-        view.configureViewElements()
-    }
-    
+
     func saveButtonClicked() {
-        router.closeCurrentViewController()
+        router?.closeCurrentViewController()
     }
-    
+
     func checkNameForLetters(textField: UITextField) {
-        interactor.checkNameForLetters(textField: textField)
+        interactor?.checkNameForLetters(textField: textField)
     }
-    
-    func enableSaveButton() {
-        view.enableSaveButton()
+
+    func setSaveButton(enabled: Bool) {
+        view?.setSaveButton(enabled: enabled)
     }
-    
-    func disableSaveButton() {
-        view.disableSaveButton()
-    }
-    
 }

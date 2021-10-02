@@ -12,26 +12,13 @@ protocol ItemInteractorProtocol: AnyObject {
     func checkNameForLetters(textField: UITextField)
 }
 
-final class ItemInteractor: ItemInteractorProtocol {
-    
-    // MARK: - Public properties
-    
-    weak var presenter: ItemPresenterProtocol!
-    
-    // MARK: - Init
-    
-    required init(presenter: ItemPresenterProtocol) {
-        self.presenter = presenter
-    }
-    
-    // MARK: - Methods
-    
+final class ItemInteractor {
+    weak var presenter: ItemPresenterProtocol?
+}
+
+extension ItemInteractor: ItemInteractorProtocol {
     func checkNameForLetters(textField: UITextField) {
-        if let _ = textField.text!.rangeOfCharacter(from: NSCharacterSet.letters) {
-            presenter.enableSaveButton()
-        } else {
-            presenter.disableSaveButton()
-        }
+        let textIsEmpty = textField.text?.rangeOfCharacter(from: .letters)?.isEmpty ?? true
+        presenter?.setSaveButton(enabled: !textIsEmpty)
     }
-    
 }
