@@ -8,39 +8,35 @@
 
 import UIKit
 
-final class TableViewCell: UITableViewCell {
+protocol TableViewCellInput {
+    func setupCell(itemName: String, itemDays: String)
+}
 
-    // MARK: - Public properties
-    
+final class TableViewCell: UITableViewCell {
     static let cellID = "Cell"
-    
-    // MARK: - IBOutlets
-    
+
     @IBOutlet private weak var itemNameLabel: UILabel! {
         didSet {
-            itemNameLabel.numberOfLines             = 2
+            itemNameLabel.numberOfLines = 2
             itemNameLabel.adjustsFontSizeToFitWidth = true
         }
     }
     @IBOutlet private weak var itemDaysLabel: UILabel! {
         didSet {
-            itemDaysLabel.numberOfLines             = 1
+            itemDaysLabel.numberOfLines = 1
             itemDaysLabel.adjustsFontSizeToFitWidth = true
         }
     }
-    
-    // MARK: - Lifecycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
     }
-    
-    // MARK: - Public methods
-    
+}
+
+extension TableViewCell: TableViewCellInput {
     func setupCell(itemName: String, itemDays: String) {
         itemNameLabel.text = itemName
         itemDaysLabel.text = itemDays
     }
-
 }

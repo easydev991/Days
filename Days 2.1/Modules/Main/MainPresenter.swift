@@ -9,62 +9,62 @@
 import RealmSwift
 
 protocol MainPresenterProtocol: AnyObject {
-    func configureView()
+    func requestItems()
     func reloadTVData()
     func addItem(with title: String)
     func removeItem(item: Item)
     func saveItem(item: Item)
     func dateToTextDays(item: Item) -> String
     func addButtonClicked()
-    var realm      : Realm { get }
-    var router     : MainRouterProtocol! { set get }
-    var items      : Results<Item>? { get set }
+    func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    func makeItemsCount() -> Int?
+    var router: MainRouterProtocol? { set get }
+    var items: Results<Item>? { get set }
+    var realm: Realm { get }
 }
 
-final class MainPresenter: MainPresenterProtocol {  
+final class MainPresenter {
+    weak var view: MainViewControllerProtocol?
+    var interactor: MainInteractorProtocol?
+    var router: MainRouterProtocol?
+    var items: Results<Item>?
+    let realm = try! Realm()
+}
 
-    // MARK: - Public properties
-    
-    weak var view  : MainViewControllerProtocol!
-    var interactor : MainInteractorProtocol!
-    let realm      = try! Realm()
-    var router     : MainRouterProtocol!
-    var items      : Results<Item>?
-    
-    // MARK: - Init
-    
-    required init(view: MainViewControllerProtocol) {
-        self.view = view
+extension MainPresenter: MainPresenterProtocol {
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        router?.prepare(for: segue, sender: sender)
     }
-    
-    // MARK: - Methods
-    
-    func configureView() {
-        interactor.loadItems()
+
+    func makeItemsCount() -> Int? {
+        items?.count
     }
-    
+
+    func requestItems() {
+        interactor?.loadItems()
+    }
+
     func addItem(with title: String) {
-        interactor.addItem(with: title)
-    }
-    
-    func reloadTVData() {
-        view.reloadTableViewData()
-    }
-    
-    func removeItem(item: Item) {
-        interactor.removeItem(item: item)
-    }
-    
-    func saveItem(item: Item) {
-        interactor.saveItem(item: item)
-    }
-    
-    func dateToTextDays(item: Item) -> String {
-        interactor.dateToTextDays(item: item)
-    }
-    
-    func addButtonClicked() {
-        router.showItemScene()
+        interactor?.addItem(with: title)
     }
 
+    func reloadTVData() {
+        view?.reloadTableViewData()
+    }
+
+    func removeItem(item: Item) {
+        interactor?.removeItem(item: item)
+    }
+
+    func saveItem(item: Item) {
+        interactor?.saveItem(item: item)
+    }
+
+    func dateToTextDays(item: Item) -> String {
+        interactor?.dateToTextDays(item: item) ?? String()
+    }
+
+    func addButtonClicked() {
+        router?.showItemScene()
+    }
 }

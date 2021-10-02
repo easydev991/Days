@@ -11,13 +11,15 @@ protocol MainConfiguratorProtocol: AnyObject {
 }
 
 final class MainConfigurator: MainConfiguratorProtocol {
-    
     func configure(with viewController: MainViewController) {
-        let presenter            = MainPresenter(view: viewController)
-        let interactor           = MainInteractor(presenter: presenter)
-        let router               = MainRouter(viewController: viewController)
+        let presenter            = MainPresenter()
+        let interactor           = MainInteractor()
+        let router               = MainRouter()
+        presenter.view           = viewController
         viewController.presenter = presenter
         presenter.interactor     = interactor
+        interactor.presenter     = presenter
         presenter.router         = router
+        router.viewController    = viewController
     }
 }

@@ -13,30 +13,18 @@ protocol MainRouterProtocol: AnyObject {
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
 }
 
-final class MainRouter: MainRouterProtocol {
-    
-    // MARK: - Public properties
-    
-    weak var viewController     : MainViewController!
-    
-    // MARK: - Private properties
-    
+final class MainRouter {
+    weak var viewController: MainViewController?
     private let mainToItemSegue = "MainToItemSegue"
-    
-    // MARK: - Init
-    
-    init(viewController: MainViewController) {
-        self.viewController = viewController
-    }
-    
-    // MARK: - Methods
-    
+}
+
+extension MainRouter: MainRouterProtocol {
     func showItemScene() {
-        viewController.performSegue(withIdentifier: mainToItemSegue, sender: nil)
+        viewController?.performSegue(withIdentifier: mainToItemSegue, sender: nil)
     }
-    
+
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ItemViewController{
+        if let vc = segue.destination as? ItemViewController {
             vc.delegate = viewController
         }
     }
