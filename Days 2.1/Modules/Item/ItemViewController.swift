@@ -17,7 +17,7 @@ protocol ItemViewControllerProtocol: AnyObject {
     func setSaveButton(enabled: Bool)
 }
 
-final class ItemViewController: UIViewController {
+final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - IBOutlets
     @IBOutlet private weak var itemNameTextField: UITextField!
     @IBOutlet private weak var itemDatePicker: UIDatePicker! {
@@ -28,11 +28,9 @@ final class ItemViewController: UIViewController {
     }
     @IBOutlet private weak var saveButton: UIBarButtonItem!
     
-    // MARK: - Public properties
+    // MARK: - Properties
     var presenter: ItemPresenterProtocol?
     weak var delegate: ItemDelegate?
-    
-    // MARK: - Private properties
     private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
     
     // MARK: - Lifecycle
@@ -48,7 +46,7 @@ final class ItemViewController: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: UIBarButtonItem) {
-        presenter?.router?.closeCurrentViewController()
+        presenter?.backButtonTapped()
     }
     
     @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
@@ -89,6 +87,7 @@ extension ItemViewController: UITextFieldDelegate {
 // MARK: - Private methods
 private extension ItemViewController {
     func initialSetup() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         configurator.configure(with: self)
         presenter?.viewDidLoad()
     }

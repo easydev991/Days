@@ -14,6 +14,7 @@ protocol ItemPresenterProtocol: AnyObject {
     func saveButtonClicked()
     func checkNameForLetters(textField: UITextField)
     func setSaveButton(enabled: Bool)
+    func backButtonTapped()
 }
 
 final class ItemPresenter {
@@ -37,5 +38,9 @@ extension ItemPresenter: ItemPresenterProtocol {
 
     func setSaveButton(enabled: Bool) {
         view?.setSaveButton(enabled: enabled)
+    }
+
+    func backButtonTapped() {
+        router?.closeCurrentViewController()
     }
 }

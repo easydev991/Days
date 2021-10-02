@@ -14,10 +14,6 @@ protocol ItemRouterProtocol: AnyObject {
 
 final class ItemRouter {
     weak var viewController: ItemViewController?
-//
-//    init(viewController: ItemViewController) {
-//        self.viewController = viewController
-//    }
 }
 
 extension ItemRouter: ItemRouterProtocol {

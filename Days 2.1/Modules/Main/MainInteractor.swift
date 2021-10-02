@@ -12,8 +12,6 @@ protocol MainInteractorProtocol: AnyObject {
     func loadItems()
     func saveItem(item: Item)
     func removeItem(item: Item)
-    func addItem(with title: String)
-    func dateToTextDays(item: Item) -> String
 }
 
 final class MainInteractor {
@@ -33,12 +31,6 @@ extension MainInteractor: MainInteractorProtocol {
         presenter?.reloadTVData()
     }
 
-    func addItem(with title: String) {
-        let newItem = Item()
-        newItem.itemName = title
-        saveItem(item: newItem)
-    }
-
     func removeItem(item: Item) {
         do {
             try presenter?.realm.write {
@@ -47,11 +39,5 @@ extension MainInteractor: MainInteractorProtocol {
         } catch {
             print("Error deleting item: \(error)")
         }
-    }
-
-    func dateToTextDays(item: Item) -> String {
-        let today = Date().timeIntervalSince(item.date)
-        let daysCount = Int(today)/86400
-        return daysCount > 0 ? "\(daysCount) days ago" : "\(-daysCount) days left"
     }
 }

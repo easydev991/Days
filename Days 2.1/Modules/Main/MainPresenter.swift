@@ -10,18 +10,16 @@ import RealmSwift
 import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
-    func requestItems()
-    func reloadTVData()
-    func addItem(with title: String)
-    func removeItem(item: Item)
-    func saveItem(item: Item)
-    func dateToTextDays(item: Item) -> String
-    func addButtonClicked()
-    func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    func makeItemsCount() -> Int?
     var router: MainRouterProtocol? { set get }
     var items: Results<Item>? { get set }
     var realm: Realm { get }
+    func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    func makeItemsCount() -> Int?
+    func requestItems()
+    func reloadTVData()
+    func setup(cell: TableViewCellInput, at indexPath: IndexPath)
+    func saveItem(name: String, date: Date)
+    func removeItem(at intexPath: IndexPath, completion: (() -> Void))
 }
 
 final class MainPresenter {
@@ -45,27 +43,44 @@ extension MainPresenter: MainPresenterProtocol {
         interactor?.loadItems()
     }
 
-    func addItem(with title: String) {
-        interactor?.addItem(with: title)
+    func setup(cell: TableViewCellInput, at indexPath: IndexPath) {
+        if let item = items?[indexPath.row] {
+            let itemDays = dateToTextDays(item: item)
+            let colorCalculation = CGFloat(indexPath.row) / 25
+            let model = TableViewCell.Model(
+                itemName: item.itemName,
+                itemDays: itemDays,
+                colorCalculation: colorCalculation
+            )
+            cell.setup(with: model)
+        }
     }
 
     func reloadTVData() {
         view?.reloadTableViewData()
     }
 
-    func removeItem(item: Item) {
-        interactor?.removeItem(item: item)
+    func removeItem(at intexPath: IndexPath, completion: (() -> Void)) {
+        if let itemForRemoval = items?[intexPath.row] {
+            interactor?.removeItem(item: itemForRemoval)
+            completion()
+        }
     }
 
-    func saveItem(item: Item) {
+    func saveItem(name: String, date: Date) {
+        let item = Item()
+        item.itemName = name
+        item.date = date
         interactor?.saveItem(item: item)
     }
+}
 
+private extension MainPresenter {
     func dateToTextDays(item: Item) -> String {
-        interactor?.dateToTextDays(item: item) ?? String()
-    }
-
-    func addButtonClicked() {
-        router?.showItemScene()
+        let today = Date().timeIntervalSince(item.date)
+        let daysCount = Int(today)/86400
+        return daysCount > 0
+        ? "\(daysCount) days ago"
+        : "today"
     }
 }

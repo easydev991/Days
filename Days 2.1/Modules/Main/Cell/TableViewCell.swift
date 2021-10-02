@@ -7,36 +7,47 @@
 //
 
 import UIKit
+import DynamicColor
 
 protocol TableViewCellInput {
-    func setupCell(itemName: String, itemDays: String)
+    func setup(with model: TableViewCell.Model)
 }
 
 final class TableViewCell: UITableViewCell {
     static let cellID = "Cell"
 
-    @IBOutlet private weak var itemNameLabel: UILabel! {
-        didSet {
-            itemNameLabel.numberOfLines = 2
-            itemNameLabel.adjustsFontSizeToFitWidth = true
-        }
-    }
-    @IBOutlet private weak var itemDaysLabel: UILabel! {
-        didSet {
-            itemDaysLabel.numberOfLines = 1
-            itemDaysLabel.adjustsFontSizeToFitWidth = true
-        }
-    }
+    @IBOutlet private weak var itemNameLabel: UILabel!
+    @IBOutlet private weak var itemDaysLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        setupUI()
+    }
+}
+
+extension TableViewCell {
+    struct Model {
+        let itemName: String
+        let itemDays: String
+        let colorCalculation: CGFloat
     }
 }
 
 extension TableViewCell: TableViewCellInput {
-    func setupCell(itemName: String, itemDays: String) {
-        itemNameLabel.text = itemName
-        itemDaysLabel.text = itemDays
+    func setup(with model: TableViewCell.Model) {
+        itemNameLabel.text = model.itemName
+        itemDaysLabel.text = model.itemDays
+        contentView.backgroundColor = .systemYellow.darkened(amount: model.colorCalculation)
+    }
+}
+
+private extension TableViewCell {
+    func setupUI() {
+        backgroundColor = .clear
+        contentView.layer.cornerRadius = 8
+        [itemNameLabel, itemDaysLabel].forEach {
+            $0?.numberOfLines = .zero
+        }
     }
 }
