@@ -16,6 +16,7 @@ protocol TableViewCellInput {
 final class TableViewCell: UITableViewCell {
     static let cellID = "Cell"
 
+    @IBOutlet private weak var container: UIView!
     @IBOutlet private weak var itemNameLabel: UILabel!
     @IBOutlet private weak var itemDaysLabel: UILabel!
 
@@ -38,14 +39,14 @@ extension TableViewCell: TableViewCellInput {
     func setup(with model: TableViewCell.Model) {
         itemNameLabel.text = model.itemName
         itemDaysLabel.text = model.itemDays
-        contentView.backgroundColor = .systemYellow.darkened(amount: model.colorCalculation)
+        container.backgroundColor = .systemYellow.darkened(amount: model.colorCalculation)
     }
 }
 
 private extension TableViewCell {
     func setupUI() {
         backgroundColor = .clear
-        contentView.layer.cornerRadius = 8
+        container.layer.cornerRadius = 8
         [itemNameLabel, itemDaysLabel].forEach {
             $0?.numberOfLines = .zero
         }

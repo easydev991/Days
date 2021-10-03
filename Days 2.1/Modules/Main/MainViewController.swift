@@ -30,6 +30,7 @@ final class MainViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = NSLocalizedString("How many days ago", comment: "MainVC title")
         configurator.configure(with: self)
         presenter?.requestItems()
     }

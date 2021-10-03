@@ -94,9 +94,6 @@ private extension ItemViewController {
     }
 
     func setupPlaceholder() {
-        itemNameTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter a title",
-            attributes: [.foregroundColor: UIColor.systemGray]
-        )
+        itemNameTextField.placeholder = NSLocalizedString("Enter text", comment: "Placeholder")
     }
 }

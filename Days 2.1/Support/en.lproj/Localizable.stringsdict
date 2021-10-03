@@ -13,15 +13,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d day ago</string>
+			<string>%d day</string>
 			<key>two</key>
-			<string>%d days ago</string>
+			<string>%d days</string>
 			<key>few</key>
-			<string>%d days ago</string>
+			<string>%d days</string>
 			<key>many</key>
-			<string>%d days ago</string>
+			<string>%d days</string>
 			<key>other</key>
-			<string>%d days ago</string>
+			<string>%d days</string>
 		</dict>
 	</dict>
 </dict>

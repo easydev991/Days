@@ -15,15 +15,15 @@
 			<key>zero</key>
 			<string>сегодня</string>
 			<key>one</key>
-			<string>%d день назад</string>
+			<string>%d день</string>
 			<key>two</key>
-			<string>%d дня назад</string>
+			<string>%d дня</string>
 			<key>few</key>
-			<string>%d дней назад</string>
+			<string>%d дня</string>
 			<key>many</key>
-			<string>%d дней назад</string>
+			<string>%d дней</string>
 			<key>other</key>
-			<string>%d дней назад</string>
+			<string>%d дней</string>
 		</dict>
 	</dict>
 </dict>
