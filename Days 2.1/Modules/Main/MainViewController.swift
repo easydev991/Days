@@ -15,13 +15,8 @@ protocol MainViewControllerProtocol: AnyObject {
 
 final class MainViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet private weak var tableView: UITableView! {
-        didSet {
-            tableView.backgroundColor = .systemOrange
-            tableView.rowHeight = UITableView.automaticDimension
-            tableView.estimatedRowHeight = UITableView.automaticDimension
-        }
-    }
+    @IBOutlet private weak var addNewItemButton: UIBarButtonItem!
+    @IBOutlet private weak var tableView: UITableView!
 
     // MARK: - Properties
     var presenter: MainPresenterProtocol?
@@ -30,8 +25,8 @@ final class MainViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = NSLocalizedString("How many days ago", comment: "MainVC title")
         configurator.configure(with: self)
+        setupUI()
         presenter?.requestItems()
     }
 
@@ -85,10 +80,28 @@ extension MainViewController: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.cellID) as? TableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: TableViewCell.cellID,
+            for: indexPath
+        ) as? TableViewCell else {
             return UITableViewCell()
         }
         presenter?.setup(cell: cell, at: indexPath)
         return cell
+    }
+}
+
+private extension MainViewController {
+    func setupUI() {
+        title = presenter?.title()
+        navigationController?.navigationBar.barTintColor = .mainBackground
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.mainTitle]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.mainTitle]
+
+        addNewItemButton.tintColor = .buttonTint
+
+        tableView.backgroundColor = .mainBackground
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
 }

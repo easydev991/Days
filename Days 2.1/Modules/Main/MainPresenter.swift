@@ -13,6 +13,7 @@ protocol MainPresenterProtocol: AnyObject {
     var router: MainRouterProtocol? { set get }
     var items: Results<Item>? { get set }
     var realm: Realm { get }
+    func title() -> String
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
     func makeItemsCount() -> Int?
     func requestItems()
@@ -31,6 +32,10 @@ final class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterProtocol {
+    func title() -> String {
+        NSLocalizedString("Days have passed...", comment: "MainVC title")
+    }
+
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router?.prepare(for: segue, sender: sender)
     }

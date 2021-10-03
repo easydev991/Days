@@ -20,13 +20,8 @@ protocol ItemViewControllerProtocol: AnyObject {
 final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - IBOutlets
     @IBOutlet private weak var itemNameTextField: UITextField!
-    @IBOutlet private weak var itemDatePicker: UIDatePicker! {
-        didSet {
-            itemDatePicker.preferredDatePickerStyle = .wheels
-            itemDatePicker.datePickerMode = .date
-            itemDatePicker.maximumDate = Date()
-        }
-    }
+    @IBOutlet private weak var itemDatePicker: UIDatePicker!
+    @IBOutlet private weak var backButton: UIBarButtonItem!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
     
     // MARK: - Properties
@@ -37,8 +32,8 @@ final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialSetup()
-        setupPlaceholder()
+        configurator.configure(with: self)
+        setupUI()
     }
     
     // MARK: - IBActions
@@ -87,13 +82,27 @@ extension ItemViewController: UITextFieldDelegate {
 
 // MARK: - Private methods
 private extension ItemViewController {
-    func initialSetup() {
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-        configurator.configure(with: self)
+    func setupUI() {
         presenter?.viewDidLoad()
-    }
+        title = presenter?.title()
+        view.backgroundColor = .mainBackground
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        [backButton, saveButton].forEach { $0?.tintColor = .buttonTint }
 
-    func setupPlaceholder() {
-        itemNameTextField.placeholder = NSLocalizedString("Enter text", comment: "Placeholder")
+        itemNameTextField.attributedPlaceholder = .init(
+            string: NSLocalizedString("Enter event placeholder", comment: "Placeholder"),
+            attributes: [.foregroundColor: UIColor.systemGray]
+        )
+        itemNameTextField.textColor = .textColor
+        itemNameTextField.borderStyle = .roundedRect
+
+        itemDatePicker.maximumDate = Date()
+        itemDatePicker.datePickerMode = .date
+        itemDatePicker.backgroundColor = .systemOrange
+        itemDatePicker.backgroundColor = .mainBackground
+        itemDatePicker.preferredDatePickerStyle = .wheels
+        itemDatePicker.textColor = .textColor
+        itemDatePicker.highlightsToday = false
     }
 }

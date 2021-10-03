@@ -11,6 +11,7 @@ import UIKit
 protocol ItemPresenterProtocol: AnyObject {
     var router: ItemRouterProtocol? { get set }
     func viewDidLoad()
+    func title() -> String
     func saveButtonClicked()
     func checkNameForLetters(textField: UITextField)
     func setSaveButton(enabled: Bool)
@@ -26,6 +27,10 @@ final class ItemPresenter {
 extension ItemPresenter: ItemPresenterProtocol {
     func viewDidLoad() {
         view?.setSaveButton(enabled: false)
+    }
+
+    func title() -> String {
+        NSLocalizedString("Remember event", comment: "ItemVC title")
     }
 
     func saveButtonClicked() {
