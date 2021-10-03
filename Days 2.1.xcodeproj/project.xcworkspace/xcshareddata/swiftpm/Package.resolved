@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "DynamicColor",
-        "repositoryURL": "https://github.com/yannickl/DynamicColor.git",
-        "state": {
-          "branch": "master",
-          "revision": "cf7c6eed080ea4b678592ae5af987c207ca8a232",
-          "version": null
-        }
-      },
-      {
         "package": "Realm",
         "repositoryURL": "https://github.com/realm/realm-cocoa.git",
         "state": {

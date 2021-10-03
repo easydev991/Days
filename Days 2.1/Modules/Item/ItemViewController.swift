@@ -21,8 +21,28 @@ final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - IBOutlets
     @IBOutlet private weak var itemNameTextField: UITextField!
     @IBOutlet private weak var itemDatePicker: UIDatePicker!
-    @IBOutlet private weak var backButton: UIBarButtonItem!
-    @IBOutlet private weak var saveButton: UIBarButtonItem!
+
+    private lazy var backButton1: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            image: UIImage(systemName: "return"),
+            style: .plain,
+            target: self,
+            action: #selector(backButtonAction)
+        )
+        button.tintColor = .buttonTint
+        return button
+    }()
+
+    private lazy var saveButton1: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            image: UIImage(systemName: "checkmark.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(saveButtonAction)
+        )
+        button.tintColor = .buttonTint
+        return button
+    }()
     
     // MARK: - Properties
     var presenter: ItemPresenterProtocol?
@@ -40,14 +60,6 @@ final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func editingChanged(_ sender: UITextField) {
         presenter?.checkNameForLetters(textField: sender)
     }
-    
-    @IBAction func backButtonClicked(_ sender: UIBarButtonItem) {
-        presenter?.backButtonTapped()
-    }
-    
-    @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
-        saveAction()
-    }
 }
 
 // MARK: - ItemViewControllerProtocol
@@ -64,7 +76,7 @@ extension ItemViewController: ItemViewControllerProtocol {
     }
 
     func setSaveButton(enabled: Bool) {
-        saveButton.isEnabled = enabled
+        saveButton1.isEnabled = enabled
     }
 }
 
@@ -86,9 +98,11 @@ private extension ItemViewController {
         presenter?.viewDidLoad()
         title = presenter?.title()
         view.backgroundColor = .mainBackground
+
+        navigationItem.leftBarButtonItem = backButton1
+        navigationItem.rightBarButtonItem = saveButton1
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.interactivePopGestureRecognizer?.delegate = self
-        [backButton, saveButton].forEach { $0?.tintColor = .buttonTint }
 
         itemNameTextField.attributedPlaceholder = .init(
             string: NSLocalizedString("Enter event placeholder", comment: "Placeholder"),
@@ -99,10 +113,17 @@ private extension ItemViewController {
 
         itemDatePicker.maximumDate = Date()
         itemDatePicker.datePickerMode = .date
-        itemDatePicker.backgroundColor = .systemOrange
         itemDatePicker.backgroundColor = .mainBackground
         itemDatePicker.preferredDatePickerStyle = .wheels
         itemDatePicker.textColor = .textColor
         itemDatePicker.highlightsToday = false
+    }
+
+    @objc func backButtonAction() {
+        presenter?.backButtonTapped()
+    }
+
+    @objc func saveButtonAction() {
+        saveAction()
     }
 }

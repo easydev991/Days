@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DynamicColor
 
 protocol MainViewControllerProtocol: AnyObject {
     func reloadTableViewData()
@@ -94,13 +93,15 @@ extension MainViewController: UITableViewDataSource {
 private extension MainViewController {
     func setupUI() {
         title = presenter?.title()
+        view.backgroundColor = .mainBackground
+
         navigationController?.navigationBar.barTintColor = .mainBackground
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.mainTitle]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.mainTitle]
 
         addNewItemButton.tintColor = .buttonTint
 
-        tableView.backgroundColor = .mainBackground
+        tableView.backgroundColor = .clear
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
     }

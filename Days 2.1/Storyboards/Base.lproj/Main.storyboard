@@ -4,12 +4,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--How many days?-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Days_2_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,13 +35,13 @@
                                                             <rect key="frame" x="16" y="16" width="350" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RA-9j-FiZ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="318" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDY-Q0-nwm">
-                                                                    <rect key="frame" x="350" y="0.0" width="0.0" height="20.5"/>
+                                                                    <rect key="frame" x="323" y="0.0" width="27" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -78,7 +79,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MainBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IGI-Ue-Xfw" secondAttribute="trailing" id="0Dg-tp-DzK"/>
                             <constraint firstItem="IGI-Ue-Xfw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Dz3-aT-2gM"/>
@@ -86,9 +87,9 @@
                             <constraint firstItem="IGI-Ue-Xfw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fZa-Ao-gc7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="How many days?" largeTitleDisplayMode="always" id="aPr-fD-Qpj">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="aPr-fD-Qpj">
                         <barButtonItem key="rightBarButtonItem" image="plus.circle.fill" catalog="system" id="Z6h-yM-WEr">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="ButtonTint"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="3oS-Pq-0eX"/>
                                 <segue destination="U2c-yj-kY4" kind="show" id="3Y7-ey-l07"/>
@@ -113,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-wM-fgu">
-                                <rect key="frame" x="45" y="155" width="324" height="34"/>
+                                <rect key="frame" x="45" y="103" width="324" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
@@ -122,7 +123,8 @@
                                 </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="hyO-Sj-2YO">
-                                <rect key="frame" x="47" y="219" width="320" height="216"/>
+                                <rect key="frame" x="47" y="167" width="320" height="216"/>
+                                <color key="backgroundColor" name="MainBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -131,7 +133,7 @@
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="p1d-eV-ilW"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" name="MainBackgroundColor"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2zn-wM-fgu" firstAttribute="top" secondItem="p1d-eV-ilW" secondAttribute="top" constant="15" id="Dv1-my-Yvh"/>
@@ -142,25 +144,10 @@
                             <constraint firstItem="2zn-wM-fgu" firstAttribute="leading" relation="lessThanOrEqual" secondItem="p1d-eV-ilW" secondAttribute="leading" constant="45" id="viW-M9-lNc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pgn-rC-vHK">
-                        <barButtonItem key="leftBarButtonItem" image="return" catalog="system" id="R6B-EW-M5d">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="backButtonClicked:" destination="U2c-yj-kY4" id="Gqd-UX-ytu"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="checkmark.circle.fill" catalog="system" id="juB-UI-Vb5">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="saveButtonClicked:" destination="U2c-yj-kY4" id="RAD-vz-w1s"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="pgn-rC-vHK"/>
                     <connections>
-                        <outlet property="backButton" destination="R6B-EW-M5d" id="bJM-0f-1Cp"/>
                         <outlet property="itemDatePicker" destination="hyO-Sj-2YO" id="FVf-6d-gym"/>
                         <outlet property="itemNameTextField" destination="2zn-wM-fgu" id="bl7-pB-JfO"/>
-                        <outlet property="saveButton" destination="juB-UI-Vb5" id="jQQ-5B-UGf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZB-h1-1JL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -177,9 +164,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ubh-ax-b92">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="twx-gn-mjB"/>
                     </connections>
@@ -190,14 +174,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="return" catalog="system" width="128" height="101"/>
+        <namedColor name="ButtonTint">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -51,11 +51,9 @@ extension MainPresenter: MainPresenterProtocol {
     func setup(cell: TableViewCellInput, at indexPath: IndexPath) {
         if let item = items?[indexPath.row] {
             let itemDays = dateToTextDays(item: item)
-            let colorCalculation = CGFloat(indexPath.row) / 25
             let model = TableViewCell.Model(
                 itemName: item.itemName,
-                itemDays: itemDays,
-                colorCalculation: colorCalculation
+                itemDays: itemDays
             )
             cell.setup(with: model)
         }

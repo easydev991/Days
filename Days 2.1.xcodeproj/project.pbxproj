@@ -15,7 +15,6 @@
 		6705D13824B9894400A07BDC /* ItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13724B9894400A07BDC /* ItemInteractor.swift */; };
 		6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13924B9895300A07BDC /* ItemConfigurator.swift */; };
 		6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13E24B9896E00A07BDC /* ItemRouter.swift */; };
-		67C90F0F2708697300F257C9 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F0E2708697300F257C9 /* DynamicColor */; };
 		67C90F1227086A4A00F257C9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1127086A4A00F257C9 /* Realm */; };
 		67C90F1427086A4A00F257C9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1327086A4A00F257C9 /* RealmSwift */; };
 		67C90F1A2709AE6900F257C9 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 67C90F1C2709AE6900F257C9 /* Localizable.stringsdict */; };
@@ -70,7 +69,6 @@
 			files = (
 				67C90F1427086A4A00F257C9 /* RealmSwift in Frameworks */,
 				67C90F1227086A4A00F257C9 /* Realm in Frameworks */,
-				67C90F0F2708697300F257C9 /* DynamicColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +210,6 @@
 			);
 			name = "Days 2.1";
 			packageProductDependencies = (
-				67C90F0E2708697300F257C9 /* DynamicColor */,
 				67C90F1127086A4A00F257C9 /* Realm */,
 				67C90F1327086A4A00F257C9 /* RealmSwift */,
 			);
@@ -246,7 +243,6 @@
 			);
 			mainGroup = 67D5FB8024A8D74400F9ED26;
 			packageReferences = (
-				67C90F0D2708697300F257C9 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 				67C90F1027086A4A00F257C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 67D5FB8A24A8D74400F9ED26 /* Products */;
@@ -521,14 +517,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		67C90F0D2708697300F257C9 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		67C90F1027086A4A00F257C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
@@ -540,11 +528,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		67C90F0E2708697300F257C9 /* DynamicColor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 67C90F0D2708697300F257C9 /* XCRemoteSwiftPackageReference "DynamicColor" */;
-			productName = DynamicColor;
-		};
 		67C90F1127086A4A00F257C9 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67C90F1027086A4A00F257C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */;

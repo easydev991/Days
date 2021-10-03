@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DynamicColor
 
 protocol TableViewCellInput {
     func setup(with model: TableViewCell.Model)
@@ -31,7 +30,6 @@ extension TableViewCell {
     struct Model {
         let itemName: String
         let itemDays: String
-        let colorCalculation: CGFloat
     }
 }
 
@@ -39,7 +37,6 @@ extension TableViewCell: TableViewCellInput {
     func setup(with model: TableViewCell.Model) {
         itemNameLabel.text = model.itemName
         itemDaysLabel.text = model.itemDays
-        container.backgroundColor = .systemYellow.darkened(amount: model.colorCalculation)
     }
 }
 
@@ -50,5 +47,6 @@ private extension TableViewCell {
         [itemNameLabel, itemDaysLabel].forEach {
             $0?.numberOfLines = .zero
         }
+        container.backgroundColor = .systemYellow
     }
 }
