@@ -24,6 +24,7 @@ final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
         didSet {
             itemDatePicker.preferredDatePickerStyle = .wheels
             itemDatePicker.datePickerMode = .date
+            itemDatePicker.maximumDate = Date()
         }
     }
     @IBOutlet private weak var saveButton: UIBarButtonItem!
