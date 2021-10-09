@@ -9,4 +9,4 @@
 import Foundation
 
 typealias VoidBlock = () -> Void
-typealias ErrorVoidBlock = (Error?) -> Void
+typealias OptionalErrorVoidBlock = (Error?) -> Void

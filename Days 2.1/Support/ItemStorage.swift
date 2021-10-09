@@ -17,12 +17,12 @@ protocol ItemStorageService {
 
     func saveItem(
         item: Item,
-        completion: ErrorVoidBlock
+        completion: OptionalErrorVoidBlock
     )
 
     func remove(
         item: Item,
-        completion: ErrorVoidBlock
+        completion: OptionalErrorVoidBlock
     )
 }
 
@@ -49,7 +49,7 @@ extension ItemStorage: ItemStorageService {
 
     func saveItem(
         item: Item,
-        completion: ErrorVoidBlock
+        completion: OptionalErrorVoidBlock
     ) {
         do {
             try realm.write {
@@ -64,7 +64,7 @@ extension ItemStorage: ItemStorageService {
 
     func remove(
         item: Item,
-        completion: ErrorVoidBlock
+        completion: OptionalErrorVoidBlock
     ) {
         do {
             try realm.write {
