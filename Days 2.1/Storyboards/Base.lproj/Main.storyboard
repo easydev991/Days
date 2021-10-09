@@ -35,13 +35,13 @@
                                                             <rect key="frame" x="16" y="16" width="350" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RA-9j-FiZ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="318" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDY-Q0-nwm">
-                                                                    <rect key="frame" x="323" y="0.0" width="27" height="20.5"/>
+                                                                    <rect key="frame" x="350" y="0.0" width="0.0" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -59,10 +59,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="fla-AM-t3K" secondAttribute="bottom" priority="999" constant="4" id="AEL-4v-R1a"/>
                                                 <constraint firstAttribute="trailing" secondItem="fla-AM-t3K" secondAttribute="trailing" constant="16" id="G5b-dO-Bvl"/>
                                                 <constraint firstItem="fla-AM-t3K" firstAttribute="leading" secondItem="0Be-8z-0aI" secondAttribute="leading" constant="16" id="Myn-7s-8Jq"/>
-                                                <constraint firstAttribute="bottom" secondItem="fla-AM-t3K" secondAttribute="bottom" constant="4" id="p7p-S8-WSp"/>
-                                                <constraint firstItem="fla-AM-t3K" firstAttribute="top" secondItem="0Be-8z-0aI" secondAttribute="top" constant="4" id="veJ-JT-a1X"/>
+                                                <constraint firstItem="fla-AM-t3K" firstAttribute="top" secondItem="0Be-8z-0aI" secondAttribute="top" constant="4" id="zzH-OW-uBF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

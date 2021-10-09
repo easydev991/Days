@@ -6,29 +6,24 @@
 //  Copyright © 2020 Oleg Eremenko. All rights reserved.
 //
 
-import RealmSwift
 import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
-    var router: MainRouterProtocol? { set get }
-    var items: Results<Item>? { get set }
-    var realm: Realm { get }
     func title() -> String
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    func makeItemsCount() -> Int?
     func requestItems()
-    func reloadTVData()
-    func setup(cell: TableViewCellInput, at indexPath: IndexPath)
+    func makeItemsCount() -> Int?
+    func setup(cell: TableViewCellInput, at index: Int)
     func saveItem(name: String, date: Date)
-    func removeItem(at intexPath: IndexPath, completion: (() -> Void))
+    func removeItem(at index: Int, completion: VoidBlock)
+    func reloadView()
 }
 
 final class MainPresenter {
     weak var view: MainViewControllerProtocol?
     var interactor: MainInteractorProtocol?
     var router: MainRouterProtocol?
-    var items: Results<Item>?
-    let realm = try! Realm()
+    private var items = [Item]()
 }
 
 extension MainPresenter: MainPresenterProtocol {
@@ -41,40 +36,57 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     func makeItemsCount() -> Int? {
-        items?.count
+        items.count
     }
 
     func requestItems() {
-        interactor?.loadItems()
-    }
-
-    func setup(cell: TableViewCellInput, at indexPath: IndexPath) {
-        if let item = items?[indexPath.row] {
-            let itemDays = dateToTextDays(item: item)
-            let model = TableViewCell.Model(
-                itemName: item.itemName,
-                itemDays: itemDays
-            )
-            cell.setup(with: model)
+        if let receivedItems = interactor?.loadItems(
+            sortedBy: .date,
+            ascending: false
+        ) {
+            items = receivedItems
+            reloadView()
         }
     }
 
-    func reloadTVData() {
-        view?.reloadTableViewData()
+    func setup(
+        cell: TableViewCellInput,
+        at index: Int
+    ) {
+        let item = items[index]
+        let itemDays = dateToTextDays(item: item)
+        let model = TableViewCell.Model(
+            itemName: item.itemName,
+            itemDays: itemDays
+        )
+        cell.setup(with: model)
     }
 
-    func removeItem(at intexPath: IndexPath, completion: (() -> Void)) {
-        if let itemForRemoval = items?[intexPath.row] {
-            interactor?.removeItem(item: itemForRemoval)
+    func removeItem(
+        at index: Int,
+        completion: VoidBlock
+    ) {
+        let itemForRemoval = items.remove(at: index)
+        interactor?.removeItem(itemForRemoval) {
             completion()
         }
     }
 
-    func saveItem(name: String, date: Date) {
+    func saveItem(
+        name: String,
+        date: Date
+    ) {
         let item = Item()
         item.itemName = name
         item.date = date
-        interactor?.saveItem(item: item)
+        interactor?.saveItem(item) {
+            items.append(item)
+            reloadView()
+        }
+    }
+
+    func reloadView() {
+        view?.reload()
     }
 }
 

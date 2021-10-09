@@ -12,8 +12,9 @@ protocol MainConfiguratorProtocol: AnyObject {
 
 final class MainConfigurator: MainConfiguratorProtocol {
     func configure(with viewController: MainViewController) {
+        let itemStorage          = ItemStorage()
         let presenter            = MainPresenter()
-        let interactor           = MainInteractor()
+        let interactor           = MainInteractor(itemStorage: itemStorage)
         let router               = MainRouter()
         presenter.view           = viewController
         viewController.presenter = presenter

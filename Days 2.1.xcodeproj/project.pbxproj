@@ -15,6 +15,9 @@
 		6705D13824B9894400A07BDC /* ItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13724B9894400A07BDC /* ItemInteractor.swift */; };
 		6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13924B9895300A07BDC /* ItemConfigurator.swift */; };
 		6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D13E24B9896E00A07BDC /* ItemRouter.swift */; };
+		67699E2B2711DF690077522E /* ItemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67699E2A2711DF690077522E /* ItemStorage.swift */; };
+		67699E2D2711E3420077522E /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67699E2C2711E3420077522E /* Results.swift */; };
+		67699E2F2711FD550077522E /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67699E2E2711FD550077522E /* Typealiases.swift */; };
 		67C90F1227086A4A00F257C9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1127086A4A00F257C9 /* Realm */; };
 		67C90F1427086A4A00F257C9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1327086A4A00F257C9 /* RealmSwift */; };
 		67C90F1A2709AE6900F257C9 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 67C90F1C2709AE6900F257C9 /* Localizable.stringsdict */; };
@@ -42,6 +45,9 @@
 		6705D13724B9894400A07BDC /* ItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInteractor.swift; sourceTree = "<group>"; };
 		6705D13924B9895300A07BDC /* ItemConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConfigurator.swift; sourceTree = "<group>"; };
 		6705D13E24B9896E00A07BDC /* ItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRouter.swift; sourceTree = "<group>"; };
+		67699E2A2711DF690077522E /* ItemStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorage.swift; sourceTree = "<group>"; };
+		67699E2C2711E3420077522E /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		67699E2E2711FD550077522E /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		67C90F1B2709AE6900F257C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		67C90F1D2709AE7C00F257C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67C90F1E2709AE7C00F257C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,8 +144,11 @@
 		67C90F172709A90D00F257C9 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				67699E2A2711DF690077522E /* ItemStorage.swift */,
+				67C90F282709B81D00F257C9 /* Extensions */,
 				67C90F1C2709AE6900F257C9 /* Localizable.stringsdict */,
 				67C90F262709B67500F257C9 /* Localizable.strings */,
+				67699E2E2711FD550077522E /* Typealiases.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -150,6 +159,7 @@
 				67C90F292709B84500F257C9 /* Calendar.swift */,
 				67C90F2B2709CB7100F257C9 /* UIColor.swift */,
 				67C90F2D2709D54300F257C9 /* UIDatePicker.swift */,
+				67699E2C2711E3420077522E /* Results.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -173,7 +183,6 @@
 		67D5FB8B24A8D74400F9ED26 /* Days 2.1 */ = {
 			isa = PBXGroup;
 			children = (
-				67C90F282709B81D00F257C9 /* Extensions */,
 				67C90F172709A90D00F257C9 /* Support */,
 				678AFCF825164BD100C3DF53 /* App */,
 				6705D12724B9884E00A07BDC /* Modules */,
@@ -280,10 +289,13 @@
 				6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */,
 				67D5FB9124A8D74400F9ED26 /* MainViewController.swift in Sources */,
 				67C90F2A2709B84500F257C9 /* Calendar.swift in Sources */,
+				67699E2D2711E3420077522E /* Results.swift in Sources */,
+				67699E2B2711DF690077522E /* ItemStorage.swift in Sources */,
 				67C90F2C2709CB7100F257C9 /* UIColor.swift in Sources */,
 				6705D13424B988E500A07BDC /* MainRouter.swift in Sources */,
 				67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */,
 				67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */,
+				67699E2F2711FD550077522E /* Typealiases.swift in Sources */,
 				6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */,
 				6705D12E24B988BC00A07BDC /* MainInteractor.swift in Sources */,
 				6705D12C24B988B300A07BDC /* MainPresenter.swift in Sources */,

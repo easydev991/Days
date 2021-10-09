@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MainViewControllerProtocol: AnyObject {
-    func reloadTableViewData()
+    func reload()
 }
 
 final class MainViewController: UIViewController {
@@ -36,7 +36,7 @@ final class MainViewController: UIViewController {
 
 // MARK: - MainViewControllerProtocol
 extension MainViewController: MainViewControllerProtocol {
-    func reloadTableViewData() {
+    func reload() {
         tableView.reloadData()
     }
 }
@@ -57,7 +57,7 @@ extension MainViewController: UITableViewDelegate {
     ) {
         if editingStyle == .delete {
             presenter?.removeItem(
-                at: indexPath,
+                at: indexPath.row,
                 completion: {
                     tableView.deleteRows(at: [indexPath], with: .left)
                 }
@@ -85,7 +85,10 @@ extension MainViewController: UITableViewDataSource {
         ) as? TableViewCell else {
             return UITableViewCell()
         }
-        presenter?.setup(cell: cell, at: indexPath)
+        presenter?.setup(
+            cell: cell,
+            at: indexPath.row
+        )
         return cell
     }
 }

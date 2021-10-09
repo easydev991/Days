@@ -9,35 +9,54 @@
 import Foundation
 
 protocol MainInteractorProtocol: AnyObject {
-    func loadItems()
-    func saveItem(item: Item)
-    func removeItem(item: Item)
+    func saveItem(_ item: Item, completion: VoidBlock)
+    func removeItem(_ item: Item, completion: VoidBlock)
+    func loadItems(sortedBy: ItemsSort, ascending: Bool) -> [Item]
 }
 
 final class MainInteractor {
+    private let itemStorage: ItemStorageService
     weak var presenter: MainPresenterProtocol?
+
+    init(itemStorage: ItemStorageService) {
+        self.itemStorage = itemStorage
+    }
 }
 
 extension MainInteractor: MainInteractorProtocol {
-    func loadItems() {
-        presenter?.items = presenter?.realm.objects(Item.self).sorted(byKeyPath: "date", ascending: false)
-        presenter?.reloadTVData()
+    func loadItems(
+        sortedBy: ItemsSort,
+        ascending: Bool
+    ) -> [Item] {
+        itemStorage.loadItems(
+            sortedBy: .date,
+            ascending: ascending
+        )
     }
 
-    func saveItem(item: Item) {
-        try! presenter?.realm.write {
-            presenter?.realm.add(item)
-        }
-        presenter?.reloadTVData()
-    }
-
-    func removeItem(item: Item) {
-        do {
-            try presenter?.realm.write {
-                presenter?.realm.delete(item)
+    func saveItem(
+        _ item: Item,
+        completion: VoidBlock
+    ) {
+        itemStorage.saveItem(item: item) { error in
+            if let error = error {
+                print("Error saving item at storage: \(error.localizedDescription)")
+            } else {
+                completion()
             }
-        } catch {
-            print("Error deleting item: \(error)")
+        }
+    }
+
+    func removeItem(
+        _ item: Item,
+        completion: VoidBlock
+    ) {
+        itemStorage.remove(item: item) { error in
+            if let error = error {
+                print("Error removing item at storage: \(error.localizedDescription)")
+            } else {
+                completion()
+            }
         }
     }
 }
