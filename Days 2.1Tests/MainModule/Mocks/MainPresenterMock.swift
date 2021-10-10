@@ -10,14 +10,18 @@ import UIKit
 @testable import Days_2_1
 
 final class MainPresenterMock {
+    var viewController: MainViewControllerProtocol!
     var interactor: MainInteractorProtocol!
+    var router: MainRouterProtocol!
     var items = [Item]()
 }
 
 extension MainPresenterMock: MainPresenterProtocol {
     var title: String { "Title" }
 
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        router.prepare(for: segue, sender: sender)
+    }
 
     func requestItems() {
         items = interactor.loadItems(sortedBy: .itemName, ascending: true)
