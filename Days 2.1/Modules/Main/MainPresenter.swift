@@ -9,10 +9,10 @@
 import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
-    func title() -> String
+    var items: [Item] { get }
+    var title: String { get }
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
     func requestItems()
-    func makeItemsCount() -> Int?
     func setup(cell: TableViewCellInput, at index: Int)
     func saveItem(name: String, date: Date)
     func removeItem(at index: Int, completion: VoidBlock)
@@ -23,20 +23,16 @@ final class MainPresenter {
     weak var view: MainViewControllerProtocol?
     var interactor: MainInteractorProtocol?
     var router: MainRouterProtocol?
-    private var items = [Item]()
+    var items = [Item]()
 }
 
 extension MainPresenter: MainPresenterProtocol {
-    func title() -> String {
+    var title: String {
         NSLocalizedString("Days have passed...", comment: "MainVC title")
     }
 
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router?.prepare(for: segue, sender: sender)
-    }
-
-    func makeItemsCount() -> Int? {
-        items.count
     }
 
     func requestItems() {
@@ -62,16 +58,6 @@ extension MainPresenter: MainPresenterProtocol {
         cell.setup(with: model)
     }
 
-    func removeItem(
-        at index: Int,
-        completion: VoidBlock
-    ) {
-        let itemForRemoval = items.remove(at: index)
-        interactor?.removeItem(itemForRemoval) {
-            completion()
-        }
-    }
-
     func saveItem(
         name: String,
         date: Date
@@ -82,6 +68,16 @@ extension MainPresenter: MainPresenterProtocol {
         interactor?.saveItem(item) {
             items.append(item)
             reloadView()
+        }
+    }
+
+    func removeItem(
+        at index: Int,
+        completion: VoidBlock
+    ) {
+        let itemForRemoval = items.remove(at: index)
+        interactor?.removeItem(itemForRemoval) {
+            completion()
         }
     }
 

@@ -72,7 +72,7 @@ extension MainViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        presenter?.makeItemsCount() ?? .zero
+        presenter?.items.count ?? .zero
     }
     
     func tableView(
@@ -95,7 +95,7 @@ extension MainViewController: UITableViewDataSource {
 
 private extension MainViewController {
     func setupUI() {
-        title = presenter?.title()
+        title = presenter?.title
         view.backgroundColor = .mainBackground
 
         navigationController?.navigationBar.barTintColor = .mainBackground
