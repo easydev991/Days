@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ItemDelegate: AnyObject {
+protocol ItemViewControllerDelegate: AnyObject {
     func setItemData(itemName: String, itemDate: Date)
 }
 
@@ -46,7 +46,7 @@ final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
     var presenter: ItemPresenterProtocol?
-    weak var delegate: ItemDelegate?
+    weak var delegate: ItemViewControllerDelegate?
     private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
     
     // MARK: - Lifecycle

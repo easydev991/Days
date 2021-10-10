@@ -13,8 +13,8 @@ final class MainViewControllerMock {
     var reloadComplete = false
 
     var testSegue: UIStoryboardSegue {
-        let sourceVC = UIViewController()
-        let destinationVC = UIViewController()
+        let sourceVC = MainViewController()
+        let destinationVC = ItemViewController()
         return .init(
             identifier: nil,
             source: sourceVC,
@@ -24,6 +24,8 @@ final class MainViewControllerMock {
 }
 
 extension MainViewControllerMock: MainViewControllerProtocol {
+    func setItemData(itemName: String, itemDate: Date) {}
+
     func reload() {
         reloadComplete.toggle()
     }

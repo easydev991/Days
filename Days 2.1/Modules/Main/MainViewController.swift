@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MainViewControllerProtocol: AnyObject {
+protocol MainViewControllerProtocol: ItemViewControllerDelegate {
     func reload()
 }
 
@@ -42,7 +42,7 @@ extension MainViewController: MainViewControllerProtocol {
 }
 
 // MARK: - ItemDelegate
-extension MainViewController: ItemDelegate {
+extension MainViewController: ItemViewControllerDelegate {
     func setItemData(itemName: String, itemDate: Date) {
         presenter?.saveItem(name: itemName, date: itemDate)
     }

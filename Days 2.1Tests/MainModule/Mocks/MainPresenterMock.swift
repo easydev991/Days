@@ -31,25 +31,16 @@ extension MainPresenterMock: MainPresenterProtocol {
         testItem.date = date
         interactor.saveItem(
             testItem,
-            completion: { error in
-                if let error = error {
-                    print("Error saving item at storage: \(error.localizedDescription)")
-                } else {
-                    items.append(testItem)
-                }
-
+            completion: { _ in
+                items.append(testItem)
             }
         )
     }
 
     func removeItem(at index: Int, completion: () -> Void) {
         let itemForRemoval = items.remove(at: index)
-        interactor.removeItem(itemForRemoval) { error in
-            if let error = error {
-                print("Error removing item at storage: \(error.localizedDescription)")
-            } else {
-                completion()
-            }
+        interactor.removeItem(itemForRemoval) { _ in
+            completion()
         }
     }
 

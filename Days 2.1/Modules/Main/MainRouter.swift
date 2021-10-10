@@ -13,7 +13,7 @@ protocol MainRouterProtocol: AnyObject {
 }
 
 final class MainRouter {
-    weak var viewController: MainViewController?
+    weak var viewController: MainViewControllerProtocol?
 }
 
 extension MainRouter: MainRouterProtocol {
