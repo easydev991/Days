@@ -45,7 +45,7 @@ final class MainPresenterTest: XCTestCase {
     }
 
     func testRequestItems() {
-        let mockItems = ItemsMock.makeItems()
+        let mockItems = ItemsMock.items
         let initialCount = presenter.items.count
         presenter.requestItems()
         let finalCount = presenter.items.count
@@ -61,17 +61,16 @@ final class MainPresenterTest: XCTestCase {
     }
 
     func testRemoveItem() {
-        let mockItems = ItemsMock.makeItems()
-        let initialCount = mockItems.count
-        let firstIndex = Int.zero
-        let lastIndex = initialCount - 1
-        let randomIndex = Int.random(in: firstIndex...lastIndex)
+        let mockItems = ItemsMock.items
+        let randomIndex = ItemsMock.randomIndex
         mockItems.forEach { item in
-            presenter.saveItem(name: item.itemName, date: item.date)
+            presenter.saveItem(
+                name: item.itemName,
+                date: item.date
+            )
         }
         presenter.removeItem(at: randomIndex) {}
-        let finalCount = presenter.items.count
-        XCTAssertNotEqual(initialCount, finalCount)
+        XCTAssertNotEqual(mockItems.count, presenter.items.count)
     }
 
     func testReloadView() {

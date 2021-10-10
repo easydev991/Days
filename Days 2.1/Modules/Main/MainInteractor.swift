@@ -9,8 +9,8 @@
 import Foundation
 
 protocol MainInteractorProtocol: AnyObject {
-    func saveItem(_ item: Item, completion: VoidBlock)
-    func removeItem(_ item: Item, completion: VoidBlock)
+    func saveItem(_ item: Item, completion: OptionalErrorVoidBlock)
+    func removeItem(_ item: Item, completion: OptionalErrorVoidBlock)
     func loadItems(sortedBy: ItemsSort, ascending: Bool) -> [Item]
 }
 
@@ -36,27 +36,19 @@ extension MainInteractor: MainInteractorProtocol {
 
     func saveItem(
         _ item: Item,
-        completion: VoidBlock
+        completion: OptionalErrorVoidBlock
     ) {
         itemStorage.saveItem(item: item) { error in
-            if let error = error {
-                print("Error saving item at storage: \(error.localizedDescription)")
-            } else {
-                completion()
-            }
+            completion(error)
         }
     }
 
     func removeItem(
         _ item: Item,
-        completion: VoidBlock
+        completion: OptionalErrorVoidBlock
     ) {
         itemStorage.remove(item: item) { error in
-            if let error = error {
-                print("Error removing item at storage: \(error.localizedDescription)")
-            } else {
-                completion()
-            }
+            completion(error)
         }
     }
 }

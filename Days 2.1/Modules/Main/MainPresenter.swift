@@ -65,10 +65,14 @@ extension MainPresenter: MainPresenterProtocol {
         let item = Item()
         item.itemName = name
         item.date = date
-        interactor?.saveItem(item) {
-            items.append(item)
-            items.sort { $0.date > $1.date }
-            reloadView()
+        interactor?.saveItem(item) { error in
+            if let error = error {
+                print("Error saving item at storage: \(error.localizedDescription)")
+            } else {
+                items.append(item)
+                items.sort { $0.date > $1.date }
+                reloadView()
+            }
         }
     }
 
@@ -77,8 +81,12 @@ extension MainPresenter: MainPresenterProtocol {
         completion: VoidBlock
     ) {
         let itemForRemoval = items.remove(at: index)
-        interactor?.removeItem(itemForRemoval) {
-            completion()
+        interactor?.removeItem(itemForRemoval) { error in
+            if let error = error {
+                print("Error removing item at storage: \(error.localizedDescription)")
+            } else {
+                completion()
+            }
         }
     }
 
