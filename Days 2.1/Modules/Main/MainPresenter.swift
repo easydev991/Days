@@ -9,8 +9,8 @@
 import UIKit
 
 protocol MainPresenterProtocol: AnyObject {
-    var items: [Item] { get }
     var title: String { get }
+    var items: [Item] { get }
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
     func requestItems()
     func setup(cell: TableViewCellInput, at index: Int)
@@ -67,6 +67,7 @@ extension MainPresenter: MainPresenterProtocol {
         item.date = date
         interactor?.saveItem(item) {
             items.append(item)
+            items.sort { $0.date > $1.date }
             reloadView()
         }
     }
@@ -88,11 +89,19 @@ extension MainPresenter: MainPresenterProtocol {
 
 private extension MainPresenter {
     func dateToTextDays(item: Item) -> String {
+        var resultString = NSLocalizedString("today", comment: "today")
         let today = Date()
         let calendar = Calendar.current
         let daysCount = calendar.numberOfDaysBetween(item.date, and: today)
-        return daysCount == .zero
-        ? NSLocalizedString("today", comment: "today")
-        : .localizedStringWithFormat(NSLocalizedString("daysPast", comment: "days left in future"), daysCount)
+        if daysCount != .zero {
+            resultString = .localizedStringWithFormat(
+                NSLocalizedString(
+                    "daysPast",
+                    comment: "days ago"
+                ),
+                daysCount
+            )
+        }
+        return resultString
     }
 }

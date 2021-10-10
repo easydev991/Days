@@ -72,23 +72,28 @@ extension MainViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        presenter?.items.count ?? .zero
+        var rowsCount = Int.zero
+        if let count = presenter?.items.count {
+            rowsCount = count
+        }
+        return rowsCount
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
+        var cell = UITableViewCell()
+        if let customCell = tableView.dequeueReusableCell(
             withIdentifier: TableViewCell.cellID,
             for: indexPath
-        ) as? TableViewCell else {
-            return UITableViewCell()
+        ) as? TableViewCell {
+            presenter?.setup(
+                cell: customCell,
+                at: indexPath.row
+            )
+            cell = customCell
         }
-        presenter?.setup(
-            cell: cell,
-            at: indexPath.row
-        )
         return cell
     }
 }
