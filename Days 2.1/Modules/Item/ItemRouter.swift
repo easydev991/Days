@@ -18,6 +18,6 @@ final class ItemRouter {
 
 extension ItemRouter: ItemRouterProtocol {
     func closeCurrentViewController() {
-        viewController?.navigationController?.popToRootViewController(animated: true)
+        viewController?.dismiss(animated: true)
     }
 }
