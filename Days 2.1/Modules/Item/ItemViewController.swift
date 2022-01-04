@@ -17,32 +17,41 @@ protocol ItemViewControllerProtocol: AnyObject {
     func setSaveButton(enabled: Bool)
 }
 
-final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
+final class ItemViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet private weak var itemNameTextField: UITextField!
     @IBOutlet private weak var itemDatePicker: UIDatePicker!
 
-    private lazy var backButton1: UIBarButtonItem = {
-        let button = UIBarButtonItem(
-            image: UIImage(systemName: "return"),
-            style: .plain,
-            target: self,
-            action: #selector(backButtonAction)
-        )
+    private lazy var pinView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+        view.layer.cornerRadius = 1
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private lazy var closeButton: UIButton = {
+        let button = UIButton(type: .close, primaryAction: closeButtonAction)
         button.tintColor = .buttonTint
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    private lazy var saveButton1: UIBarButtonItem = {
-        let button = UIBarButtonItem(
-            image: UIImage(systemName: "checkmark.circle.fill"),
-            style: .plain,
-            target: self,
-            action: #selector(saveButtonAction)
-        )
+    private lazy var closeButtonAction = UIAction { [weak presenter] _ in
+        presenter?.backButtonTapped()
+    }
+
+    private lazy var saveButton: UIButton = {
+        let button = UIButton(type: .system, primaryAction: saveButtonAction)
+        button.setTitle(NSLocalizedString("Save", comment: "Save button"), for: .normal)
         button.tintColor = .buttonTint
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    private lazy var saveButtonAction = UIAction { [unowned self] _ in
+        self.saveAction()
+    }
     
     // MARK: - Properties
     var presenter: ItemPresenterProtocol?
@@ -54,6 +63,11 @@ final class ItemViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         configurator.configure(with: self)
         setupUI()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        itemNameTextField.becomeFirstResponder()
     }
     
     // MARK: - IBActions
@@ -76,7 +90,7 @@ extension ItemViewController: ItemViewControllerProtocol {
     }
 
     func setSaveButton(enabled: Bool) {
-        saveButton1.isEnabled = enabled
+        saveButton.isEnabled = enabled
     }
 }
 
@@ -99,11 +113,19 @@ private extension ItemViewController {
         title = presenter?.title()
         view.backgroundColor = .mainBackground
 
-        navigationItem.leftBarButtonItem = backButton1
-        navigationItem.rightBarButtonItem = saveButton1
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-
+        [closeButton, pinView, saveButton].forEach(view.addSubview)
+        NSLayoutConstraint.activate(
+            [
+                closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+                closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+                pinView.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
+                pinView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                pinView.heightAnchor.constraint(equalToConstant: 2),
+                pinView.widthAnchor.constraint(equalToConstant: 48),
+                saveButton.topAnchor.constraint(equalTo: closeButton.topAnchor),
+                saveButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16)
+            ]
+        )
         itemNameTextField.attributedPlaceholder = .init(
             string: NSLocalizedString("Enter event placeholder", comment: "Placeholder"),
             attributes: [.foregroundColor: UIColor.systemGray]
@@ -121,9 +143,5 @@ private extension ItemViewController {
 
     @objc func backButtonAction() {
         presenter?.backButtonTapped()
-    }
-
-    @objc func saveButtonAction() {
-        saveAction()
     }
 }
