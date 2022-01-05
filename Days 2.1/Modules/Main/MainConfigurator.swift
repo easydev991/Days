@@ -1,9 +1,5 @@
-protocol MainConfiguratorProtocol: AnyObject {
-    func configure(with viewController: MainViewController)
-}
-
-final class MainConfigurator: MainConfiguratorProtocol {
-    func configure(with viewController: MainViewController) {
+struct MainConfigurator {
+    static func configure(with viewController: MainViewController) {
         let itemStorage          = ItemStorage()
         let presenter            = MainPresenter()
         let interactor           = MainInteractor(itemStorage: itemStorage)

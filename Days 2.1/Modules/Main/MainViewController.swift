@@ -11,12 +11,11 @@ final class MainViewController: UIViewController {
 
     // MARK: - Properties
     var presenter: MainPresenterProtocol?
-    private let configurator: MainConfiguratorProtocol = MainConfigurator()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self)
+        MainConfigurator.configure(with: self)
         setupUI()
         presenter?.requestItems()
     }
