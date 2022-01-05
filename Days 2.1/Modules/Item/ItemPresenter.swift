@@ -26,7 +26,7 @@ extension ItemPresenter: ItemPresenterProtocol {
     }
 
     func saveButtonClicked() {
-        router?.closeCurrentViewController()
+        router?.dismissViewController()
     }
 
     func checkNameForLettersIn(text: String?) {
@@ -38,6 +38,6 @@ extension ItemPresenter: ItemPresenterProtocol {
     }
 
     func backButtonTapped() {
-        router?.closeCurrentViewController()
+        router?.dismissViewController()
     }
 }

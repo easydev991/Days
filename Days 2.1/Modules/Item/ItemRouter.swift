@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ItemRouterProtocol: AnyObject {
-    func closeCurrentViewController()
+    func dismissViewController()
 }
 
 final class ItemRouter {
@@ -9,7 +9,7 @@ final class ItemRouter {
 }
 
 extension ItemRouter: ItemRouterProtocol {
-    func closeCurrentViewController() {
+    func dismissViewController() {
         viewController?.dismiss(animated: true)
     }
 }
