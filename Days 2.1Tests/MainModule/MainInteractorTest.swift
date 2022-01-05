@@ -23,7 +23,7 @@ final class MainInteractorTest: XCTestCase {
 
     func testLoadItems() {
         let mockItems = ItemsMock.items
-        let items = interactor.loadItems(sortedBy: .itemName, ascending: true)
+        let items = interactor.loadItems(sortedBy: .init(sortBy: .itemName, ascending: false))
         XCTAssertEqual(items.count, mockItems.count)
     }
 

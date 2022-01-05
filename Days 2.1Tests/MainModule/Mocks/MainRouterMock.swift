@@ -4,7 +4,7 @@ import UIKit
 final class MainRouterMock: MainRouterProtocol {
     var prepared = false
 
-    func prepare(for controller: UIViewController?) {
+    func openItemViewController() {
         prepared.toggle()
     }
 }

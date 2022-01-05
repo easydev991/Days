@@ -30,12 +30,6 @@ final class MainPresenterTest: XCTestCase {
         XCTAssertFalse(title.isEmpty)
     }
 
-    func testPrepare() {
-        let segue = viewController.testSegue
-        presenter.prepare(for: segue)
-        XCTAssertEqual(true, router.prepared)
-    }
-
     func testRequestItems() {
         let mockItems = ItemsMock.items
         let initialCount = presenter.items.count

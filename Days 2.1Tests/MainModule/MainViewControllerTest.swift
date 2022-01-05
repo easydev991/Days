@@ -26,12 +26,6 @@ final class MainViewControllerTest: XCTestCase {
         router = nil
     }
 
-    func testPrepareForSegue() {
-        let testSegue = MainViewControllerMock().testSegue
-        viewController.prepare(for: testSegue, sender: nil)
-        XCTAssertEqual(true, router.prepared)
-    }
-
     func testSetItemData() {
         let name = "Name"
         let date = Date()

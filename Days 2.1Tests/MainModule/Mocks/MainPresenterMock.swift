@@ -9,14 +9,14 @@ final class MainPresenterMock {
 }
 
 extension MainPresenterMock: MainPresenterProtocol {
+    func addItemTapped() {}
+
+    func updateSortModel(sortBy: ItemSort, ascending: Bool) {}
+
     var title: String { "Title" }
 
-    func prepare(for segue: UIStoryboardSegue) {
-        router.prepare(for: segue.destination)
-    }
-
     func requestItems() {
-        items = interactor.loadItems(sortedBy: .itemName, ascending: true)
+        items = interactor.loadItems(sortedBy: .init(sortBy: .itemName, ascending: false))
     }
 
     func setup(cell: ItemCellInput, at index: Int) {}

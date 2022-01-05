@@ -16,6 +16,8 @@ final class MainViewControllerMock {
 }
 
 extension MainViewControllerMock: MainViewControllerProtocol {
+    func present(_ viewController: UIViewController) {}
+
     func setItemData(itemName: String, itemDate: Date) {}
 
     func reload() {

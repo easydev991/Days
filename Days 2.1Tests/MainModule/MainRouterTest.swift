@@ -22,11 +22,4 @@ final class MainRouterTest: XCTestCase {
         interactor = nil
         router = nil
     }
-
-    func testPrepareForSegue() {
-        let testSegue = viewController.testSegue
-        let destination = testSegue.destination as? ItemViewController
-        router.prepare(for: destination)
-        XCTAssertNotNil(destination?.delegate)
-    }
 }

@@ -2,7 +2,7 @@ import Foundation
 @testable import Days_2_1
 
 final class ItemStorageMock: ItemStorageService {
-    func loadItems(sortedBy: ItemsSort, ascending: Bool) -> [Item] {
+    func loadItems(sortedBy model: ItemSortModel) -> [Item] {
         ItemsMock.items
     }
 
