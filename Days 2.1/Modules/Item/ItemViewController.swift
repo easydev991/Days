@@ -14,16 +14,39 @@ final class ItemViewController: UIViewController {
     @IBOutlet private weak var itemNameTextField: UITextField!
     @IBOutlet private weak var itemDatePicker: UIDatePicker!
 
-    private lazy var pinView: UIView = {
+    private lazy var horizontalStack: UIStackView = {
+        let stack = UIStackView(
+            arrangedSubviews: [
+                closeButton, titleLabel, saveButton
+            ]
+        )
+        stack.spacing = 8
+        stack.distribution = .fillProportionally
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
+    private lazy var separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray
-        view.layer.cornerRadius = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = presenter?.title()
+        label.font = .preferredFont(forTextStyle: .headline, compatibleWith: nil)
+        label.textColor = .textColor
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private lazy var closeButton: UIButton = {
-        let button = UIButton(type: .close, primaryAction: closeButtonAction)
+        let button = UIButton(type: .system, primaryAction: closeButtonAction)
+        button.setTitle(NSLocalizedString("Close", comment: "Close button"), for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -103,20 +126,22 @@ private extension ItemViewController {
         presenter?.viewDidLoad()
         title = presenter?.title()
         view.backgroundColor = .mainBackground
-
-        [closeButton, pinView, saveButton].forEach(view.addSubview)
+        view.addSubview(horizontalStack)
+        view.addSubview(separatorView)
         NSLayoutConstraint.activate(
             [
-                closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-                closeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-                pinView.topAnchor.constraint(equalTo: view.topAnchor, constant: 12),
-                pinView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                pinView.heightAnchor.constraint(equalToConstant: 2),
-                pinView.widthAnchor.constraint(equalToConstant: 48),
-                saveButton.topAnchor.constraint(equalTo: closeButton.topAnchor),
-                saveButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16)
+                closeButton.widthAnchor.constraint(equalToConstant: 48),
+                saveButton.widthAnchor.constraint(equalTo: closeButton.widthAnchor),
+                horizontalStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+                horizontalStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+                horizontalStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+                separatorView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: 8),
+                separatorView.leftAnchor.constraint(equalTo: horizontalStack.leftAnchor),
+                separatorView.rightAnchor.constraint(equalTo: horizontalStack.rightAnchor),
+                separatorView.heightAnchor.constraint(equalToConstant: 1)
             ]
         )
+        
         itemNameTextField.attributedPlaceholder = .init(
             string: NSLocalizedString("Enter event placeholder", comment: "Placeholder"),
             attributes: [.foregroundColor: UIColor.systemGray]
