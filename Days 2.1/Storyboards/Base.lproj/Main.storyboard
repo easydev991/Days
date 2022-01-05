@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,75 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IGI-Ue-Xfw">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="bzL-2y-jDV" customClass="TableViewCell" customModule="Days_2_1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="60.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bzL-2y-jDV" id="0Be-8z-0aI">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fla-AM-t3K" userLabel="Container">
-                                                    <rect key="frame" x="16" y="4" width="382" height="52.5"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="tnO-Rz-ZbS">
-                                                            <rect key="frame" x="16" y="16" width="350" height="20.5"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RA-9j-FiZ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="318" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDY-Q0-nwm">
-                                                                    <rect key="frame" x="350" y="0.0" width="0.0" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <constraints>
-                                                        <constraint firstItem="tnO-Rz-ZbS" firstAttribute="top" secondItem="fla-AM-t3K" secondAttribute="top" constant="16" id="OCq-9N-tV0"/>
-                                                        <constraint firstAttribute="trailing" secondItem="tnO-Rz-ZbS" secondAttribute="trailing" constant="16" id="QpU-Mr-lNV"/>
-                                                        <constraint firstAttribute="bottom" secondItem="tnO-Rz-ZbS" secondAttribute="bottom" constant="16" id="tgU-W9-qsr"/>
-                                                        <constraint firstItem="tnO-Rz-ZbS" firstAttribute="leading" secondItem="fla-AM-t3K" secondAttribute="leading" constant="16" id="zio-Cm-pxK"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="fla-AM-t3K" secondAttribute="bottom" priority="999" constant="4" id="AEL-4v-R1a"/>
-                                                <constraint firstAttribute="trailing" secondItem="fla-AM-t3K" secondAttribute="trailing" constant="16" id="G5b-dO-Bvl"/>
-                                                <constraint firstItem="fla-AM-t3K" firstAttribute="leading" secondItem="0Be-8z-0aI" secondAttribute="leading" constant="16" id="Myn-7s-8Jq"/>
-                                                <constraint firstItem="fla-AM-t3K" firstAttribute="top" secondItem="0Be-8z-0aI" secondAttribute="top" constant="4" id="zzH-OW-uBF"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="container" destination="fla-AM-t3K" id="evx-PB-xAx"/>
-                                            <outlet property="itemDaysLabel" destination="sDY-Q0-nwm" id="Xj9-Ao-GXF"/>
-                                            <outlet property="itemNameLabel" destination="5RA-9j-FiZ" id="Ar6-75-y77"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="x4s-FQ-CRs"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="DXU-j3-uRA"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="MainBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IGI-Ue-Xfw" secondAttribute="trailing" id="0Dg-tp-DzK"/>
-                            <constraint firstItem="IGI-Ue-Xfw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Dz3-aT-2gM"/>
-                            <constraint firstAttribute="bottom" secondItem="IGI-Ue-Xfw" secondAttribute="bottom" id="S9T-Ja-zT7"/>
-                            <constraint firstItem="IGI-Ue-Xfw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fZa-Ao-gc7"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="aPr-fD-Qpj">
                         <barButtonItem key="rightBarButtonItem" image="plus.circle.fill" catalog="system" id="Z6h-yM-WEr">
@@ -97,7 +29,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addNewItemButton" destination="Z6h-yM-WEr" id="UrS-pw-5Ok"/>
-                        <outlet property="tableView" destination="IGI-Ue-Xfw" id="JH9-m5-XUp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -131,8 +62,5 @@
         <namedColor name="MainBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
