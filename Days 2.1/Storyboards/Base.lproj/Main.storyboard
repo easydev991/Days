@@ -91,8 +91,7 @@
                         <barButtonItem key="rightBarButtonItem" image="plus.circle.fill" catalog="system" id="Z6h-yM-WEr">
                             <color key="tintColor" name="ButtonTint"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="3oS-Pq-0eX"/>
-                                <segue destination="U2c-yj-kY4" kind="presentation" id="3Y7-ey-l07"/>
+                                <action selector="addButtonTapped:" destination="BYZ-38-t0r" id="ra2-kX-yY8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -104,23 +103,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="116.51785714285714"/>
-        </scene>
-        <!--Item View Controller-->
-        <scene sceneID="p7E-pM-aLG">
-            <objects>
-                <viewController storyboardIdentifier="NewItemVC" id="U2c-yj-kY4" customClass="ItemViewController" customModule="Days_2_1" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="33A-S2-bvz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="p1d-eV-ilW"/>
-                        <color key="backgroundColor" name="MainBackgroundColor"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="pgn-rC-vHK"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UZB-h1-1JL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1932" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="miT-Jt-Oin">
