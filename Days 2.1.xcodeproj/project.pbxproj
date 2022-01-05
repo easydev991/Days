@@ -38,7 +38,6 @@
 		67C90F242709B67500F257C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67C90F262709B67500F257C9 /* Localizable.strings */; };
 		67C90F2A2709B84500F257C9 /* Calendar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C90F292709B84500F257C9 /* Calendar+.swift */; };
 		67C90F2C2709CB7100F257C9 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C90F2B2709CB7100F257C9 /* UIColor+.swift */; };
-		67C90F2E2709D54300F257C9 /* UIDatePicker+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C90F2D2709D54300F257C9 /* UIDatePicker+.swift */; };
 		67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8C24A8D74400F9ED26 /* AppDelegate.swift */; };
 		67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB8E24A8D74400F9ED26 /* SceneDelegate.swift */; };
 		67D5FB9124A8D74400F9ED26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FB9024A8D74400F9ED26 /* MainViewController.swift */; };
@@ -95,7 +94,6 @@
 		67C90F272709B67C00F257C9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		67C90F292709B84500F257C9 /* Calendar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+.swift"; sourceTree = "<group>"; };
 		67C90F2B2709CB7100F257C9 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		67C90F2D2709D54300F257C9 /* UIDatePicker+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+.swift"; sourceTree = "<group>"; };
 		67D5FB8924A8D74400F9ED26 /* Days 2.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Days 2.1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D5FB8C24A8D74400F9ED26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67D5FB8E24A8D74400F9ED26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 			children = (
 				67C90F292709B84500F257C9 /* Calendar+.swift */,
 				67C90F2B2709CB7100F257C9 /* UIColor+.swift */,
-				67C90F2D2709D54300F257C9 /* UIDatePicker+.swift */,
 				67699E2C2711E3420077522E /* Results+.swift */,
 				67C6DB2427859B5C007C9D98 /* UIImage+.swift */,
 			);
@@ -432,7 +429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67C90F2E2709D54300F257C9 /* UIDatePicker+.swift in Sources */,
 				67D5FBAB24A8E1CD00F9ED26 /* TableViewCell.swift in Sources */,
 				6705D13624B9893400A07BDC /* ItemPresenter.swift in Sources */,
 				6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */,
