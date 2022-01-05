@@ -2,6 +2,7 @@ import UIKit
 
 protocol MainViewControllerProtocol: ItemViewControllerDelegate {
     func reload()
+    func present(_ viewController: UIViewController)
 }
 
 final class MainViewController: UIViewController {
@@ -20,8 +21,9 @@ final class MainViewController: UIViewController {
         presenter?.requestItems()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        presenter?.prepare(for: segue)
+    // MARK: - IBActions
+    @IBAction func addButtonTapped(_ sender: Any) {
+        presenter?.addItemTapped()
     }
 }
 
@@ -29,6 +31,10 @@ final class MainViewController: UIViewController {
 extension MainViewController: MainViewControllerProtocol {
     func reload() {
         tableView.reloadData()
+    }
+
+    func present(_ viewController: UIViewController) {
+        present(viewController, animated: true)
     }
 }
 
