@@ -1,24 +1,23 @@
+#if DEBUG
 import SwiftUI
 
-struct NavControllerRepresentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UINavigationController {
-        UIStoryboard(
-            name: "Main",
-            bundle: nil
-        ).instantiateInitialViewController()!
+struct MainVCRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let mainVC = MainViewController()
+        MainConfigurator.configure(with: mainVC)
+        let navigationController = UINavigationController(rootViewController: mainVC)
+        return navigationController
     }
 
     func updateUIViewController(
-        _ uiViewController: UINavigationController,
+        _ uiViewController: UIViewController,
         context: Context
     ) {}
 }
 
 struct MainVCPreview: PreviewProvider {
     static var previews: some View {
-        Group {
-            NavControllerRepresentable()
-                .preferredColorScheme(.dark)
-        }
+        MainVCRepresentable()
     }
 }
+#endif
