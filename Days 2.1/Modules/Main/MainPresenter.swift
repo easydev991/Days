@@ -6,7 +6,7 @@ protocol MainPresenterProtocol: AnyObject {
     func addItemTapped()
     func requestItems()
     func updateSortModel(sortBy: ItemSort, ascending: Bool)
-    func setup(cell: TableViewCellInput, at index: Int)
+    func setup(cell: ItemCellInput, at index: Int)
     func saveItem(name: String, date: Date)
     func removeItem(at index: Int, completion: VoidBlock)
     func reloadView()
@@ -42,12 +42,12 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     func setup(
-        cell: TableViewCellInput,
+        cell: ItemCellInput,
         at index: Int
     ) {
         let item = items[index]
         let itemDays = dateToTextDays(item: item)
-        let model = TableViewCell.Model(
+        let model = ItemCell.Model(
             itemName: item.itemName,
             itemDays: itemDays
         )

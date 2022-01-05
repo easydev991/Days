@@ -1,11 +1,11 @@
 import UIKit
 
-protocol TableViewCellInput {
-    func setup(with model: TableViewCell.Model)
+protocol ItemCellInput {
+    func setup(with model: ItemCell.Model)
 }
 
-final class TableViewCell: UITableViewCell {
-    static let cellID = "Cell"
+final class ItemCell: UITableViewCell {
+    static let cellID = "ItemCell"
 
     // MARK: - UI
     private lazy var container: UIView = {
@@ -57,7 +57,7 @@ final class TableViewCell: UITableViewCell {
     }
 }
 
-extension TableViewCell {
+extension ItemCell {
     struct Model {
         let itemName: String
         let itemDays: String
@@ -65,8 +65,8 @@ extension TableViewCell {
 }
 
 // MARK: - TableViewCellInput
-extension TableViewCell: TableViewCellInput {
-    func setup(with model: TableViewCell.Model) {
+extension ItemCell: ItemCellInput {
+    func setup(with model: ItemCell.Model) {
         itemNameLabel.text = model.itemName
         itemDaysLabel.text = model.itemDays
         horizontalStack.layoutIfNeeded()
@@ -74,7 +74,7 @@ extension TableViewCell: TableViewCellInput {
 }
 
 // MARK: - Private extension
-private extension TableViewCell {
+private extension ItemCell {
     func setupUI() {
         selectionStyle = .none
         backgroundColor = .clear

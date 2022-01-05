@@ -19,7 +19,7 @@ extension MainPresenterMock: MainPresenterProtocol {
         items = interactor.loadItems(sortedBy: .itemName, ascending: true)
     }
 
-    func setup(cell: TableViewCellInput, at index: Int) {}
+    func setup(cell: ItemCellInput, at index: Int) {}
 
     func saveItem(name: String, date: Date) {
         let testItem = Item()

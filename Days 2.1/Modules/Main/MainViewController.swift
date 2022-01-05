@@ -24,7 +24,7 @@ final class MainViewController: UIViewController {
         table.separatorStyle = .none
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = UITableView.automaticDimension
-        table.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellID)
+        table.register(ItemCell.self, forCellReuseIdentifier: ItemCell.cellID)
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -104,9 +104,9 @@ extension MainViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(
-            withIdentifier: TableViewCell.cellID,
+            withIdentifier: ItemCell.cellID,
             for: indexPath
-        ) as? TableViewCell {
+        ) as? ItemCell {
             presenter?.setup(
                 cell: cell,
                 at: indexPath.row
