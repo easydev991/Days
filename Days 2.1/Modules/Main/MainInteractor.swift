@@ -1,7 +1,7 @@
 protocol MainInteractorProtocol: AnyObject {
     func saveItem(_ item: Item, completion: OptionalErrorVoidBlock)
     func removeItem(_ item: Item, completion: OptionalErrorVoidBlock)
-    func loadItems(sortedBy: ItemsSort, ascending: Bool) -> [Item]
+    func loadItems(sortedBy model: ItemSortModel) -> [Item]
 }
 
 final class MainInteractor {
@@ -14,14 +14,8 @@ final class MainInteractor {
 }
 
 extension MainInteractor: MainInteractorProtocol {
-    func loadItems(
-        sortedBy: ItemsSort,
-        ascending: Bool
-    ) -> [Item] {
-        itemStorage.loadItems(
-            sortedBy: .date,
-            ascending: ascending
-        )
+    func loadItems(sortedBy model: ItemSortModel) -> [Item] {
+        itemStorage.loadItems(sortedBy: model)
     }
 
     func saveItem(

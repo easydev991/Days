@@ -5,6 +5,7 @@ protocol MainPresenterProtocol: AnyObject {
     var items: [Item] { get }
     func prepare(for segue: UIStoryboardSegue)
     func requestItems()
+    func updateSortModel(sortBy: ItemSort, ascending: Bool)
     func setup(cell: TableViewCellInput, at index: Int)
     func saveItem(name: String, date: Date)
     func removeItem(at index: Int, completion: VoidBlock)
@@ -16,6 +17,7 @@ final class MainPresenter {
     var interactor: MainInteractorProtocol?
     var router: MainRouterProtocol?
     var items = [Item]()
+    private var sortModel = ItemSortModel(sortBy: .date, ascending: false)
 }
 
 extension MainPresenter: MainPresenterProtocol {
@@ -28,13 +30,15 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     func requestItems() {
-        if let receivedItems = interactor?.loadItems(
-            sortedBy: .date,
-            ascending: false
-        ) {
+        if let receivedItems = interactor?.loadItems(sortedBy: sortModel) {
             items = receivedItems
             reloadView()
         }
+    }
+
+    func updateSortModel(sortBy: ItemSort, ascending: Bool) {
+        sortModel = .init(sortBy: sortBy, ascending: ascending)
+        requestItems()
     }
 
     func setup(

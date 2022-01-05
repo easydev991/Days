@@ -2,10 +2,7 @@ import Foundation
 import RealmSwift
 
 protocol ItemStorageService {
-    func loadItems(
-        sortedBy: ItemsSort,
-        ascending: Bool
-    ) -> [Item]
+    func loadItems(sortedBy model: ItemSortModel) -> [Item]
 
     func saveItem(
         item: Item,
@@ -18,24 +15,17 @@ protocol ItemStorageService {
     )
 }
 
-enum ItemsSort: String {
-    case itemName, date
-}
-
 final class ItemStorage {
     private let realm = try! Realm()
 }
 
 extension ItemStorage: ItemStorageService {
-    func loadItems(
-        sortedBy: ItemsSort,
-        ascending: Bool
-    ) -> [Item] {
+    func loadItems(sortedBy model: ItemSortModel) -> [Item] {
         realm
             .objects(Item.self)
             .sorted(
-                byKeyPath: sortedBy.rawValue,
-                ascending: ascending
+                byKeyPath: model.sortBy.rawValue,
+                ascending: model.ascending
             )
             .toArray()
     }
