@@ -64,7 +64,7 @@ final class ItemViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func editingChanged(_ sender: UITextField) {
-        presenter?.checkNameForLetters(textField: sender)
+        presenter?.checkNameForLettersIn(text: sender.text)
     }
 }
 

@@ -1,11 +1,11 @@
-import UIKit
+import Foundation
 
 protocol ItemPresenterProtocol: AnyObject {
     var router: ItemRouterProtocol? { get set }
     func viewDidLoad()
     func title() -> String
     func saveButtonClicked()
-    func checkNameForLetters(textField: UITextField)
+    func checkNameForLettersIn(text: String?)
     func setSaveButton(enabled: Bool)
     func backButtonTapped()
 }
@@ -29,8 +29,8 @@ extension ItemPresenter: ItemPresenterProtocol {
         router?.closeCurrentViewController()
     }
 
-    func checkNameForLetters(textField: UITextField) {
-        interactor?.checkNameForLetters(textField: textField)
+    func checkNameForLettersIn(text: String?) {
+        interactor?.checkNameForLettersIn(string: text)
     }
 
     func setSaveButton(enabled: Bool) {

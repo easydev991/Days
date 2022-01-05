@@ -1,7 +1,5 @@
-import UIKit
-
 protocol ItemInteractorProtocol: AnyObject {
-    func checkNameForLetters(textField: UITextField)
+    func checkNameForLettersIn(string: String?)
 }
 
 final class ItemInteractor {
@@ -9,8 +7,8 @@ final class ItemInteractor {
 }
 
 extension ItemInteractor: ItemInteractorProtocol {
-    func checkNameForLetters(textField: UITextField) {
-        let textIsEmpty = textField.text?.rangeOfCharacter(from: .letters)?.isEmpty ?? true
+    func checkNameForLettersIn(string: String?) {
+        let textIsEmpty = string?.rangeOfCharacter(from: .letters)?.isEmpty ?? true
         presenter?.setSaveButton(enabled: !textIsEmpty)
     }
 }
