@@ -107,7 +107,6 @@ final class ItemViewController: UIViewController {
         super.viewDidAppear(animated)
         itemNameTextField.becomeFirstResponder()
     }
-    }
 }
 
 // MARK: - ItemViewControllerProtocol
@@ -141,11 +140,6 @@ extension ItemViewController: UITextFieldDelegate {
 
 // MARK: - Private methods
 private extension ItemViewController {
-    struct Layout {
-        static let buttonWidth = CGFloat(48)
-        static let defaultOffset = CGFloat(16)
-    }
-
     func setupUI() {
         title = presenter?.title()
         view.backgroundColor = .mainBackground
@@ -154,17 +148,17 @@ private extension ItemViewController {
             [
                 closeButton.widthAnchor.constraint(equalToConstant: Layout.buttonWidth),
                 saveButton.widthAnchor.constraint(equalTo: closeButton.widthAnchor),
-                horizontalStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.defaultOffset),
-                horizontalStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.defaultOffset),
-                horizontalStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Layout.defaultOffset),
-                separatorView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: Layout.defaultOffset/2),
+                horizontalStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.defaultInset),
+                horizontalStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.defaultInset),
+                horizontalStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Layout.defaultInset),
+                separatorView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: Layout.averageInset),
                 separatorView.leftAnchor.constraint(equalTo: horizontalStack.leftAnchor),
                 separatorView.rightAnchor.constraint(equalTo: horizontalStack.rightAnchor),
                 separatorView.heightAnchor.constraint(equalToConstant: 1),
-                itemNameTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.defaultOffset/2),
+                itemNameTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.averageInset),
                 itemNameTextField.leftAnchor.constraint(equalTo: horizontalStack.leftAnchor),
                 itemNameTextField.rightAnchor.constraint(equalTo: horizontalStack.rightAnchor),
-                itemDatePicker.topAnchor.constraint(equalTo: itemNameTextField.bottomAnchor, constant: Layout.defaultOffset),
+                itemDatePicker.topAnchor.constraint(equalTo: itemNameTextField.bottomAnchor, constant: Layout.defaultInset),
                 itemDatePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ]
         )
