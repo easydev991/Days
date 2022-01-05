@@ -3,7 +3,7 @@ import UIKit
 protocol MainPresenterProtocol: AnyObject {
     var title: String { get }
     var items: [Item] { get }
-    func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    func prepare(for segue: UIStoryboardSegue)
     func requestItems()
     func setup(cell: TableViewCellInput, at index: Int)
     func saveItem(name: String, date: Date)
@@ -23,8 +23,8 @@ extension MainPresenter: MainPresenterProtocol {
         NSLocalizedString("Days have passed...", comment: "MainVC title")
     }
 
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        router?.prepare(for: segue, sender: sender)
+    func prepare(for segue: UIStoryboardSegue) {
+        router?.prepare(for: segue.destination)
     }
 
     func requestItems() {

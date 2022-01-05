@@ -1,7 +1,7 @@
 import UIKit
 
 protocol MainRouterProtocol: AnyObject {
-    func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    func prepare(for controller: UIViewController?)
 }
 
 final class MainRouter {
@@ -9,8 +9,8 @@ final class MainRouter {
 }
 
 extension MainRouter: MainRouterProtocol {
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ItemViewController {
+    func prepare(for controller: UIViewController?) {
+        if let vc = controller as? ItemViewController {
             vc.delegate = viewController
         }
     }

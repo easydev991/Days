@@ -22,7 +22,7 @@ final class MainViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        presenter?.prepare(for: segue, sender: sender)
+        presenter?.prepare(for: segue)
     }
 }
 
