@@ -1,9 +1,9 @@
-import UIKit
+import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
     var title: String { get }
     var items: [Item] { get }
-    func prepare(for segue: UIStoryboardSegue)
+    func addItemTapped()
     func requestItems()
     func updateSortModel(sortBy: ItemSort, ascending: Bool)
     func setup(cell: TableViewCellInput, at index: Int)
@@ -25,8 +25,8 @@ extension MainPresenter: MainPresenterProtocol {
         NSLocalizedString("Days have passed...", comment: "MainVC title")
     }
 
-    func prepare(for segue: UIStoryboardSegue) {
-        router?.prepare(for: segue.destination)
+    func addItemTapped() {
+        router?.openItemViewController()
     }
 
     func requestItems() {
