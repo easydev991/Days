@@ -6,9 +6,21 @@ protocol MainViewControllerProtocol: ItemViewControllerDelegate {
 }
 
 final class MainViewController: UIViewController {
-    // MARK: - IBOutlets
+    // MARK: - UI
     @IBOutlet private weak var addNewItemButton: UIBarButtonItem!
-    @IBOutlet private weak var tableView: UITableView!
+
+    private lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.delegate = self
+        table.dataSource = self
+        table.backgroundColor = .clear
+        table.separatorStyle = .none
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = UITableView.automaticDimension
+        table.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellID)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
 
     // MARK: - Properties
     var presenter: MainPresenterProtocol?
@@ -89,21 +101,22 @@ extension MainViewController: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        var cell = UITableViewCell()
-        if let customCell = tableView.dequeueReusableCell(
+        if let cell = tableView.dequeueReusableCell(
             withIdentifier: TableViewCell.cellID,
             for: indexPath
         ) as? TableViewCell {
             presenter?.setup(
-                cell: customCell,
+                cell: cell,
                 at: indexPath.row
             )
-            cell = customCell
+            return cell
+        } else {
+            return UITableViewCell()
         }
-        return cell
     }
 }
 
+// MARK: - Private extension
 private extension MainViewController {
     func setupUI() {
         title = presenter?.title
@@ -113,10 +126,16 @@ private extension MainViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.mainTitle]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.mainTitle]
 
-        addNewItemButton.tintColor = .buttonTint
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate(
+            [
+                tableView.topAnchor.constraint(equalTo: view.topAnchor),
+                tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            ]
+        )
 
-        tableView.backgroundColor = .clear
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        addNewItemButton.tintColor = .buttonTint
     }
 }
