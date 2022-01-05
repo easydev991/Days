@@ -1,9 +1,5 @@
-protocol ItemConfiguratorProtocol: AnyObject {
-    func configure(with viewController: ItemViewController)
-}
-
-final class ItemConfigurator: ItemConfiguratorProtocol {
-    func configure(with viewController: ItemViewController) {
+struct ItemConfigurator {
+    static func configure(with viewController: ItemViewController) {
         let presenter            = ItemPresenter()
         let interactor           = ItemInteractor()
         let router               = ItemRouter()

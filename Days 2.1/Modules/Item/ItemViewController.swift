@@ -48,12 +48,11 @@ final class ItemViewController: UIViewController {
     // MARK: - Properties
     var presenter: ItemPresenterProtocol?
     weak var delegate: ItemViewControllerDelegate?
-    private let configurator: ItemConfiguratorProtocol = ItemConfigurator()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self)
+        ItemConfigurator.configure(with: self)
         setupUI()
     }
 
