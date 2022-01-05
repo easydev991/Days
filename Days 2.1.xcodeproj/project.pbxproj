@@ -31,6 +31,7 @@
 		6775FF61271377EC007D1041 /* MainViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF60271377EC007D1041 /* MainViewControllerTest.swift */; };
 		67C6DB232784C400007C9D98 /* MainVCPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB222784C400007C9D98 /* MainVCPreview.swift */; };
 		67C6DB2527859B5C007C9D98 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB2427859B5C007C9D98 /* UIImage+.swift */; };
+		67C6DB272785AD67007C9D98 /* ItemSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB262785AD67007C9D98 /* ItemSort.swift */; };
 		67C90F1227086A4A00F257C9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1127086A4A00F257C9 /* Realm */; };
 		67C90F1427086A4A00F257C9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1327086A4A00F257C9 /* RealmSwift */; };
 		67C90F1A2709AE6900F257C9 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 67C90F1C2709AE6900F257C9 /* Localizable.stringsdict */; };
@@ -85,6 +86,7 @@
 		6775FF60271377EC007D1041 /* MainViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTest.swift; sourceTree = "<group>"; };
 		67C6DB222784C400007C9D98 /* MainVCPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCPreview.swift; sourceTree = "<group>"; };
 		67C6DB2427859B5C007C9D98 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		67C6DB262785AD67007C9D98 /* ItemSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSort.swift; sourceTree = "<group>"; };
 		67C90F1B2709AE6900F257C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		67C90F1D2709AE7C00F257C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67C90F1E2709AE7C00F257C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,7 +154,6 @@
 				6705D12B24B988B300A07BDC /* MainPresenter.swift */,
 				6705D12D24B988BC00A07BDC /* MainInteractor.swift */,
 				6705D13324B988E500A07BDC /* MainRouter.swift */,
-				67C6DB222784C400007C9D98 /* MainVCPreview.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -244,6 +245,8 @@
 				67C90F1C2709AE6900F257C9 /* Localizable.stringsdict */,
 				67C90F262709B67500F257C9 /* Localizable.strings */,
 				67699E2E2711FD550077522E /* Typealiases.swift */,
+				67C6DB262785AD67007C9D98 /* ItemSort.swift */,
+				67C6DB222784C400007C9D98 /* MainVCPreview.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				6705D12E24B988BC00A07BDC /* MainInteractor.swift in Sources */,
 				6705D12C24B988B300A07BDC /* MainPresenter.swift in Sources */,
 				67D5FBB424A8FEE100F9ED26 /* ItemViewController.swift in Sources */,
+				67C6DB272785AD67007C9D98 /* ItemSort.swift in Sources */,
 				6705D13824B9894400A07BDC /* ItemInteractor.swift in Sources */,
 				67C6DB2527859B5C007C9D98 /* UIImage+.swift in Sources */,
 				67D5FBA924A8E07D00F9ED26 /* Item.swift in Sources */,
