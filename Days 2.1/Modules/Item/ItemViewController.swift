@@ -98,7 +98,6 @@ final class ItemViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        ItemConfigurator.configure(with: self)
         setupUI()
         presenter?.viewDidLoad()
     }

@@ -35,7 +35,6 @@ final class MainViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        MainConfigurator.configure(with: self)
         setupUI()
         presenter?.requestItems()
     }
