@@ -7,7 +7,14 @@ protocol MainViewControllerProtocol: ItemViewControllerDelegate {
 
 final class MainViewController: UIViewController {
     // MARK: - UI
-    @IBOutlet private weak var addNewItemButton: UIBarButtonItem!
+    private lazy var addNewItemButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+        return button
+    }()
 
     private lazy var tableView: UITableView = {
         let table = UITableView()
@@ -31,11 +38,6 @@ final class MainViewController: UIViewController {
         MainConfigurator.configure(with: self)
         setupUI()
         presenter?.requestItems()
-    }
-
-    // MARK: - IBActions
-    @IBAction func addButtonTapped(_ sender: Any) {
-        presenter?.addItemTapped()
     }
 }
 
@@ -122,7 +124,9 @@ private extension MainViewController {
         title = presenter?.title
         view.backgroundColor = .mainBackground
 
+        navigationItem.rightBarButtonItem = addNewItemButton
         navigationController?.navigationBar.barTintColor = .mainBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.mainTitle]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.mainTitle]
 
@@ -137,5 +141,9 @@ private extension MainViewController {
         )
 
         addNewItemButton.tintColor = .buttonTint
+    }
+
+    @objc func addButtonTapped() {
+        presenter?.addItemTapped()
     }
 }
