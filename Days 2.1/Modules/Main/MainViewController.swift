@@ -52,17 +52,26 @@ extension MainViewController: ItemViewControllerDelegate {
 extension MainViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
-        commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath
-    ) {
-        if editingStyle == .delete {
-            presenter?.removeItem(
-                at: indexPath.row,
-                completion: {
-                    tableView.deleteRows(at: [indexPath], with: .left)
-                }
-            )
-        }
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(
+            style: .destructive,
+            title: nil,
+            handler: { [weak presenter] _,_,_ in
+                presenter?.removeItem(
+                    at: indexPath.row,
+                    completion: {
+                        tableView.deleteRows(
+                            at: [indexPath],
+                            with: .automatic
+                        )
+                    }
+                )
+            }
+        )
+        deleteAction.image = .init(systemName: "trash")?.tint(with: .systemRed)
+        deleteAction.backgroundColor = .mainBackground
+        return .init(actions: [deleteAction])
     }
 }
 
