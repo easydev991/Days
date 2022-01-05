@@ -112,43 +112,11 @@
                     <view key="view" contentMode="scaleToFill" id="33A-S2-bvz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2zn-wM-fgu">
-                                <rect key="frame" x="16" y="64" width="382" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <action selector="editingChanged:" destination="U2c-yj-kY4" eventType="editingChanged" id="EJl-WB-QZi"/>
-                                    <outlet property="delegate" destination="U2c-yj-kY4" id="aUD-bT-CK1"/>
-                                </connections>
-                            </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="hyO-Sj-2YO">
-                                <rect key="frame" x="47" y="128" width="320" height="216"/>
-                                <color key="backgroundColor" name="MainBackgroundColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </datePicker>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="p1d-eV-ilW"/>
                         <color key="backgroundColor" name="MainBackgroundColor"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="2zn-wM-fgu" firstAttribute="top" secondItem="p1d-eV-ilW" secondAttribute="top" constant="64" id="Dv1-my-Yvh"/>
-                            <constraint firstItem="hyO-Sj-2YO" firstAttribute="centerX" secondItem="33A-S2-bvz" secondAttribute="centerX" id="O2K-zG-Pcb"/>
-                            <constraint firstItem="hyO-Sj-2YO" firstAttribute="top" secondItem="2zn-wM-fgu" secondAttribute="bottom" constant="30" id="aBq-4k-22w"/>
-                            <constraint firstItem="p1d-eV-ilW" firstAttribute="trailing" secondItem="2zn-wM-fgu" secondAttribute="trailing" constant="16" id="hSZ-fO-S8c"/>
-                            <constraint firstItem="2zn-wM-fgu" firstAttribute="centerX" secondItem="33A-S2-bvz" secondAttribute="centerX" id="j09-6n-rLp"/>
-                            <constraint firstItem="2zn-wM-fgu" firstAttribute="leading" secondItem="p1d-eV-ilW" secondAttribute="leading" constant="16" id="viW-M9-lNc"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="pgn-rC-vHK"/>
-                    <connections>
-                        <outlet property="itemDatePicker" destination="hyO-Sj-2YO" id="FVf-6d-gym"/>
-                        <outlet property="itemNameTextField" destination="2zn-wM-fgu" id="bl7-pB-JfO"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZB-h1-1JL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

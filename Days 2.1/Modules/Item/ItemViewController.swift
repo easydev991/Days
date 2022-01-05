@@ -11,9 +11,6 @@ protocol ItemViewControllerProtocol: AnyObject {
 
 final class ItemViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet private weak var itemNameTextField: UITextField!
-    @IBOutlet private weak var itemDatePicker: UIDatePicker!
-
     private lazy var horizontalStack: UIStackView = {
         let stack = UIStackView(
             arrangedSubviews: [
@@ -67,6 +64,30 @@ final class ItemViewController: UIViewController {
     private lazy var saveButtonAction = UIAction { [unowned self] _ in
         self.saveAction()
     }
+
+    private lazy var itemNameTextField: UITextField = {
+        let field = UITextField()
+        field.attributedPlaceholder = .init(
+            string: NSLocalizedString("Enter event placeholder", comment: "Placeholder"),
+            attributes: [.foregroundColor: UIColor.systemGray]
+        )
+        field.textColor = .textColor
+        field.borderStyle = .roundedRect
+        field.translatesAutoresizingMaskIntoConstraints = false
+        return field
+    }()
+
+    private lazy var itemDatePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.maximumDate = Date()
+        picker.datePickerMode = .date
+        picker.backgroundColor = .mainBackground
+        picker.preferredDatePickerStyle = .wheels
+        picker.setValue(false, forKey: "highlightsToday")
+        picker.setValue(UIColor.textColor, forKeyPath: "textColor")
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
     
     // MARK: - Properties
     var presenter: ItemPresenterProtocol?
@@ -77,6 +98,7 @@ final class ItemViewController: UIViewController {
         super.viewDidLoad()
         ItemConfigurator.configure(with: self)
         setupUI()
+        presenter?.viewDidLoad()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -122,39 +144,33 @@ extension ItemViewController: UITextFieldDelegate {
 
 // MARK: - Private methods
 private extension ItemViewController {
+    struct Layout {
+        static let buttonWidth = CGFloat(48)
+        static let defaultOffset = CGFloat(16)
+    }
+
     func setupUI() {
-        presenter?.viewDidLoad()
         title = presenter?.title()
         view.backgroundColor = .mainBackground
-        view.addSubview(horizontalStack)
-        view.addSubview(separatorView)
+        [horizontalStack, separatorView, itemNameTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate(
             [
-                closeButton.widthAnchor.constraint(equalToConstant: 48),
+                closeButton.widthAnchor.constraint(equalToConstant: Layout.buttonWidth),
                 saveButton.widthAnchor.constraint(equalTo: closeButton.widthAnchor),
-                horizontalStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-                horizontalStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-                horizontalStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-                separatorView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: 8),
+                horizontalStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.defaultOffset),
+                horizontalStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.defaultOffset),
+                horizontalStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Layout.defaultOffset),
+                separatorView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: Layout.defaultOffset/2),
                 separatorView.leftAnchor.constraint(equalTo: horizontalStack.leftAnchor),
                 separatorView.rightAnchor.constraint(equalTo: horizontalStack.rightAnchor),
-                separatorView.heightAnchor.constraint(equalToConstant: 1)
+                separatorView.heightAnchor.constraint(equalToConstant: 1),
+                itemNameTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.defaultOffset/2),
+                itemNameTextField.leftAnchor.constraint(equalTo: horizontalStack.leftAnchor),
+                itemNameTextField.rightAnchor.constraint(equalTo: horizontalStack.rightAnchor),
+                itemDatePicker.topAnchor.constraint(equalTo: itemNameTextField.bottomAnchor, constant: Layout.defaultOffset),
+                itemDatePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ]
         )
-        
-        itemNameTextField.attributedPlaceholder = .init(
-            string: NSLocalizedString("Enter event placeholder", comment: "Placeholder"),
-            attributes: [.foregroundColor: UIColor.systemGray]
-        )
-        itemNameTextField.textColor = .textColor
-        itemNameTextField.borderStyle = .roundedRect
-
-        itemDatePicker.maximumDate = Date()
-        itemDatePicker.datePickerMode = .date
-        itemDatePicker.backgroundColor = .mainBackground
-        itemDatePicker.preferredDatePickerStyle = .wheels
-        itemDatePicker.textColor = .textColor
-        itemDatePicker.highlightsToday = false
     }
 
     @objc func backButtonAction() {
