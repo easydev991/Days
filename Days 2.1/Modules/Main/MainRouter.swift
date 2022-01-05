@@ -1,7 +1,7 @@
 import UIKit
 
 protocol MainRouterProtocol: AnyObject {
-    func prepare(for controller: UIViewController?)
+    func openItemViewController()
 }
 
 final class MainRouter {
@@ -9,9 +9,9 @@ final class MainRouter {
 }
 
 extension MainRouter: MainRouterProtocol {
-    func prepare(for controller: UIViewController?) {
-        if let vc = controller as? ItemViewController {
-            vc.delegate = viewController
-        }
+    func openItemViewController() {
+        let itemViewController = ItemViewController()
+        itemViewController.delegate = viewController
+        viewController?.present(itemViewController)
     }
 }
