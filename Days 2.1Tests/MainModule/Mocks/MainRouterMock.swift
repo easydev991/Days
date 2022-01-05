@@ -4,7 +4,7 @@ import UIKit
 final class MainRouterMock: MainRouterProtocol {
     var prepared = false
 
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func prepare(for controller: UIViewController?) {
         prepared.toggle()
     }
 }

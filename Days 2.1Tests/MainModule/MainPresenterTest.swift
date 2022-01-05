@@ -32,7 +32,7 @@ final class MainPresenterTest: XCTestCase {
 
     func testPrepare() {
         let segue = viewController.testSegue
-        presenter.prepare(for: segue, sender: nil)
+        presenter.prepare(for: segue)
         XCTAssertEqual(true, router.prepared)
     }
 

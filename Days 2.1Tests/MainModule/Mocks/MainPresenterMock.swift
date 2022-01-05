@@ -11,8 +11,8 @@ final class MainPresenterMock {
 extension MainPresenterMock: MainPresenterProtocol {
     var title: String { "Title" }
 
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        router.prepare(for: segue, sender: sender)
+    func prepare(for segue: UIStoryboardSegue) {
+        router.prepare(for: segue.destination)
     }
 
     func requestItems() {
