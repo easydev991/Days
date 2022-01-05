@@ -1,11 +1,3 @@
-//
-//  ItemStorage.swift
-//  Days 2.1
-//
-//  Created by Олег Еременко on 09.10.2021.
-//  Copyright © 2021 Oleg Eremenko. All rights reserved.
-//
-
 import Foundation
 import RealmSwift
 
@@ -39,7 +31,8 @@ extension ItemStorage: ItemStorageService {
         sortedBy: ItemsSort,
         ascending: Bool
     ) -> [Item] {
-        realm.objects(Item.self)
+        realm
+            .objects(Item.self)
             .sorted(
                 byKeyPath: sortedBy.rawValue,
                 ascending: ascending
