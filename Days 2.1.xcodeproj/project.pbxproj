@@ -29,11 +29,9 @@
 		6775FF5D27137221007D1041 /* ItemViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5C27137221007D1041 /* ItemViewControllerMock.swift */; };
 		6775FF5F271372A5007D1041 /* MainRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5E271372A5007D1041 /* MainRouterTest.swift */; };
 		6775FF61271377EC007D1041 /* MainViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF60271377EC007D1041 /* MainViewControllerTest.swift */; };
-		67C6DB232784C400007C9D98 /* MainVCPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB222784C400007C9D98 /* MainVCPreview.swift */; };
 		67C6DB2527859B5C007C9D98 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB2427859B5C007C9D98 /* UIImage+.swift */; };
 		67C6DB272785AD67007C9D98 /* ItemSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB262785AD67007C9D98 /* ItemSort.swift */; };
 		67C6DB292785E423007C9D98 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB282785E423007C9D98 /* Layout.swift */; };
-		67C6DB2C2785F785007C9D98 /* ItemVCPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB2B2785F785007C9D98 /* ItemVCPreview.swift */; };
 		67C90F1227086A4A00F257C9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1127086A4A00F257C9 /* Realm */; };
 		67C90F1427086A4A00F257C9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1327086A4A00F257C9 /* RealmSwift */; };
 		67C90F1A2709AE6900F257C9 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 67C90F1C2709AE6900F257C9 /* Localizable.stringsdict */; };
@@ -84,11 +82,9 @@
 		6775FF5C27137221007D1041 /* ItemViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewControllerMock.swift; sourceTree = "<group>"; };
 		6775FF5E271372A5007D1041 /* MainRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterTest.swift; sourceTree = "<group>"; };
 		6775FF60271377EC007D1041 /* MainViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTest.swift; sourceTree = "<group>"; };
-		67C6DB222784C400007C9D98 /* MainVCPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCPreview.swift; sourceTree = "<group>"; };
 		67C6DB2427859B5C007C9D98 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		67C6DB262785AD67007C9D98 /* ItemSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSort.swift; sourceTree = "<group>"; };
 		67C6DB282785E423007C9D98 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		67C6DB2B2785F785007C9D98 /* ItemVCPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVCPreview.swift; sourceTree = "<group>"; };
 		67C90F1B2709AE6900F257C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		67C90F1D2709AE7C00F257C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67C90F1F2709AE8C00F257C9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -139,7 +135,6 @@
 		6705D12924B9885E00A07BDC /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				67C6DB222784C400007C9D98 /* MainVCPreview.swift */,
 				67D5FBAA24A8E1CD00F9ED26 /* ItemCell.swift */,
 				6705D12F24B988CD00A07BDC /* MainConfigurator.swift */,
 				6705D12D24B988BC00A07BDC /* MainInteractor.swift */,
@@ -158,7 +153,6 @@
 				6705D13524B9893400A07BDC /* ItemPresenter.swift */,
 				6705D13724B9894400A07BDC /* ItemInteractor.swift */,
 				6705D13E24B9896E00A07BDC /* ItemRouter.swift */,
-				67C6DB2B2785F785007C9D98 /* ItemVCPreview.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -431,9 +425,7 @@
 				67699E2D2711E3420077522E /* Results+.swift in Sources */,
 				67699E2B2711DF690077522E /* ItemStorage.swift in Sources */,
 				67C90F2C2709CB7100F257C9 /* UIColor+.swift in Sources */,
-				67C6DB2C2785F785007C9D98 /* ItemVCPreview.swift in Sources */,
 				6705D13424B988E500A07BDC /* MainRouter.swift in Sources */,
-				67C6DB232784C400007C9D98 /* MainVCPreview.swift in Sources */,
 				67C6DB292785E423007C9D98 /* Layout.swift in Sources */,
 				67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */,
 				67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */,
