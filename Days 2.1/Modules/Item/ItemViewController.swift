@@ -10,7 +10,7 @@ protocol ItemViewControllerProtocol: AnyObject {
 }
 
 final class ItemViewController: UIViewController {
-    // MARK: - IBOutlets
+    // MARK: - UI
     private lazy var horizontalStack: UIStackView = {
         let stack = UIStackView(
             arrangedSubviews: [
@@ -67,12 +67,14 @@ final class ItemViewController: UIViewController {
 
     private lazy var itemNameTextField: UITextField = {
         let field = UITextField()
+        field.delegate = self
         field.attributedPlaceholder = .init(
             string: NSLocalizedString("Enter event placeholder", comment: "Placeholder"),
             attributes: [.foregroundColor: UIColor.systemGray]
         )
         field.textColor = .textColor
         field.borderStyle = .roundedRect
+        field.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -105,10 +107,6 @@ final class ItemViewController: UIViewController {
         super.viewDidAppear(animated)
         itemNameTextField.becomeFirstResponder()
     }
-    
-    // MARK: - IBActions
-    @IBAction func editingChanged(_ sender: UITextField) {
-        presenter?.checkNameForLettersIn(text: sender.text)
     }
 }
 
@@ -133,8 +131,7 @@ extension ItemViewController: ItemViewControllerProtocol {
 // MARK: - UITextFieldDelegate
 extension ItemViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = textField.text,
-              !text.isEmpty else {
+        guard let text = textField.text, !text.isEmpty else {
             return false
         }
         saveAction()
@@ -171,6 +168,10 @@ private extension ItemViewController {
                 itemDatePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ]
         )
+    }
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        presenter?.checkNameForLettersIn(text: textField.text)
     }
 
     @objc func backButtonAction() {
