@@ -112,9 +112,7 @@ final class ItemViewController: UIViewController {
 // MARK: - ItemViewControllerProtocol
 extension ItemViewController: ItemViewControllerProtocol {
     func saveAction(){
-        guard let text = itemNameTextField.text else {
-            return
-        }
+        guard let text = itemNameTextField.text else { return }
         delegate?.setItemData(
             itemName: text,
             itemDate: itemDatePicker.date
@@ -130,9 +128,7 @@ extension ItemViewController: ItemViewControllerProtocol {
 // MARK: - UITextFieldDelegate
 extension ItemViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = textField.text, !text.isEmpty else {
-            return false
-        }
+        guard let text = textField.text, !text.isEmpty else { return false }
         saveAction()
         return true
     }
