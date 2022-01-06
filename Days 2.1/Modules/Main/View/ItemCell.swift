@@ -60,3 +60,29 @@ private extension ItemCell {
         )
     }
 }
+
+// MARK: - SwiftUI Preview
+#if DEBUG
+import SwiftUI
+
+struct ItemCellRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> ItemCell {
+        let view = ItemCell()
+        let itemData = ItemCell.Model(
+            itemName: "Made my first app for iOS device",
+            itemDays: "999 days"
+        )
+        view.setup(with: itemData)
+        return view
+    }
+
+    func updateUIView(_ uiView: ItemCell, context: Context) {}
+}
+
+struct ItemCellPreview: PreviewProvider {
+    static var previews: some View {
+        ItemCellRepresentable()
+            .frame(height: 100)
+    }
+}
+#endif
