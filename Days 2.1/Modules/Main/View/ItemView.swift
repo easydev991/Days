@@ -62,7 +62,6 @@ extension ItemView: ItemCellInput {
 // MARK: - Private extension
 private extension ItemView {
     func setupUI() {
-        backgroundColor = .clear
         container.addSubview(horizontalStack)
         addSubview(container)
         NSLayoutConstraint.activate(
@@ -102,8 +101,6 @@ struct ItemViewRepresentable: UIViewRepresentable {
 struct ItemViewPreview: PreviewProvider {
     static var previews: some View {
         ItemViewRepresentable()
-            .frame(height: 100)
-            .padding(.horizontal, 16)
     }
 }
 #endif
