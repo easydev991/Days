@@ -1,12 +1,6 @@
 import UIKit
 
-protocol ItemCellInput {
-    func setup(with model: ItemCell.Model)
-}
-
-final class ItemCell: UITableViewCell {
-    static let cellID = "ItemCell"
-
+final class ItemView: UIView {
     // MARK: - UI
     private lazy var container: UIView = {
         let view = UIView()
@@ -47,8 +41,8 @@ final class ItemCell: UITableViewCell {
     }()
 
     // MARK: - Lifecycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
         setupUI()
     }
 
@@ -57,40 +51,26 @@ final class ItemCell: UITableViewCell {
     }
 }
 
-extension ItemCell {
-    struct Model {
-        let itemName: String
-        let itemDays: String
-    }
-}
-
-// MARK: - TableViewCellInput
-extension ItemCell: ItemCellInput {
+// MARK: - ItemCellInput
+extension ItemView: ItemCellInput {
     func setup(with model: ItemCell.Model) {
         itemNameLabel.text = model.itemName
         itemDaysLabel.text = model.itemDays
-        horizontalStack.layoutIfNeeded()
     }
 }
 
 // MARK: - Private extension
-private extension ItemCell {
+private extension ItemView {
     func setupUI() {
-        selectionStyle = .none
         backgroundColor = .clear
         container.addSubview(horizontalStack)
-        contentView.addSubview(container)
-        let containerBottomConstraint = container.bottomAnchor.constraint(
-            equalTo: contentView.bottomAnchor,
-            constant: -Layout.smallInset
-        )
-        containerBottomConstraint.priority = .defaultHigh
+        addSubview(container)
         NSLayoutConstraint.activate(
             [
-                container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Layout.smallInset),
-                container.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Layout.defaultInset),
-                container.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Layout.defaultInset),
-                containerBottomConstraint,
+                container.topAnchor.constraint(equalTo: topAnchor),
+                container.leftAnchor.constraint(equalTo: leftAnchor),
+                container.rightAnchor.constraint(equalTo: rightAnchor),
+                container.bottomAnchor.constraint(equalTo: bottomAnchor),
                 horizontalStack.topAnchor.constraint(equalTo: container.topAnchor, constant: Layout.defaultInset),
                 horizontalStack.leftAnchor.constraint(equalTo: container.leftAnchor, constant: Layout.defaultInset),
                 horizontalStack.rightAnchor.constraint(equalTo: container.rightAnchor, constant: -Layout.defaultInset),
@@ -100,3 +80,30 @@ private extension ItemCell {
         )
     }
 }
+
+// MARK: - SwiftUI Preview
+#if DEBUG
+import SwiftUI
+
+struct ItemViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> ItemView {
+        let view = ItemView()
+        let itemData = ItemCell.Model(
+            itemName: "Made my first app for iOS device",
+            itemDays: "999 days"
+        )
+        view.setup(with: itemData)
+        return view
+    }
+
+    func updateUIView(_ uiView: ItemView, context: Context) {}
+}
+
+struct ItemViewPreview: PreviewProvider {
+    static var previews: some View {
+        ItemViewRepresentable()
+            .frame(height: 100)
+            .padding(.horizontal, 16)
+    }
+}
+#endif
