@@ -70,11 +70,26 @@ private extension ItemView {
                 container.leftAnchor.constraint(equalTo: leftAnchor),
                 container.rightAnchor.constraint(equalTo: rightAnchor),
                 container.bottomAnchor.constraint(equalTo: bottomAnchor),
-                horizontalStack.topAnchor.constraint(equalTo: container.topAnchor, constant: Layout.defaultInset),
-                horizontalStack.leftAnchor.constraint(equalTo: container.leftAnchor, constant: Layout.defaultInset),
-                horizontalStack.rightAnchor.constraint(equalTo: container.rightAnchor, constant: -Layout.defaultInset),
-                horizontalStack.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -Layout.defaultInset),
-                itemDaysLabel.widthAnchor.constraint(lessThanOrEqualTo: container.widthAnchor, multiplier: 0.3)
+                horizontalStack.topAnchor.constraint(
+                    equalTo: container.topAnchor,
+                    constant: Layout.defaultInset
+                ),
+                horizontalStack.leftAnchor.constraint(
+                    equalTo: container.leftAnchor,
+                    constant: Layout.defaultInset
+                ),
+                horizontalStack.rightAnchor.constraint(
+                    equalTo: container.rightAnchor,
+                    constant: -Layout.defaultInset
+                ),
+                horizontalStack.bottomAnchor.constraint(
+                    equalTo: container.bottomAnchor,
+                    constant: -Layout.defaultInset
+                ),
+                itemDaysLabel.widthAnchor.constraint(
+                    lessThanOrEqualTo: container.widthAnchor,
+                    multiplier: 0.3
+                )
             ]
         )
     }

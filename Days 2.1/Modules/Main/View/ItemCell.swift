@@ -52,9 +52,18 @@ private extension ItemCell {
         itemViewBottomConstraint.priority = .defaultHigh
         NSLayoutConstraint.activate(
             [
-                itemView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Layout.smallInset),
-                itemView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Layout.defaultInset),
-                itemView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Layout.defaultInset),
+                itemView.topAnchor.constraint(
+                    equalTo: contentView.topAnchor,
+                    constant: Layout.smallInset
+                ),
+                itemView.leftAnchor.constraint(
+                    equalTo: contentView.leftAnchor,
+                    constant: Layout.defaultInset
+                ),
+                itemView.rightAnchor.constraint(
+                    equalTo: contentView.rightAnchor,
+                    constant: -Layout.defaultInset
+                ),
                 itemViewBottomConstraint
             ]
         )
