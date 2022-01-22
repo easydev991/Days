@@ -65,8 +65,8 @@ extension MainViewController: MainViewControllerProtocol {
 
 // MARK: - ItemDelegate
 extension MainViewController: ItemViewControllerDelegate {
-    func setItemData(itemName: String, itemDate: Date) {
-        presenter?.saveItem(name: itemName, date: itemDate)
+    func takeItem(with name: String, and date: Date) {
+        presenter?.saveItem(with: name, and: date)
     }
 }
 

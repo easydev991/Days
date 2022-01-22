@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ItemViewControllerDelegate: AnyObject {
-    func setItemData(itemName: String, itemDate: Date)
+    func takeItem(with name: String, and date: Date)
 }
 
 protocol ItemViewControllerProtocol: AnyObject {
@@ -112,9 +112,9 @@ final class ItemViewController: UIViewController {
 extension ItemViewController: ItemViewControllerProtocol {
     func saveAction(){
         guard let text = itemNameTextField.text else { return }
-        delegate?.setItemData(
-            itemName: text,
-            itemDate: itemDatePicker.date
+        delegate?.takeItem(
+            with: text,
+            and: itemDatePicker.date
         )
         presenter?.saveButtonClicked()
     }

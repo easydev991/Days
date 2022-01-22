@@ -7,7 +7,7 @@ protocol MainPresenterProtocol: AnyObject {
     func requestItems()
     func sortBy(_ sort: SortBy)
     func setup(cell: ItemCellInput, at index: Int)
-    func saveItem(name: String, date: Date)
+    func saveItem(with name: String, and date: Date)
     func removeItem(at index: Int, completion: VoidBlock)
     func reloadView()
 }
@@ -63,8 +63,8 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     func saveItem(
-        name: String,
-        date: Date
+        with name: String,
+        and date: Date
     ) {
         let item = Item()
         item.itemName = name
