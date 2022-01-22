@@ -5,7 +5,7 @@ protocol MainPresenterProtocol: AnyObject {
     var items: [Item] { get }
     func addItemTapped()
     func requestItems()
-    func updateSortModel(sortBy: ItemSort, ascending: Bool)
+    func sortBy(_ sort: SortBy)
     func setup(cell: ItemCellInput, at index: Int)
     func saveItem(name: String, date: Date)
     func removeItem(at index: Int, completion: VoidBlock)
@@ -17,12 +17,12 @@ final class MainPresenter {
     var interactor: MainInteractorProtocol?
     var router: MainRouterProtocol?
     var items = [Item]()
-    private var sortModel = ItemSortModel(sortBy: .date, ascending: false)
+    private var sortModel = ItemSortModel(.dateDescending)
 }
 
 extension MainPresenter: MainPresenterProtocol {
     var title: String {
-        NSLocalizedString("Days have passed...", comment: "MainVC title")
+        Text.Main.viewTitle.text
     }
 
     func addItemTapped() {
@@ -36,8 +36,8 @@ extension MainPresenter: MainPresenterProtocol {
         }
     }
 
-    func updateSortModel(sortBy: ItemSort, ascending: Bool) {
-        sortModel = .init(sortBy: sortBy, ascending: ascending)
+    func sortBy(_ sort: SortBy) {
+        sortModel = .init(sort)
         requestItems()
     }
 
@@ -97,10 +97,7 @@ private extension MainPresenter {
         let calendar = Calendar.current
         let daysCount = calendar.numberOfDaysBetween(item.date, and: today)
         return daysCount != .zero
-        ? .localizedStringWithFormat(
-            NSLocalizedString("daysPast", comment: "days ago"),
-            daysCount
-        )
-        : NSLocalizedString("today", comment: "today")
+        ? Text.Main.daysPast(daysCount).text
+        : Text.Main.today.text
     }
 }

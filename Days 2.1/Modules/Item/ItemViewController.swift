@@ -43,7 +43,7 @@ final class ItemViewController: UIViewController {
 
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: closeButtonAction)
-        button.setTitle(NSLocalizedString("Close", comment: "Close button"), for: .normal)
+        button.setTitle(Text.Button.close.text, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -55,7 +55,7 @@ final class ItemViewController: UIViewController {
 
     private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: saveButtonAction)
-        button.setTitle(NSLocalizedString("Save", comment: "Save button"), for: .normal)
+        button.setTitle(Text.Button.save.text, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -69,7 +69,7 @@ final class ItemViewController: UIViewController {
         let field = UITextField()
         field.delegate = self
         field.attributedPlaceholder = .init(
-            string: NSLocalizedString("Enter event placeholder", comment: "Placeholder"),
+            string: Text.Item.titlePlaceholder.text,
             attributes: [.foregroundColor: UIColor.systemGray]
         )
         field.textColor = .textColor

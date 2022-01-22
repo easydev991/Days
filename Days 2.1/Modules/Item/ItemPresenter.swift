@@ -22,7 +22,7 @@ extension ItemPresenter: ItemPresenterProtocol {
     }
 
     func title() -> String {
-        NSLocalizedString("Remember event", comment: "ItemVC title")
+        Text.Item.viewTitle.text
     }
 
     func saveButtonClicked() {

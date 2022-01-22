@@ -7,6 +7,17 @@ protocol MainViewControllerProtocol: ItemViewControllerDelegate {
 
 final class MainViewController: UIViewController {
     // MARK: - UI
+    private lazy var sortingButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            image: .init(systemName: "arrow.up.arrow.down"),
+            style: .plain,
+            target: self,
+            action: #selector(sortButtonTapped)
+        )
+        button.tintColor = .buttonTint
+        return button
+    }()
+
     private lazy var addNewItemButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             barButtonSystemItem: .add,
@@ -44,7 +55,7 @@ final class MainViewController: UIViewController {
 // MARK: - MainViewControllerProtocol
 extension MainViewController: MainViewControllerProtocol {
     func reload() {
-        tableView.reloadData()
+        tableView.reloadSections(.init(integer: .zero), with: .automatic)
     }
 
     func present(_ viewController: UIViewController) {
@@ -120,6 +131,7 @@ private extension MainViewController {
         title = presenter?.title
         view.backgroundColor = .mainBackground
 
+        navigationItem.leftBarButtonItem = sortingButton
         navigationItem.rightBarButtonItem = addNewItemButton
         navigationController?.navigationBar.barTintColor = .mainBackground
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -135,6 +147,44 @@ private extension MainViewController {
                 tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ]
         )
+    }
+
+    @objc func sortButtonTapped() {
+        let alert = UIAlertController(
+            title: nil,
+            message: Text.Main.sortBy.text,
+            preferredStyle: .actionSheet
+        )
+        let dateDescending = UIAlertAction(
+            title: Text.Button.dateDescending.text,
+            style: .default
+        ) { [weak presenter] _ in
+            presenter?.sortBy(.dateDescending)
+        }
+        let dateAscending = UIAlertAction(
+            title: Text.Button.dateAscending.text,
+            style: .default
+        ) { [weak presenter] _ in
+            presenter?.sortBy(.dateAscending)
+        }
+        let titleDescending = UIAlertAction(
+            title: Text.Button.titleDescending.text,
+            style: .default
+        ) { [weak presenter] _ in
+            presenter?.sortBy(.titleDescending)
+        }
+        let titleAscending = UIAlertAction(
+            title: Text.Button.titleAscending.text,
+            style: .default
+        ) { [weak presenter] _ in
+            presenter?.sortBy(.titleAscending)
+        }
+        let cancelAction = UIAlertAction(
+            title: Text.Button.cancel.text,
+            style: .cancel
+        )
+        [dateDescending, dateAscending, titleDescending, titleAscending, cancelAction].forEach(alert.addAction)
+        present(alert)
     }
 
     @objc func addButtonTapped() {
