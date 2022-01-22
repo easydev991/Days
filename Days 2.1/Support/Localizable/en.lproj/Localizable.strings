@@ -4,3 +4,9 @@
 "Enter event placeholder" = "Enter event title";
 "Save" = "Save";
 "Close" = "Close";
+"Sort by" = "Sort by";
+"Date ↓" = "Date descending";
+"Date ↑" = "Date ascending";
+"Title ↓" = "Title descending";
+"Title ↑" = "Title ascending";
+"Cancel" = "Cancel";
