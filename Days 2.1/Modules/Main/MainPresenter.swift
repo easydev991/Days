@@ -93,19 +93,14 @@ extension MainPresenter: MainPresenterProtocol {
 
 private extension MainPresenter {
     func dateToTextDays(item: Item) -> String {
-        var resultString = NSLocalizedString("today", comment: "today")
         let today = Date()
         let calendar = Calendar.current
         let daysCount = calendar.numberOfDaysBetween(item.date, and: today)
-        if daysCount != .zero {
-            resultString = .localizedStringWithFormat(
-                NSLocalizedString(
-                    "daysPast",
-                    comment: "days ago"
-                ),
-                daysCount
-            )
-        }
-        return resultString
+        return daysCount != .zero
+        ? .localizedStringWithFormat(
+            NSLocalizedString("daysPast", comment: "days ago"),
+            daysCount
+        )
+        : NSLocalizedString("today", comment: "today")
     }
 }
