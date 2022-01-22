@@ -103,7 +103,7 @@ extension MainViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        presenter?.items.count ?? .zero
+        presenter?.itemsCount ?? .zero
     }
     
     func tableView(

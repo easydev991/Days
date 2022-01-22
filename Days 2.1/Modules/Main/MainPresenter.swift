@@ -2,7 +2,7 @@ import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
     var title: String { get }
-    var items: [Item] { get }
+    var itemsCount: Int { get }
     func addItemTapped()
     func requestItems()
     func sortBy(_ sort: SortBy)
@@ -16,13 +16,17 @@ final class MainPresenter {
     weak var view: MainViewControllerProtocol?
     var interactor: MainInteractorProtocol?
     var router: MainRouterProtocol?
-    var items = [Item]()
+    private var items = [Item]()
     private var sortModel = ItemSortModel(.dateDescending)
 }
 
 extension MainPresenter: MainPresenterProtocol {
     var title: String {
         Text.Main.viewTitle.text
+    }
+
+    var itemsCount: Int {
+        items.count
     }
 
     func addItemTapped() {
