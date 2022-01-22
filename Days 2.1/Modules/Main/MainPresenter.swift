@@ -46,12 +46,8 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     func sortBy(_ sort: SortBy) {
-        if sortModel.sorting == sort {
-            return
-        } else {
-            sortModel = .init(sort)
-            requestItems()
-        }
+        sortModel = .init(sort)
+        requestItems()
     }
 
     func setup(
