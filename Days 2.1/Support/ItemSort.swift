@@ -29,4 +29,13 @@ struct ItemSortModel {
             ascending = false
         }
     }
+
+    var sorting: SortBy {
+        switch sortBy {
+        case .itemName:
+            return ascending ? .titleAscending : .titleDescending
+        case .date:
+            return ascending ? .dateAscending : .dateDescending
+        }
+    }
 }
