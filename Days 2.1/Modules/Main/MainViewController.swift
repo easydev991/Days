@@ -13,6 +13,7 @@ final class MainViewController: UIViewController {
             target: self,
             action: #selector(addButtonTapped)
         )
+        button.tintColor = .buttonTint
         return button
     }()
 
@@ -20,8 +21,8 @@ final class MainViewController: UIViewController {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
-        table.backgroundColor = .clear
         table.separatorStyle = .none
+        table.backgroundColor = .clear
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = UITableView.automaticDimension
         table.register(ItemCell.self, forCellReuseIdentifier: ItemCell.cellID)
@@ -91,11 +92,7 @@ extension MainViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        var rowsCount = Int.zero
-        if let count = presenter?.items.count {
-            rowsCount = count
-        }
-        return rowsCount
+        presenter?.items.count ?? .zero
     }
     
     func tableView(
@@ -138,8 +135,6 @@ private extension MainViewController {
                 tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ]
         )
-
-        addNewItemButton.tintColor = .buttonTint
     }
 
     @objc func addButtonTapped() {
@@ -153,7 +148,7 @@ import SwiftUI
 
 struct MainVCRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        MainConfigurator.makeMainVC()
+        AppFactory.makeRootView()
     }
 
     func updateUIViewController(
