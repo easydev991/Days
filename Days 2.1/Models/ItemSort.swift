@@ -2,11 +2,24 @@ enum ItemSort: String {
     case itemName, date
 }
 
-enum SortBy {
+enum SortBy: CaseIterable {
     case dateAscending
     case dateDescending
     case titleAscending
     case titleDescending
+
+    var title: String {
+        switch self {
+        case .dateAscending:
+            return Text.Button.dateAscending.text
+        case .dateDescending:
+            return Text.Button.dateDescending.text
+        case .titleAscending:
+            return Text.Button.titleAscending.text
+        case .titleDescending:
+            return Text.Button.titleDescending.text
+        }
+    }
 }
 
 struct ItemSortModel {
