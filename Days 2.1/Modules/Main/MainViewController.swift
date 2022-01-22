@@ -36,7 +36,6 @@ final class MainViewController: UIViewController {
         table.backgroundColor = .clear
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = UITableView.automaticDimension
-        table.alwaysBounceVertical = false
         table.register(ItemCell.self, forCellReuseIdentifier: ItemCell.cellID)
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
