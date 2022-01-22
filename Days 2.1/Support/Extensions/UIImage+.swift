@@ -1,4 +1,4 @@
-import UIKit
+import UIKit.UIImage
 
 extension UIImage {
     func tint(with color: UIColor) -> UIImage {

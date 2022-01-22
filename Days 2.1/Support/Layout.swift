@@ -1,4 +1,4 @@
-import UIKit
+import CoreGraphics
 
 struct Layout {
     static let buttonWidth  = CGFloat(48)

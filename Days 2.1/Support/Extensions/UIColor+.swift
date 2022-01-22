@@ -1,4 +1,4 @@
-import UIKit
+import UIKit.UIColor
 
 extension UIColor {
     static let mainBackground = UIColor(named: "MainBackgroundColor")!
