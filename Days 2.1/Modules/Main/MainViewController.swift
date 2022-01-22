@@ -150,40 +150,31 @@ private extension MainViewController {
     }
 
     @objc func sortButtonTapped() {
-        let alert = UIAlertController(
-            title: nil,
-            message: Text.Main.sortBy.text,
-            preferredStyle: .actionSheet
-        )
-        let dateDescending = UIAlertAction(
-            title: Text.Button.dateDescending.text,
-            style: .default
-        ) { [weak presenter] _ in
-            presenter?.sortBy(.dateDescending)
+        guard let allSortingCases = presenter?.typesOfSort else {
+            return
         }
-        let dateAscending = UIAlertAction(
-            title: Text.Button.dateAscending.text,
-            style: .default
-        ) { [weak presenter] _ in
-            presenter?.sortBy(.dateAscending)
-        }
-        let titleDescending = UIAlertAction(
-            title: Text.Button.titleDescending.text,
-            style: .default
-        ) { [weak presenter] _ in
-            presenter?.sortBy(.titleDescending)
-        }
-        let titleAscending = UIAlertAction(
-            title: Text.Button.titleAscending.text,
-            style: .default
-        ) { [weak presenter] _ in
-            presenter?.sortBy(.titleAscending)
+        var alertActions = [UIAlertAction]()
+        allSortingCases.forEach { option in
+            let action = UIAlertAction(
+                title: option.title,
+                style: .default,
+                handler: { [weak presenter] _ in
+                    presenter?.sortBy(option)
+                }
+            )
+            alertActions.append(action)
         }
         let cancelAction = UIAlertAction(
             title: Text.Button.cancel.text,
             style: .cancel
         )
-        [dateDescending, dateAscending, titleDescending, titleAscending, cancelAction].forEach(alert.addAction)
+        alertActions.append(cancelAction)
+        let alert = UIAlertController(
+            title: nil,
+            message: Text.Main.sortBy.text,
+            preferredStyle: .actionSheet
+        )
+        alertActions.forEach(alert.addAction)
         present(alert)
     }
 
