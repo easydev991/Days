@@ -30,6 +30,7 @@
 		6775FF5F271372A5007D1041 /* MainRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5E271372A5007D1041 /* MainRouterTest.swift */; };
 		6775FF61271377EC007D1041 /* MainViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF60271377EC007D1041 /* MainViewControllerTest.swift */; };
 		67ABCA71279C436800A5DCE5 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ABCA70279C436700A5DCE5 /* AppFactory.swift */; };
+		67ABCA73279C615900A5DCE5 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ABCA72279C615900A5DCE5 /* Text.swift */; };
 		67C6DB2527859B5C007C9D98 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB2427859B5C007C9D98 /* UIImage+.swift */; };
 		67C6DB272785AD67007C9D98 /* ItemSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB262785AD67007C9D98 /* ItemSort.swift */; };
 		67C6DB292785E423007C9D98 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB282785E423007C9D98 /* Layout.swift */; };
@@ -85,6 +86,7 @@
 		6775FF5E271372A5007D1041 /* MainRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterTest.swift; sourceTree = "<group>"; };
 		6775FF60271377EC007D1041 /* MainViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTest.swift; sourceTree = "<group>"; };
 		67ABCA70279C436700A5DCE5 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
+		67ABCA72279C615900A5DCE5 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		67C6DB2427859B5C007C9D98 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		67C6DB262785AD67007C9D98 /* ItemSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSort.swift; sourceTree = "<group>"; };
 		67C6DB282785E423007C9D98 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				67699E2E2711FD550077522E /* Typealiases.swift */,
 				67C90F282709B81D00F257C9 /* Extensions */,
 				67C6DB2A2785E90F007C9D98 /* Localizable */,
+				67ABCA72279C615900A5DCE5 /* Text.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				67D5FB9124A8D74400F9ED26 /* MainViewController.swift in Sources */,
 				67C90F2A2709B84500F257C9 /* Calendar+.swift in Sources */,
 				67699E2D2711E3420077522E /* Results+.swift in Sources */,
+				67ABCA73279C615900A5DCE5 /* Text.swift in Sources */,
 				67699E2B2711DF690077522E /* ItemStorage.swift in Sources */,
 				67C90F2C2709CB7100F257C9 /* UIColor+.swift in Sources */,
 				67C6DB2F27874891007C9D98 /* ItemView.swift in Sources */,
