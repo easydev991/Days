@@ -153,9 +153,7 @@ import SwiftUI
 
 struct MainVCRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        let mainVC = MainViewController()
-        MainConfigurator.configure(with: mainVC)
-        return mainVC
+        MainConfigurator.makeMainVC()
     }
 
     func updateUIViewController(
