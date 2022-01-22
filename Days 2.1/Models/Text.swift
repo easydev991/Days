@@ -10,7 +10,7 @@ enum Text {
         var text: String {
             switch self {
             case .viewTitle:
-                return NSLocalizedString("Days have passed...", comment: "MainVC title")
+                return NSLocalizedString("Days have passed", comment: "MainVC title")
             case .today:
                 return NSLocalizedString("today", comment: "")
             case .daysPast(let count):
