@@ -14,6 +14,7 @@ extension UIAlertController {
     static func makeAlertWith(
         title: String? = nil,
         message: String? = nil,
+        tintColor: UIColor = .textColor,
         style: UIAlertController.Style,
         actions: [UIAlertAction]? = nil,
         exitButton button: ExitButton
@@ -33,6 +34,7 @@ extension UIAlertController {
             style: .cancel
         )
         alert.addAction(exit)
+        alert.view.tintColor = tintColor
         return alert
     }
 }
