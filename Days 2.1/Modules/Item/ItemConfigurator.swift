@@ -1,13 +1,19 @@
 struct ItemConfigurator {
-    static func configure(with viewController: ItemViewController) {
+    static func configure(
+        with delegate: ItemViewControllerDelegate?
+    ) -> ItemViewController {
+        let itemVC               = ItemViewController()
+        itemVC.delegate          = delegate
         let presenter            = ItemPresenter()
         let interactor           = ItemInteractor()
         let router               = ItemRouter()
-        presenter.view           = viewController
-        viewController.presenter = presenter
+        presenter.view           = itemVC
+        itemVC.presenter         = presenter
         presenter.interactor     = interactor
         interactor.presenter     = presenter
         presenter.router         = router
-        router.viewController    = viewController
+        router.viewController    = itemVC
+
+        return itemVC
     }
 }

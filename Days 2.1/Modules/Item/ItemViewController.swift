@@ -174,9 +174,7 @@ import SwiftUI
 
 struct ItemVCRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        let itemVC = ItemViewController()
-        ItemConfigurator.configure(with: itemVC)
-        return itemVC
+        ItemConfigurator.configure(with: nil)
     }
 
     func updateUIViewController(

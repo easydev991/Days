@@ -8,9 +8,7 @@ final class MainRouter {
 
 extension MainRouter: MainRouterProtocol {
     func openItemViewController() {
-        let itemViewController = ItemViewController()
-        ItemConfigurator.configure(with: itemViewController)
-        itemViewController.delegate = viewController
-        viewController?.present(itemViewController)
+        let itemVC = ItemConfigurator.configure(with: viewController)
+        viewController?.present(itemVC)
     }
 }
