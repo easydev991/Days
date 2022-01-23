@@ -1,7 +1,6 @@
 # Days 2.1
-This is my pet project.
-The app uses Realm to store your data and shows how many days passed after something happened in your life.
-VIPER-based architecture.
+- This is my pet project with VIPER-based architecture
+- The app uses Realm to store your data and shows how many days passed after something happened in your life
 
 ## What you can do with this app
 
