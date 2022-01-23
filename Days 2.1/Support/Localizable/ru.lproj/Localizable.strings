@@ -1,7 +1,3 @@
-"Days have passed" = "Прошло дней ...";
-"today" = "сегодня";
-"Remember event" = "Запомнить событие";
-"Enter event placeholder" = "Введите название";
 "Save" = "Сохранить";
 "Close" = "Закрыть";
 "Sort by" = "Сортировать по";
@@ -11,3 +7,9 @@
 "Title ↑" = "Алфавиту (возрастание)";
 "Cancel" = "Отменить";
 "Error" = "Ошибка";
+
+"Days have passed" = "Прошло дней ...";
+"today" = "сегодня";
+"Remember event" = "Запомнить событие";
+"Enter event placeholder" = "Введите название";
+"Items list is empty" = "Список пуст";

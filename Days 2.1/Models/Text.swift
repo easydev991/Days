@@ -7,6 +7,7 @@ enum Text {
 
     enum Main {
         case viewTitle
+        case emptyList
         case today
         case daysPast(Int)
         case sortBy
@@ -15,6 +16,8 @@ enum Text {
             switch self {
             case .viewTitle:
                 return NSLocalizedString("Days have passed", comment: "MainVC title")
+            case .emptyList:
+                return NSLocalizedString("Items list is empty", comment: "")
             case .today:
                 return NSLocalizedString("today", comment: "")
             case .daysPast(let count):

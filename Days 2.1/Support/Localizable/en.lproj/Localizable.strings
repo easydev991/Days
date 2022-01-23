@@ -1,7 +1,3 @@
-"Days have passed" = "Days have passed";
-"today" = "today";
-"Remember event" = "Remember event";
-"Enter event placeholder" = "Enter title";
 "Save" = "Save";
 "Close" = "Close";
 "Sort by" = "Sort by";
@@ -11,3 +7,9 @@
 "Title ↑" = "Title ascending";
 "Cancel" = "Cancel";
 "Error" = "Error";
+
+"Days have passed" = "Days have passed";
+"today" = "today";
+"Remember event" = "Remember event";
+"Enter event placeholder" = "Enter title";
+"Items list is empty" = "The list is empty";
