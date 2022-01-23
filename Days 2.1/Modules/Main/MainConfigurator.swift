@@ -3,9 +3,9 @@ import UIKit.UIViewController
 struct MainConfigurator {
     static func makeMainVC() -> UIViewController {
         let mainVC            = MainViewController()
-        let itemStorage       = ItemStorage()
+        let storage           = ItemStorage()
         let presenter         = MainPresenter()
-        let interactor        = MainInteractor(itemStorage: itemStorage)
+        let interactor        = MainInteractor(itemStorage: storage)
         let router            = MainRouter()
         presenter.view        = mainVC
         mainVC.presenter      = presenter

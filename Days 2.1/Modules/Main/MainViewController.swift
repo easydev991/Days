@@ -3,11 +3,16 @@ import UIKit
 protocol MainViewControllerProtocol: ItemViewControllerDelegate {
     func reload(isListEmpty: Bool)
     func setEmptyView(hidden: Bool)
+    func setNavItemButtons(_ state: MainViewController.VisibleNavItemButtons)
     func showError(_ message: String)
     func present(_ viewController: UIViewController)
 }
 
 final class MainViewController: UIViewController {
+    enum VisibleNavItemButtons {
+        case add, sortAndAdd, none
+    }
+
     // MARK: - UI
     private lazy var sortingButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
@@ -30,7 +35,7 @@ final class MainViewController: UIViewController {
     }()
     private lazy var emptyView: EmptyView = {
         let view = EmptyView(delegate: self)
-        view.isHidden = true
+        view.alpha = .zero
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -63,33 +68,42 @@ final class MainViewController: UIViewController {
 extension MainViewController: MainViewControllerProtocol {
     func reload(isListEmpty: Bool) {
         tableView.isHidden = isListEmpty
-        emptyView.isHidden = !isListEmpty
         if !isListEmpty {
-            tableView.reloadSections(.init(integer: .zero), with: .automatic)
+            emptyView.alpha = .zero
+            tableView.reloadSections(
+                .init(integer: .zero),
+                with: .automatic
+            )
+        } else {
+            emptyView.fadeIn()
         }
     }
 
     func setEmptyView(hidden: Bool) {
-        emptyView.isHidden = hidden
+        emptyView.fadeTo(hidden ? .zero : 1)
     }
 
-    func present(_ viewController: UIViewController) {
-        present(viewController, animated: true)
+    func setNavItemButtons(_ state: MainViewController.VisibleNavItemButtons) {
+        switch state {
+        case .add:
+            navigationItem.leftBarButtonItem = nil
+            navigationItem.rightBarButtonItem = addNewItemButton
+        case .sortAndAdd:
+            navigationItem.leftBarButtonItem = sortingButton
+            navigationItem.rightBarButtonItem = addNewItemButton
+        case .none:
+            navigationItem.leftBarButtonItem = nil
+            navigationItem.rightBarButtonItem = nil
+        }
     }
 
     func showError(_ message: String) {
-        let alert = UIAlertController.makeAlertWith(
+        showAlertWith(
             title: Text.Alert.error,
-            message: message,
-            style: .alert,
-            exitButton: .close
+            message: message
         )
-        present(alert)
     }
-}
 
-// MARK: - ItemDelegate
-extension MainViewController: ItemViewControllerDelegate {
     func takeItem(with name: String, and date: Date) {
         presenter?.saveItem(with: name, and: date)
     }
@@ -162,9 +176,6 @@ private extension MainViewController {
     func setupUI() {
         title = presenter?.title
         view.backgroundColor = .mainBackground
-
-        navigationItem.leftBarButtonItem = sortingButton
-        navigationItem.rightBarButtonItem = addNewItemButton
         navigationController?.navigationBar.barTintColor = .mainBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.textColor]
@@ -196,9 +207,7 @@ private extension MainViewController {
             }
             let alert = UIAlertController.makeAlertWith(
                 title: Text.Main.sortBy.text,
-                style: .alert,
-                actions: alertActions,
-                exitButton: .cancel
+                actions: alertActions
             )
             present(alert)
         }

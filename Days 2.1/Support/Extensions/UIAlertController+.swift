@@ -1,23 +1,12 @@
 import UIKit.UIAlertController
 
 extension UIAlertController {
-    enum ExitButton {
-        case cancel, close
-
-        var title: String {
-            self == .cancel
-            ? Text.Button.cancel.text
-            : Text.Button.close.text
-        }
-    }
-
     static func makeAlertWith(
         title: String? = nil,
         message: String? = nil,
         tintColor: UIColor = .textColor,
-        style: UIAlertController.Style,
-        actions: [UIAlertAction]? = nil,
-        exitButton button: ExitButton
+        style: UIAlertController.Style = .alert,
+        actions: [UIAlertAction]? = nil
     ) -> UIAlertController {
         let alert = UIAlertController(
             title: title,
@@ -30,7 +19,7 @@ extension UIAlertController {
             }
         }
         let exit = UIAlertAction(
-            title: button.title,
+            title: Text.Button.close.text,
             style: .cancel
         )
         alert.addAction(exit)

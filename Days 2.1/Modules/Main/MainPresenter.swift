@@ -45,6 +45,8 @@ extension MainPresenter: MainPresenterProtocol {
                 case .success(let items):
                     self?.items = items
                     view?.reload(isListEmpty: items.isEmpty)
+                    let state = MainModel.navItemButtonsState(for: items.count)
+                    view?.setNavItemButtons(state)
                 case .failure(let error):
                     view?.showError(error.localizedDescription)
                 }
@@ -62,7 +64,7 @@ extension MainPresenter: MainPresenterProtocol {
         at index: Int
     ) {
         let item = items[index]
-        let itemDays = textFrom(date: item.date)
+        let itemDays = MainModel.textFrom(date: item.date)
         let model = ItemCell.Model(
             itemName: item.title,
             itemDays: itemDays
@@ -91,24 +93,15 @@ extension MainPresenter: MainPresenterProtocol {
         completion: VoidBlock?
     ) {
         let itemForRemoval = items.remove(at: index)
-        interactor?.removeItem(itemForRemoval) { [weak self, weak view] error in
+        let itemsCount = items.count
+        interactor?.removeItem(itemForRemoval) { [weak view] error in
             if let error = error {
                 view?.showError(error.localizedDescription)
             } else {
-                view?.setEmptyView(hidden: self?.itemsCount != .zero)
+                view?.setEmptyView(hidden: itemsCount != .zero)
+                view?.setNavItemButtons(MainModel.navItemButtonsState(for: itemsCount))
                 completion?()
             }
         }
-    }
-}
-
-private extension MainPresenter {
-    func textFrom(date: Date) -> String {
-        let today = Date()
-        let calendar = Calendar.current
-        let daysCount = calendar.numberOfDaysBetween(date, and: today)
-        return daysCount != .zero
-        ? Text.Main.daysPast(daysCount).text
-        : Text.Main.today.text
     }
 }

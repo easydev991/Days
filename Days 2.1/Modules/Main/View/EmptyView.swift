@@ -16,7 +16,7 @@ final class EmptyView: UIView {
             ]
         )
         stack.axis = .vertical
-        stack.spacing = 16
+        stack.spacing = Layout.Insets.standard
         stack.alignment = .center
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack

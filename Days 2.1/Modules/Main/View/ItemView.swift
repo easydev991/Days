@@ -4,7 +4,7 @@ final class ItemView: UIView {
     // MARK: - UI
     private lazy var container: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = Layout.Insets.average
         view.backgroundColor = .systemYellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -15,7 +15,7 @@ final class ItemView: UIView {
                 itemNameLabel, itemDaysLabel
             ]
         )
-        stack.spacing = 16
+        stack.spacing = Layout.Insets.standard
         stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack

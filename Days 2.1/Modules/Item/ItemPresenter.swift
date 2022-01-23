@@ -4,10 +4,9 @@ protocol ItemPresenterProtocol: AnyObject {
     var router: ItemRouterProtocol? { get set }
     func viewDidLoad()
     func title() -> String
-    func saveButtonClicked()
     func checkNameForLettersIn(text: String?)
     func setSaveButton(enabled: Bool)
-    func backButtonTapped()
+    func finishFlow()
 }
 
 final class ItemPresenter {
@@ -25,10 +24,6 @@ extension ItemPresenter: ItemPresenterProtocol {
         Text.Item.viewTitle.text
     }
 
-    func saveButtonClicked() {
-        router?.dismissViewController()
-    }
-
     func checkNameForLettersIn(text: String?) {
         interactor?.checkNameForLettersIn(string: text)
     }
@@ -37,7 +32,7 @@ extension ItemPresenter: ItemPresenterProtocol {
         view?.setSaveButton(enabled: enabled)
     }
 
-    func backButtonTapped() {
+    func finishFlow() {
         router?.dismissViewController()
     }
 }

@@ -14,10 +14,10 @@ final class ItemViewController: UIViewController {
     private lazy var hStack: UIStackView = {
         let stack = UIStackView(
             arrangedSubviews: [
-                closeButton, titleLabel, saveButton
+                cancelButton, titleLabel, saveButton
             ]
         )
-        stack.spacing = 8
+        stack.spacing = Layout.Insets.average
         stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -41,16 +41,16 @@ final class ItemViewController: UIViewController {
         return label
     }()
 
-    private lazy var closeButton: UIButton = {
+    private lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: closeButtonAction)
-        button.setTitle(Text.Button.close.text, for: .normal)
+        button.setTitle(Text.Button.cancel.text, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     private lazy var closeButtonAction = UIAction { [weak presenter] _ in
-        presenter?.backButtonTapped()
+        presenter?.finishFlow()
     }
 
     private lazy var saveButton: UIButton = {
@@ -116,7 +116,7 @@ extension ItemViewController: ItemViewControllerProtocol {
             with: text,
             and: itemDatePicker.date
         )
-        presenter?.saveButtonClicked()
+        presenter?.finishFlow()
     }
 
     func setSaveButton(enabled: Bool) {
@@ -141,8 +141,8 @@ private extension ItemViewController {
         [hStack, separatorView, itemNameTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate(
             [
-                closeButton.widthAnchor.constraint(equalToConstant: Layout.Button.Navigation.width),
-                saveButton.widthAnchor.constraint(equalTo: closeButton.widthAnchor),
+                cancelButton.widthAnchor.constraint(equalToConstant: Layout.Button.Navigation.width),
+                saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor),
                 hStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.Insets.standard),
                 hStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.Insets.standard),
                 hStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Layout.Insets.standard),
@@ -164,7 +164,7 @@ private extension ItemViewController {
     }
 
     @objc func backButtonAction() {
-        presenter?.backButtonTapped()
+        presenter?.finishFlow()
     }
 }
 
