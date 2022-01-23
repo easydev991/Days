@@ -64,7 +64,7 @@ extension MainPresenter: MainPresenterProtocol {
         let item = items[index]
         let itemDays = textFrom(date: item.date)
         let model = ItemCell.Model(
-            itemName: item.itemName,
+            itemName: item.title,
             itemDays: itemDays
         )
         cell.setup(with: model)
@@ -75,7 +75,7 @@ extension MainPresenter: MainPresenterProtocol {
         and date: Date
     ) {
         let item = Item()
-        item.itemName = name
+        item.title = name
         item.date = date
         interactor?.saveItem(item) { [weak self, weak view] error in
             if let error = error {

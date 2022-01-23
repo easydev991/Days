@@ -1,5 +1,5 @@
 enum ItemSort: String {
-    case itemName, date
+    case title, date
 }
 
 enum SortBy: CaseIterable {
@@ -35,17 +35,17 @@ struct ItemSortModel {
             sortBy = .date
             ascending = false
         case .titleAscending:
-            sortBy = .itemName
+            sortBy = .title
             ascending = true
         case .titleDescending:
-            sortBy = .itemName
+            sortBy = .title
             ascending = false
         }
     }
 
     var sorting: SortBy {
         switch sortBy {
-        case .itemName:
+        case .title:
             return ascending ? .titleAscending : .titleDescending
         case .date:
             return ascending ? .dateAscending : .dateDescending
