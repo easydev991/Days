@@ -11,7 +11,7 @@ protocol ItemViewControllerProtocol: AnyObject {
 
 final class ItemViewController: UIViewController {
     // MARK: - UI
-    private lazy var horizontalStack: UIStackView = {
+    private lazy var hStack: UIStackView = {
         let stack = UIStackView(
             arrangedSubviews: [
                 closeButton, titleLabel, saveButton
@@ -138,22 +138,22 @@ private extension ItemViewController {
     func setupUI() {
         title = presenter?.title()
         view.backgroundColor = .mainBackground
-        [horizontalStack, separatorView, itemNameTextField, itemDatePicker].forEach(view.addSubview)
+        [hStack, separatorView, itemNameTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate(
             [
-                closeButton.widthAnchor.constraint(equalToConstant: Layout.buttonWidth),
+                closeButton.widthAnchor.constraint(equalToConstant: Layout.Button.Navigation.width),
                 saveButton.widthAnchor.constraint(equalTo: closeButton.widthAnchor),
-                horizontalStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.defaultInset),
-                horizontalStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.defaultInset),
-                horizontalStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Layout.defaultInset),
-                separatorView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: Layout.averageInset),
-                separatorView.leftAnchor.constraint(equalTo: horizontalStack.leftAnchor),
-                separatorView.rightAnchor.constraint(equalTo: horizontalStack.rightAnchor),
+                hStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.Insets.standard),
+                hStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.Insets.standard),
+                hStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Layout.Insets.standard),
+                separatorView.topAnchor.constraint(equalTo: hStack.bottomAnchor, constant: Layout.Insets.average),
+                separatorView.leftAnchor.constraint(equalTo: hStack.leftAnchor),
+                separatorView.rightAnchor.constraint(equalTo: hStack.rightAnchor),
                 separatorView.heightAnchor.constraint(equalToConstant: 1),
-                itemNameTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.averageInset),
-                itemNameTextField.leftAnchor.constraint(equalTo: horizontalStack.leftAnchor),
-                itemNameTextField.rightAnchor.constraint(equalTo: horizontalStack.rightAnchor),
-                itemDatePicker.topAnchor.constraint(equalTo: itemNameTextField.bottomAnchor, constant: Layout.defaultInset),
+                itemNameTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.Insets.average),
+                itemNameTextField.leftAnchor.constraint(equalTo: hStack.leftAnchor),
+                itemNameTextField.rightAnchor.constraint(equalTo: hStack.rightAnchor),
+                itemDatePicker.topAnchor.constraint(equalTo: itemNameTextField.bottomAnchor, constant: Layout.Insets.standard),
                 itemDatePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ]
         )

@@ -1,7 +1,8 @@
 import UIKit
 
 protocol MainViewControllerProtocol: ItemViewControllerDelegate {
-    func reload()
+    func reload(isListEmpty: Bool)
+    func setEmptyView(hidden: Bool)
     func showError(_ message: String)
     func present(_ viewController: UIViewController)
 }
@@ -18,7 +19,6 @@ final class MainViewController: UIViewController {
         button.tintColor = .buttonTint
         return button
     }()
-
     private lazy var addNewItemButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             barButtonSystemItem: .add,
@@ -28,9 +28,15 @@ final class MainViewController: UIViewController {
         button.tintColor = .buttonTint
         return button
     }()
-
+    private lazy var emptyView: EmptyView = {
+        let view = EmptyView(delegate: self)
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     private lazy var tableView: UITableView = {
         let table = UITableView()
+        table.isHidden = true
         table.delegate = self
         table.dataSource = self
         table.separatorStyle = .none
@@ -55,8 +61,16 @@ final class MainViewController: UIViewController {
 
 // MARK: - MainViewControllerProtocol
 extension MainViewController: MainViewControllerProtocol {
-    func reload() {
-        tableView.reloadSections(.init(integer: .zero), with: .automatic)
+    func reload(isListEmpty: Bool) {
+        tableView.isHidden = isListEmpty
+        emptyView.isHidden = !isListEmpty
+        if !isListEmpty {
+            tableView.reloadSections(.init(integer: .zero), with: .automatic)
+        }
+    }
+
+    func setEmptyView(hidden: Bool) {
+        emptyView.isHidden = hidden
     }
 
     func present(_ viewController: UIViewController) {
@@ -81,6 +95,13 @@ extension MainViewController: ItemViewControllerDelegate {
     }
 }
 
+// MARK: - EmptyViewDelegate
+extension MainViewController: EmptyViewDelegate {
+    func buttonTapped() {
+        addButtonTapped()
+    }
+}
+
 // MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
     func tableView(
@@ -102,7 +123,7 @@ extension MainViewController: UITableViewDelegate {
                 )
             }
         )
-        deleteAction.image = .init(systemName: "trash")?.tint(with: .systemRed)
+        deleteAction.image = .init(systemName: "trash")?.colored(.systemRed)
         deleteAction.backgroundColor = .mainBackground
         return .init(actions: [deleteAction])
     }
@@ -146,16 +167,18 @@ private extension MainViewController {
         navigationItem.rightBarButtonItem = addNewItemButton
         navigationController?.navigationBar.barTintColor = .mainBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.mainTitle]
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.mainTitle]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.textColor]
 
-        view.addSubview(tableView)
+        [tableView, emptyView].forEach(view.addSubview)
         NSLayoutConstraint.activate(
             [
                 tableView.topAnchor.constraint(equalTo: view.topAnchor),
                 tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
                 tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                emptyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                emptyView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ]
         )
     }

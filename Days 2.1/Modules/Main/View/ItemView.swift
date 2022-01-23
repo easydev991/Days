@@ -9,8 +9,7 @@ final class ItemView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    private lazy var horizontalStack: UIStackView = {
+    private lazy var hStack: UIStackView = {
         let stack = UIStackView(
             arrangedSubviews: [
                 itemNameLabel, itemDaysLabel
@@ -21,7 +20,6 @@ final class ItemView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-
     private lazy var itemNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -30,7 +28,6 @@ final class ItemView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
     private lazy var itemDaysLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -62,7 +59,7 @@ extension ItemView: ItemCellInput {
 // MARK: - Private extension
 private extension ItemView {
     func setupUI() {
-        container.addSubview(horizontalStack)
+        container.addSubview(hStack)
         addSubview(container)
         NSLayoutConstraint.activate(
             [
@@ -70,21 +67,21 @@ private extension ItemView {
                 container.leftAnchor.constraint(equalTo: leftAnchor),
                 container.rightAnchor.constraint(equalTo: rightAnchor),
                 container.bottomAnchor.constraint(equalTo: bottomAnchor),
-                horizontalStack.topAnchor.constraint(
+                hStack.topAnchor.constraint(
                     equalTo: container.topAnchor,
-                    constant: Layout.defaultInset
+                    constant: Layout.Insets.standard
                 ),
-                horizontalStack.leftAnchor.constraint(
+                hStack.leftAnchor.constraint(
                     equalTo: container.leftAnchor,
-                    constant: Layout.defaultInset
+                    constant: Layout.Insets.standard
                 ),
-                horizontalStack.rightAnchor.constraint(
+                hStack.rightAnchor.constraint(
                     equalTo: container.rightAnchor,
-                    constant: -Layout.defaultInset
+                    constant: -Layout.Insets.standard
                 ),
-                horizontalStack.bottomAnchor.constraint(
+                hStack.bottomAnchor.constraint(
                     equalTo: container.bottomAnchor,
-                    constant: -Layout.defaultInset
+                    constant: -Layout.Insets.standard
                 ),
                 itemDaysLabel.widthAnchor.constraint(
                     lessThanOrEqualTo: container.widthAnchor,

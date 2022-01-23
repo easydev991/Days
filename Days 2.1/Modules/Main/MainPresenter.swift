@@ -44,7 +44,7 @@ extension MainPresenter: MainPresenterProtocol {
                 switch result {
                 case .success(let items):
                     self?.items = items
-                    view?.reload()
+                    view?.reload(isListEmpty: items.isEmpty)
                 case .failure(let error):
                     view?.showError(error.localizedDescription)
                 }
@@ -91,10 +91,11 @@ extension MainPresenter: MainPresenterProtocol {
         completion: VoidBlock?
     ) {
         let itemForRemoval = items.remove(at: index)
-        interactor?.removeItem(itemForRemoval) { [weak view] error in
+        interactor?.removeItem(itemForRemoval) { [weak self, weak view] error in
             if let error = error {
                 view?.showError(error.localizedDescription)
             } else {
+                view?.setEmptyView(hidden: self?.itemsCount != .zero)
                 completion?()
             }
         }

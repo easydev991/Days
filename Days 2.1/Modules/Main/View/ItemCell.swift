@@ -47,22 +47,22 @@ private extension ItemCell {
         contentView.addSubview(itemView)
         let itemViewBottomConstraint = itemView.bottomAnchor.constraint(
             equalTo: contentView.bottomAnchor,
-            constant: -Layout.smallInset
+            constant: -Layout.Insets.small
         )
         itemViewBottomConstraint.priority = .defaultHigh
         NSLayoutConstraint.activate(
             [
                 itemView.topAnchor.constraint(
                     equalTo: contentView.topAnchor,
-                    constant: Layout.smallInset
+                    constant: Layout.Insets.small
                 ),
                 itemView.leftAnchor.constraint(
                     equalTo: contentView.leftAnchor,
-                    constant: Layout.defaultInset
+                    constant: Layout.Insets.standard
                 ),
                 itemView.rightAnchor.constraint(
                     equalTo: contentView.rightAnchor,
-                    constant: -Layout.defaultInset
+                    constant: -Layout.Insets.standard
                 ),
                 itemViewBottomConstraint
             ]

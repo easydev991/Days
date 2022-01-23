@@ -1,8 +1,15 @@
 import CoreGraphics
 
 struct Layout {
-    static let buttonWidth  = CGFloat(48)
-    static let defaultInset = CGFloat(16)
-    static let averageInset = defaultInset/2
-    static let smallInset   = defaultInset/4
+    struct Button {
+        struct Navigation {
+            static let width = CGFloat(48)
+        }
+        static let height = CGFloat(48)
+    }
+    struct Insets {
+        static let standard = CGFloat(16)
+        static let average  = standard/2
+        static let small    = standard/4
+    }
 }
