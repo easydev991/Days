@@ -33,21 +33,26 @@ final class EmptyView: UIView {
     }()
     private lazy var addNewItemButton: UIButton = {
         let button = UIButton(type: .custom)
+        button.clipsToBounds = true
         button.setTitle(Text.Item.viewTitle.text, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.setBackgroundImage(
-            .init(color: .buttonBackground),
+            .init(color: .buttonNormal),
             for: .normal
         )
         button.setBackgroundImage(
-            .init(color: .buttonBackground.withAlphaComponent(0.8)),
+            .init(color: .buttonPressed),
             for: .highlighted
         )
         button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.black.withAlphaComponent(0.8), for: .highlighted)
+        button.setTitleColor(.blackPressed, for: .highlighted)
         button.layer.cornerRadius = 24
-        button.clipsToBounds = true
-        button.contentEdgeInsets = .init(top: .zero, left: 16, bottom: .zero, right: 16)
+        button.contentEdgeInsets = .init(
+            top: .zero,
+            left: Layout.Insets.standard,
+            bottom: .zero,
+            right: Layout.Insets.standard
+        )
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
