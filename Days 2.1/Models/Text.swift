@@ -1,6 +1,10 @@
 import Foundation
 
 enum Text {
+    enum Alert {
+        static let error = NSLocalizedString("Error", comment: "")
+    }
+
     enum Main {
         case viewTitle
         case today
