@@ -2,6 +2,7 @@ import UIKit
 
 protocol MainViewControllerProtocol: ItemViewControllerDelegate {
     func reload(isListEmpty: Bool)
+    func set(title: String?)
     func setEmptyView(hidden: Bool)
     func setNavItemButtons(_ state: MainViewController.VisibleNavItemButtons)
     func showError(_ message: String)
@@ -66,6 +67,10 @@ final class MainViewController: UIViewController {
 
 // MARK: - MainViewControllerProtocol
 extension MainViewController: MainViewControllerProtocol {
+    func set(title: String?) {
+        self.title = title
+    }
+
     func reload(isListEmpty: Bool) {
         tableView.isHidden = isListEmpty
         if !isListEmpty {
@@ -174,7 +179,6 @@ extension MainViewController: UITableViewDataSource {
 // MARK: - Private extension
 private extension MainViewController {
     func setupUI() {
-        title = presenter?.title
         view.backgroundColor = .mainBackground
         navigationController?.navigationBar.barTintColor = .mainBackground
         navigationController?.navigationBar.prefersLargeTitles = true

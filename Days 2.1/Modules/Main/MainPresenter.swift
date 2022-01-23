@@ -1,7 +1,6 @@
 import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
-    var title: String { get }
     var itemsCount: Int { get }
     var typesOfSort: [SortBy] { get }
     func addItemTapped()
@@ -21,10 +20,6 @@ final class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterProtocol {
-    var title: String {
-        Text.Main.viewTitle.text
-    }
-
     var itemsCount: Int {
         interactor?.itemsCount ?? .zero
     }
@@ -44,7 +39,9 @@ extension MainPresenter: MainPresenterProtocol {
                 switch result {
                 case .success(let items):
                     self?.items = items
-                    view?.reload(isListEmpty: items.isEmpty)
+                    let isListEmpty = items.isEmpty
+                    view?.reload(isListEmpty: isListEmpty)
+                    view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.text)
                     let state = MainModel.navItemButtonsState(for: items.count)
                     view?.setNavItemButtons(state)
                 case .failure(let error):
@@ -98,8 +95,9 @@ extension MainPresenter: MainPresenterProtocol {
             if let error = error {
                 view?.showError(error.localizedDescription)
             } else {
-                view?.setEmptyView(hidden: itemsCount != .zero)
                 view?.setNavItemButtons(MainModel.navItemButtonsState(for: itemsCount))
+                view?.set(title: itemsCount == .zero ? nil : Text.Main.viewTitle.text)
+                view?.setEmptyView(hidden: itemsCount != .zero)
                 completion?()
             }
         }
