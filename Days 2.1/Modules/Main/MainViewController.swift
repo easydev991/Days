@@ -2,6 +2,7 @@ import UIKit
 
 protocol MainViewControllerProtocol: ItemViewControllerDelegate {
     func reload()
+    func showError(_ message: String)
     func present(_ viewController: UIViewController)
 }
 
@@ -60,6 +61,16 @@ extension MainViewController: MainViewControllerProtocol {
 
     func present(_ viewController: UIViewController) {
         present(viewController, animated: true)
+    }
+
+    func showError(_ message: String) {
+        let alert = UIAlertController.makeAlertWith(
+            title: Text.Alert.error,
+            message: message,
+            style: .alert,
+            exitButton: .close
+        )
+        present(alert)
     }
 }
 
@@ -150,32 +161,24 @@ private extension MainViewController {
     }
 
     @objc func sortButtonTapped() {
-        guard let allSortingCases = presenter?.typesOfSort else {
-            return
-        }
-        var alertActions = [UIAlertAction]()
-        allSortingCases.forEach { option in
-            let action = UIAlertAction(
-                title: option.title,
-                style: .default,
-                handler: { [weak presenter] _ in
-                    presenter?.sortBy(option)
-                }
+        if let sortingCases = presenter?.typesOfSort {
+            let alertActions = sortingCases.map { option in
+                return UIAlertAction(
+                    title: option.title,
+                    style: .default,
+                    handler: { [weak presenter] _ in
+                        presenter?.sortBy(option)
+                    }
+                )
+            }
+            let alert = UIAlertController.makeAlertWith(
+                title: Text.Main.sortBy.text,
+                style: .alert,
+                actions: alertActions,
+                exitButton: .cancel
             )
-            alertActions.append(action)
+            present(alert)
         }
-        let cancelAction = UIAlertAction(
-            title: Text.Button.cancel.text,
-            style: .cancel
-        )
-        alertActions.append(cancelAction)
-        let alert = UIAlertController(
-            title: nil,
-            message: Text.Main.sortBy.text,
-            preferredStyle: .actionSheet
-        )
-        alertActions.forEach(alert.addAction)
-        present(alert)
     }
 
     @objc func addButtonTapped() {

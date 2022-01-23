@@ -1,60 +1,86 @@
 import RealmSwift
 
 protocol ItemStorageService {
-    func loadItems(sortedBy model: ItemSortModel) -> [Item]
+    var itemsCount: Int { get }
 
-    func saveItem(
+    func loadItems(
+        sortedBy model: ItemSortModel,
+        completion: @escaping ItemsVoidResult
+    )
+
+    func save(
         item: Item,
-        completion: OptionalErrorVoidBlock
+        completion: @escaping OptionalErrorVoidBlock
     )
 
     func remove(
         item: Item,
-        completion: OptionalErrorVoidBlock
+        completion: @escaping OptionalErrorVoidBlock
     )
 }
 
 final class ItemStorage {
-    private let realm = try! Realm()
+    private let realmConfig = Realm.Configuration(
+        schemaVersion: RealmSchema.version
+    )
 }
 
 extension ItemStorage: ItemStorageService {
-    func loadItems(sortedBy model: ItemSortModel) -> [Item] {
-        realm
-            .objects(Item.self)
-            .sorted(
-                byKeyPath: model.sortBy.rawValue,
-                ascending: model.ascending
-            )
-            .toArray()
+    var itemsCount: Int {
+        do {
+            let realm = try Realm(configuration: realmConfig)
+            return realm.objects(Item.self).toArray().count
+        } catch {
+            print("ItemStorage: itemsCount:", error.localizedDescription)
+            return .zero
+        }
     }
 
-    func saveItem(
-        item: Item,
-        completion: OptionalErrorVoidBlock
+    func loadItems(
+        sortedBy model: ItemSortModel,
+        completion: @escaping ItemsVoidResult
     ) {
         do {
+            let realm = try Realm(configuration: realmConfig)
+            let items = realm.objects(Item.self)
+                .sorted(
+                    byKeyPath: model.sortBy.rawValue,
+                    ascending: model.ascending
+                )
+                .toArray()
+            completion(.success(items))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
+    func save(
+        item: Item,
+        completion: @escaping OptionalErrorVoidBlock
+    ) {
+        do {
+            let realm = try Realm(configuration: realmConfig)
             try realm.write {
                 realm.add(item)
-                completion(nil)
             }
+            completion(nil)
         } catch {
-            print("Could not save an item, error:\n\(error)")
             completion(error)
         }
     }
 
     func remove(
         item: Item,
-        completion: OptionalErrorVoidBlock
+        completion: @escaping OptionalErrorVoidBlock
     ) {
         do {
+            let realm = try Realm(configuration: realmConfig)
             try realm.write {
                 realm.delete(item)
-                completion(nil)
+
             }
+            completion(nil)
         } catch {
-            print("Could not delete an item, error:\n\(error)")
             completion(error)
         }
     }

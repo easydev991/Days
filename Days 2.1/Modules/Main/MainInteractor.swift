@@ -1,7 +1,20 @@
 protocol MainInteractorProtocol: AnyObject {
-    func saveItem(_ item: Item, completion: OptionalErrorVoidBlock)
-    func removeItem(_ item: Item, completion: OptionalErrorVoidBlock)
-    func loadItems(sortedBy model: ItemSortModel) -> [Item]
+    var itemsCount: Int { get }
+
+    func saveItem(
+        _ item: Item,
+        completion: @escaping OptionalErrorVoidBlock
+    )
+
+    func removeItem(
+        _ item: Item,
+        completion: @escaping OptionalErrorVoidBlock
+    )
+
+    func loadItems(
+        sortedBy model: ItemSortModel,
+        completion: @escaping ItemsVoidResult
+    )
 }
 
 final class MainInteractor {
@@ -14,25 +27,28 @@ final class MainInteractor {
 }
 
 extension MainInteractor: MainInteractorProtocol {
-    func loadItems(sortedBy model: ItemSortModel) -> [Item] {
-        itemStorage.loadItems(sortedBy: model)
+    var itemsCount: Int {
+        itemStorage.itemsCount
+    }
+
+    func loadItems(
+        sortedBy model: ItemSortModel,
+        completion: @escaping ItemsVoidResult
+    ) {
+        itemStorage.loadItems(sortedBy: model, completion: completion)
     }
 
     func saveItem(
         _ item: Item,
-        completion: OptionalErrorVoidBlock
+        completion: @escaping OptionalErrorVoidBlock
     ) {
-        itemStorage.saveItem(item: item) { error in
-            completion(error)
-        }
+        itemStorage.save(item: item, completion: completion)
     }
 
     func removeItem(
         _ item: Item,
-        completion: OptionalErrorVoidBlock
+        completion: @escaping OptionalErrorVoidBlock
     ) {
-        itemStorage.remove(item: item) { error in
-            completion(error)
-        }
+        itemStorage.remove(item: item, completion: completion)
     }
 }

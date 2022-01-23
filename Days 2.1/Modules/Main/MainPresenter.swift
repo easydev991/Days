@@ -9,8 +9,7 @@ protocol MainPresenterProtocol: AnyObject {
     func sortBy(_ sort: SortBy)
     func setup(cell: ItemCellInput, at index: Int)
     func saveItem(with name: String, and date: Date)
-    func removeItem(at index: Int, completion: VoidBlock)
-    func reloadView()
+    func removeItem(at index: Int, completion: VoidBlock?)
 }
 
 final class MainPresenter {
@@ -27,7 +26,7 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     var itemsCount: Int {
-        items.count
+        interactor?.itemsCount ?? .zero
     }
 
     var typesOfSort: [SortBy] {
@@ -39,10 +38,18 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     func requestItems() {
-        if let receivedItems = interactor?.loadItems(sortedBy: sortModel) {
-            items = receivedItems
-            reloadView()
-        }
+        interactor?.loadItems(
+            sortedBy: sortModel,
+            completion: { [weak self, weak view] result in
+                switch result {
+                case .success(let items):
+                    self?.items = items
+                    view?.reload()
+                case .failure(let error):
+                    view?.showError(error.localizedDescription)
+                }
+            }
+        )
     }
 
     func sortBy(_ sort: SortBy) {
@@ -55,7 +62,7 @@ extension MainPresenter: MainPresenterProtocol {
         at index: Int
     ) {
         let item = items[index]
-        let itemDays = dateToTextDays(item: item)
+        let itemDays = textFrom(date: item.date)
         let model = ItemCell.Model(
             itemName: item.itemName,
             itemDays: itemDays
@@ -70,41 +77,35 @@ extension MainPresenter: MainPresenterProtocol {
         let item = Item()
         item.itemName = name
         item.date = date
-        interactor?.saveItem(item) { error in
+        interactor?.saveItem(item) { [weak self, weak view] error in
             if let error = error {
-                print("Error saving item at storage: \(error.localizedDescription)")
+                view?.showError(error.localizedDescription)
             } else {
-                items.append(item)
-                items.sort { $0.date > $1.date }
-                reloadView()
+                self?.requestItems()
             }
         }
     }
 
     func removeItem(
         at index: Int,
-        completion: VoidBlock
+        completion: VoidBlock?
     ) {
         let itemForRemoval = items.remove(at: index)
-        interactor?.removeItem(itemForRemoval) { error in
+        interactor?.removeItem(itemForRemoval) { [weak view] error in
             if let error = error {
-                print("Error removing item at storage: \(error.localizedDescription)")
+                view?.showError(error.localizedDescription)
             } else {
-                completion()
+                completion?()
             }
         }
-    }
-
-    func reloadView() {
-        view?.reload()
     }
 }
 
 private extension MainPresenter {
-    func dateToTextDays(item: Item) -> String {
+    func textFrom(date: Date) -> String {
         let today = Date()
         let calendar = Calendar.current
-        let daysCount = calendar.numberOfDaysBetween(item.date, and: today)
+        let daysCount = calendar.numberOfDaysBetween(date, and: today)
         return daysCount != .zero
         ? Text.Main.daysPast(daysCount).text
         : Text.Main.today.text
