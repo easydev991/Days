@@ -32,7 +32,7 @@ final class ItemViewController: UIViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = presenter?.title()
+        label.text = presenter?.title
         label.font = .preferredFont(forTextStyle: .headline, compatibleWith: nil)
         label.textColor = .textColor
         label.numberOfLines = 1
@@ -136,7 +136,6 @@ extension ItemViewController: UITextFieldDelegate {
 // MARK: - Private methods
 private extension ItemViewController {
     func setupUI() {
-        title = presenter?.title
         view.backgroundColor = .mainBackground
         [hStack, separatorView, itemNameTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate(
