@@ -199,8 +199,8 @@ private extension MainViewController {
     }
 
     @objc func sortButtonTapped() {
-        if let sortingCases = presenter?.typesOfSort {
-            let alertActions = sortingCases.map { option in
+        if let sortOptions = presenter?.availableSortOptions {
+            let alertActions = sortOptions.map { option in
                 return UIAlertAction(
                     title: option.title,
                     style: .default,

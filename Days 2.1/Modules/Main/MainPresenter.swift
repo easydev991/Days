@@ -2,7 +2,7 @@ import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
     var itemsCount: Int { get }
-    var typesOfSort: [SortBy] { get }
+    var availableSortOptions: [SortBy] { get }
     func addItemTapped()
     func requestItems()
     func sortBy(_ sort: SortBy)
@@ -24,7 +24,7 @@ extension MainPresenter: MainPresenterProtocol {
         interactor?.itemsCount ?? .zero
     }
 
-    var typesOfSort: [SortBy] {
+    var availableSortOptions: [SortBy] {
         SortBy.allCases.filter { $0 != sortModel.sorting }
     }
 
