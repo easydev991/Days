@@ -179,8 +179,8 @@
 		67699E3527132F4F0077522E /* Days 2.1Tests */ = {
 			isa = PBXGroup;
 			children = (
-				67699E43271333AE0077522E /* ItemModule */,
 				67699E42271333A60077522E /* MainModule */,
+				67699E43271333AE0077522E /* ItemModule */,
 			);
 			path = "Days 2.1Tests";
 			sourceTree = "<group>";
