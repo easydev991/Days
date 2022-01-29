@@ -1,4 +1,3 @@
-import Foundation
 @testable import Days_2_1
 
 final class ItemStorageMock: ItemStorageService {
