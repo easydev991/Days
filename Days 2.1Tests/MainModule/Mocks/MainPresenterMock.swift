@@ -17,7 +17,7 @@ extension MainPresenterMock: MainPresenterProtocol {
         interactor.itemsCount
     }
 
-    var typesOfSort: [SortBy] {
+    var availableSortOptions: [SortBy] {
         SortBy.allCases.filter { $0 != sortModel.sorting }
     }
 

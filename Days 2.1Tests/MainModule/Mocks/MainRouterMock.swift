@@ -2,5 +2,8 @@ import UIKit
 @testable import Days_2_1
 
 final class MainRouterMock: MainRouterProtocol {
-    func openItemViewController() {}
+    var isNextViewPresented = false
+    func openItemViewController() {
+        isNextViewPresented.toggle()
+    }
 }
