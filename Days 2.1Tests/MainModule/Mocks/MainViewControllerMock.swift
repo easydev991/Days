@@ -2,25 +2,42 @@ import UIKit
 @testable import Days_2_1
 
 final class MainViewControllerMock {
+    var title: String? = nil
     var reloadComplete = false
-
-    var testSegue: UIStoryboardSegue {
-        let sourceVC = MainViewController()
-        let destinationVC = ItemViewController()
-        return .init(
-            identifier: nil,
-            source: sourceVC,
-            destination: destinationVC
-        )
-    }
+    var isEmptyViewHidden = false
+    var isErrorShown = false
+    var isItemsViewPresented = false
+    var errorMessage = String()
+    var visibleNavItemButtons = MainViewController.VisibleNavItemButtons.none
 }
 
 extension MainViewControllerMock: MainViewControllerProtocol {
-    func present(_ viewController: UIViewController) {}
-
-    func setItemData(itemName: String, itemDate: Date) {}
-
-    func reload() {
+    func reload(isListEmpty: Bool) {
         reloadComplete.toggle()
+    }
+
+    func set(title: String?) {
+        self.title = title
+    }
+
+    func setEmptyView(hidden: Bool) {
+        isEmptyViewHidden = hidden
+    }
+
+    func setNavItemButtons(
+        _ state: MainViewController.VisibleNavItemButtons
+    ) {
+        visibleNavItemButtons = state
+    }
+
+    func showError(_ message: String) {
+        isErrorShown.toggle()
+        errorMessage = message
+    }
+
+    func takeItem(with name: String, and date: Date) {}
+
+    func present(_ viewController: UIViewController) {
+        isItemsViewPresented.toggle()
     }
 }

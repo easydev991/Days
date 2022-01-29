@@ -22,4 +22,8 @@ final class MainRouterTest: XCTestCase {
         interactor = nil
         router = nil
     }
+
+    func testOpenItemViewController() {
+        router.openItemViewController()
+    }
 }

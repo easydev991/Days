@@ -25,24 +25,19 @@ final class MainPresenterTest: XCTestCase {
         router = nil
     }
 
-    func testTitle() {
-        let title = presenter.title
-        XCTAssertFalse(title.isEmpty)
-    }
-
     func testRequestItems() {
         let mockItems = ItemsMock.items
-        let initialCount = presenter.items.count
+        let initialCount = 0
         presenter.requestItems()
-        let finalCount = presenter.items.count
+        let finalCount = presenter.itemsCount
         XCTAssertNotEqual(initialCount, finalCount)
         XCTAssertEqual(mockItems.count, finalCount)
     }
 
     func testSaveItem() {
-        let initialCount = presenter.items.count
-        presenter.saveItem(name: "Name", date: Date())
-        let finalCount = presenter.items.count
+        let initialCount = 0
+        presenter.saveItem(with: "Name", and: Date())
+        let finalCount = presenter.itemsCount
         XCTAssertNotEqual(initialCount, finalCount)
     }
 
@@ -51,16 +46,11 @@ final class MainPresenterTest: XCTestCase {
         let randomIndex = ItemsMock.randomIndex
         mockItems.forEach { item in
             presenter.saveItem(
-                name: item.itemName,
-                date: item.date
+                with: item.title,
+                and: item.date
             )
         }
         presenter.removeItem(at: randomIndex) {}
-        XCTAssertNotEqual(mockItems.count, presenter.items.count)
-    }
-
-    func testReloadView() {
-        presenter.reloadView()
-        XCTAssertEqual(true, viewController.reloadComplete)
+        XCTAssertNotEqual(mockItems.count, presenter.itemsCount)
     }
 }

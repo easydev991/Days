@@ -27,10 +27,13 @@ final class MainViewControllerTest: XCTestCase {
     }
 
     func testSetItemData() {
-        let name = "Name"
-        let date = Date()
-        viewController.setItemData(itemName: name, itemDate: date)
+        let testItem = Item()
+        testItem.title = "Name"
+        testItem.date = Date()
+        viewController.takeItem(with: testItem.title, and: testItem.date)
         let newItem = presenter.items.first
         XCTAssertNotNil(newItem)
+        XCTAssertEqual(testItem.title, newItem?.title)
+        XCTAssertEqual(testItem.date, newItem?.date)
     }
 }
