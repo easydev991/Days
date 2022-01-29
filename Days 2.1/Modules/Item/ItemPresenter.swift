@@ -1,17 +1,15 @@
 import Foundation
 
 protocol ItemPresenterProtocol: AnyObject {
+    var title: String { get }
     var router: ItemRouterProtocol? { get set }
     func viewDidLoad()
-    var title: String { get }
     func checkNameForLettersIn(text: String?)
-    func setSaveButton(enabled: Bool)
     func finishFlow()
 }
 
 final class ItemPresenter {
     weak var view: ItemViewControllerProtocol?
-    var interactor: ItemInteractorProtocol?
     var router: ItemRouterProtocol?
 }
 
@@ -25,11 +23,11 @@ extension ItemPresenter: ItemPresenterProtocol {
     }
 
     func checkNameForLettersIn(text: String?) {
-        interactor?.checkNameForLettersIn(string: text)
-    }
-
-    func setSaveButton(enabled: Bool) {
-        view?.setSaveButton(enabled: enabled)
+        if let text = text {
+            view?.setSaveButton(enabled: text.containsLetter)
+        } else {
+            view?.setSaveButton(enabled: false)
+        }
     }
 
     func finishFlow() {
