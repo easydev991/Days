@@ -26,13 +26,13 @@ final class MainViewControllerTest: XCTestCase {
         router = nil
     }
 
-    func testReloadListIsEmpty() {
+    func testReload_IsEmpty() {
         viewController.reload(isListEmpty: true)
         XCTAssertEqual(_tableView?.isHidden, true)
         XCTAssertNotEqual(_emptyView?.alpha, .zero)
     }
 
-    func testReloadListIsNotEmpty() {
+    func testReload_isNotEmpty() {
         viewController.reload(isListEmpty: false)
         XCTAssertEqual(_tableView?.isHidden, false)
         XCTAssertNotEqual(_emptyView?.alpha, 1)
