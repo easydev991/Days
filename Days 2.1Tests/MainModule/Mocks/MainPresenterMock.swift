@@ -1,13 +1,12 @@
-import UIKit
+import Foundation
 @testable import Days_2_1
-import XCTest
 
 final class MainPresenterMock {
+    var error: Error? = nil
     var viewController: MainViewControllerProtocol!
     var interactor: MainInteractorProtocol!
     var router: MainRouterProtocol!
     var items = [Item]()
-    var sortModel = ItemSortModel(.dateDescending)
 }
 
 extension MainPresenterMock: MainPresenterProtocol {
@@ -18,7 +17,7 @@ extension MainPresenterMock: MainPresenterProtocol {
     }
 
     var availableSortOptions: [SortBy] {
-        SortBy.allCases.filter { $0 != sortModel.sorting }
+        SortBy.allCases
     }
 
     func removeItem(at index: Int, completion: VoidBlock?) {
@@ -42,7 +41,7 @@ extension MainPresenterMock: MainPresenterProtocol {
                 case .success(let items):
                     self?.items = items
                 case .failure(let error):
-                    XCTFail(error.localizedDescription)
+                    self?.error = error
                 }
             }
         )
