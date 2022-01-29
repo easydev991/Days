@@ -77,7 +77,6 @@ extension ItemStorage: ItemStorageService {
             let realm = try Realm(configuration: realmConfig)
             try realm.write {
                 realm.delete(item)
-
             }
             completion(nil)
         } catch {
