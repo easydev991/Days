@@ -25,6 +25,12 @@ final class MainPresenterTest: XCTestCase {
         router = nil
     }
 
+    func testTypesOfSortCount() {
+        let allSortTypesCount = SortBy.allCases.count
+        let availableTypesCount = presenter.availableSortOptions.count
+        XCTAssertNotEqual(allSortTypesCount, availableTypesCount)
+    }
+
     func testRequestItems() {
         let mockItems = ItemsMock.items
         let initialCount = 0
@@ -52,5 +58,15 @@ final class MainPresenterTest: XCTestCase {
         }
         presenter.removeItem(at: randomIndex) {}
         XCTAssertNotEqual(mockItems.count, presenter.itemsCount)
+    }
+
+    func testAddItemTapped() {
+        presenter.addItemTapped()
+        XCTAssertTrue(router.isNextViewPresented)
+    }
+
+    func testSortBy() {
+        presenter.sortBy(.titleAscending)
+        XCTAssertTrue(interactor.isSorted)
     }
 }
