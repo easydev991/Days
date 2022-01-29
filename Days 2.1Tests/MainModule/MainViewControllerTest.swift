@@ -26,14 +26,43 @@ final class MainViewControllerTest: XCTestCase {
         router = nil
     }
 
-    func testSetItemData() {
-        let testItem = Item()
-        testItem.title = "Name"
-        testItem.date = Date()
+    func testSetTitle() {
+        let testTitle = "testTitle"
+        viewController.set(title: testTitle)
+        XCTAssertEqual(testTitle, viewController.title)
+    }
+
+    func testTakeItem() {
+        let testItem = testItem
         viewController.takeItem(with: testItem.title, and: testItem.date)
         let newItem = presenter.items.first
         XCTAssertNotNil(newItem)
         XCTAssertEqual(testItem.title, newItem?.title)
         XCTAssertEqual(testItem.date, newItem?.date)
+    }
+
+    func testSetEmptyViewHiddenTrue() {
+        viewController.setEmptyView(hidden: true)
+        let emptyView = emptyView
+        XCTAssertTrue(emptyView?.alpha == .zero)
+    }
+
+    func testSetEmptyViewHiddenFalse() {
+        viewController.setEmptyView(hidden: false)
+        let emptyView = emptyView
+        XCTAssertNotEqual(emptyView?.alpha, .zero)
+    }
+}
+
+private extension MainViewControllerTest {
+    var testItem: Item {
+        let item = Item()
+        item.title = "Name"
+        item.date = Date()
+        return item
+    }
+
+    var emptyView: UIView? {
+        viewController.view.subviews.first(where: { $0 is EmptyView })
     }
 }
