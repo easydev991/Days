@@ -10,13 +10,13 @@ struct MainModel {
         : Text.Main.today.text
     }
 
-    static func navItemButtonsState(for itemsCount: Int) -> MainViewController.VisibleNavItemButtons {
-        if itemsCount == .zero {
-            return .none
-        } else if itemsCount == 1 {
-            return .add
-        } else {
-            return .sortAndAdd
+    static func navItemButtonsState(
+        for itemsCount: Int
+    ) -> MainViewController.VisibleNavItemButtons {
+        switch itemsCount {
+        case .zero: return .none
+        case 1: return .add
+        default: return .sortAndAdd
         }
     }
 }

@@ -41,6 +41,7 @@
 		67C6DB2527859B5C007C9D98 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB2427859B5C007C9D98 /* UIImage+.swift */; };
 		67C6DB292785E423007C9D98 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB282785E423007C9D98 /* Layout.swift */; };
 		67C6DB2F27874891007C9D98 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C6DB2E27874891007C9D98 /* ItemView.swift */; };
+		67C8EDFB27A587D400557A70 /* MainModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8EDFA27A587D400557A70 /* MainModelTest.swift */; };
 		67C90F1227086A4A00F257C9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1127086A4A00F257C9 /* Realm */; };
 		67C90F1427086A4A00F257C9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 67C90F1327086A4A00F257C9 /* RealmSwift */; };
 		67C90F1A2709AE6900F257C9 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 67C90F1C2709AE6900F257C9 /* Localizable.stringsdict */; };
@@ -103,6 +104,7 @@
 		67C6DB262785AD67007C9D98 /* ItemSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSort.swift; sourceTree = "<group>"; };
 		67C6DB282785E423007C9D98 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		67C6DB2E27874891007C9D98 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		67C8EDFA27A587D400557A70 /* MainModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModelTest.swift; sourceTree = "<group>"; };
 		67C90F1B2709AE6900F257C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		67C90F1D2709AE7C00F257C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67C90F1F2709AE8C00F257C9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				67699E3F271332440077522E /* MainPresenterTest.swift */,
 				6775FF5527136684007D1041 /* MainInteractorTest.swift */,
 				6775FF5E271372A5007D1041 /* MainRouterTest.swift */,
+				67C8EDFA27A587D400557A70 /* MainModelTest.swift */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67C8EDFB27A587D400557A70 /* MainModelTest.swift in Sources */,
 				6775FF5D27137221007D1041 /* ItemViewControllerMock.swift in Sources */,
 				67699E472713346E0077522E /* MainViewControllerMock.swift in Sources */,
 				6775FF61271377EC007D1041 /* MainViewControllerTest.swift in Sources */,
