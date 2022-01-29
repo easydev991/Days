@@ -136,7 +136,7 @@ extension ItemViewController: UITextFieldDelegate {
 // MARK: - Private methods
 private extension ItemViewController {
     func setupUI() {
-        title = presenter?.title()
+        title = presenter?.title
         view.backgroundColor = .mainBackground
         [hStack, separatorView, itemNameTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate(

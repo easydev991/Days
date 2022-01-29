@@ -3,7 +3,7 @@ import Foundation
 protocol ItemPresenterProtocol: AnyObject {
     var router: ItemRouterProtocol? { get set }
     func viewDidLoad()
-    func title() -> String
+    var title: String { get }
     func checkNameForLettersIn(text: String?)
     func setSaveButton(enabled: Bool)
     func finishFlow()
@@ -16,12 +16,12 @@ final class ItemPresenter {
 }
 
 extension ItemPresenter: ItemPresenterProtocol {
-    func viewDidLoad() {
-        view?.setSaveButton(enabled: false)
+    var title: String {
+        Text.Item.viewTitle.text
     }
 
-    func title() -> String {
-        Text.Item.viewTitle.text
+    func viewDidLoad() {
+        view?.setSaveButton(enabled: false)
     }
 
     func checkNameForLettersIn(text: String?) {
