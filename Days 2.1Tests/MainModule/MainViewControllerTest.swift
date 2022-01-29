@@ -28,18 +28,14 @@ final class MainViewControllerTest: XCTestCase {
 
     func testReloadListIsEmpty() {
         viewController.reload(isListEmpty: true)
-        let emptyView = emptyView
-        let tableView = tableView
-        XCTAssertEqual(tableView?.isHidden, true)
-        XCTAssertNotEqual(emptyView?.alpha, .zero)
+        XCTAssertEqual(_tableView?.isHidden, true)
+        XCTAssertNotEqual(_emptyView?.alpha, .zero)
     }
 
     func testReloadListIsNotEmpty() {
         viewController.reload(isListEmpty: false)
-        let emptyView = emptyView
-        let tableView = tableView
-        XCTAssertEqual(tableView?.isHidden, false)
-        XCTAssertNotEqual(emptyView?.alpha, 1)
+        XCTAssertEqual(_tableView?.isHidden, false)
+        XCTAssertNotEqual(_emptyView?.alpha, 1)
     }
 
     func testSetTitle() {
@@ -49,7 +45,7 @@ final class MainViewControllerTest: XCTestCase {
     }
 
     func testTakeItem() {
-        let testItem = testItem
+        let testItem = _testItem
         viewController.takeItem(with: testItem.title, and: testItem.date)
         let newItem = presenter.items.first
         XCTAssertNotNil(newItem)
@@ -59,19 +55,16 @@ final class MainViewControllerTest: XCTestCase {
 
     func testSetEmptyViewHiddenTrue() {
         viewController.setEmptyView(hidden: true)
-        let emptyView = emptyView
-        XCTAssertNotEqual(emptyView?.alpha, 1)
+        XCTAssertNotEqual(_emptyView?.alpha, 1)
     }
 
     func testSetEmptyViewHiddenFalse() {
         viewController.setEmptyView(hidden: false)
-        let emptyView = emptyView
-        XCTAssertNotEqual(emptyView?.alpha, .zero)
+        XCTAssertNotEqual(_emptyView?.alpha, .zero)
     }
 
     func testShowError() {
-        let message = "test error message"
-        viewController.showError(message)
+        viewController.showError("")
         XCTAssertNotNil(viewController.navigationController?.visibleViewController is UIAlertController)
     }
 
@@ -85,21 +78,47 @@ final class MainViewControllerTest: XCTestCase {
         viewController.present(vc)
         XCTAssertNotNil(viewController.navigationController?.visibleViewController is ItemViewController)
     }
+
+    func testSetNavItemButtons_none() {
+        viewController.setNavItemButtons(.none)
+        XCTAssertNil(_leftButton)
+        XCTAssertNil(_rightButton)
+    }
+
+    func testSetNavItemButtons_add() {
+        viewController.setNavItemButtons(.add)
+        XCTAssertNil(_leftButton)
+        XCTAssertNotNil(_rightButton)
+    }
+
+    func testSetNavItemButtons_sortAndAdd() {
+        viewController.setNavItemButtons(.sortAndAdd)
+        XCTAssertNotNil(_leftButton)
+        XCTAssertNotNil(_rightButton)
+    }
 }
 
 private extension MainViewControllerTest {
-    var testItem: Item {
+    var _testItem: Item {
         let item = Item()
         item.title = "Name"
         item.date = Date()
         return item
     }
 
-    var emptyView: UIView? {
+    var _emptyView: UIView? {
         viewController.view.subviews.first(where: { $0 is EmptyView })
     }
 
-    var tableView: UIView? {
+    var _tableView: UIView? {
         viewController.view.subviews.first(where: { $0 is UITableView })
+    }
+
+    var _leftButton: UIBarButtonItem? {
+        viewController.navigationItem.leftBarButtonItem
+    }
+
+    var _rightButton: UIBarButtonItem? {
+        viewController.navigationItem.rightBarButtonItem
     }
 }
