@@ -3,13 +3,13 @@ import UIKit
 
 final class ItemViewControllerMock  {
     var delegate: ItemViewControllerDelegate!
-    var savedItem = false
+    var isItemSaved = false
     var saveButtonEnabled = false
 }
 
 extension ItemViewControllerMock: ItemViewControllerProtocol {
     func saveAction() {
-        savedItem.toggle()
+        isItemSaved.toggle()
     }
 
     func setSaveButton(enabled: Bool) {
