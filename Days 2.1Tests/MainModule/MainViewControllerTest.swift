@@ -26,6 +26,22 @@ final class MainViewControllerTest: XCTestCase {
         router = nil
     }
 
+    func testReloadListIsEmpty() {
+        viewController.reload(isListEmpty: true)
+        let emptyView = emptyView
+        let tableView = tableView
+        XCTAssertEqual(tableView?.isHidden, true)
+        XCTAssertNotEqual(emptyView?.alpha, .zero)
+    }
+
+    func testReloadListIsNotEmpty() {
+        viewController.reload(isListEmpty: false)
+        let emptyView = emptyView
+        let tableView = tableView
+        XCTAssertEqual(tableView?.isHidden, false)
+        XCTAssertNotEqual(emptyView?.alpha, 1)
+    }
+
     func testSetTitle() {
         let testTitle = "testTitle"
         viewController.set(title: testTitle)
@@ -44,13 +60,30 @@ final class MainViewControllerTest: XCTestCase {
     func testSetEmptyViewHiddenTrue() {
         viewController.setEmptyView(hidden: true)
         let emptyView = emptyView
-        XCTAssertTrue(emptyView?.alpha == .zero)
+        XCTAssertNotEqual(emptyView?.alpha, 1)
     }
 
     func testSetEmptyViewHiddenFalse() {
         viewController.setEmptyView(hidden: false)
         let emptyView = emptyView
         XCTAssertNotEqual(emptyView?.alpha, .zero)
+    }
+
+    func testShowError() {
+        let message = "test error message"
+        viewController.showError(message)
+        XCTAssertNotNil(viewController.navigationController?.visibleViewController is UIAlertController)
+    }
+
+    func testAddButtonTapped() {
+        viewController.buttonTapped()
+        XCTAssertNotNil(viewController.navigationController?.visibleViewController is ItemViewController)
+    }
+
+    func testPresentItemViewController() {
+        let vc = ItemViewController()
+        viewController.present(vc)
+        XCTAssertNotNil(viewController.navigationController?.visibleViewController is ItemViewController)
     }
 }
 
@@ -64,5 +97,9 @@ private extension MainViewControllerTest {
 
     var emptyView: UIView? {
         viewController.view.subviews.first(where: { $0 is EmptyView })
+    }
+
+    var tableView: UIView? {
+        viewController.view.subviews.first(where: { $0 is UITableView })
     }
 }
