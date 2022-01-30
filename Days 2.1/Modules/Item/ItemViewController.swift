@@ -21,6 +21,7 @@ final class ItemViewController: UIViewController {
         stack.spacing = Layout.Insets.average
         stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.accessibilityIdentifier = Identifier.hStack.text
         return stack
     }()
 
@@ -28,6 +29,7 @@ final class ItemViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .systemGray
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = Identifier.separatorView.text
         return view
     }()
 
@@ -39,6 +41,7 @@ final class ItemViewController: UIViewController {
         label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = Identifier.titleLabel.text
         return label
     }()
 
@@ -47,6 +50,7 @@ final class ItemViewController: UIViewController {
         button.setTitle(Text.Button.cancel.text, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = Identifier.cancelButton.text
         return button
     }()
 
@@ -58,8 +62,8 @@ final class ItemViewController: UIViewController {
         let button = UIButton(type: .system, primaryAction: saveButtonAction)
         button.setTitle(Text.Button.save.text, for: .normal)
         button.tintColor = .buttonTint
-        button.tag = 152
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = Identifier.saveButton.text
         return button
     }()
 
@@ -78,6 +82,7 @@ final class ItemViewController: UIViewController {
         field.borderStyle = .roundedRect
         field.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.accessibilityIdentifier = Identifier.itemNameTextField.text
         return field
     }()
 
@@ -90,6 +95,7 @@ final class ItemViewController: UIViewController {
         picker.setValue(false, forKey: "highlightsToday")
         picker.setValue(UIColor.textColor, forKeyPath: "textColor")
         picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.accessibilityIdentifier = Identifier.itemDatePicker.text
         return picker
     }()
     
@@ -142,7 +148,16 @@ extension ItemViewController: UITextFieldDelegate {
 
 // MARK: - Private methods
 private extension ItemViewController {
+    enum Identifier: String {
+        case rootView, hStack, separatorView, titleLabel, cancelButton,
+             saveButton, itemNameTextField, itemDatePicker
+        var text: String {
+            "ItemVC" + "_" + self.rawValue
+        }
+    }
+
     func setupUI() {
+        view.accessibilityIdentifier = Identifier.rootView.text
         view.backgroundColor = .mainBackground
         [hStack, separatorView, itemNameTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate(

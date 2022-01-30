@@ -23,6 +23,7 @@ final class MainViewController: UIViewController {
             action: #selector(sortButtonTapped)
         )
         button.tintColor = .buttonTint
+        button.accessibilityIdentifier = Identifier.sortingButton.text
         return button
     }()
     private lazy var addNewItemButton: UIBarButtonItem = {
@@ -32,12 +33,14 @@ final class MainViewController: UIViewController {
             action: #selector(addButtonTapped)
         )
         button.tintColor = .buttonTint
+        button.accessibilityIdentifier = Identifier.addNewItemButton.text
         return button
     }()
     private lazy var emptyView: EmptyView = {
         let view = EmptyView(delegate: self)
         view.alpha = .zero
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = Identifier.emptyView.text
         return view
     }()
     private lazy var tableView: UITableView = {
@@ -51,6 +54,7 @@ final class MainViewController: UIViewController {
         table.estimatedRowHeight = UITableView.automaticDimension
         table.register(ItemCell.self, forCellReuseIdentifier: ItemCell.cellID)
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.accessibilityIdentifier = Identifier.tableView.text
         return table
     }()
 
@@ -178,8 +182,16 @@ extension MainViewController: UITableViewDataSource {
 
 // MARK: - Private extension
 private extension MainViewController {
+    enum Identifier: String {
+        case rootView, sortingButton, addNewItemButton, emptyView, tableView
+        var text: String {
+            "MainVC" + "_" + self.rawValue
+        }
+    }
+
     func setupUI() {
         view.backgroundColor = .mainBackground
+        view.accessibilityIdentifier = Identifier.rootView.text
         navigationController?.navigationBar.barTintColor = .mainBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.textColor]

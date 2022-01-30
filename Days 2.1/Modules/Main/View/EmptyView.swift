@@ -19,6 +19,7 @@ final class EmptyView: UIView {
         stack.spacing = Layout.Insets.standard
         stack.alignment = .center
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.accessibilityIdentifier = Identifier.vStack.text
         return stack
     }()
     private lazy var titleLabel: UILabel = {
@@ -29,6 +30,7 @@ final class EmptyView: UIView {
         label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = Identifier.titleLabel.text
         return label
     }()
     private lazy var addNewItemButton: UIButton = {
@@ -55,6 +57,7 @@ final class EmptyView: UIView {
         )
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = Identifier.addNewItemButton.text
         return button
     }()
 
@@ -72,6 +75,13 @@ final class EmptyView: UIView {
 
 // MARK: - Private extension
 private extension EmptyView {
+    enum Identifier: String {
+        case vStack, titleLabel, addNewItemButton
+        var text: String {
+            "EmptyView" + "_" + self.rawValue
+        }
+    }
+
     func setupUI() {
         addSubview(vStack)
         NSLayoutConstraint.activate(

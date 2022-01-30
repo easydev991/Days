@@ -7,33 +7,37 @@ final class ItemView: UIView {
         view.layer.cornerRadius = Layout.Insets.average
         view.backgroundColor = .systemYellow
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityIdentifier = Identifier.container.text
         return view
     }()
     private lazy var hStack: UIStackView = {
         let stack = UIStackView(
             arrangedSubviews: [
-                itemNameLabel, itemDaysLabel
+                titleLabel, daysLabel
             ]
         )
         stack.spacing = Layout.Insets.standard
         stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.accessibilityIdentifier = Identifier.hStack.text
         return stack
     }()
-    private lazy var itemNameLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = .zero
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = Identifier.titleLabel.text
         return label
     }()
-    private lazy var itemDaysLabel: UILabel = {
+    private lazy var daysLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .right
         label.numberOfLines = .zero
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = Identifier.daysLabel.text
         return label
     }()
 
@@ -51,13 +55,20 @@ final class ItemView: UIView {
 // MARK: - ItemCellInput
 extension ItemView: ItemCellInput {
     func setup(with model: ItemCell.Model) {
-        itemNameLabel.text = model.itemName
-        itemDaysLabel.text = model.itemDays
+        titleLabel.text = model.itemName
+        daysLabel.text = model.itemDays
     }
 }
 
 // MARK: - Private extension
 private extension ItemView {
+    enum Identifier: String {
+        case container, hStack, titleLabel, daysLabel
+        var text: String {
+            "ItemView" + "_" + self.rawValue
+        }
+    }
+
     func setupUI() {
         container.addSubview(hStack)
         addSubview(container)
@@ -83,7 +94,7 @@ private extension ItemView {
                     equalTo: container.bottomAnchor,
                     constant: -Layout.Insets.standard
                 ),
-                itemDaysLabel.widthAnchor.constraint(
+                daysLabel.widthAnchor.constraint(
                     lessThanOrEqualTo: container.widthAnchor,
                     multiplier: 0.3
                 )
