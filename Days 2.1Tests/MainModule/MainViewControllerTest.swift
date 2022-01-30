@@ -63,22 +63,6 @@ final class MainViewControllerTest: XCTestCase {
         XCTAssertNotEqual(_emptyView?.alpha, .zero)
     }
 
-    func testShowError() {
-        viewController.showError("")
-        XCTAssertNotNil(viewController.navigationController?.visibleViewController is UIAlertController)
-    }
-
-    func testAddButtonTapped() {
-        viewController.buttonTapped()
-        XCTAssertNotNil(viewController.navigationController?.visibleViewController is ItemViewController)
-    }
-
-    func testPresentItemViewController() {
-        let vc = ItemViewController()
-        viewController.present(vc)
-        XCTAssertNotNil(viewController.navigationController?.visibleViewController is ItemViewController)
-    }
-
     func testSetNavItemButtons_none() {
         viewController.setNavItemButtons(.none)
         XCTAssertNil(_leftButton)

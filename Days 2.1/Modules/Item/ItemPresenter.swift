@@ -1,7 +1,6 @@
 import Foundation
 
 protocol ItemPresenterProtocol: AnyObject {
-    var title: String { get }
     var router: ItemRouterProtocol? { get set }
     func viewDidLoad()
     func checkNameForLettersIn(text: String?)
@@ -14,10 +13,6 @@ final class ItemPresenter {
 }
 
 extension ItemPresenter: ItemPresenterProtocol {
-    var title: String {
-        Text.Item.viewTitle.text
-    }
-
     func viewDidLoad() {
         view?.setSaveButton(enabled: false)
     }

@@ -5,6 +5,7 @@ final class ItemViewControllerMock  {
     var delegate: ItemViewControllerDelegate!
     var isItemSaved = false
     var saveButtonEnabled = false
+    var isDismissed = false
 }
 
 extension ItemViewControllerMock: ItemViewControllerProtocol {
@@ -14,5 +15,9 @@ extension ItemViewControllerMock: ItemViewControllerProtocol {
 
     func setSaveButton(enabled: Bool) {
         saveButtonEnabled = enabled
+    }
+
+    func dismiss() {
+        isDismissed.toggle()
     }
 }

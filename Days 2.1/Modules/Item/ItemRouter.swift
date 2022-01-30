@@ -5,11 +5,11 @@ protocol ItemRouterProtocol: AnyObject {
 }
 
 final class ItemRouter {
-    weak var viewController: ItemViewController?
+    weak var viewController: ItemViewControllerProtocol?
 }
 
 extension ItemRouter: ItemRouterProtocol {
     func dismissViewController() {
-        viewController?.dismiss(animated: true)
+        viewController?.dismiss()
     }
 }

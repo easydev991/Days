@@ -7,6 +7,7 @@ protocol ItemViewControllerDelegate: AnyObject {
 protocol ItemViewControllerProtocol: AnyObject {
     func saveAction()
     func setSaveButton(enabled: Bool)
+    func dismiss()
 }
 
 final class ItemViewController: UIViewController {
@@ -32,7 +33,7 @@ final class ItemViewController: UIViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = presenter?.title
+        label.text = Text.Item.viewTitle.text
         label.font = .preferredFont(forTextStyle: .headline, compatibleWith: nil)
         label.textColor = .textColor
         label.numberOfLines = 1
@@ -57,6 +58,7 @@ final class ItemViewController: UIViewController {
         let button = UIButton(type: .system, primaryAction: saveButtonAction)
         button.setTitle(Text.Button.save.text, for: .normal)
         button.tintColor = .buttonTint
+        button.tag = 152
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -111,16 +113,21 @@ final class ItemViewController: UIViewController {
 // MARK: - ItemViewControllerProtocol
 extension ItemViewController: ItemViewControllerProtocol {
     func saveAction(){
-        guard let text = itemNameTextField.text else { return }
-        delegate?.takeItem(
-            with: text,
-            and: itemDatePicker.date
-        )
-        presenter?.finishFlow()
+        if let text = itemNameTextField.text {
+            delegate?.takeItem(
+                with: text,
+                and: itemDatePicker.date
+            )
+            presenter?.finishFlow()
+        }
     }
 
     func setSaveButton(enabled: Bool) {
         saveButton.isEnabled = enabled
+    }
+
+    func dismiss() {
+        dismiss(animated: true)
     }
 }
 

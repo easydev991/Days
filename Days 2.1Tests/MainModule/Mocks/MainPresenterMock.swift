@@ -2,7 +2,6 @@ import Foundation
 @testable import Days_2_1
 
 final class MainPresenterMock {
-    var error: Error? = nil
     var viewController: MainViewControllerProtocol!
     var interactor: MainInteractorProtocol!
     var router: MainRouterProtocol!
@@ -40,8 +39,8 @@ extension MainPresenterMock: MainPresenterProtocol {
                 switch result {
                 case .success(let items):
                     self?.items = items
-                case .failure(let error):
-                    self?.error = error
+                case .failure:
+                    break
                 }
             }
         )
