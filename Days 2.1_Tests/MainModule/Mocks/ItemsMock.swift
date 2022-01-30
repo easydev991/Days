@@ -1,12 +1,12 @@
+import Foundation
 @testable import Days_2_1
 
 struct ItemsMock {
-    static var oneItem = Item()
+    static var oneItem = Item(title: "", date: Date())
     static var items: [Item] {
         var result = [Item]()
         (.zero...9).forEach { index in
-            let newItem = Item()
-            newItem.title = "Item_\(index)"
+            let newItem = Item(title: "Item_\(index)", date: Date())
             result.append(newItem)
         }
         return result

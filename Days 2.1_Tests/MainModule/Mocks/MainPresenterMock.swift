@@ -49,9 +49,7 @@ extension MainPresenterMock: MainPresenterProtocol {
     func setup(cell: ItemCellInput, at index: Int) {}
 
     func saveItem(with name: String, and date: Date) {
-        let testItem = Item()
-        testItem.title = name
-        testItem.date = date
+        let testItem = Item(title: name, date: date)
         interactor.saveItem(
             testItem,
             completion: { [weak self] _ in

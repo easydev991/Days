@@ -26,7 +26,6 @@
 		6775FF58271366A3007D1041 /* MainPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF57271366A3007D1041 /* MainPresenterMock.swift */; };
 		6775FF5A27136779007D1041 /* ItemStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5927136779007D1041 /* ItemStorageMock.swift */; };
 		6775FF5D27137221007D1041 /* ItemViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5C27137221007D1041 /* ItemViewControllerMock.swift */; };
-		6775FF5F271372A5007D1041 /* MainRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5E271372A5007D1041 /* MainRouterTest.swift */; };
 		6775FF61271377EC007D1041 /* MainViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF60271377EC007D1041 /* MainViewControllerTest.swift */; };
 		67ABCA71279C436800A5DCE5 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ABCA70279C436700A5DCE5 /* AppFactory.swift */; };
 		67ABCA73279C615900A5DCE5 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ABCA72279C615900A5DCE5 /* Text.swift */; };
@@ -44,7 +43,6 @@
 		67C8EDFD27A58E3F00557A70 /* ItemPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8EDFC27A58E3F00557A70 /* ItemPresenterMock.swift */; };
 		67C8EE0127A59ACC00557A70 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8EE0027A59ACC00557A70 /* String+.swift */; };
 		67C8EE0327A664FE00557A70 /* ItemRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8EE0227A664FE00557A70 /* ItemRouterMock.swift */; };
-		67C8EE0527A6657700557A70 /* ItemRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8EE0427A6657700557A70 /* ItemRouterTest.swift */; };
 		67C8EE0727A6679C00557A70 /* ItemPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8EE0627A6679C00557A70 /* ItemPresenterTest.swift */; };
 		67C8EE0927A6696700557A70 /* ItemViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8EE0827A6696700557A70 /* ItemViewControllerTest.swift */; };
 		67C8EE1127A674A500557A70 /* Days_2_1_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8EE1027A674A500557A70 /* Days_2_1_UITests.swift */; };
@@ -102,7 +100,6 @@
 		6775FF57271366A3007D1041 /* MainPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterMock.swift; sourceTree = "<group>"; };
 		6775FF5927136779007D1041 /* ItemStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStorageMock.swift; sourceTree = "<group>"; };
 		6775FF5C27137221007D1041 /* ItemViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewControllerMock.swift; sourceTree = "<group>"; };
-		6775FF5E271372A5007D1041 /* MainRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterTest.swift; sourceTree = "<group>"; };
 		6775FF60271377EC007D1041 /* MainViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTest.swift; sourceTree = "<group>"; };
 		67ABCA70279C436700A5DCE5 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		67ABCA72279C615900A5DCE5 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
@@ -120,7 +117,6 @@
 		67C8EDFC27A58E3F00557A70 /* ItemPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPresenterMock.swift; sourceTree = "<group>"; };
 		67C8EE0027A59ACC00557A70 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		67C8EE0227A664FE00557A70 /* ItemRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRouterMock.swift; sourceTree = "<group>"; };
-		67C8EE0427A6657700557A70 /* ItemRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRouterTest.swift; sourceTree = "<group>"; };
 		67C8EE0627A6679C00557A70 /* ItemPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPresenterTest.swift; sourceTree = "<group>"; };
 		67C8EE0827A6696700557A70 /* ItemViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewControllerTest.swift; sourceTree = "<group>"; };
 		67C8EE0E27A674A500557A70 /* Days 2.1_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Days 2.1_UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,7 +229,6 @@
 				6775FF60271377EC007D1041 /* MainViewControllerTest.swift */,
 				67699E3F271332440077522E /* MainPresenterTest.swift */,
 				6775FF5527136684007D1041 /* MainInteractorTest.swift */,
-				6775FF5E271372A5007D1041 /* MainRouterTest.swift */,
 				67C8EDFA27A587D400557A70 /* MainModelTest.swift */,
 			);
 			path = MainModule;
@@ -243,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				6775FF5B2713720D007D1041 /* Mocks */,
-				67C8EE0427A6657700557A70 /* ItemRouterTest.swift */,
 				67C8EE0627A6679C00557A70 /* ItemPresenterTest.swift */,
 				67C8EE0827A6696700557A70 /* ItemViewControllerTest.swift */,
 			);
@@ -519,7 +513,6 @@
 			files = (
 				67C8EDFB27A587D400557A70 /* MainModelTest.swift in Sources */,
 				67C8EE0927A6696700557A70 /* ItemViewControllerTest.swift in Sources */,
-				67C8EE0527A6657700557A70 /* ItemRouterTest.swift in Sources */,
 				6775FF5D27137221007D1041 /* ItemViewControllerMock.swift in Sources */,
 				67699E472713346E0077522E /* MainViewControllerMock.swift in Sources */,
 				67C8EE0327A664FE00557A70 /* ItemRouterMock.swift in Sources */,
@@ -531,7 +524,6 @@
 				67699E40271332440077522E /* MainPresenterTest.swift in Sources */,
 				6775FF5627136684007D1041 /* MainInteractorTest.swift in Sources */,
 				67699E45271333C50077522E /* MainInteractorMock.swift in Sources */,
-				6775FF5F271372A5007D1041 /* MainRouterTest.swift in Sources */,
 				6775FF5A27136779007D1041 /* ItemStorageMock.swift in Sources */,
 				6775FF54271351B0007D1041 /* ItemsMock.swift in Sources */,
 			);

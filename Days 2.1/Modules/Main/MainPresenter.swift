@@ -73,9 +73,7 @@ extension MainPresenter: MainPresenterProtocol {
         with name: String,
         and date: Date
     ) {
-        let item = Item()
-        item.title = name
-        item.date = date
+        let item = Item(title: name, date: date)
         interactor?.saveItem(item) { [weak self, weak view] error in
             if let error = error {
                 view?.showError(error.localizedDescription)

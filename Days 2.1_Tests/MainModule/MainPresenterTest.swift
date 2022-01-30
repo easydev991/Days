@@ -26,47 +26,26 @@ final class MainPresenterTest: XCTestCase {
     }
 
     func testTypesOfSortCount() {
-        let allSortTypesCount = SortBy.allCases.count
-        let availableTypesCount = presenter.availableSortOptions.count
-        XCTAssertNotEqual(allSortTypesCount, availableTypesCount)
+        let allSortOptions = SortBy.allCases.count
+        let availableSortOptions = presenter.availableSortOptions.count
+        XCTAssertNotEqual(allSortOptions, availableSortOptions)
     }
 
     func testRequestItems() {
-        let mockItems = ItemsMock.items
-        let initialCount = 0
         presenter.requestItems()
-        let finalCount = presenter.itemsCount
-        XCTAssertNotEqual(initialCount, finalCount)
-        XCTAssertEqual(mockItems.count, finalCount)
-    }
-
-    func testSaveItem() {
-        let initialCount = 0
-        presenter.saveItem(with: "Name", and: Date())
-        let finalCount = presenter.itemsCount
-        XCTAssertNotEqual(initialCount, finalCount)
+        XCTAssertNotEqual(.zero, presenter.itemsCount)
+        XCTAssertEqual(ItemsMock.itemsCount, presenter.itemsCount)
     }
 
     func testRemoveItem() {
-        let mockItems = ItemsMock.items
-        let randomIndex = ItemsMock.randomIndex
-        mockItems.forEach { item in
+        ItemsMock.items.forEach { item in
             presenter.saveItem(
                 with: item.title,
                 and: item.date
             )
         }
-        presenter.removeItem(at: randomIndex) {}
-        XCTAssertNotEqual(mockItems.count, presenter.itemsCount)
-    }
-
-    func testAddItemTapped() {
-        presenter.addItemTapped()
-        XCTAssertTrue(router.isNextViewPresented)
-    }
-
-    func testSortBy() {
-        presenter.sortBy(.titleAscending)
-        XCTAssertTrue(interactor.isSorted)
+        presenter.removeItem(at: ItemsMock.randomIndex, completion: nil)
+        XCTAssertNotEqual(ItemsMock.itemsCount, presenter.itemsCount)
+        XCTAssertEqual(presenter.itemsCount, 9)
     }
 }

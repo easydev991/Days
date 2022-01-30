@@ -28,29 +28,6 @@ final class Days_2_1_UITests: XCTestCase {
         XCTAssertFalse(itemViewController.exists)
     }
 
-    func testSaveButtonEnabled_textIsNil() {
-        rememberEventButton.tap()
-        XCTAssertFalse(saveItemButton.isEnabled)
-    }
-
-    func testSaveButtonEnabled_textIsSpace() {
-        rememberEventButton.tap()
-        itemTitleTextField.typeText(" ")
-        XCTAssertFalse(saveItemButton.isEnabled)
-    }
-
-    func testSaveButtonEnabled_textContainsLetter() {
-        rememberEventButton.tap()
-        itemTitleTextField.typeText("A")
-        XCTAssertTrue(saveItemButton.isEnabled)
-    }
-
-    func testSaveButtonEnabled_textContainsSpaceAndLetter() {
-        rememberEventButton.tap()
-        itemTitleTextField.typeText(" a")
-        XCTAssertTrue(saveItemButton.isEnabled)
-    }
-
     func testSaveItem() {
         makeTestItem(title: "testSaveItem")
         XCTAssertFalse(sortingButton.exists)

@@ -26,18 +26,6 @@ final class MainViewControllerTest: XCTestCase {
         router = nil
     }
 
-    func testReload_IsEmpty() {
-        viewController.reload(isListEmpty: true)
-        XCTAssertEqual(_tableView?.isHidden, true)
-        XCTAssertNotEqual(_emptyView?.alpha, .zero)
-    }
-
-    func testReload_isNotEmpty() {
-        viewController.reload(isListEmpty: false)
-        XCTAssertEqual(_tableView?.isHidden, false)
-        XCTAssertNotEqual(_emptyView?.alpha, 1)
-    }
-
     func testSetTitle() {
         let testTitle = "testTitle"
         viewController.set(title: testTitle)
@@ -53,56 +41,35 @@ final class MainViewControllerTest: XCTestCase {
         XCTAssertEqual(testItem.date, newItem?.date)
     }
 
-    func testSetEmptyViewHiddenTrue() {
-        viewController.setEmptyView(hidden: true)
-        XCTAssertNotEqual(_emptyView?.alpha, 1)
-    }
-
-    func testSetEmptyViewHiddenFalse() {
-        viewController.setEmptyView(hidden: false)
-        XCTAssertNotEqual(_emptyView?.alpha, .zero)
-    }
-
     func testSetNavItemButtons_none() {
         viewController.setNavItemButtons(.none)
-        XCTAssertNil(_leftButton)
-        XCTAssertNil(_rightButton)
+        XCTAssertNil(sortButton)
+        XCTAssertNil(plusButton)
     }
 
     func testSetNavItemButtons_add() {
         viewController.setNavItemButtons(.add)
-        XCTAssertNil(_leftButton)
-        XCTAssertNotNil(_rightButton)
+        XCTAssertNil(sortButton)
+        XCTAssertNotNil(plusButton)
     }
 
     func testSetNavItemButtons_sortAndAdd() {
         viewController.setNavItemButtons(.sortAndAdd)
-        XCTAssertNotNil(_leftButton)
-        XCTAssertNotNil(_rightButton)
+        XCTAssertNotNil(sortButton)
+        XCTAssertNotNil(plusButton)
     }
 }
 
 private extension MainViewControllerTest {
     var _testItem: Item {
-        let item = Item()
-        item.title = "Name"
-        item.date = Date()
-        return item
+        Item(title: "Title", date: Date())
     }
 
-    var _emptyView: UIView? {
-        viewController.view.subviews.first(where: { $0 is EmptyView })
-    }
-
-    var _tableView: UIView? {
-        viewController.view.subviews.first(where: { $0 is UITableView })
-    }
-
-    var _leftButton: UIBarButtonItem? {
+    var sortButton: UIBarButtonItem? {
         viewController.navigationItem.leftBarButtonItem
     }
 
-    var _rightButton: UIBarButtonItem? {
+    var plusButton: UIBarButtonItem? {
         viewController.navigationItem.rightBarButtonItem
     }
 }
