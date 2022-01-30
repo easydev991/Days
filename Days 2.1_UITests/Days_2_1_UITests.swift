@@ -47,7 +47,7 @@ final class Days_2_1_UITests: XCTestCase {
         XCTAssertTrue(emptyView.exists)
     }
 
-    func testSortButtonExists() {
+    func testSortAndPlusButtonsExist() {
         makeTestItems(count: 2)
         XCTAssertTrue(sortingButton.exists)
         XCTAssertTrue(plusButton.exists)
@@ -57,14 +57,7 @@ final class Days_2_1_UITests: XCTestCase {
     func testPresentSortingOptions() {
         makeTestItems(count: 2)
         sortingButton.tap()
-        XCTAssertTrue(app.alerts.firstMatch.exists)
-    }
-
-    func testDismissSortingOptions() {
-        makeTestItems(count: 2)
-        sortingButton.tap()
-        closeAlertButton.tap()
-        XCTAssertFalse(app.alerts.firstMatch.exists)
+        XCTAssertTrue(sortByAlert.exists)
     }
 }
 
@@ -78,7 +71,7 @@ private extension Days_2_1_UITests {
     var itemTitleTextField: XCUIElement { app.textFields["ItemVC_itemTitleTextField"] }
     var sortingButton: XCUIElement { app.buttons["MainVC_sortingButton"] }
     var plusButton: XCUIElement { app.buttons["MainVC_addNewItemButton"] }
-    var closeAlertButton: XCUIElement { app.alerts.buttons["Close"] }
+    var sortByAlert: XCUIElement { app.alerts["Sort by"] }
 
     func makeTestItems(count: Int) {
         (.zero...count-1).forEach { index in
