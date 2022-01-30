@@ -29,7 +29,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67699E3327132F4F0077522E"
                BuildableName = "Days 2.1Tests.xctest"
-               BlueprintName = "Days 2.1Tests"
+               BlueprintName = "Days 2.1_Tests"
                ReferencedContainer = "container:Days 2.1.xcodeproj">
             </BuildableReference>
          </TestableReference>

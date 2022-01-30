@@ -45,6 +45,6 @@ final class MainInteractorTest: XCTestCase {
         presenter.requestItems()
         let randomIndex = ItemsMock.randomIndex
         presenter.removeItem(at: randomIndex) {}
-        XCTAssertEqual(presenter.items.count, 9)
+        XCTAssertEqual(presenter.itemsCount, 9)
     }
 }

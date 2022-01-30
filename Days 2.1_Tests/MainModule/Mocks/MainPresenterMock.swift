@@ -5,7 +5,7 @@ final class MainPresenterMock {
     var viewController: MainViewControllerProtocol!
     var interactor: MainInteractorProtocol!
     var router: MainRouterProtocol!
-    var items = [Item]()
+    private(set) var items = [Item]()
 }
 
 extension MainPresenterMock: MainPresenterProtocol {

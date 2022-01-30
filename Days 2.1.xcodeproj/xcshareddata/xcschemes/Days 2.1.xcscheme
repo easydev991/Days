@@ -34,7 +34,17 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67699E3327132F4F0077522E"
                BuildableName = "Days 2.1Tests.xctest"
-               BlueprintName = "Days 2.1Tests"
+               BlueprintName = "Days 2.1_Tests"
+               ReferencedContainer = "container:Days 2.1.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "67C8EE0D27A674A500557A70"
+               BuildableName = "Days 2.1_UITests.xctest"
+               BlueprintName = "Days 2.1_UITests"
                ReferencedContainer = "container:Days 2.1.xcodeproj">
             </BuildableReference>
          </TestableReference>
