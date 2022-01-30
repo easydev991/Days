@@ -18,48 +18,35 @@ final class Days_2_1_UITests: XCTestCase {
     }
 
     func testPresentItemViewController() {
-        let rememberEventButton = addNewItemButton
         let itemVC = app.otherElements["ItemVC_rootView"]
         rememberEventButton.tap()
         XCTAssertTrue(itemVC.exists)
     }
 
     func testSaveButtonEnabled_textIsNil() {
-        let rememberEventButton = addNewItemButton
-        let saveButton = saveItemButton
         rememberEventButton.tap()
-        XCTAssertFalse(saveButton.isEnabled)
+        XCTAssertFalse(saveItemButton.isEnabled)
     }
 
     func testSaveButtonEnabled_textIsSpace() {
-        let rememberEventButton = addNewItemButton
-        let saveButton = saveItemButton
-        let textField = itemTitleTextField
         rememberEventButton.tap()
-        textField.typeText(" ")
-        XCTAssertFalse(saveButton.isEnabled)
+        itemTitleTextField.typeText(" ")
+        XCTAssertFalse(saveItemButton.isEnabled)
     }
 
     func testSaveButtonEnabled_textContainsLetter() {
-        let rememberEventButton = addNewItemButton
-        let saveButton = saveItemButton
-        let textField = itemTitleTextField
         rememberEventButton.tap()
-        textField.typeText("A")
-        XCTAssertTrue(saveButton.isEnabled)
+        itemTitleTextField.typeText("A")
+        XCTAssertTrue(saveItemButton.isEnabled)
     }
 
     func testSaveButtonEnabled_textContainsSpaceAndLetter() {
-        let rememberEventButton = addNewItemButton
-        let saveButton = saveItemButton
-        let textField = itemTitleTextField
         rememberEventButton.tap()
-        textField.typeText(" a")
-        XCTAssertTrue(saveButton.isEnabled)
+        itemTitleTextField.typeText(" a")
+        XCTAssertTrue(saveItemButton.isEnabled)
     }
 
     func testSaveItem() {
-        let tableView = itemsList
         makeTestItem(title: "Test item")
         XCTAssertFalse(sortingButton.exists)
         XCTAssertTrue(plusButton.exists)
@@ -67,7 +54,6 @@ final class Days_2_1_UITests: XCTestCase {
     }
 
     func testDeleteItem() {
-        let tableView = itemsList
         let itemToDelete = tableView.cells.firstMatch
         makeTestItem(title: "Test item")
         itemToDelete.swipeLeft()
@@ -93,8 +79,8 @@ final class Days_2_1_UITests: XCTestCase {
 
 private extension Days_2_1_UITests {
     var emptyView: XCUIElement { app.otherElements["MainVC_emptyView"] }
-    var itemsList: XCUIElement { app.tables["MainVC_tableView"] }
-    var addNewItemButton: XCUIElement { app.buttons["EmptyView_addNewItemButton"] }
+    var tableView: XCUIElement { app.tables["MainVC_tableView"] }
+    var rememberEventButton: XCUIElement { app.buttons["EmptyView_addNewItemButton"] }
     var saveItemButton: XCUIElement { app.buttons["ItemVC_saveButton"] }
     var itemTitleTextField: XCUIElement { app.textFields["ItemVC_itemTitleTextField"] }
     var itemDatePicker: XCUIElement { app.datePickers["ItemVC_itemDatePicker"]}
@@ -105,15 +91,11 @@ private extension Days_2_1_UITests {
         title: String,
         isListEmpty: Bool = true
     ) {
-        let rememberEventButton = addNewItemButton
+        let rememberEventButton = rememberEventButton
         let addNewItemButton = plusButton
         let saveButton = saveItemButton
         let textField = itemTitleTextField
-        if isListEmpty {
-            rememberEventButton.tap()
-        } else {
-            addNewItemButton.tap()
-        }
+        isListEmpty ? rememberEventButton.tap() : addNewItemButton.tap()
         textField.typeText(title)
         saveButton.tap()
     }
