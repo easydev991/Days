@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -6,7 +7,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        true
+        if CommandLine.arguments.contains("--uitesting") {
+            UIView.setAnimationsEnabled(false)
+            clearDatabaseForUITesting()
+        }
+        return true
     }
 
     func application(
@@ -18,3 +23,22 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+private extension AppDelegate {
+    func clearDatabaseForUITesting() {
+        do {
+            let realm = try Realm(
+                configuration: .init(
+                    schemaVersion: RealmSchema.version
+                )
+            )
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch {
+            print(
+                "AppDelegate: clearDatabaseForUITesting:",
+                error.localizedDescription
+            )
+        }
+    }
+}
