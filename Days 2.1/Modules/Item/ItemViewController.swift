@@ -71,7 +71,7 @@ final class ItemViewController: UIViewController {
         self.saveAction()
     }
 
-    private lazy var itemNameTextField: UITextField = {
+    private lazy var itemTitleTextField: UITextField = {
         let field = UITextField()
         field.delegate = self
         field.attributedPlaceholder = .init(
@@ -82,7 +82,7 @@ final class ItemViewController: UIViewController {
         field.borderStyle = .roundedRect
         field.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         field.translatesAutoresizingMaskIntoConstraints = false
-        field.accessibilityIdentifier = Identifier.itemNameTextField.text
+        field.accessibilityIdentifier = Identifier.itemTitleTextField.text
         return field
     }()
 
@@ -112,14 +112,14 @@ final class ItemViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        itemNameTextField.becomeFirstResponder()
+        itemTitleTextField.becomeFirstResponder()
     }
 }
 
 // MARK: - ItemViewControllerProtocol
 extension ItemViewController: ItemViewControllerProtocol {
     func saveAction(){
-        if let text = itemNameTextField.text {
+        if let text = itemTitleTextField.text {
             delegate?.takeItem(
                 with: text,
                 and: itemDatePicker.date
@@ -150,7 +150,7 @@ extension ItemViewController: UITextFieldDelegate {
 private extension ItemViewController {
     enum Identifier: String {
         case rootView, hStack, separatorView, titleLabel, cancelButton,
-             saveButton, itemNameTextField, itemDatePicker
+             saveButton, itemTitleTextField, itemDatePicker
         var text: String {
             "ItemVC" + "_" + self.rawValue
         }
@@ -159,7 +159,7 @@ private extension ItemViewController {
     func setupUI() {
         view.accessibilityIdentifier = Identifier.rootView.text
         view.backgroundColor = .mainBackground
-        [hStack, separatorView, itemNameTextField, itemDatePicker].forEach(view.addSubview)
+        [hStack, separatorView, itemTitleTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate(
             [
                 cancelButton.widthAnchor.constraint(equalToConstant: Layout.Button.Navigation.width),
@@ -171,10 +171,10 @@ private extension ItemViewController {
                 separatorView.leftAnchor.constraint(equalTo: hStack.leftAnchor),
                 separatorView.rightAnchor.constraint(equalTo: hStack.rightAnchor),
                 separatorView.heightAnchor.constraint(equalToConstant: 1),
-                itemNameTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.Insets.average),
-                itemNameTextField.leftAnchor.constraint(equalTo: hStack.leftAnchor),
-                itemNameTextField.rightAnchor.constraint(equalTo: hStack.rightAnchor),
-                itemDatePicker.topAnchor.constraint(equalTo: itemNameTextField.bottomAnchor, constant: Layout.Insets.standard),
+                itemTitleTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.Insets.average),
+                itemTitleTextField.leftAnchor.constraint(equalTo: hStack.leftAnchor),
+                itemTitleTextField.rightAnchor.constraint(equalTo: hStack.rightAnchor),
+                itemDatePicker.topAnchor.constraint(equalTo: itemTitleTextField.bottomAnchor, constant: Layout.Insets.standard),
                 itemDatePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ]
         )
