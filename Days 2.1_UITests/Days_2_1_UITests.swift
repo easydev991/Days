@@ -18,9 +18,14 @@ final class Days_2_1_UITests: XCTestCase {
     }
 
     func testPresentItemViewController() {
-        let itemVC = app.otherElements["ItemVC_rootView"]
         rememberEventButton.tap()
-        XCTAssertTrue(itemVC.exists)
+        XCTAssertTrue(itemViewController.exists)
+    }
+
+    func testDismissItemViewController() {
+        rememberEventButton.tap()
+        closeItemVCButton.tap()
+        XCTAssertFalse(itemViewController.exists)
     }
 
     func testSaveButtonEnabled_textIsNil() {
@@ -47,15 +52,16 @@ final class Days_2_1_UITests: XCTestCase {
     }
 
     func testSaveItem() {
-        makeTestItem(title: "Test item")
+        makeTestItem(title: "testSaveItem")
         XCTAssertFalse(sortingButton.exists)
         XCTAssertTrue(plusButton.exists)
-        XCTAssertTrue(tableView.cells.firstMatch.exists)
+        XCTAssertTrue(tableView.cells.staticTexts["testSaveItem"].exists)
+        XCTAssertTrue(tableView.cells.staticTexts["today"].exists)
     }
 
     func testDeleteItem() {
         let itemToDelete = tableView.cells.firstMatch
-        makeTestItem(title: "Test item")
+        makeTestItem(title: "testDeleteItem")
         itemToDelete.swipeLeft()
         tableView.cells.firstMatch.buttons.firstMatch.tap()
         XCTAssertFalse(sortingButton.exists)
@@ -65,15 +71,23 @@ final class Days_2_1_UITests: XCTestCase {
     }
 
     func testSortButtonExists() {
-        (0...1).forEach { index in
-            makeTestItem(
-                title: "Test item \(index)",
-                isListEmpty: index == .zero
-            )
-        }
+        makeTestItems(count: 2)
         XCTAssertTrue(sortingButton.exists)
         XCTAssertTrue(plusButton.exists)
         XCTAssertFalse(emptyView.exists)
+    }
+
+    func testPresentSortingOptions() {
+        makeTestItems(count: 2)
+        sortingButton.tap()
+        XCTAssertTrue(app.alerts.firstMatch.exists)
+    }
+
+    func testDismissSortingOptions() {
+        makeTestItems(count: 2)
+        sortingButton.tap()
+        closeAlertButton.tap()
+        XCTAssertFalse(app.alerts.firstMatch.exists)
     }
 }
 
@@ -81,22 +95,29 @@ private extension Days_2_1_UITests {
     var emptyView: XCUIElement { app.otherElements["MainVC_emptyView"] }
     var tableView: XCUIElement { app.tables["MainVC_tableView"] }
     var rememberEventButton: XCUIElement { app.buttons["EmptyView_addNewItemButton"] }
+    var itemViewController: XCUIElement { app.otherElements["ItemVC_rootView"] }
+    var closeItemVCButton: XCUIElement { app.buttons["ItemVC_cancelButton"]}
     var saveItemButton: XCUIElement { app.buttons["ItemVC_saveButton"] }
     var itemTitleTextField: XCUIElement { app.textFields["ItemVC_itemTitleTextField"] }
-    var itemDatePicker: XCUIElement { app.datePickers["ItemVC_itemDatePicker"]}
     var sortingButton: XCUIElement { app.buttons["MainVC_sortingButton"] }
     var plusButton: XCUIElement { app.buttons["MainVC_addNewItemButton"] }
+    var closeAlertButton: XCUIElement { app.alerts.buttons["Close"] }
+
+    func makeTestItems(count: Int) {
+        (.zero...count-1).forEach { index in
+            makeTestItem(
+                title: "Test item \(index)",
+                isListEmpty: index == .zero
+            )
+        }
+    }
 
     func makeTestItem(
         title: String,
         isListEmpty: Bool = true
     ) {
-        let rememberEventButton = rememberEventButton
-        let addNewItemButton = plusButton
-        let saveButton = saveItemButton
-        let textField = itemTitleTextField
-        isListEmpty ? rememberEventButton.tap() : addNewItemButton.tap()
-        textField.typeText(title)
-        saveButton.tap()
+        isListEmpty ? rememberEventButton.tap() : plusButton.tap()
+        itemTitleTextField.typeText(title)
+        saveItemButton.tap()
     }
 }
