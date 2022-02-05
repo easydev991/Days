@@ -24,7 +24,6 @@ final class ItemViewController: UIViewController {
         stack.accessibilityIdentifier = Identifier.hStack.text
         return stack
     }()
-
     private lazy var separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray
@@ -32,7 +31,6 @@ final class ItemViewController: UIViewController {
         view.accessibilityIdentifier = Identifier.separatorView.text
         return view
     }()
-
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = Text.Item.viewTitle.text
@@ -44,20 +42,20 @@ final class ItemViewController: UIViewController {
         label.accessibilityIdentifier = Identifier.titleLabel.text
         return label
     }()
-
     private lazy var cancelButton: UIButton = {
-        let button = UIButton(type: .system, primaryAction: closeButtonAction)
+        let button = UIButton(
+            type: .system,
+            primaryAction: closeButtonAction
+        )
         button.setTitle(Text.Button.cancel.text, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = Identifier.cancelButton.text
         return button
     }()
-
     private lazy var closeButtonAction = UIAction { [weak presenter] _ in
         presenter?.finishFlow()
     }
-
     private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: saveButtonAction)
         button.setTitle(Text.Button.save.text, for: .normal)
@@ -66,11 +64,9 @@ final class ItemViewController: UIViewController {
         button.accessibilityIdentifier = Identifier.saveButton.text
         return button
     }()
-
     private lazy var saveButtonAction = UIAction { [unowned self] _ in
-        self.saveAction()
+        saveAction()
     }
-
     private lazy var itemTitleTextField: UITextField = {
         let field = UITextField()
         field.delegate = self
@@ -80,12 +76,15 @@ final class ItemViewController: UIViewController {
         )
         field.textColor = .adaptiveText
         field.borderStyle = .roundedRect
-        field.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        field.addAction(editingChangedAction, for: .editingChanged)
         field.translatesAutoresizingMaskIntoConstraints = false
         field.accessibilityIdentifier = Identifier.itemTitleTextField.text
         return field
     }()
-
+    private lazy var editingChangedAction = UIAction { [weak presenter] action in
+        let textField = action.sender as? UITextField
+        presenter?.checkNameForLettersIn(text: textField?.text)
+    }
     private lazy var itemDatePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.maximumDate = Date()
@@ -177,10 +176,6 @@ private extension ItemViewController {
                 itemDatePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ]
         )
-    }
-
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        presenter?.checkNameForLettersIn(text: textField.text)
     }
 
     @objc func backButtonAction() {

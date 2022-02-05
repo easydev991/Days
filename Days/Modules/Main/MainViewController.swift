@@ -17,25 +17,31 @@ final class MainViewController: UIViewController {
     // MARK: - UI
     private lazy var sortingButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
+            title: nil,
             image: Images.Main.sort.image,
-            style: .plain,
-            target: self,
-            action: #selector(sortButtonTapped)
+            primaryAction: sortAction,
+            menu: nil
         )
         button.tintColor = .buttonTint
         button.accessibilityIdentifier = Identifier.sortingButton.text
         return button
     }()
+    private lazy var sortAction = UIAction { [unowned self] _ in
+        sortButtonTapped()
+    }
     private lazy var addNewItemButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(addButtonTapped)
+            systemItem: .add,
+            primaryAction: addAction,
+            menu: nil
         )
         button.tintColor = .buttonTint
         button.accessibilityIdentifier = Identifier.addNewItemButton.text
         return button
     }()
+    private lazy var addAction = UIAction { [unowned self] _ in
+        addItemTapped()
+    }
     private lazy var emptyView: EmptyView = {
         let view = EmptyView(delegate: self)
         view.alpha = .zero
@@ -121,7 +127,7 @@ extension MainViewController: MainViewControllerProtocol {
 // MARK: - EmptyViewDelegate
 extension MainViewController: EmptyViewDelegate {
     func buttonTapped() {
-        addButtonTapped()
+        addItemTapped()
     }
 }
 
@@ -205,7 +211,7 @@ private extension MainViewController {
         )
     }
 
-    @objc func sortButtonTapped() {
+    func sortButtonTapped() {
         if let sortOptions = presenter?.availableSortOptions {
             let alertActions = sortOptions.map { option in
                 return UIAlertAction(
@@ -224,7 +230,7 @@ private extension MainViewController {
         }
     }
 
-    @objc func addButtonTapped() {
+    func addItemTapped() {
         presenter?.addItemTapped()
     }
 }

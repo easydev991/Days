@@ -35,10 +35,13 @@ final class EmptyView: UIView {
     }()
     private lazy var addNewItemButton: UIButton = {
         let button = UIButton.sunflowerStyle(title: Text.Item.viewTitle.text)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.addAction(addAction, for: .touchUpInside)
         button.accessibilityIdentifier = Identifier.addNewItemButton.text
         return button
     }()
+    private lazy var addAction = UIAction { [weak delegate] _ in
+        delegate?.buttonTapped()
+    }
 
     // MARK: - Lifecycle
     init(delegate: EmptyViewDelegate?) {
@@ -72,9 +75,5 @@ private extension EmptyView {
                 addNewItemButton.heightAnchor.constraint(equalToConstant: Layout.Button.height)
             ]
         )
-    }
-
-    @objc func buttonTapped() {
-        delegate?.buttonTapped()
     }
 }
