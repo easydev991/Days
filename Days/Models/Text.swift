@@ -2,7 +2,26 @@ import Foundation
 
 enum Text {
     enum Alert {
-        static let error = NSLocalizedString("Error", comment: "")
+        case errorTitle
+        case dateAscending
+        case dateDescending
+        case titleAscending
+        case titleDescending
+
+        var text: String {
+            switch self {
+            case .errorTitle:
+                return NSLocalizedString("Error", comment: "")
+            case .dateAscending:
+                return NSLocalizedString("Date ↑", comment: "")
+            case .dateDescending:
+                return NSLocalizedString("Date ↓", comment: "")
+            case .titleAscending:
+                return NSLocalizedString("Title ↑", comment: "")
+            case .titleDescending:
+                return NSLocalizedString("Title ↓", comment: "")
+            }
+        }
     }
 
     enum Main {
@@ -47,34 +66,28 @@ enum Text {
 
     enum Settings {
         case viewTitle
+        case sendFeedback
+        case rateTheApp
 
         var text: String {
             switch self {
             case .viewTitle:
                 return NSLocalizedString("Settings", comment: "SettingsVC title")
+            case .sendFeedback:
+                return NSLocalizedString("Send feedback", comment: "")
+            case .rateTheApp:
+                return NSLocalizedString("Rate the app", comment: "")
             }
         }
     }
 
     enum Button {
-        case dateAscending
-        case dateDescending
-        case titleAscending
-        case titleDescending
         case cancel
         case save
         case close
 
         var text: String {
             switch self {
-            case .dateAscending:
-                return NSLocalizedString("Date ↑", comment: "")
-            case .dateDescending:
-                return NSLocalizedString("Date ↓", comment: "")
-            case .titleAscending:
-                return NSLocalizedString("Title ↑", comment: "")
-            case .titleDescending:
-                return NSLocalizedString("Title ↓", comment: "")
             case .cancel:
                 return NSLocalizedString("Cancel", comment: "")
             case .save:

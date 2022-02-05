@@ -2,7 +2,7 @@ import UIKit
 
 final class SettingsViewController: UIViewController {
     private lazy var settingsView: SettingsView = {
-        let view = SettingsView()
+        let view = SettingsView(delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = Identifier.settingsView.text
         return view
@@ -10,6 +10,20 @@ final class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+}
+
+extension SettingsViewController: SettingsViewDelegate {
+    func feedbackButtonTapped() {
+        print("--- feedbackButtonTapped")
+    }
+
+    func rateButtonTapped() {
+        print("--- rateButtonTapped")
+    }
+
+    func deleteAllDataTapped() {
+        print("--- deleteAllDataTapped")
     }
 }
 

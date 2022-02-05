@@ -114,7 +114,7 @@ extension MainViewController: MainViewControllerProtocol {
 
     func showError(_ message: String) {
         showAlertWith(
-            title: Text.Alert.error,
+            title: Text.Alert.errorTitle.text,
             message: message
         )
     }

@@ -11,7 +11,7 @@ extension UIViewController {
         style: UIAlertController.Style = .alert
     ) {
         let alert = UIAlertController.makeAlertWith(
-            title: Text.Alert.error,
+            title: Text.Alert.errorTitle.text,
             message: message,
             style: style
         )

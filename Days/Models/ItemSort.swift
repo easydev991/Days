@@ -11,13 +11,13 @@ enum SortBy: CaseIterable {
     var title: String {
         switch self {
         case .dateAscending:
-            return Text.Button.dateAscending.text
+            return Text.Alert.dateAscending.text
         case .dateDescending:
-            return Text.Button.dateDescending.text
+            return Text.Alert.dateDescending.text
         case .titleAscending:
-            return Text.Button.titleAscending.text
+            return Text.Alert.titleAscending.text
         case .titleDescending:
-            return Text.Button.titleDescending.text
+            return Text.Alert.titleDescending.text
         }
     }
 }
