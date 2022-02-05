@@ -308,7 +308,7 @@
 			path = Days_UITests;
 			sourceTree = "<group>";
 		};
-		67C90F172709A90D00F257C9 /* Support */ = {
+		67C90F172709A90D00F257C9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				67699E2E2711FD550077522E /* Typealiases.swift */,
@@ -316,7 +316,7 @@
 				67C6DB2A2785E90F007C9D98 /* Localizable */,
 				67ABCA77279D3A4000A5DCE5 /* RealmSchema.swift */,
 			);
-			path = Support;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		67C90F282709B81D00F257C9 /* Extensions */ = {
@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				67ABCA76279C690C00A5DCE5 /* Services */,
-				67C90F172709A90D00F257C9 /* Support */,
+				67C90F172709A90D00F257C9 /* Common */,
 				678AFCF825164BD100C3DF53 /* App */,
 				6705D12724B9884E00A07BDC /* Modules */,
 				67D5FBA524A8DF7E00F9ED26 /* Models */,
