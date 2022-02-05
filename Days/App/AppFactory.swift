@@ -4,9 +4,9 @@ struct AppFactory {
     static func makeRootView() -> UIViewController {
         let tabController = UITabBarController()
         let mainView = UINavigationController(rootViewController: MainConfigurator.makeMainVC())
-        mainView.tabBarItem = UITabBarItem(title: nil, image: .init(systemName: "house.fill"), tag: .zero)
+        mainView.tabBarItem = UITabBarItem(title: nil, image: Images.TabBar.home.image, tag: .zero)
         let settingsView = UIViewController()
-        settingsView.tabBarItem = UITabBarItem(title: nil, image: .init(systemName: "gear"), tag: 1)
+        settingsView.tabBarItem = UITabBarItem(title: nil, image: Images.TabBar.settings.image, tag: 1)
         tabController.setViewControllers([mainView, settingsView], animated: true)
         return tabController
     }

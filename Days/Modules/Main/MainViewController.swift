@@ -17,7 +17,7 @@ final class MainViewController: UIViewController {
     // MARK: - UI
     private lazy var sortingButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
-            image: .init(systemName: "arrow.up.arrow.down"),
+            image: Images.Main.sort.image,
             style: .plain,
             target: self,
             action: #selector(sortButtonTapped)
