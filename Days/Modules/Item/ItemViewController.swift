@@ -162,7 +162,6 @@ private extension ItemViewController {
         [hStack, separatorView, itemTitleTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate(
             [
-                cancelButton.widthAnchor.constraint(equalToConstant: Layout.Button.Navigation.width),
                 saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor),
                 hStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.Insets.standard),
                 hStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.Insets.standard),
