@@ -272,8 +272,8 @@
 			children = (
 				676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */,
 				676ED4A427AEF88700D9E0D3 /* SettingsViewController.swift */,
-				676ED4A827AEFA9C00D9E0D3 /* SettingsView.swift */,
 				676ED4AC27AF0B7000D9E0D3 /* SettingsViewModel.swift */,
+				676ED4A827AEFA9C00D9E0D3 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

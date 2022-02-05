@@ -5,7 +5,10 @@ import MessageUI
 final class SettingsViewController: UIViewController {
     private let viewModel: SettingsViewModelProtocol
     private lazy var settingsView: SettingsView = {
-        let view = SettingsView(delegate: self)
+        let view = SettingsView(
+            delegate: self,
+            canDeleteAllData: viewModel.canDeleteAllData
+        )
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = Identifier.settingsView.text
         return view
@@ -54,7 +57,6 @@ extension SettingsViewController: SettingsViewDelegate {
     }
 
     func deleteAllDataTapped() {
-        print("--- deleteAllDataTapped")
         viewModel.deleteAllData()
     }
 }

@@ -9,6 +9,8 @@ protocol SettingsViewDelegate: AnyObject {
 final class SettingsView: UIView {
     private weak var delegate: SettingsViewDelegate?
 
+    private let canDeleteAllData: Bool
+
     // MARK: - UI
     private lazy var vStack: UIStackView = {
         let stack = UIStackView(
@@ -61,14 +63,18 @@ final class SettingsView: UIView {
     }
 
     // MARK: - Lifecycle
-    init(delegate: SettingsViewDelegate?) {
+    init(
+        delegate: SettingsViewDelegate?,
+        canDeleteAllData: Bool
+    ) {
         self.delegate = delegate
+        self.canDeleteAllData = canDeleteAllData
         super.init(frame: .zero)
         setupUI()
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -91,8 +97,8 @@ private extension SettingsView {
                 feedbackButton.heightAnchor.constraint(equalToConstant: Layout.Button.height)
             ]
         )
-        #if DEBUG
-        vStack.addArrangedSubview(deleteAllDataButton)
-        #endif
+        if canDeleteAllData {
+            vStack.addArrangedSubview(deleteAllDataButton)
+        }
     }
 }
