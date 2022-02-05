@@ -72,7 +72,7 @@ final class MainViewController: UIViewController {
 // MARK: - MainViewControllerProtocol
 extension MainViewController: MainViewControllerProtocol {
     func set(title: String?) {
-        self.title = title
+        navigationItem.title = title
     }
 
     func reload(isListEmpty: Bool) {
@@ -192,11 +192,6 @@ private extension MainViewController {
     func setupUI() {
         view.backgroundColor = .mainBackground
         view.accessibilityIdentifier = Identifier.rootView.text
-        navigationController?.navigationBar.barTintColor = .mainBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
-
         [tableView, emptyView].forEach(view.addSubview)
         NSLayoutConstraint.activate(
             [

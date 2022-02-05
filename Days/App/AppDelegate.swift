@@ -11,6 +11,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             UIView.setAnimationsEnabled(false)
             clearDatabaseForUITesting()
         }
+        setupAppearance()
         return true
     }
 
@@ -40,5 +41,12 @@ private extension AppDelegate {
                 error.localizedDescription
             )
         }
+    }
+
+    func setupAppearance() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UITabBar.appearance().tintColor = .sunflower
     }
 }
