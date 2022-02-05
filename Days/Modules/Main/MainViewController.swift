@@ -194,8 +194,8 @@ private extension MainViewController {
         view.accessibilityIdentifier = Identifier.rootView.text
         navigationController?.navigationBar.barTintColor = .mainBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.textColor]
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.textColor]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
 
         [tableView, emptyView].forEach(view.addSubview)
         NSLayoutConstraint.activate(

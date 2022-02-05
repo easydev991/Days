@@ -4,7 +4,7 @@ extension UIAlertController {
     static func makeAlertWith(
         title: String? = nil,
         message: String? = nil,
-        tintColor: UIColor = .textColor,
+        tintColor: UIColor = .adaptiveText,
         style: UIAlertController.Style = .alert,
         actions: [UIAlertAction]? = nil
     ) -> UIAlertController {

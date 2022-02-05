@@ -15,8 +15,13 @@
         }
       ],
       "color" : {
-        "platform" : "universal",
-        "reference" : "systemYellowColor"
+        "color-space" : "srgb",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0x0F",
+          "green" : "0xC4",
+          "red" : "0xF1"
+        }
       },
       "idiom" : "universal"
     }

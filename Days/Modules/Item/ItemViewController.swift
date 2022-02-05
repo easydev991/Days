@@ -37,7 +37,7 @@ final class ItemViewController: UIViewController {
         let label = UILabel()
         label.text = Text.Item.viewTitle.text
         label.font = .preferredFont(forTextStyle: .headline, compatibleWith: nil)
-        label.textColor = .textColor
+        label.textColor = .adaptiveText
         label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +78,7 @@ final class ItemViewController: UIViewController {
             string: Text.Item.titlePlaceholder.text,
             attributes: [.foregroundColor: UIColor.systemGray]
         )
-        field.textColor = .textColor
+        field.textColor = .adaptiveText
         field.borderStyle = .roundedRect
         field.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -93,7 +93,7 @@ final class ItemViewController: UIViewController {
         picker.backgroundColor = .mainBackground
         picker.preferredDatePickerStyle = .wheels
         picker.setValue(false, forKey: "highlightsToday")
-        picker.setValue(UIColor.textColor, forKeyPath: "textColor")
+        picker.setValue(UIColor.adaptiveText, forKeyPath: "textColor")
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.accessibilityIdentifier = Identifier.itemDatePicker.text
         return picker

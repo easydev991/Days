@@ -26,7 +26,7 @@ final class EmptyView: UIView {
         let label = UILabel()
         label.text = Text.Main.emptyList.text
         label.font = .preferredFont(forTextStyle: .headline, compatibleWith: nil)
-        label.textColor = .textColor
+        label.textColor = .adaptiveText
         label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -39,11 +39,11 @@ final class EmptyView: UIView {
         button.setTitle(Text.Item.viewTitle.text, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.setBackgroundImage(
-            .init(color: .buttonNormal),
+            .init(color: .sunflower),
             for: .normal
         )
         button.setBackgroundImage(
-            .init(color: .buttonPressed),
+            .init(color: .sunflowerPressed),
             for: .highlighted
         )
         button.setTitleColor(.black, for: .normal)
