@@ -25,6 +25,8 @@
 		676ED49E27AEDE2D00D9E0D3 /* ItemViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED49D27AEDE2D00D9E0D3 /* ItemViewPreview.swift */; };
 		676ED4A027AEE66C00D9E0D3 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED49F27AEE66C00D9E0D3 /* Images.swift */; };
 		676ED4A227AEF74D00D9E0D3 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4A127AEF74D00D9E0D3 /* UIButton+.swift */; };
+		676ED4A527AEF88700D9E0D3 /* SettingsVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4A427AEF88700D9E0D3 /* SettingsVIewController.swift */; };
+		676ED4A727AEF9C000D9E0D3 /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */; };
 		6775FF54271351B0007D1041 /* ItemsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF53271351B0007D1041 /* ItemsMock.swift */; };
 		6775FF5627136684007D1041 /* MainInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5527136684007D1041 /* MainInteractorTest.swift */; };
 		6775FF58271366A3007D1041 /* MainPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF57271366A3007D1041 /* MainPresenterMock.swift */; };
@@ -103,6 +105,8 @@
 		676ED49D27AEDE2D00D9E0D3 /* ItemViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewPreview.swift; sourceTree = "<group>"; };
 		676ED49F27AEE66C00D9E0D3 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		676ED4A127AEF74D00D9E0D3 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		676ED4A427AEF88700D9E0D3 /* SettingsVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIewController.swift; sourceTree = "<group>"; };
+		676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
 		6775FF53271351B0007D1041 /* ItemsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsMock.swift; sourceTree = "<group>"; };
 		6775FF5527136684007D1041 /* MainInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorTest.swift; sourceTree = "<group>"; };
 		6775FF57271366A3007D1041 /* MainPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterMock.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 		6705D12724B9884E00A07BDC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				676ED4A327AEF87800D9E0D3 /* Settings */,
 				6705D12924B9885E00A07BDC /* Main */,
 				6705D12A24B9887700A07BDC /* Item */,
 			);
@@ -252,6 +257,15 @@
 				67C8EE0827A6696700557A70 /* ItemViewControllerTest.swift */,
 			);
 			path = ItemModule;
+			sourceTree = "<group>";
+		};
+		676ED4A327AEF87800D9E0D3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				676ED4A427AEF88700D9E0D3 /* SettingsVIewController.swift */,
+				676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		6775FF5B2713720D007D1041 /* Mocks */ = {
@@ -561,6 +575,7 @@
 				67C90F2A2709B84500F257C9 /* Calendar+.swift in Sources */,
 				67699E2D2711E3420077522E /* Results+.swift in Sources */,
 				67ABCA73279C615900A5DCE5 /* Text.swift in Sources */,
+				676ED4A727AEF9C000D9E0D3 /* SettingsConfigurator.swift in Sources */,
 				67ABCA78279D3A4000A5DCE5 /* RealmSchema.swift in Sources */,
 				67699E2B2711DF690077522E /* ItemStorage.swift in Sources */,
 				676ED49C27AEDE1200D9E0D3 /* MainViewPreview.swift in Sources */,
@@ -580,6 +595,7 @@
 				6705D13F24B9896E00A07BDC /* ItemRouter.swift in Sources */,
 				6705D12E24B988BC00A07BDC /* MainInteractor.swift in Sources */,
 				67ABCA75279C68BE00A5DCE5 /* ItemSort.swift in Sources */,
+				676ED4A527AEF88700D9E0D3 /* SettingsVIewController.swift in Sources */,
 				6705D12C24B988B300A07BDC /* MainPresenter.swift in Sources */,
 				67D5FBB424A8FEE100F9ED26 /* ItemViewController.swift in Sources */,
 				676ED4A227AEF74D00D9E0D3 /* UIButton+.swift in Sources */,

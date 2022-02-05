@@ -45,6 +45,17 @@ enum Text {
         }
     }
 
+    enum Settings {
+        case viewTitle
+
+        var text: String {
+            switch self {
+            case .viewTitle:
+                return NSLocalizedString("Settings", comment: "SettingsVC title")
+            }
+        }
+    }
+
     enum Button {
         case dateAscending
         case dateDescending
