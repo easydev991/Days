@@ -67,7 +67,7 @@ enum Text {
             case .cancel:
                 return NSLocalizedString("Cancel", comment: "")
             case .save:
-                return NSLocalizedString("Save", comment: "")
+                return NSLocalizedString("Done", comment: "")
             case .close:
                 return NSLocalizedString("Close", comment: "")
             }
