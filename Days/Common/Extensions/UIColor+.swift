@@ -6,5 +6,6 @@ extension UIColor {
     static let adaptiveText     = UIColor(named: "AdaptiveText")!
     static let sunflower        = UIColor(named: "Sunflower")!
     static let sunflowerPressed = sunflower.withAlphaComponent(0.8)
+    static let redPressed       = UIColor.red.withAlphaComponent(0.8)
     static let blackPressed     = UIColor.black.withAlphaComponent(0.8)
 }

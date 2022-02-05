@@ -1,7 +1,13 @@
 import UIKit
 
 extension UIButton {
-    static func sunflowerStyle(title: String) -> UIButton {
+    enum CustomStyle {
+        case sunflower, dangerRed
+    }
+    static func customWith(
+        title: String,
+        style: CustomStyle = .sunflower
+    ) -> UIButton {
         let button = UIButton(type: .custom)
         button.clipsToBounds = true
         button.setTitle(title, for: .normal)
@@ -10,11 +16,19 @@ extension UIButton {
             weight: .medium
         )
         button.setBackgroundImage(
-            .init(color: .sunflower),
+            .init(
+                color: style == .sunflower
+                ? .sunflower
+                : .red
+            ),
             for: .normal
         )
         button.setBackgroundImage(
-            .init(color: .sunflowerPressed),
+            .init(
+                color: style == .sunflower
+                ? .sunflower
+                : .redPressed
+            ),
             for: .highlighted
         )
         button.setTitleColor(.black, for: .normal)

@@ -34,7 +34,9 @@ final class EmptyView: UIView {
         return label
     }()
     private lazy var addNewItemButton: UIButton = {
-        let button = UIButton.sunflowerStyle(title: Text.Item.viewTitle.text)
+        let button = UIButton.customWith(
+            title: Text.Item.viewTitle.text
+        )
         button.addAction(addAction, for: .touchUpInside)
         button.accessibilityIdentifier = Identifier.addNewItemButton.text
         return button

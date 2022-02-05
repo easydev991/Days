@@ -2,6 +2,7 @@ import UIKit.UIViewController
 
 struct SettingsConfigurator {
     static func makeSettingsVC() -> UIViewController {
-        SettingsViewController()
+        let viewModel = SettingsViewModel(deletionService: DeletionService())
+        return SettingsViewController(viewModel: viewModel)
     }
 }

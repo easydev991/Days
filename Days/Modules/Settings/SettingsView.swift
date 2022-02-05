@@ -26,7 +26,9 @@ final class SettingsView: UIView {
         return stack
     }()
     private lazy var feedbackButton: UIButton = {
-        let button = UIButton.sunflowerStyle(title: Text.Settings.sendFeedback.text)
+        let button = UIButton.customWith(
+            title: Text.Settings.sendFeedback.text
+        )
         button.addAction(feedbackAction, for: .touchUpInside)
         button.accessibilityIdentifier = Identifier.feedbackButton.text
         return button
@@ -35,13 +37,27 @@ final class SettingsView: UIView {
         delegate?.feedbackButtonTapped()
     }
     private lazy var rateButton: UIButton = {
-        let button = UIButton.sunflowerStyle(title: Text.Settings.rateTheApp.text)
+        let button = UIButton.customWith(
+            title: Text.Settings.rateTheApp.text
+        )
         button.addAction(rateAction, for: .touchUpInside)
         button.accessibilityIdentifier = Identifier.rateButton.text
         return button
     }()
     private lazy var rateAction = UIAction { [weak delegate] _ in
         delegate?.rateButtonTapped()
+    }
+    private lazy var deleteAllDataButton: UIButton = {
+        let button = UIButton.customWith(
+            title: Text.Settings.deleteAllData.text,
+            style: .dangerRed
+        )
+        button.addAction(deleteAllDataAction, for: .touchUpInside)
+        button.accessibilityIdentifier = Identifier.rateButton.text
+        return button
+    }()
+    private lazy var deleteAllDataAction = UIAction { [weak delegate] _ in
+        delegate?.deleteAllDataTapped()
     }
 
     // MARK: - Lifecycle
@@ -75,5 +91,8 @@ private extension SettingsView {
                 feedbackButton.heightAnchor.constraint(equalToConstant: Layout.Button.height)
             ]
         )
+        #if DEBUG
+        vStack.addArrangedSubview(deleteAllDataButton)
+        #endif
     }
 }

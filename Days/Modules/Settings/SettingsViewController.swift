@@ -3,13 +3,23 @@ import StoreKit
 import MessageUI
 
 final class SettingsViewController: UIViewController {
-    private let devEmail = "o.n.eremenko@gmail.com"
+    private let viewModel: SettingsViewModelProtocol
     private lazy var settingsView: SettingsView = {
         let view = SettingsView(delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = Identifier.settingsView.text
         return view
     }()
+
+    init(viewModel: SettingsViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -21,7 +31,7 @@ extension SettingsViewController: SettingsViewDelegate {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients([devEmail])
+            mail.setToRecipients(viewModel.feedbackRecipients)
             mail.setMessageBody(
                 Text.Settings.feedbackBody.text,
                 isHTML: true
@@ -45,6 +55,7 @@ extension SettingsViewController: SettingsViewDelegate {
 
     func deleteAllDataTapped() {
         print("--- deleteAllDataTapped")
+        viewModel.deleteAllData()
     }
 }
 

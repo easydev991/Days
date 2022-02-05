@@ -70,6 +70,7 @@ enum Text {
         case feedbackSubject
         case feedbackBody
         case rateTheApp
+        case deleteAllData
 
         var text: String {
             switch self {
@@ -83,6 +84,8 @@ enum Text {
                 return NSLocalizedString("Your message: ", comment: "")
             case .rateTheApp:
                 return NSLocalizedString("Rate the app", comment: "")
+            case .deleteAllData:
+                return NSLocalizedString("Delete all data", comment: "")
             }
         }
     }
