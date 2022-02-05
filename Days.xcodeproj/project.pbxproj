@@ -28,6 +28,7 @@
 		676ED4A527AEF88700D9E0D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4A427AEF88700D9E0D3 /* SettingsViewController.swift */; };
 		676ED4A727AEF9C000D9E0D3 /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */; };
 		676ED4A927AEFA9C00D9E0D3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4A827AEFA9C00D9E0D3 /* SettingsView.swift */; };
+		676ED4AB27AF054B00D9E0D3 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4AA27AF054B00D9E0D3 /* UIApplication+.swift */; };
 		6775FF54271351B0007D1041 /* ItemsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF53271351B0007D1041 /* ItemsMock.swift */; };
 		6775FF5627136684007D1041 /* MainInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5527136684007D1041 /* MainInteractorTest.swift */; };
 		6775FF58271366A3007D1041 /* MainPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF57271366A3007D1041 /* MainPresenterMock.swift */; };
@@ -109,6 +110,7 @@
 		676ED4A427AEF88700D9E0D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
 		676ED4A827AEFA9C00D9E0D3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		676ED4AA27AF054B00D9E0D3 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		6775FF53271351B0007D1041 /* ItemsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsMock.swift; sourceTree = "<group>"; };
 		6775FF5527136684007D1041 /* MainInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorTest.swift; sourceTree = "<group>"; };
 		6775FF57271366A3007D1041 /* MainPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterMock.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				67ABCA7F279D8DA700A5DCE5 /* UIViewController+.swift */,
 				67C8EE0027A59ACC00557A70 /* String+.swift */,
 				676ED4A127AEF74D00D9E0D3 /* UIButton+.swift */,
+				676ED4AA27AF054B00D9E0D3 /* UIApplication+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 			files = (
 				67D5FBAB24A8E1CD00F9ED26 /* ItemCell.swift in Sources */,
 				6705D13624B9893400A07BDC /* ItemPresenter.swift in Sources */,
+				676ED4AB27AF054B00D9E0D3 /* UIApplication+.swift in Sources */,
 				67ABCA80279D8DA700A5DCE5 /* UIViewController+.swift in Sources */,
 				6705D13A24B9895300A07BDC /* ItemConfigurator.swift in Sources */,
 				67D5FB9124A8D74400F9ED26 /* MainViewController.swift in Sources */,

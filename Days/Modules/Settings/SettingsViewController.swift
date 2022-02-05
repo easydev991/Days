@@ -1,4 +1,5 @@
 import UIKit
+import StoreKit
 
 final class SettingsViewController: UIViewController {
     private lazy var settingsView: SettingsView = {
@@ -19,7 +20,9 @@ extension SettingsViewController: SettingsViewDelegate {
     }
 
     func rateButtonTapped() {
-        print("--- rateButtonTapped")
+        if let scene = UIApplication.shared.currentScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
     }
 
     func deleteAllDataTapped() {
