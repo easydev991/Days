@@ -34,29 +34,8 @@ final class EmptyView: UIView {
         return label
     }()
     private lazy var addNewItemButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.clipsToBounds = true
-        button.setTitle(Text.Item.viewTitle.text, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        button.setBackgroundImage(
-            .init(color: .sunflower),
-            for: .normal
-        )
-        button.setBackgroundImage(
-            .init(color: .sunflowerPressed),
-            for: .highlighted
-        )
-        button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.blackPressed, for: .highlighted)
-        button.layer.cornerRadius = 24
-        button.contentEdgeInsets = .init(
-            top: .zero,
-            left: Layout.Insets.standard,
-            bottom: .zero,
-            right: Layout.Insets.standard
-        )
+        let button = UIButton.sunflowerStyle(title: Text.Item.viewTitle.text)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = Identifier.addNewItemButton.text
         return button
     }()
