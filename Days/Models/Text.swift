@@ -67,6 +67,8 @@ enum Text {
     enum Settings {
         case viewTitle
         case sendFeedback
+        case feedbackSubject
+        case feedbackBody
         case rateTheApp
 
         var text: String {
@@ -75,6 +77,10 @@ enum Text {
                 return NSLocalizedString("Settings", comment: "SettingsVC title")
             case .sendFeedback:
                 return NSLocalizedString("Send feedback", comment: "")
+            case .feedbackSubject:
+                return NSLocalizedString("Feedback_Days", comment: "")
+            case .feedbackBody:
+                return NSLocalizedString("Your message: ", comment: "")
             case .rateTheApp:
                 return NSLocalizedString("Rate the app", comment: "")
             }

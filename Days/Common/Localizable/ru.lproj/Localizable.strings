@@ -15,4 +15,6 @@
 "Items list is empty" = "Список пуст";
 "Settings" = "Настройки";
 "Send feedback" = "Отправить отзыв";
+"Feedback_Days" = "Feedback_Days";
+"Your message: " = "<p>Ваше сообщение: </p>";
 "Rate the app" = "Оценить приложение";
