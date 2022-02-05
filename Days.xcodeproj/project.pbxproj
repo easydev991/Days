@@ -29,6 +29,8 @@
 		676ED4A727AEF9C000D9E0D3 /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */; };
 		676ED4A927AEFA9C00D9E0D3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4A827AEFA9C00D9E0D3 /* SettingsView.swift */; };
 		676ED4AB27AF054B00D9E0D3 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4AA27AF054B00D9E0D3 /* UIApplication+.swift */; };
+		676ED4AD27AF0B7000D9E0D3 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4AC27AF0B7000D9E0D3 /* SettingsViewModel.swift */; };
+		676ED4AF27AF0D0100D9E0D3 /* DeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4AE27AF0D0100D9E0D3 /* DeletionService.swift */; };
 		6775FF54271351B0007D1041 /* ItemsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF53271351B0007D1041 /* ItemsMock.swift */; };
 		6775FF5627136684007D1041 /* MainInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF5527136684007D1041 /* MainInteractorTest.swift */; };
 		6775FF58271366A3007D1041 /* MainPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6775FF57271366A3007D1041 /* MainPresenterMock.swift */; };
@@ -111,6 +113,8 @@
 		676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
 		676ED4A827AEFA9C00D9E0D3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		676ED4AA27AF054B00D9E0D3 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		676ED4AC27AF0B7000D9E0D3 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		676ED4AE27AF0D0100D9E0D3 /* DeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionService.swift; sourceTree = "<group>"; };
 		6775FF53271351B0007D1041 /* ItemsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsMock.swift; sourceTree = "<group>"; };
 		6775FF5527136684007D1041 /* MainInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorTest.swift; sourceTree = "<group>"; };
 		6775FF57271366A3007D1041 /* MainPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterMock.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				676ED4A627AEF9C000D9E0D3 /* SettingsConfigurator.swift */,
 				676ED4A427AEF88700D9E0D3 /* SettingsViewController.swift */,
 				676ED4A827AEFA9C00D9E0D3 /* SettingsView.swift */,
+				676ED4AC27AF0B7000D9E0D3 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				67699E2A2711DF690077522E /* ItemStorage.swift */,
+				676ED4AE27AF0D0100D9E0D3 /* DeletionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -596,6 +602,7 @@
 				67C6DB292785E423007C9D98 /* Layout.swift in Sources */,
 				67D5FB8D24A8D74400F9ED26 /* AppDelegate.swift in Sources */,
 				67ABCA82279D948800A5DCE5 /* MainModel.swift in Sources */,
+				676ED4AF27AF0D0100D9E0D3 /* DeletionService.swift in Sources */,
 				67ABCA71279C436800A5DCE5 /* AppFactory.swift in Sources */,
 				67D5FB8F24A8D74400F9ED26 /* SceneDelegate.swift in Sources */,
 				67699E2F2711FD550077522E /* Typealiases.swift in Sources */,
@@ -612,6 +619,7 @@
 				67D5FBA924A8E07D00F9ED26 /* Item.swift in Sources */,
 				6705D13024B988CD00A07BDC /* MainConfigurator.swift in Sources */,
 				676ED4A927AEFA9C00D9E0D3 /* SettingsView.swift in Sources */,
+				676ED4AD27AF0B7000D9E0D3 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

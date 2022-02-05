@@ -9,7 +9,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         if CommandLine.arguments.contains("--uitesting") {
             UIView.setAnimationsEnabled(false)
-            clearDatabaseForUITesting()
+            DeletionService().clearDatabase()
         }
         setupAppearance()
         return true
@@ -25,24 +25,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 private extension AppDelegate {
-    func clearDatabaseForUITesting() {
-        do {
-            let realm = try Realm(
-                configuration: .init(
-                    schemaVersion: RealmSchema.version
-                )
-            )
-            try realm.write {
-                realm.deleteAll()
-            }
-        } catch {
-            print(
-                "AppDelegate: clearDatabaseForUITesting:",
-                error.localizedDescription
-            )
-        }
-    }
-
     func setupAppearance() {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
