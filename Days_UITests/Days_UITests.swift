@@ -11,53 +11,76 @@ final class Days_UITests: XCTestCase {
         app.launch()
     }
 
-    func testShowEmptyView() {
+    func testEmptyState_and_presentDismissItemVC() {
+        // testShowEmptyView on first launch
         XCTAssertFalse(sortingButton.exists)
         XCTAssertFalse(plusButton.exists)
         XCTAssertTrue(emptyView.exists)
-    }
 
-    func testPresentItemViewController() {
+        // testPresentItemViewController
         rememberEventButton.tap()
         XCTAssertTrue(itemViewController.exists)
-    }
 
-    func testDismissItemViewController() {
-        rememberEventButton.tap()
+        // testDismissItemViewController
         closeItemVCButton.tap()
         XCTAssertFalse(itemViewController.exists)
     }
 
-    func testSaveItem() {
-        makeTestItem(title: "testSaveItem")
+    func testSaveItem_and_deleteItem() {
+        // testSaveItem
+        let testItem = tableView.cells.firstMatch
+        makeTestItem(title: "testItem")
         XCTAssertFalse(sortingButton.exists)
         XCTAssertTrue(plusButton.exists)
-        XCTAssertTrue(tableView.cells.staticTexts["testSaveItem"].exists)
+        XCTAssertTrue(tableView.cells.staticTexts["testItem"].exists)
         XCTAssertTrue(tableView.cells.staticTexts["today"].exists)
-    }
 
-    func testDeleteItem() {
-        let itemToDelete = tableView.cells.firstMatch
-        makeTestItem(title: "testDeleteItem")
-        itemToDelete.swipeLeft()
+        // testDeleteItem
+        testItem.swipeLeft()
         tableView.cells.firstMatch.buttons.firstMatch.tap()
         XCTAssertFalse(sortingButton.exists)
         XCTAssertFalse(plusButton.exists)
-        XCTAssertFalse(itemToDelete.exists)
+        XCTAssertFalse(testItem.exists, "testItem should be deleted")
         XCTAssertTrue(emptyView.exists)
     }
 
-    func testSortAndPlusButtonsExist() {
+    func testSortingButtons() {
+        // testSortAndPlusButtonsExist
         makeTestItems(count: 2)
         XCTAssertTrue(sortingButton.exists)
         XCTAssertTrue(plusButton.exists)
         XCTAssertFalse(emptyView.exists)
-    }
 
-    func testPresentSortingOptions() {
-        makeTestItems(count: 2)
+        // testPresentSortingOptions
         sortingButton.tap()
         XCTAssertTrue(sortByAlert.exists)
+    }
+
+    func testDeleteAllData() {
+        // testDeleteDataButton is hidden
+        settingsTabButton.tap()
+        XCTAssertFalse(deleteDataButton.exists, "deleteDataButton should be hidden if there is no data to delete")
+
+        // testDeleteDataButton is visible
+        homeTabButton.tap()
+        makeTestItems(count: 2)
+        settingsTabButton.tap()
+        XCTAssertTrue(deleteDataButton.exists, "deleteDataButton should be visible when there is data to delete")
+
+        // testWarningAlert exists
+        deleteDataButton.tap()
+        XCTAssertTrue(warningAlert.exists)
+
+        // testDeleteDataButton is hidden
+        warningAlertYesButton.tap()
+        XCTAssertFalse(deleteDataButton.exists, "deleteDataButton should be hidden after data deletion")
+
+        // testShowEmptyView after data deletion
+        successAlertCloseButton.tap()
+        homeTabButton.tap()
+        XCTAssertFalse(sortingButton.exists)
+        XCTAssertFalse(plusButton.exists)
+        XCTAssertTrue(emptyView.exists)
     }
 }
 
@@ -72,6 +95,14 @@ private extension Days_UITests {
     var sortingButton: XCUIElement { app.buttons["MainVC_sortingButton"] }
     var plusButton: XCUIElement { app.buttons["MainVC_addNewItemButton"] }
     var sortByAlert: XCUIElement { app.alerts["Sort by"] }
+    var tabbar: XCUIElement { app.tabBars["Tab Bar"] }
+    var homeTabButton: XCUIElement { tabbar.buttons["home"] }
+    var settingsTabButton: XCUIElement { tabbar.buttons["settings"] }
+    var deleteDataButton: XCUIElement { app.buttons["SettingsView_deleteDataButton"] }
+    var warningAlert: XCUIElement { app.alerts["Warning!"] }
+    var warningAlertYesButton: XCUIElement { warningAlert.buttons["Yes"] }
+    var successAlert: XCUIElement { app.alerts["Success"] }
+    var successAlertCloseButton: XCUIElement { successAlert.buttons["Close"] }
 
     func makeTestItems(count: Int) {
         (.zero...count-1).forEach { index in
