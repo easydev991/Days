@@ -2,8 +2,8 @@ import Foundation
 import RealmSwift
 
 final class Item: Object {
-    @objc dynamic var title = ""
-    @objc dynamic var date = Date()
+    @Persisted var title = ""
+    @Persisted var date = Date()
 
     convenience init(title: String, date: Date) {
         self.init()
