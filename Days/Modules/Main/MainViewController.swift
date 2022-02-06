@@ -87,14 +87,15 @@ extension MainViewController: MainViewControllerProtocol {
 
     func reload(isListEmpty: Bool) {
         tableView.isHidden = isListEmpty
-        if !isListEmpty {
+        if isListEmpty {
+            tableView.reloadData()
+            emptyView.fadeIn()
+        } else {
             emptyView.alpha = .zero
             tableView.reloadSections(
                 .init(integer: .zero),
                 with: .automatic
             )
-        } else {
-            emptyView.fadeIn()
         }
     }
 
