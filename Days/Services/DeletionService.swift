@@ -4,7 +4,7 @@ protocol DeletionServiceProtocol {
     func clearDatabase(completion: OptionalErrorVoidBlock?)
 }
 
-struct DeletionService: DeletionServiceProtocol {
+final class DeletionService: DeletionServiceProtocol {
     func clearDatabase(completion: OptionalErrorVoidBlock? = nil) {
         do {
             let realm = try Realm(

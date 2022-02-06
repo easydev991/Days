@@ -3,13 +3,20 @@ import UIKit.UIViewController
 final class AppFactory {
     static func makeRootView() -> UIViewController {
         let tabController = UITabBarController()
-        let mainView = UINavigationController(
-            rootViewController: MainConfigurator.makeMainVC()
+        let mainVC = MainConfigurator.makeVC()
+        mainVC.tabBarItem = .init(
+            title: nil,
+            image: Images.TabBar.home.image,
+            tag: .zero
         )
-        mainView.tabBarItem = UITabBarItem(title: nil, image: Images.TabBar.home.image, tag: .zero)
-        let settingsView = UINavigationController(rootViewController: SettingsConfigurator.makeSettingsVC())
-        settingsView.tabBarItem = UITabBarItem(title: nil, image: Images.TabBar.settings.image, tag: 1)
-        tabController.setViewControllers([mainView, settingsView], animated: true)
+        let settingsVC = SettingsConfigurator.makeVC()
+        settingsVC.tabBarItem = .init(
+            title: nil,
+            image: Images.TabBar.settings.image,
+            tag: 1
+        )
+        let controllers = [mainVC, settingsVC].map(UINavigationController.init)
+        tabController.setViewControllers(controllers, animated: true)
         return tabController
     }
 }

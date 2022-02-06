@@ -1,7 +1,7 @@
 import UIKit.UIViewController
 
-struct SettingsConfigurator {
-    static func makeSettingsVC() -> UIViewController {
+final class SettingsConfigurator {
+    static func makeVC() -> UIViewController {
         let viewModel = SettingsViewModel(deletionService: DeletionService())
         return SettingsViewController(viewModel: viewModel)
     }
