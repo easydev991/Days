@@ -36,15 +36,15 @@ extension SettingsViewController: SettingsViewDelegate {
             mail.mailComposeDelegate = self
             mail.setToRecipients(viewModel.feedbackRecipients)
             mail.setMessageBody(
-                Text.Settings.feedbackBody.text,
+                viewModel.emailMessageBody,
                 isHTML: true
             )
-            mail.setSubject(Text.Settings.feedbackSubject.text)
+            mail.setSubject(viewModel.emailSubjectText)
             present(mail, animated: true)
         } else {
-            showAlertWith(
-                title: Text.Alert.errorTitle.text,
-                message: "Cannot send emails",
+            presentSimpleAlert(
+                title: Text.Alert.error.text,
+                message: viewModel.sendEmailErrorMessage,
                 style: .alert
             )
         }
@@ -57,7 +57,34 @@ extension SettingsViewController: SettingsViewDelegate {
     }
 
     func deleteAllDataTapped() {
-        viewModel.deleteAllData()
+        let yesAction = UIAlertAction(
+            title: Text.Button.yes.text,
+            style: .destructive,
+            handler: { [unowned self] _ in
+                viewModel.deleteAllData { result in
+                    switch result {
+                    case let .success(message):
+                        presentSimpleAlert(
+                            title: Text.Alert.success.text,
+                            message: message
+                        )
+                    case let .failure(error):
+                        presentSimpleAlert(
+                            title: Text.Alert.error.text,
+                            message: error.localizedDescription
+                        )
+                    }
+                }
+            }
+        )
+        let alert = UIAlertController.makeAlert(
+            title: Text.Alert.warning.text,
+            message: viewModel.deletionDisclaimer,
+            style: .alert,
+            actions: [yesAction],
+            exitStyle: .cancel
+        )
+        present(alert)
     }
 }
 
@@ -81,7 +108,7 @@ private extension SettingsViewController {
 
     func setupUI() {
         view.accessibilityIdentifier = Identifier.rootView.text
-        navigationItem.title = Text.Settings.viewTitle.text
+        navigationItem.title = viewModel.viewTitle
         view.addSubview(settingsView)
         NSLayoutConstraint.activate(
             [

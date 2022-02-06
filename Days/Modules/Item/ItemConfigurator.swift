@@ -1,4 +1,4 @@
-struct ItemConfigurator {
+final class ItemConfigurator {
     static func configure(
         with delegate: ItemViewControllerDelegate?
     ) -> ItemViewController {

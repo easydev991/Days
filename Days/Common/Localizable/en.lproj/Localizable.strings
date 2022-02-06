@@ -1,12 +1,18 @@
 "Done" = "Done";
 "Close" = "Close";
+"Cancel" = "Cancel";
+"Yes" = "Yes";
+
+"Success" = "Success";
+"Warning" = "Warning!";
+"All data deletion disclaimer" = "Do you really want to delete all your data from the app?";
+"Error" = "Error";
+"Deletion success" = "Your data has been deleted";
 "Sort by" = "Sort by";
 "Date ↓" = "Date descending";
 "Date ↑" = "Date ascending";
 "Title ↓" = "Title descending";
 "Title ↑" = "Title ascending";
-"Cancel" = "Cancel";
-"Error" = "Error";
 
 "Days have passed" = "Days have passed";
 "today" = "today";

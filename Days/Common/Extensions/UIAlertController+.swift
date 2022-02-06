@@ -1,12 +1,13 @@
 import UIKit.UIAlertController
 
 extension UIAlertController {
-    static func makeAlertWith(
+    static func makeAlert(
         title: String? = nil,
         message: String? = nil,
         tintColor: UIColor = .adaptiveText,
         style: UIAlertController.Style = .alert,
-        actions: [UIAlertAction]? = nil
+        actions: [UIAlertAction]? = nil,
+        exitStyle: UIAlertAction.ExitStyle = .close
     ) -> UIAlertController {
         let alert = UIAlertController(
             title: title,
@@ -18,10 +19,7 @@ extension UIAlertController {
                 alert.addAction($0)
             }
         }
-        let exit = UIAlertAction(
-            title: Text.Button.close.text,
-            style: .cancel
-        )
+        let exit = UIAlertAction.exitAction(with: exitStyle)
         alert.addAction(exit)
         alert.view.tintColor = tintColor
         return alert

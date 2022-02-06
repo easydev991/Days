@@ -7,7 +7,7 @@ protocol MainPresenterProtocol: AnyObject {
     func requestItems()
     func sortBy(_ sort: SortBy)
     func setup(cell: ItemCellInput, at index: Int)
-    func saveItem(with name: String, and date: Date)
+    func saveItem(with title: String, and date: Date)
     func removeItem(at index: Int, completion: VoidBlock?)
 }
 
@@ -41,8 +41,12 @@ extension MainPresenter: MainPresenterProtocol {
                     self?.items = items
                     let isListEmpty = items.isEmpty
                     view?.reload(isListEmpty: isListEmpty)
-                    view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.text)
-                    let state = MainModel.navItemButtonsState(for: items.count)
+                    view?.setEmptyView(hidden: !isListEmpty)
+                    view?.set(
+                        title: isListEmpty
+                        ? nil
+                        : Text.Main.viewTitle.text)
+                    let state = MainModel.navItemState(for: items.count)
                     view?.setNavItemButtons(state)
                 case .failure(let error):
                     view?.showError(error.localizedDescription)
@@ -63,18 +67,19 @@ extension MainPresenter: MainPresenterProtocol {
         let item = items[index]
         let itemDays = MainModel.textFrom(date: item.date)
         let model = ItemCell.Model(
-            itemName: item.title,
-            itemDays: itemDays
+            title: item.title,
+            daysText: itemDays
         )
         cell.setup(with: model)
     }
 
     func saveItem(
-        with name: String,
+        with title: String,
         and date: Date
     ) {
-        let item = Item(title: name, date: date)
-        interactor?.saveItem(item) { [weak self, weak view] error in
+        interactor?.saveItem(
+            .init(title: title, date: date)
+        ) { [weak self, weak view] error in
             if let error = error {
                 view?.showError(error.localizedDescription)
             } else {
@@ -93,7 +98,7 @@ extension MainPresenter: MainPresenterProtocol {
             if let error = error {
                 view?.showError(error.localizedDescription)
             } else {
-                view?.setNavItemButtons(MainModel.navItemButtonsState(for: itemsCount))
+                view?.setNavItemButtons(MainModel.navItemState(for: itemsCount))
                 view?.set(title: itemsCount == .zero ? nil : Text.Main.viewTitle.text)
                 view?.setEmptyView(hidden: itemsCount != .zero)
                 completion?()

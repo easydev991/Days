@@ -3,12 +3,12 @@ protocol MainRouterProtocol: AnyObject {
 }
 
 final class MainRouter {
-    weak var viewController: MainViewControllerProtocol?
+    weak var view: MainViewControllerProtocol?
 }
 
 extension MainRouter: MainRouterProtocol {
     func openItemViewController() {
-        let itemVC = ItemConfigurator.configure(with: viewController)
-        viewController?.present(itemVC)
+        let itemVC = ItemConfigurator.configure(with: view)
+        view?.present(itemVC)
     }
 }

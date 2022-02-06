@@ -3,17 +3,17 @@ import XCTest
 
 final class MainModelTest: XCTestCase {
     func testNavItemButtonsState_none() {
-        let state = MainModel.navItemButtonsState(for: .zero)
+        let state = MainModel.navItemState(for: .zero)
         XCTAssertEqual(state, MainViewController.VisibleNavItemButtons.none)
     }
 
     func testNavItemButtonsState_add() {
-        let state = MainModel.navItemButtonsState(for: 1)
+        let state = MainModel.navItemState(for: 1)
         XCTAssertEqual(state, MainViewController.VisibleNavItemButtons.add)
     }
 
     func testNavItemButtonsState_sortAndAdd() {
-        let state = MainModel.navItemButtonsState(for: 2)
+        let state = MainModel.navItemState(for: 2)
         XCTAssertEqual(state, MainViewController.VisibleNavItemButtons.sortAndAdd)
     }
 

@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-struct AppFactory {
+final class AppFactory {
     static func makeRootView() -> UIViewController {
         let tabController = UITabBarController()
         let mainView = UINavigationController(

@@ -2,7 +2,9 @@ import Foundation
 
 enum Text {
     enum Alert {
-        case errorTitle
+        case success
+        case warning
+        case error
         case dateAscending
         case dateDescending
         case titleAscending
@@ -10,7 +12,11 @@ enum Text {
 
         var text: String {
             switch self {
-            case .errorTitle:
+            case .success:
+                return NSLocalizedString("Success", comment: "")
+            case .warning:
+                return NSLocalizedString("Warning", comment: "")
+            case .error:
                 return NSLocalizedString("Error", comment: "")
             case .dateAscending:
                 return NSLocalizedString("Date ↑", comment: "")
@@ -71,6 +77,8 @@ enum Text {
         case feedbackBody
         case rateTheApp
         case deleteAllData
+        case deletionDisclaimer
+        case deletionSuccess
 
         var text: String {
             switch self {
@@ -86,23 +94,30 @@ enum Text {
                 return NSLocalizedString("Rate the app", comment: "")
             case .deleteAllData:
                 return NSLocalizedString("Delete all data", comment: "")
+            case .deletionDisclaimer:
+                return NSLocalizedString("All data deletion disclaimer", comment: "")
+            case .deletionSuccess:
+                return NSLocalizedString("Deletion success", comment: "")
             }
         }
     }
 
     enum Button {
         case cancel
-        case save
+        case done
         case close
+        case yes
 
         var text: String {
             switch self {
             case .cancel:
                 return NSLocalizedString("Cancel", comment: "")
-            case .save:
+            case .done:
                 return NSLocalizedString("Done", comment: "")
             case .close:
                 return NSLocalizedString("Close", comment: "")
+            case .yes:
+                return NSLocalizedString("Yes", comment: "")
             }
         }
     }

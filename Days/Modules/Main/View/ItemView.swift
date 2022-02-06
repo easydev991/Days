@@ -1,5 +1,9 @@
 import UIKit
 
+protocol ItemViewInput {
+    func set(title: String, daysText: String)
+}
+
 final class ItemView: UIView {
     // MARK: - UI
     private lazy var container: UIView = {
@@ -53,10 +57,10 @@ final class ItemView: UIView {
 }
 
 // MARK: - ItemCellInput
-extension ItemView: ItemCellInput {
-    func setup(with model: ItemCell.Model) {
-        titleLabel.text = model.itemName
-        daysLabel.text = model.itemDays
+extension ItemView: ItemViewInput {
+    func set(title: String, daysText: String) {
+        titleLabel.text = title
+        daysLabel.text = daysText
     }
 }
 
@@ -102,28 +106,3 @@ private extension ItemView {
         )
     }
 }
-
-// MARK: - SwiftUI Preview
-#if DEBUG
-import SwiftUI
-
-struct ItemViewRepresentable: UIViewRepresentable {
-    func makeUIView(context: Context) -> ItemView {
-        let view = ItemView()
-        let itemData = ItemCell.Model(
-            itemName: "Made my first app for iOS device",
-            itemDays: "999 days"
-        )
-        view.setup(with: itemData)
-        return view
-    }
-
-    func updateUIView(_ uiView: ItemView, context: Context) {}
-}
-
-struct ItemViewPreview: PreviewProvider {
-    static var previews: some View {
-        ItemViewRepresentable()
-    }
-}
-#endif

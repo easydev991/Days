@@ -10,7 +10,7 @@ struct MainModel {
         : Text.Main.today.text
     }
 
-    static func navItemButtonsState(
+    static func navItemState(
         for itemsCount: Int
     ) -> MainViewController.VisibleNavItemButtons {
         switch itemsCount {

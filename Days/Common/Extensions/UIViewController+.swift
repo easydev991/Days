@@ -5,13 +5,13 @@ extension UIViewController {
         present(viewController, animated: true)
     }
 
-    func showAlertWith(
+    func presentSimpleAlert(
         title: String? = nil,
         message: String? = nil,
         style: UIAlertController.Style = .alert
     ) {
-        let alert = UIAlertController.makeAlertWith(
-            title: Text.Alert.errorTitle.text,
+        let alert = UIAlertController.makeAlert(
+            title: title,
             message: message,
             style: style
         )

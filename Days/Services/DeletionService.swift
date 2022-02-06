@@ -1,11 +1,11 @@
 import RealmSwift
 
 protocol DeletionServiceProtocol {
-    func clearDatabase()
+    func clearDatabase(completion: OptionalErrorVoidBlock?)
 }
 
-extension DeletionServiceProtocol {
-    func clearDatabase() {
+struct DeletionService: DeletionServiceProtocol {
+    func clearDatabase(completion: OptionalErrorVoidBlock? = nil) {
         do {
             let realm = try Realm(
                 configuration: .init(
@@ -15,13 +15,9 @@ extension DeletionServiceProtocol {
             try realm.write {
                 realm.deleteAll()
             }
+            completion?(nil)
         } catch {
-            print(
-                "DeletionServiceProtocol: clearDatabase:",
-                error.localizedDescription
-            )
+            completion?(error)
         }
     }
 }
-
-struct DeletionService: DeletionServiceProtocol {}

@@ -19,7 +19,6 @@ protocol MainInteractorProtocol: AnyObject {
 
 final class MainInteractor {
     private let itemStorage: ItemStorageService
-    weak var presenter: MainPresenterProtocol?
 
     init(itemStorage: ItemStorageService) {
         self.itemStorage = itemStorage

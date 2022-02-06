@@ -44,7 +44,6 @@ final class MainViewController: UIViewController {
     }
     private lazy var emptyView: EmptyView = {
         let view = EmptyView(delegate: self)
-        view.alpha = .zero
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = Identifier.emptyView.text
         return view
@@ -89,9 +88,7 @@ extension MainViewController: MainViewControllerProtocol {
         tableView.isHidden = isListEmpty
         if isListEmpty {
             tableView.reloadData()
-            emptyView.fadeIn()
         } else {
-            emptyView.alpha = .zero
             tableView.reloadSections(
                 .init(integer: .zero),
                 with: .automatic
@@ -100,7 +97,7 @@ extension MainViewController: MainViewControllerProtocol {
     }
 
     func setEmptyView(hidden: Bool) {
-        emptyView.fadeTo(hidden ? .zero : 1)
+        emptyView.isHidden = hidden
     }
 
     func setNavItemButtons(_ state: MainViewController.VisibleNavItemButtons) {
@@ -118,14 +115,14 @@ extension MainViewController: MainViewControllerProtocol {
     }
 
     func showError(_ message: String) {
-        showAlertWith(
-            title: Text.Alert.errorTitle.text,
+        presentSimpleAlert(
+            title: Text.Alert.error.text,
             message: message
         )
     }
 
-    func takeItem(with name: String, and date: Date) {
-        presenter?.saveItem(with: name, and: date)
+    func takeItem(with title: String, and date: Date) {
+        presenter?.saveItem(with: title, and: date)
     }
 }
 
@@ -227,7 +224,7 @@ private extension MainViewController {
                     }
                 )
             }
-            let alert = UIAlertController.makeAlertWith(
+            let alert = UIAlertController.makeAlert(
                 title: Text.Main.sortBy.text,
                 actions: alertActions
             )

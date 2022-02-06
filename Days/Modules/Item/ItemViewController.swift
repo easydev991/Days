@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ItemViewControllerDelegate: AnyObject {
-    func takeItem(with name: String, and date: Date)
+    func takeItem(with title: String, and date: Date)
 }
 
 protocol ItemViewControllerProtocol: AnyObject {
@@ -58,7 +58,7 @@ final class ItemViewController: UIViewController {
     }
     private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: saveButtonAction)
-        button.setTitle(Text.Button.save.text, for: .normal)
+        button.setTitle(Text.Button.done.text, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = Identifier.saveButton.text
