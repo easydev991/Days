@@ -42,12 +42,8 @@ extension MainPresenter: MainPresenterProtocol {
                     let isListEmpty = items.isEmpty
                     view?.reload(isListEmpty: isListEmpty)
                     view?.setEmptyView(hidden: !isListEmpty)
-                    view?.set(
-                        title: isListEmpty
-                        ? nil
-                        : Text.Main.viewTitle.text)
-                    let state = MainModel.navItemState(for: items.count)
-                    view?.setNavItemButtons(state)
+                    view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.text)
+                    view?.setNavItemButtons(MainModel.navItemState(for: items.count))
                 case .failure(let error):
                     view?.showError(error.localizedDescription)
                 }

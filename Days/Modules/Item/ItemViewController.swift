@@ -177,8 +177,4 @@ private extension ItemViewController {
             ]
         )
     }
-
-    @objc func backButtonAction() {
-        presenter?.finishFlow()
-    }
 }
