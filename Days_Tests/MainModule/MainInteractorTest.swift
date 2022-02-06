@@ -12,7 +12,6 @@ final class MainInteractorTest: XCTestCase {
         interactor = MainInteractor(itemStorage: itemStorage)
 
         presenter.interactor = interactor
-        interactor.presenter = presenter
     }
 
     override func tearDownWithError() throws {

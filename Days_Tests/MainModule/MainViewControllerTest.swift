@@ -29,7 +29,7 @@ final class MainViewControllerTest: XCTestCase {
     func testSetTitle() {
         let testTitle = "testTitle"
         viewController.set(title: testTitle)
-        XCTAssertEqual(testTitle, viewController.title)
+        XCTAssertEqual(testTitle, viewController.navigationItem.title)
     }
 
     func testTakeItem() {
