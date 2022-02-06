@@ -17,6 +17,14 @@ final class MainPresenter {
     var router: MainRouterProtocol?
     private var items = [Item]()
     private var sortModel = ItemSortModel(.dateDescending)
+    init() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(reloadAfterDeletion),
+            name: .allDataHasBeedDeleted,
+            object: nil
+        )
+    }
 }
 
 extension MainPresenter: MainPresenterProtocol {
@@ -41,9 +49,9 @@ extension MainPresenter: MainPresenterProtocol {
                     self?.items = items
                     let isListEmpty = items.isEmpty
                     view?.reload(isListEmpty: isListEmpty)
-                    view?.setEmptyView(hidden: !isListEmpty)
                     view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.text)
                     view?.setNavItemButtons(MainModel.navItemState(for: items.count))
+                    view?.setEmptyView(hidden: !isListEmpty)
                 case .failure(let error):
                     view?.showError(error.localizedDescription)
                 }
@@ -94,11 +102,20 @@ extension MainPresenter: MainPresenterProtocol {
             if let error = error {
                 view?.showError(error.localizedDescription)
             } else {
-                view?.setNavItemButtons(MainModel.navItemState(for: itemsCount))
                 view?.set(title: itemsCount == .zero ? nil : Text.Main.viewTitle.text)
+                view?.setNavItemButtons(MainModel.navItemState(for: itemsCount))
                 view?.setEmptyView(hidden: itemsCount != .zero)
                 completion?()
             }
         }
+    }
+}
+
+private extension MainPresenter {
+    @objc func reloadAfterDeletion() {
+        view?.set(title: nil)
+        view?.setNavItemButtons(MainModel.navItemState(for: .zero))
+        view?.setEmptyView(hidden: false)
+        view?.reload(isListEmpty: true)
     }
 }

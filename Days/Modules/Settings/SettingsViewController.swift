@@ -5,10 +5,7 @@ import MessageUI
 final class SettingsViewController: UIViewController {
     private let viewModel: SettingsViewModelProtocol
     private lazy var settingsView: SettingsView = {
-        let view = SettingsView(
-            delegate: self,
-            canDeleteAllData: viewModel.canDeleteAllData
-        )
+        let view = SettingsView(delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = Identifier.settingsView.text
         return view
@@ -26,6 +23,11 @@ final class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateDeleteButtonState()
     }
 }
 
@@ -68,6 +70,7 @@ extension SettingsViewController: SettingsViewDelegate {
                             title: Text.Alert.success.text,
                             message: message
                         )
+                        updateDeleteButtonState()
                     case let .failure(error):
                         presentSimpleAlert(
                             title: Text.Alert.error.text,
@@ -116,5 +119,9 @@ private extension SettingsViewController {
                 settingsView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ]
         )
+    }
+
+    func updateDeleteButtonState() {
+        settingsView.setDeleteAllDataButton(hidden: viewModel.isDeleteButtonHidden)
     }
 }

@@ -6,14 +6,14 @@ protocol SettingsViewModelProtocol {
     var emailSubjectText: String { get }
     var emailMessageBody: String { get }
     var sendEmailErrorMessage: String { get }
-    var canDeleteAllData: Bool { get }
+    var isDeleteButtonHidden: Bool { get }
     var deletionDisclaimer: String { get }
-    func deleteAllData(completion: DeletionResult?)
+    func deleteAllData(completion: @escaping DeletionResult)
 
     typealias DeletionResult = (Result<String, Error>) -> Void
 }
 
-struct SettingsViewModel {
+final class SettingsViewModel {
     private let deletionService: DeletionServiceProtocol
 
     init(deletionService: DeletionServiceProtocol) {
@@ -39,27 +39,24 @@ extension SettingsViewModel: SettingsViewModelProtocol {
     }
 
     var sendEmailErrorMessage: String {
-        "Cannot send emails"
+        "Cannot send emails from simulator"
     }
 
-    var canDeleteAllData: Bool {
-    #if DEBUG
-        return true
-    #else
-        return false
-    #endif
+    var isDeleteButtonHidden: Bool {
+        !deletionService.isDataAvailable
     }
 
     var deletionDisclaimer: String {
         Text.Settings.deletionDisclaimer.text
     }
 
-    func deleteAllData(completion: DeletionResult?) {
+    func deleteAllData(completion: @escaping DeletionResult) {
         deletionService.clearDatabase { error in
             if let error = error {
-                completion?(.failure(error))
+                completion(.failure(error))
             } else {
-                completion?(.success(Text.Settings.deletionSuccess.text))
+                completion(.success(Text.Settings.deletionSuccess.text))
+                NotificationCenter.default.post(name: .allDataHasBeedDeleted, object: nil)
             }
         }
     }

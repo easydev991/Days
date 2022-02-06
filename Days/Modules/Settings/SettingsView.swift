@@ -6,17 +6,20 @@ protocol SettingsViewDelegate: AnyObject {
     func deleteAllDataTapped()
 }
 
+protocol SettingsViewInput {
+    func setDeleteAllDataButton(hidden: Bool)
+}
+
 final class SettingsView: UIView {
     private weak var delegate: SettingsViewDelegate?
-
-    private let canDeleteAllData: Bool
 
     // MARK: - UI
     private lazy var vStack: UIStackView = {
         let stack = UIStackView(
             arrangedSubviews: [
                 feedbackButton,
-                rateButton
+                rateButton,
+                deleteAllDataButton
             ]
         )
         stack.axis = .vertical
@@ -55,7 +58,7 @@ final class SettingsView: UIView {
             style: .dangerRed
         )
         button.addAction(deleteAllDataAction, for: .touchUpInside)
-        button.accessibilityIdentifier = Identifier.rateButton.text
+        button.accessibilityIdentifier = Identifier.deleteDataButton.text
         return button
     }()
     private lazy var deleteAllDataAction = UIAction { [weak delegate] _ in
@@ -63,18 +66,20 @@ final class SettingsView: UIView {
     }
 
     // MARK: - Lifecycle
-    init(
-        delegate: SettingsViewDelegate?,
-        canDeleteAllData: Bool
-    ) {
+    init(delegate: SettingsViewDelegate?) {
         self.delegate = delegate
-        self.canDeleteAllData = canDeleteAllData
         super.init(frame: .zero)
         setupUI()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension SettingsView: SettingsViewInput {
+    func setDeleteAllDataButton(hidden: Bool) {
+        deleteAllDataButton.isHidden = hidden
     }
 }
 
@@ -97,8 +102,5 @@ private extension SettingsView {
                 feedbackButton.heightAnchor.constraint(equalToConstant: Layout.Button.height)
             ]
         )
-        if canDeleteAllData {
-            vStack.addArrangedSubview(deleteAllDataButton)
-        }
     }
 }
