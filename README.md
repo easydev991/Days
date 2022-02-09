@@ -1,4 +1,4 @@
-# Days 2.1
+# Days
 - The app uses Realm to store your data and shows how many days passed after something happened in your life
 - The app supports both English and Russian languages
 - UI-elements have color options for both light and dark mode
