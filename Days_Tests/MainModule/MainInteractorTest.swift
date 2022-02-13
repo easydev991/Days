@@ -22,17 +22,14 @@ final class MainInteractorTest: XCTestCase {
 
     func testLoadItems_success() {
         let mockItems = ItemsMock.items
-        interactor.loadItems(
-            sortedBy: .init(.dateAscending),
-            completion: { result in
-                switch result {
-                case .success(let items):
-                    XCTAssertEqual(mockItems.count, items.count)
-                case .failure:
-                    XCTFail("Items must be loaded")
-                }
+        interactor.loadItems(sortedBy: .init(.dateAscending)) { result in
+            switch result {
+            case .success(let items):
+                XCTAssertEqual(mockItems.count, items.count)
+            case .failure:
+                XCTFail("Items must be loaded")
             }
-        )
+        }
     }
 
     func testSaveItem() {

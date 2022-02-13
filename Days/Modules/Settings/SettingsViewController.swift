@@ -61,25 +61,24 @@ extension SettingsViewController: SettingsViewDelegate {
     func deleteAllDataTapped() {
         let yesAction = UIAlertAction(
             title: Text.Button.yes.text,
-            style: .destructive,
-            handler: { [unowned self] _ in
-                viewModel.deleteAllData { result in
-                    switch result {
-                    case let .success(message):
-                        presentSimpleAlert(
-                            title: Text.Alert.success.text,
-                            message: message
-                        )
-                        updateDeleteButtonState()
-                    case let .failure(error):
-                        presentSimpleAlert(
-                            title: Text.Alert.error.text,
-                            message: error.localizedDescription
-                        )
-                    }
+            style: .destructive
+        ) { [unowned self] _ in
+            viewModel.deleteAllData { result in
+                switch result {
+                case let .success(message):
+                    presentSimpleAlert(
+                        title: Text.Alert.success.text,
+                        message: message
+                    )
+                    updateDeleteButtonState()
+                case let .failure(error):
+                    presentSimpleAlert(
+                        title: Text.Alert.error.text,
+                        message: error.localizedDescription
+                    )
                 }
             }
-        )
+        }
         let alert = UIAlertController.makeAlert(
             title: Text.Alert.warning.text,
             message: viewModel.deletionDisclaimer,

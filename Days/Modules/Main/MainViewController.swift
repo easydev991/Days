@@ -137,19 +137,15 @@ extension MainViewController: UITableViewDelegate {
     ) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(
             style: .destructive,
-            title: nil,
-            handler: { [weak presenter] _,_,_ in
-                presenter?.removeItem(
-                    at: indexPath.row,
-                    completion: {
-                        tableView.deleteRows(
-                            at: [indexPath],
-                            with: .automatic
-                        )
-                    }
+            title: nil
+        ) { [weak presenter] _,_,_ in
+            presenter?.removeItem(at: indexPath.row) {
+                tableView.deleteRows(
+                    at: [indexPath],
+                    with: .automatic
                 )
             }
-        )
+        }
         deleteAction.image = .init(systemName: "trash")?.colored(.systemRed)
         deleteAction.backgroundColor = .mainBackground
         return .init(actions: [deleteAction])
@@ -186,11 +182,10 @@ private extension MainViewController {
             let alertActions = sortOptions.map { option in
                 return UIAlertAction(
                     title: option.title,
-                    style: .default,
-                    handler: { [weak presenter] _ in
-                        presenter?.sortBy(option)
-                    }
-                )
+                    style: .default
+                ) { [weak presenter] _ in
+                    presenter?.sortBy(option)
+                }
             }
             let alert = UIAlertController.makeAlert(
                 title: Text.Main.sortBy.text,

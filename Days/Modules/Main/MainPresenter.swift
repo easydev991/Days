@@ -44,22 +44,19 @@ extension MainPresenter: MainPresenterProtocol {
     }
 
     func requestItems() {
-        interactor?.loadItems(
-            sortedBy: sortModel,
-            completion: { [weak dataSource, weak view] result in
-                switch result {
-                case .success(let items):
-                    dataSource?.set(items: items)
-                    let isListEmpty = items.isEmpty
-                    view?.reload(isListEmpty: isListEmpty)
-                    view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.text)
-                    view?.setNavItemButtons(MainModel.navItemState(for: items.count))
-                    view?.setEmptyView(hidden: !isListEmpty)
-                case .failure(let error):
-                    view?.showError(error.localizedDescription)
-                }
+        interactor?.loadItems(sortedBy: sortModel) { [weak dataSource, weak view] result in
+            switch result {
+            case .success(let items):
+                dataSource?.set(items: items)
+                let isListEmpty = items.isEmpty
+                view?.reload(isListEmpty: isListEmpty)
+                view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.text)
+                view?.setNavItemButtons(MainModel.navItemState(for: items.count))
+                view?.setEmptyView(hidden: !isListEmpty)
+            case .failure(let error):
+                view?.showError(error.localizedDescription)
             }
-        )
+        }
     }
 
     func sortBy(_ sort: SortBy) {

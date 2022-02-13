@@ -29,26 +29,20 @@ extension MainPresenterMock: MainPresenterProtocol {
     func updateSortModel(sortBy: ItemSort, ascending: Bool) {}
 
     func requestItems() {
-        interactor.loadItems(
-            sortedBy: .init(.dateAscending),
-            completion: { [weak dataSource] result in
-                switch result {
-                case .success(let items):
-                    dataSource?.set(items: items)
-                case .failure:
-                    break
-                }
+        interactor.loadItems(sortedBy: .init(.dateAscending)) { [weak dataSource] result in
+            switch result {
+            case .success(let items):
+                dataSource?.set(items: items)
+            case .failure:
+                break
             }
-        )
+        }
     }
 
     func saveItem(with name: String, and date: Date) {
         let testItem = Item(title: name, date: date)
-        interactor.saveItem(
-            testItem,
-            completion: { [weak dataSource] _ in
-                dataSource?.set(items: [testItem])
-            }
-        )
+        interactor.saveItem(testItem) { [weak dataSource] _ in
+            dataSource?.set(items: [testItem])
+        }
     }
 }
