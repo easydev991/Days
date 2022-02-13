@@ -52,7 +52,7 @@ final class MainViewController: UIViewController {
         let table = UITableView()
         table.isHidden = true
         table.delegate = self
-        table.dataSource = self
+        table.dataSource = presenter?.dataSource
         table.separatorStyle = .none
         table.backgroundColor = .clear
         table.rowHeight = UITableView.automaticDimension
@@ -153,34 +153,6 @@ extension MainViewController: UITableViewDelegate {
         deleteAction.image = .init(systemName: "trash")?.colored(.systemRed)
         deleteAction.backgroundColor = .mainBackground
         return .init(actions: [deleteAction])
-    }
-}
-
-// MARK: - UITableViewDataSource
-extension MainViewController: UITableViewDataSource {
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        presenter?.itemsCount ?? .zero
-    }
-    
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(
-            withIdentifier: ItemCell.cellID,
-            for: indexPath
-        ) as? ItemCell {
-            presenter?.setup(
-                cell: cell,
-                at: indexPath.row
-            )
-            return cell
-        } else {
-            return UITableViewCell()
-        }
     }
 }
 

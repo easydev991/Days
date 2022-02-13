@@ -69,6 +69,7 @@
 		67D5FBA924A8E07D00F9ED26 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBA824A8E07D00F9ED26 /* Item.swift */; };
 		67D5FBAB24A8E1CD00F9ED26 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBAA24A8E1CD00F9ED26 /* ItemCell.swift */; };
 		67D5FBB424A8FEE100F9ED26 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5FBB324A8FEE100F9ED26 /* ItemViewController.swift */; };
+		67DDF15327B965450010585B /* MainTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DDF15227B965450010585B /* MainTableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		67D5FBA824A8E07D00F9ED26 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		67D5FBAA24A8E1CD00F9ED26 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		67D5FBB324A8FEE100F9ED26 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		67DDF15227B965450010585B /* MainTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,13 +199,14 @@
 		6705D12924B9885E00A07BDC /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				67C6DB2D27874886007C9D98 /* View */,
 				6705D12F24B988CD00A07BDC /* MainConfigurator.swift */,
 				6705D12D24B988BC00A07BDC /* MainInteractor.swift */,
+				67ABCA81279D948800A5DCE5 /* MainModel.swift */,
 				6705D12B24B988B300A07BDC /* MainPresenter.swift */,
 				6705D13324B988E500A07BDC /* MainRouter.swift */,
+				67DDF15227B965450010585B /* MainTableDataSource.swift */,
 				67D5FB9024A8D74400F9ED26 /* MainViewController.swift */,
-				67ABCA81279D948800A5DCE5 /* MainModel.swift */,
+				67C6DB2D27874886007C9D98 /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				676ED4B327B0284F00D9E0D3 /* NotificationName+.swift in Sources */,
 				676ED4A527AEF88700D9E0D3 /* SettingsViewController.swift in Sources */,
 				6705D12C24B988B300A07BDC /* MainPresenter.swift in Sources */,
+				67DDF15327B965450010585B /* MainTableDataSource.swift in Sources */,
 				67D5FBB424A8FEE100F9ED26 /* ItemViewController.swift in Sources */,
 				676ED4A227AEF74D00D9E0D3 /* UIButton+.swift in Sources */,
 				676ED4B127AFB27300D9E0D3 /* UIAlertAction+.swift in Sources */,

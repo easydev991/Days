@@ -16,19 +16,11 @@ extension UIButton {
             weight: .medium
         )
         button.setBackgroundImage(
-            .init(
-                color: style == .sunflower
-                ? .sunflower
-                : .red
-            ),
+            .init(color: style == .sunflower ? .sunflower : .red),
             for: .normal
         )
         button.setBackgroundImage(
-            .init(
-                color: style == .sunflower
-                ? .sunflower
-                : .redPressed
-            ),
+            .init(color: style == .sunflower ? .sunflower : .redPressed),
             for: .highlighted
         )
         button.setTitleColor(.black, for: .normal)

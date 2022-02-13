@@ -1,13 +1,11 @@
 protocol MainInteractorProtocol: AnyObject {
-    var itemsCount: Int { get }
-
     func saveItem(
         _ item: Item,
         completion: @escaping OptionalErrorVoidBlock
     )
 
     func removeItem(
-        _ item: Item,
+        _ item: Item?,
         completion: @escaping OptionalErrorVoidBlock
     )
 
@@ -20,16 +18,12 @@ protocol MainInteractorProtocol: AnyObject {
 final class MainInteractor {
     private let itemStorage: ItemStorageService
 
-    init(itemStorage: ItemStorageService) {
+    init(with itemStorage: ItemStorageService) {
         self.itemStorage = itemStorage
     }
 }
 
 extension MainInteractor: MainInteractorProtocol {
-    var itemsCount: Int {
-        itemStorage.itemsCount
-    }
-
     func loadItems(
         sortedBy model: ItemSortModel,
         completion: @escaping ItemsVoidResult
@@ -45,9 +39,12 @@ extension MainInteractor: MainInteractorProtocol {
     }
 
     func removeItem(
-        _ item: Item,
+        _ item: Item?,
         completion: @escaping OptionalErrorVoidBlock
     ) {
+        guard let item = item else {
+            return
+        }
         itemStorage.remove(item: item, completion: completion)
     }
 }

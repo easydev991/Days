@@ -32,13 +32,15 @@ final class MainViewControllerTest: XCTestCase {
         XCTAssertEqual(testTitle, viewController.navigationItem.title)
     }
 
-    func testTakeItem() {
+    func testTakeItem_and_removeItem() {
         let testItem = _testItem
         viewController.takeItem(with: testItem.title, and: testItem.date)
-        let newItem = presenter.items.first
-        XCTAssertNotNil(newItem)
-        XCTAssertEqual(testItem.title, newItem?.title)
-        XCTAssertEqual(testItem.date, newItem?.date)
+        XCTAssertEqual(1, presenter.dataSource.itemsCount)
+        let removedItem = presenter.dataSource.removeItem(at: .zero)
+        XCTAssertNotNil(removedItem)
+        XCTAssertEqual(testItem.title, removedItem!.title)
+        XCTAssertEqual(testItem.date, removedItem!.date)
+        XCTAssertEqual(Int.zero, presenter.dataSource.itemsCount)
     }
 
     func testSetNavItemButtons_none() {

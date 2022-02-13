@@ -5,22 +5,18 @@ final class MainPresenterMock {
     var viewController: MainViewControllerProtocol!
     var interactor: MainInteractorProtocol!
     var router: MainRouterProtocol!
-    private(set) var items = [Item]()
+    let dataSource: MainDataSourceService = MainDataSource()
 }
 
 extension MainPresenterMock: MainPresenterProtocol {
     var title: String { "Title" }
-
-    var itemsCount: Int {
-        interactor.itemsCount
-    }
 
     var availableSortOptions: [SortBy] {
         SortBy.allCases
     }
 
     func removeItem(at index: Int, completion: VoidBlock?) {
-        let itemForRemoval = items.remove(at: index)
+        let itemForRemoval = dataSource.removeItem(at: index)
         interactor.removeItem(itemForRemoval) { _ in
             completion?()
         }
@@ -35,10 +31,10 @@ extension MainPresenterMock: MainPresenterProtocol {
     func requestItems() {
         interactor.loadItems(
             sortedBy: .init(.dateAscending),
-            completion: { [weak self] result in
+            completion: { [weak dataSource] result in
                 switch result {
                 case .success(let items):
-                    self?.items = items
+                    dataSource?.set(items: items)
                 case .failure:
                     break
                 }
@@ -46,14 +42,12 @@ extension MainPresenterMock: MainPresenterProtocol {
         )
     }
 
-    func setup(cell: ItemCellInput, at index: Int) {}
-
     func saveItem(with name: String, and date: Date) {
         let testItem = Item(title: name, date: date)
         interactor.saveItem(
             testItem,
-            completion: { [weak self] _ in
-                self?.items.append(testItem)
+            completion: { [weak dataSource] _ in
+                dataSource?.set(items: [testItem])
             }
         )
     }

@@ -2,17 +2,18 @@ import UIKit.UIViewController
 
 final class MainConfigurator {
     static func makeVC() -> UIViewController {
-        let mainVC           = MainViewController()
+        let view             = MainViewController()
+        let dataSource       = MainDataSource()
         let storage          = ItemStorage()
-        let presenter        = MainPresenter()
-        let interactor       = MainInteractor(itemStorage: storage)
+        let presenter        = MainPresenter(with: dataSource)
+        let interactor       = MainInteractor(with: storage)
         let router           = MainRouter()
-        presenter.view       = mainVC
-        mainVC.presenter     = presenter
+        presenter.view       = view
+        view.presenter       = presenter
         presenter.interactor = interactor
         presenter.router     = router
-        router.view          = mainVC
+        router.view          = view
 
-        return mainVC
+        return view
     }
 }

@@ -8,7 +8,7 @@ final class MainPresenterTest: XCTestCase {
     var router: MainRouterMock!
 
     override func setUpWithError() throws {
-        presenter = MainPresenter()
+        presenter = MainPresenter(with: MainDataSource())
         viewController = MainViewControllerMock()
         interactor = MainInteractorMock()
         router = MainRouterMock()
@@ -33,8 +33,8 @@ final class MainPresenterTest: XCTestCase {
 
     func testRequestItems() {
         presenter.requestItems()
-        XCTAssertNotEqual(.zero, presenter.itemsCount)
-        XCTAssertEqual(ItemsMock.itemsCount, presenter.itemsCount)
+        XCTAssertNotEqual(.zero, presenter.dataSource.itemsCount)
+        XCTAssertEqual(ItemsMock.itemsCount, presenter.dataSource.itemsCount)
     }
 
     func testRemoveItem() {
@@ -45,7 +45,7 @@ final class MainPresenterTest: XCTestCase {
             )
         }
         presenter.removeItem(at: ItemsMock.randomIndex, completion: nil)
-        XCTAssertNotEqual(ItemsMock.itemsCount, presenter.itemsCount)
-        XCTAssertEqual(presenter.itemsCount, 9)
+        XCTAssertNotEqual(ItemsMock.itemsCount, presenter.dataSource.itemsCount)
+        XCTAssertEqual(9, presenter.dataSource.itemsCount)
     }
 }

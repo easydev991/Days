@@ -3,14 +3,12 @@ import UIKit.UIAlertController
 extension UIAlertAction {
     enum ExitStyle {
         case close, cancel
-        var title: String {
-            self == .close
-            ? Text.Button.close.text
-            : Text.Button.cancel.text
+        var type: Text.Button {
+            self == .close ? .close : .cancel
         }
     }
 
     static func exitAction(with style: ExitStyle) -> UIAlertAction {
-        .init(title: style.title, style: .cancel)
+        .init(title: style.type.text, style: .cancel)
     }
 }

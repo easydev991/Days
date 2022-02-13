@@ -1,15 +1,10 @@
 @testable import Days
 
 final class ItemStorageMock: ItemStorageService {
-    private var _itemsCount = 0
-
-    var itemsCount: Int { _itemsCount }
-
     func loadItems(
         sortedBy model: ItemSortModel,
         completion: @escaping ItemsVoidResult
     ) {
-        _itemsCount += ItemsMock.itemsCount
         completion(.success(ItemsMock.items))
     }
 
@@ -17,7 +12,6 @@ final class ItemStorageMock: ItemStorageService {
         item: Item,
         completion: @escaping OptionalErrorVoidBlock
     ) {
-        _itemsCount += 1
         completion(nil)
     }
 
@@ -25,7 +19,6 @@ final class ItemStorageMock: ItemStorageService {
         item: Item,
         completion: (Error?) -> Void
     ) {
-        _itemsCount -= 1
         completion(nil)
     }
 }

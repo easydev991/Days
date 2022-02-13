@@ -9,7 +9,7 @@ final class MainInteractorTest: XCTestCase {
     override func setUpWithError() throws {
         presenter = MainPresenterMock()
         itemStorage = ItemStorageMock()
-        interactor = MainInteractor(itemStorage: itemStorage)
+        interactor = MainInteractor(with: itemStorage)
 
         presenter.interactor = interactor
     }
@@ -27,7 +27,7 @@ final class MainInteractorTest: XCTestCase {
             completion: { result in
                 switch result {
                 case .success(let items):
-                    XCTAssertEqual(items.count, mockItems.count)
+                    XCTAssertEqual(mockItems.count, items.count)
                 case .failure:
                     XCTFail("Items must be loaded")
                 }
@@ -37,13 +37,13 @@ final class MainInteractorTest: XCTestCase {
 
     func testSaveItem() {
         presenter.saveItem(with: "test", and: Date())
-        XCTAssertEqual(presenter.itemsCount, 1)
+        XCTAssertEqual(1, presenter.dataSource.itemsCount)
     }
 
     func testRemoveItem() {
         presenter.requestItems()
         let randomIndex = ItemsMock.randomIndex
         presenter.removeItem(at: randomIndex) {}
-        XCTAssertEqual(presenter.itemsCount, 9)
+        XCTAssertEqual(9, presenter.dataSource.itemsCount)
     }
 }

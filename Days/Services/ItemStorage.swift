@@ -1,8 +1,6 @@
 import RealmSwift
 
 protocol ItemStorageService {
-    var itemsCount: Int { get }
-
     func loadItems(
         sortedBy model: ItemSortModel,
         completion: @escaping ItemsVoidResult
@@ -26,16 +24,6 @@ final class ItemStorage {
 }
 
 extension ItemStorage: ItemStorageService {
-    var itemsCount: Int {
-        do {
-            let realm = try Realm(configuration: realmConfig)
-            return realm.objects(Item.self).toArray().count
-        } catch {
-            print("ItemStorage: itemsCount:", error.localizedDescription)
-            return .zero
-        }
-    }
-
     func loadItems(
         sortedBy model: ItemSortModel,
         completion: @escaping ItemsVoidResult

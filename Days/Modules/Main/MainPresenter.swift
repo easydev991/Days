@@ -1,23 +1,30 @@
 import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
-    var itemsCount: Int { get }
+    var dataSource: MainDataSourceService { get }
     var availableSortOptions: [SortBy] { get }
     func addItemTapped()
     func requestItems()
     func sortBy(_ sort: SortBy)
-    func setup(cell: ItemCellInput, at index: Int)
-    func saveItem(with title: String, and date: Date)
-    func removeItem(at index: Int, completion: VoidBlock?)
+    func saveItem(
+        with title: String,
+        and date: Date
+    )
+    func removeItem(
+        at index: Int,
+        completion: VoidBlock?
+    )
 }
 
 final class MainPresenter {
     weak var view: MainViewControllerProtocol?
     var interactor: MainInteractorProtocol?
     var router: MainRouterProtocol?
-    private var items = [Item]()
+    let dataSource: MainDataSourceService
     private var sortModel = ItemSortModel(.dateDescending)
-    init() {
+
+    init(with dataSource: MainDataSourceService) {
+        self.dataSource = dataSource
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(reloadAfterDeletion),
@@ -28,10 +35,6 @@ final class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterProtocol {
-    var itemsCount: Int {
-        interactor?.itemsCount ?? .zero
-    }
-
     var availableSortOptions: [SortBy] {
         SortBy.allCases.filter { $0 != sortModel.sorting }
     }
@@ -43,10 +46,10 @@ extension MainPresenter: MainPresenterProtocol {
     func requestItems() {
         interactor?.loadItems(
             sortedBy: sortModel,
-            completion: { [weak self, weak view] result in
+            completion: { [weak dataSource, weak view] result in
                 switch result {
                 case .success(let items):
-                    self?.items = items
+                    dataSource?.set(items: items)
                     let isListEmpty = items.isEmpty
                     view?.reload(isListEmpty: isListEmpty)
                     view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.text)
@@ -62,19 +65,6 @@ extension MainPresenter: MainPresenterProtocol {
     func sortBy(_ sort: SortBy) {
         sortModel = .init(sort)
         requestItems()
-    }
-
-    func setup(
-        cell: ItemCellInput,
-        at index: Int
-    ) {
-        let item = items[index]
-        let itemDays = MainModel.textFrom(date: item.date)
-        let model = ItemCell.Model(
-            title: item.title,
-            daysText: itemDays
-        )
-        cell.setup(with: model)
     }
 
     func saveItem(
@@ -96,8 +86,8 @@ extension MainPresenter: MainPresenterProtocol {
         at index: Int,
         completion: VoidBlock?
     ) {
-        let itemForRemoval = items.remove(at: index)
-        let itemsCount = items.count
+        let itemForRemoval = dataSource.removeItem(at: index)
+        let itemsCount = dataSource.itemsCount
         interactor?.removeItem(itemForRemoval) { [weak view] error in
             if let error = error {
                 view?.showError(error.localizedDescription)
@@ -113,6 +103,7 @@ extension MainPresenter: MainPresenterProtocol {
 
 private extension MainPresenter {
     @objc func reloadAfterDeletion() {
+        dataSource.removeAllData()
         view?.set(title: nil)
         view?.setNavItemButtons(MainModel.navItemState(for: .zero))
         view?.setEmptyView(hidden: false)
