@@ -30,7 +30,7 @@ final class MainDataSource: NSObject, MainDataSourceService {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        items.count
+        itemsCount
     }
 
     func tableView(
