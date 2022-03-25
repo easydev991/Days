@@ -43,10 +43,7 @@ final class ItemViewController: UIViewController {
         return label
     }()
     private lazy var cancelButton: UIButton = {
-        let button = UIButton(
-            type: .system,
-            primaryAction: closeButtonAction
-        )
+        let button = UIButton(type: .system, primaryAction: closeButtonAction)
         button.setTitle(Text.Button.cancel.text, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
