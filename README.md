@@ -12,7 +12,3 @@
 5. Remove records with a swipe
 6. Send me your feedback
 7. Delete all data if you wish
-
-## Screenshots and video
-
-[Link to google drive](https://drive.google.com/drive/folders/11qKoiW-NsSw-w0fzYa6Lqfa8-OciYCuJ?usp=sharing)
