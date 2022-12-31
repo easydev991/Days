@@ -3,4 +3,70 @@
    uuid = "11A6E13A-2991-4A22-9A31-C7769A627CC7"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2210D67A-D767-426A-8CD8-7828429C57E4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Days_Tests/MainModule/Mocks/MainPresenterMock.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "requestItems()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2210D67A-D767-426A-8CD8-7828429C57E4 - 2fa8160ca43de84d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Days.Item&gt;, Swift.Error&gt;) -&gt; () in Days_Tests.MainPresenterMock.requestItems() -&gt; ()"
+                  moduleName = "Days_Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oleg991/Downloads/Study%20iOS/Days%202.1/Days_Tests/MainModule/Mocks/MainPresenterMock.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "964">
+               </Location>
+               <Location
+                  uuid = "2210D67A-D767-426A-8CD8-7828429C57E4 - 2fa8160ca43de84d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Days.Item&gt;, Swift.Error&gt;) -&gt; () in Days_Tests.MainPresenterMock.requestItems() -&gt; ()"
+                  moduleName = "Days_Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oleg991/Downloads/Study%20iOS/Days%202.1/Days_Tests/MainModule/Mocks/MainPresenterMock.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "364">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "852BB6AA-C527-4B58-9D61-3F3EBDE0AE04"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Days_Tests/MainModule/Mocks/MainPresenterMock.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "requestItems()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

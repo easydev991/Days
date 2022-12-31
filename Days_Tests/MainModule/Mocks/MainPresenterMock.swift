@@ -11,15 +11,11 @@ final class MainPresenterMock {
 extension MainPresenterMock: MainPresenterProtocol {
     var title: String { "Title" }
 
-    var availableSortOptions: [SortBy] {
-        SortBy.allCases
-    }
+    var availableSortOptions: [SortBy] { SortBy.allCases }
 
     func removeItem(at index: Int, completion: VoidBlock?) {
         let itemForRemoval = dataSource.removeItem(at: index)
-        interactor.removeItem(itemForRemoval) { _ in
-            completion?()
-        }
+        interactor.removeItem(itemForRemoval) { _ in completion?() }
     }
 
     func sortBy(_ sort: SortBy) {}

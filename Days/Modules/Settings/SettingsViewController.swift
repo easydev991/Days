@@ -4,6 +4,7 @@ import MessageUI
 
 final class SettingsViewController: UIViewController {
     private let viewModel: SettingsViewModelProtocol
+
     private lazy var settingsView: SettingsView = {
         let view = SettingsView(delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +46,7 @@ extension SettingsViewController: SettingsViewDelegate {
             present(mail, animated: true)
         } else {
             presentSimpleAlert(
-                title: Text.Alert.error.text,
+                title: Text.Alert.error.localized,
                 message: viewModel.sendEmailErrorMessage,
                 style: .alert
             )
@@ -60,27 +61,27 @@ extension SettingsViewController: SettingsViewDelegate {
 
     func deleteAllDataTapped() {
         let yesAction = UIAlertAction(
-            title: Text.Button.yes.text,
+            title: Text.Button.yes.localized,
             style: .destructive
         ) { [unowned self] _ in
             viewModel.deleteAllData { result in
                 switch result {
                 case let .success(message):
-                    presentSimpleAlert(
-                        title: Text.Alert.success.text,
+                    self.presentSimpleAlert(
+                        title: Text.Alert.success.localized,
                         message: message
                     )
-                    updateDeleteButtonState()
+                    self.updateDeleteButtonState()
                 case let .failure(error):
-                    presentSimpleAlert(
-                        title: Text.Alert.error.text,
+                    self.presentSimpleAlert(
+                        title: Text.Alert.error.localized,
                         message: error.localizedDescription
                     )
                 }
             }
         }
         let alert = UIAlertController.makeAlert(
-            title: Text.Alert.warning.text,
+            title: Text.Alert.warning.localized,
             message: viewModel.deletionDisclaimer,
             style: .alert,
             actions: [yesAction],
@@ -112,12 +113,10 @@ private extension SettingsViewController {
         view.accessibilityIdentifier = Identifier.rootView.text
         navigationItem.title = viewModel.viewTitle
         view.addSubview(settingsView)
-        NSLayoutConstraint.activate(
-            [
-                settingsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                settingsView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-            ]
-        )
+        NSLayoutConstraint.activate([
+            settingsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            settingsView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     func updateDeleteButtonState() {

@@ -4,7 +4,8 @@ extension UIButton {
     enum CustomStyle {
         case sunflower, dangerRed
     }
-    static func customWith(
+    
+    static func makeButton(
         title: String,
         style: CustomStyle = .sunflower
     ) -> UIButton {
@@ -33,7 +34,6 @@ extension UIButton {
             right: Layout.Insets.standard
         )
         button.translatesAutoresizingMaskIntoConstraints = false
-
         return button
     }
 }

@@ -7,14 +7,12 @@ protocol ItemCellInput {
 final class ItemCell: UITableViewCell {
     static let cellID = "ItemCell"
 
-    // MARK: - UI
-    private lazy var itemView: ItemView = {
+    private let itemView: ItemView = {
         let view = ItemView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -32,14 +30,12 @@ extension ItemCell {
     }
 }
 
-// MARK: - ItemCellInput
 extension ItemCell: ItemCellInput {
     func setup(with model: ItemCell.Model) {
         itemView.set(title: model.title, daysText: model.daysText)
     }
 }
 
-// MARK: - Private extension
 private extension ItemCell {
     func setupUI() {
         selectionStyle = .none

@@ -1,7 +1,7 @@
 import UIKit.UIViewController
 
 final class MainConfigurator {
-    static func makeVC() -> UIViewController {
+    static var mainVC: UIViewController {
         let view             = MainViewController()
         let dataSource       = MainDataSource()
         let storage          = ItemStorage()
@@ -13,7 +13,6 @@ final class MainConfigurator {
         presenter.interactor = interactor
         presenter.router     = router
         router.view          = view
-
         return view
     }
 }
