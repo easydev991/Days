@@ -14,7 +14,6 @@ final class MainViewController: UIViewController {
         case add, sortAndAdd, none
     }
 
-    // MARK: - UI
     private lazy var sortingButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             title: nil,
@@ -26,9 +25,11 @@ final class MainViewController: UIViewController {
         button.accessibilityIdentifier = Identifier.sortingButton.text
         return button
     }()
+
     private lazy var sortAction = UIAction { [unowned self] _ in
         sortButtonTapped()
     }
+
     private lazy var addNewItemButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             systemItem: .add,
@@ -39,15 +40,18 @@ final class MainViewController: UIViewController {
         button.accessibilityIdentifier = Identifier.addNewItemButton.text
         return button
     }()
+
     private lazy var addAction = UIAction { [unowned self] _ in
         addItemTapped()
     }
+
     private lazy var emptyView: EmptyView = {
         let view = EmptyView(delegate: self)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = Identifier.emptyView.text
         return view
     }()
+
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.isHidden = true
@@ -63,10 +67,8 @@ final class MainViewController: UIViewController {
         return table
     }()
 
-    // MARK: - Properties
     var presenter: MainPresenterProtocol?
 
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -74,7 +76,6 @@ final class MainViewController: UIViewController {
     }
 }
 
-// MARK: - MainViewControllerProtocol
 extension MainViewController: MainViewControllerProtocol {
     func set(title: String?) {
         navigationItem.title = title
@@ -112,7 +113,7 @@ extension MainViewController: MainViewControllerProtocol {
 
     func showError(_ message: String) {
         presentSimpleAlert(
-            title: Text.Alert.error.text,
+            title: Text.Alert.error.localized,
             message: message
         )
     }
@@ -122,14 +123,12 @@ extension MainViewController: MainViewControllerProtocol {
     }
 }
 
-// MARK: - EmptyViewDelegate
 extension MainViewController: EmptyViewDelegate {
     func buttonTapped() {
         addItemTapped()
     }
 }
 
-// MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
@@ -152,7 +151,6 @@ extension MainViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Private extension
 private extension MainViewController {
     enum Identifier: String {
         case rootView, sortingButton, addNewItemButton, emptyView, tableView
@@ -164,7 +162,7 @@ private extension MainViewController {
     func setupUI() {
         view.backgroundColor = .mainBackground
         view.accessibilityIdentifier = Identifier.rootView.text
-        [tableView, emptyView].forEach(view.addSubview)
+        [tableView, emptyView].forEach { view.addSubview($0) }
         NSLayoutConstraint.activate(
             [
                 tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -188,7 +186,7 @@ private extension MainViewController {
                 }
             }
             let alert = UIAlertController.makeAlert(
-                title: Text.Main.sortBy.text,
+                title: Text.Main.sortBy.localized,
                 actions: alertActions
             )
             present(alert)

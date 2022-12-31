@@ -9,6 +9,6 @@ extension UIAlertAction {
     }
 
     static func exitAction(with style: ExitStyle) -> UIAlertAction {
-        .init(title: style.type.text, style: .cancel)
+        .init(title: style.type.localized, style: .cancel)
     }
 }

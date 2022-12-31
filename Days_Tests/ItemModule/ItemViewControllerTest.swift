@@ -6,17 +6,18 @@ final class ItemViewControllerTest: XCTestCase {
     var viewController: ItemViewController!
     var router: ItemRouterMock!
 
-    override func setUpWithError() throws {
+    override func setUp() {
+        super.setUp()
         presenter = ItemPresenterMock()
         viewController = ItemViewController()
         router = ItemRouterMock()
-
         presenter.viewController = viewController
         presenter.router = router
         viewController.presenter = presenter
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
         presenter = nil
         viewController = nil
         router = nil

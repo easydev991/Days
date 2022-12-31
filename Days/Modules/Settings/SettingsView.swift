@@ -13,7 +13,6 @@ protocol SettingsViewInput {
 final class SettingsView: UIView {
     private weak var delegate: SettingsViewDelegate?
 
-    // MARK: - UI
     private lazy var vStack: UIStackView = {
         let stack = UIStackView(
             arrangedSubviews: [
@@ -30,42 +29,47 @@ final class SettingsView: UIView {
         stack.accessibilityIdentifier = Identifier.vStack.text
         return stack
     }()
+
     private lazy var feedbackButton: UIButton = {
-        let button = UIButton.customWith(
-            title: Text.Settings.sendFeedback.text
+        let button = UIButton.makeButton(
+            title: Text.Settings.sendFeedback.localized
         )
         button.addAction(feedbackAction, for: .touchUpInside)
         button.accessibilityIdentifier = Identifier.feedbackButton.text
         return button
     }()
+
     private lazy var feedbackAction = UIAction { [weak delegate] _ in
         delegate?.feedbackButtonTapped()
     }
+
     private lazy var rateButton: UIButton = {
-        let button = UIButton.customWith(
-            title: Text.Settings.rateTheApp.text
+        let button = UIButton.makeButton(
+            title: Text.Settings.rateTheApp.localized
         )
         button.addAction(rateAction, for: .touchUpInside)
         button.accessibilityIdentifier = Identifier.rateButton.text
         return button
     }()
+
     private lazy var rateAction = UIAction { [weak delegate] _ in
         delegate?.rateButtonTapped()
     }
+
     private lazy var deleteAllDataButton: UIButton = {
-        let button = UIButton.customWith(
-            title: Text.Settings.deleteAllData.text,
+        let button = UIButton.makeButton(
+            title: Text.Settings.deleteAllData.localized,
             style: .dangerRed
         )
         button.addAction(deleteAllDataAction, for: .touchUpInside)
         button.accessibilityIdentifier = Identifier.deleteDataButton.text
         return button
     }()
+
     private lazy var deleteAllDataAction = UIAction { [weak delegate] _ in
         delegate?.deleteAllDataTapped()
     }
 
-    // MARK: - Lifecycle
     init(delegate: SettingsViewDelegate?) {
         self.delegate = delegate
         super.init(frame: .zero)
@@ -87,20 +91,18 @@ private extension SettingsView {
     enum Identifier: String {
         case vStack, feedbackButton, rateButton, deleteDataButton
         var text: String {
-            "SettingsView" + "_" + self.rawValue
+            "SettingsView" + "_" + rawValue
         }
     }
 
     func setupUI() {
         addSubview(vStack)
-        NSLayoutConstraint.activate(
-            [
-                vStack.topAnchor.constraint(equalTo: topAnchor),
-                vStack.leftAnchor.constraint(equalTo: leftAnchor),
-                vStack.rightAnchor.constraint(equalTo: rightAnchor),
-                vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
-                feedbackButton.heightAnchor.constraint(equalToConstant: Layout.Button.height)
-            ]
-        )
+        NSLayoutConstraint.activate([
+            vStack.topAnchor.constraint(equalTo: topAnchor),
+            vStack.leftAnchor.constraint(equalTo: leftAnchor),
+            vStack.rightAnchor.constraint(equalTo: rightAnchor),
+            vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            feedbackButton.heightAnchor.constraint(equalToConstant: Layout.Button.height)
+        ])
     }
 }

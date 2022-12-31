@@ -6,15 +6,16 @@ final class MainInteractorTest: XCTestCase {
     var itemStorage: ItemStorageMock!
     var interactor: MainInteractor!
 
-    override func setUpWithError() throws {
+    override func setUp() {
+        super.setUp()
         presenter = MainPresenterMock()
         itemStorage = ItemStorageMock()
         interactor = MainInteractor(with: itemStorage)
-
         presenter.interactor = interactor
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
         presenter = nil
         itemStorage = nil
         interactor = nil
@@ -25,6 +26,7 @@ final class MainInteractorTest: XCTestCase {
         interactor.loadItems(sortedBy: .init(.dateAscending)) { result in
             switch result {
             case .success(let items):
+                XCTAssertNotEqual(0, items.count)
                 XCTAssertEqual(mockItems.count, items.count)
             case .failure:
                 XCTFail("Items must be loaded")
@@ -33,7 +35,7 @@ final class MainInteractorTest: XCTestCase {
     }
 
     func testSaveItem() {
-        presenter.saveItem(with: "test", and: Date())
+        presenter.saveItem(with: "test", and: .now)
         XCTAssertEqual(1, presenter.dataSource.itemsCount)
     }
 

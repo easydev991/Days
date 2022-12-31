@@ -7,19 +7,20 @@ final class MainViewControllerTest: XCTestCase {
     var viewController: MainViewController!
     var router: MainRouterMock!
 
-    override func setUpWithError() throws {
+    override func setUp() {
+        super.setUp()
         presenter = MainPresenterMock()
         interactor = MainInteractorMock()
         viewController = MainViewController()
         router = MainRouterMock()
-
         presenter.viewController = viewController
         presenter.interactor = interactor
         presenter.router = router
         viewController.presenter = presenter
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
         presenter = nil
         interactor = nil
         viewController = nil
@@ -64,7 +65,7 @@ final class MainViewControllerTest: XCTestCase {
 
 private extension MainViewControllerTest {
     var _testItem: Item {
-        Item(title: "Title", date: Date())
+        Item(title: "Title", date: .now)
     }
 
     var sortButton: UIBarButtonItem? {

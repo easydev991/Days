@@ -7,14 +7,8 @@ protocol EmptyViewDelegate: AnyObject {
 final class EmptyView: UIView {
     private weak var delegate: EmptyViewDelegate?
 
-    // MARK: - UI
     private lazy var vStack: UIStackView = {
-        let stack = UIStackView(
-            arrangedSubviews: [
-                titleLabel,
-                addNewItemButton
-            ]
-        )
+        let stack = UIStackView(arrangedSubviews: [titleLabel, addNewItemButton])
         stack.axis = .vertical
         stack.spacing = Layout.Insets.standard
         stack.alignment = .center
@@ -22,30 +16,31 @@ final class EmptyView: UIView {
         stack.accessibilityIdentifier = Identifier.vStack.text
         return stack
     }()
-    private lazy var titleLabel: UILabel = {
+
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Text.Main.emptyList.text
+        label.text = Text.Main.emptyList.localized
         label.font = .preferredFont(forTextStyle: .headline, compatibleWith: nil)
         label.textColor = .adaptiveText
-        label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = Identifier.titleLabel.text
         return label
     }()
+
     private lazy var addNewItemButton: UIButton = {
-        let button = UIButton.customWith(
-            title: Text.Item.viewTitle.text
+        let button = UIButton.makeButton(
+            title: Text.Item.viewTitle.localized
         )
         button.addAction(addAction, for: .touchUpInside)
         button.accessibilityIdentifier = Identifier.addNewItemButton.text
         return button
     }()
+
     private lazy var addAction = UIAction { [weak delegate] _ in
         delegate?.buttonTapped()
     }
 
-    // MARK: - Lifecycle
     init(delegate: EmptyViewDelegate?) {
         self.delegate = delegate
         super.init(frame: .zero)
@@ -57,7 +52,6 @@ final class EmptyView: UIView {
     }
 }
 
-// MARK: - Private extension
 private extension EmptyView {
     enum Identifier: String {
         case vStack, titleLabel, addNewItemButton
@@ -68,14 +62,12 @@ private extension EmptyView {
 
     func setupUI() {
         addSubview(vStack)
-        NSLayoutConstraint.activate(
-            [
-                vStack.topAnchor.constraint(equalTo: topAnchor),
-                vStack.leftAnchor.constraint(equalTo: leftAnchor),
-                vStack.rightAnchor.constraint(equalTo: rightAnchor),
-                vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
-                addNewItemButton.heightAnchor.constraint(equalToConstant: Layout.Button.height)
-            ]
-        )
+        NSLayoutConstraint.activate([
+            vStack.topAnchor.constraint(equalTo: topAnchor),
+            vStack.leftAnchor.constraint(equalTo: leftAnchor),
+            vStack.rightAnchor.constraint(equalTo: rightAnchor),
+            vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            addNewItemButton.heightAnchor.constraint(equalToConstant: Layout.Button.height)
+        ])
     }
 }

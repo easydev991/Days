@@ -9,10 +9,23 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        setupAppearance()
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = AppFactory.makeRootView()
+        if CommandLine.arguments.contains("--uitesting") {
+            window.layer.speed = 2.0
+            DeletionService().clearDatabase()
+        }
+        window.rootViewController = AppFactory.rootView
         window.makeKeyAndVisible()
         self.window = window
     }
 }
 
+private extension SceneDelegate {
+    func setupAppearance() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.adaptiveText]
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UITabBar.appearance().tintColor = .sunflower
+    }
+}

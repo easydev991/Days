@@ -23,7 +23,7 @@ final class SettingsViewModel {
 
 extension SettingsViewModel: SettingsViewModelProtocol {
     var viewTitle: String {
-        Text.Settings.viewTitle.text
+        Text.Settings.viewTitle.localized
     }
 
     var feedbackRecipients: [String] {
@@ -31,11 +31,11 @@ extension SettingsViewModel: SettingsViewModelProtocol {
     }
 
     var emailSubjectText: String {
-        Text.Settings.feedbackSubject.text
+        Text.Settings.feedbackSubject.localized
     }
 
     var emailMessageBody: String {
-        Text.Settings.feedbackBody.text
+        Text.Settings.feedbackBody.localized
     }
 
     var sendEmailErrorMessage: String {
@@ -47,7 +47,7 @@ extension SettingsViewModel: SettingsViewModelProtocol {
     }
 
     var deletionDisclaimer: String {
-        Text.Settings.deletionDisclaimer.text
+        Text.Settings.deletionDisclaimer.localized
     }
 
     func deleteAllData(completion: @escaping DeletionResult) {
@@ -55,7 +55,7 @@ extension SettingsViewModel: SettingsViewModelProtocol {
             if let error = error {
                 completion(.failure(error))
             } else {
-                completion(.success(Text.Settings.deletionSuccess.text))
+                completion(.success(Text.Settings.deletionSuccess.localized))
                 NotificationCenter.default.post(name: .allDataHasBeedDeleted, object: nil)
             }
         }

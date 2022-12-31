@@ -12,22 +12,22 @@ final class Days_UITests: XCTestCase {
     }
 
     func testEmptyState_and_presentDismissItemVC() {
-        // testShowEmptyView on first launch
+        // Test emptyView is presented on first launch
         XCTAssertFalse(sortingButton.exists)
         XCTAssertFalse(plusButton.exists)
         XCTAssertTrue(emptyView.exists)
 
-        // testPresentItemViewController
+        // Test presenting ItemViewController
         rememberEventButton.tap()
         XCTAssertTrue(itemViewController.exists)
 
-        // testDismissItemViewController
+        // Test dismissing ItemViewController
         closeItemVCButton.tap()
         XCTAssertFalse(itemViewController.exists)
     }
 
     func testSaveItem_and_deleteItem() {
-        // testSaveItem
+        // Test saving an item
         let testItem = tableView.cells.firstMatch
         makeTestItem(title: "testItem")
         XCTAssertFalse(sortingButton.exists)
@@ -35,7 +35,7 @@ final class Days_UITests: XCTestCase {
         XCTAssertTrue(tableView.cells.staticTexts["testItem"].exists)
         XCTAssertTrue(tableView.cells.staticTexts["today"].exists)
 
-        // testDeleteItem
+        // Test item deletion
         testItem.swipeLeft()
         tableView.cells.firstMatch.buttons.firstMatch.tap()
         XCTAssertFalse(sortingButton.exists)
@@ -45,37 +45,37 @@ final class Days_UITests: XCTestCase {
     }
 
     func testSortingButtons() {
-        // testSortAndPlusButtonsExist
+        // Test sortingButton and plusButton exist
         makeTestItems(count: 2)
         XCTAssertTrue(sortingButton.exists)
         XCTAssertTrue(plusButton.exists)
         XCTAssertFalse(emptyView.exists)
 
-        // testPresentSortingOptions
+        // Test sortingOptions exists
         sortingButton.tap()
         XCTAssertTrue(sortByAlert.exists)
     }
 
     func testDeleteAllData() {
-        // testDeleteDataButton is hidden
+        // Test deleteDataButton is hidden
         settingsTabButton.tap()
         XCTAssertFalse(deleteDataButton.exists, "deleteDataButton should be hidden if there is no data to delete")
 
-        // testDeleteDataButton is visible
+        // Test deleteDataButton is visible
         homeTabButton.tap()
         makeTestItems(count: 2)
         settingsTabButton.tap()
         XCTAssertTrue(deleteDataButton.exists, "deleteDataButton should be visible when there is data to delete")
 
-        // testWarningAlert exists
+        // Test warningAlert exists
         deleteDataButton.tap()
         XCTAssertTrue(warningAlert.exists)
 
-        // testDeleteDataButton is hidden
+        // Test deleteDataButton is hidden
         warningAlertYesButton.tap()
         XCTAssertFalse(deleteDataButton.exists, "deleteDataButton should be hidden after data deletion")
 
-        // testShowEmptyView after data deletion
+        // Test emptyView after data deletion
         successAlertCloseButton.tap()
         homeTabButton.tap()
         XCTAssertFalse(sortingButton.exists)
@@ -113,10 +113,7 @@ private extension Days_UITests {
         }
     }
 
-    func makeTestItem(
-        title: String,
-        isListEmpty: Bool = true
-    ) {
+    func makeTestItem(title: String, isListEmpty: Bool = true) {
         isListEmpty ? rememberEventButton.tap() : plusButton.tap()
         itemTitleTextField.typeText(title)
         saveItemButton.tap()

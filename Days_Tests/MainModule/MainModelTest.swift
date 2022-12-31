@@ -2,46 +2,43 @@ import XCTest
 @testable import Days
 
 final class MainModelTest: XCTestCase {
-    func testNavItemButtonsState_none() {
+    func testNavigationItemState_none() {
         let state = MainModel.navItemState(for: .zero)
         XCTAssertEqual(state, MainViewController.VisibleNavItemButtons.none)
     }
 
-    func testNavItemButtonsState_add() {
+    func testNavigationItemState_add() {
         let state = MainModel.navItemState(for: 1)
         XCTAssertEqual(state, MainViewController.VisibleNavItemButtons.add)
     }
 
-    func testNavItemButtonsState_sortAndAdd() {
+    func testNavigationItemState_sortAndAdd() {
         let state = MainModel.navItemState(for: 2)
         XCTAssertEqual(state, MainViewController.VisibleNavItemButtons.sortAndAdd)
     }
 
     func testTextFrom_today() {
-        let todayText = Text.Main.today.text
-        let today = Date()
-        XCTAssertEqual(todayText, MainModel.textFrom(date: today))
+        let todayText = Text.Main.today.localized
+        XCTAssertEqual(todayText, MainModel.textFrom(date: .now))
     }
 
     func testTextFrom_yesterday() {
-        let daysPastForOneDayText = Text.Main.daysPast(1).text
-        let today = Date()
+        let daysPastForOneDayText = Text.Main.daysPast(1).localized
         let yesterday = Calendar.current.date(
             byAdding: .day,
             value: -1,
-            to: today
+            to: .now
         )
         XCTAssertEqual(daysPastForOneDayText, MainModel.textFrom(date: yesterday!))
     }
 
     func testTextFrom_manyDays() {
         let randomInt = Int.random(in: 5...50)
-        let daysPastForManyDaysText = Text.Main.daysPast(randomInt).text
-        let today = Date()
+        let daysPastForManyDaysText = Text.Main.daysPast(randomInt).localized
         let oldDate = Calendar.current.date(
             byAdding: .day,
             value: -randomInt,
-            to: today
+            to: .now
         )
         XCTAssertEqual(daysPastForManyDaysText, MainModel.textFrom(date: oldDate!))
     }

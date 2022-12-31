@@ -7,7 +7,7 @@ final class MainViewControllerMock {
     var isEmptyViewHidden = false
     var isErrorShown = false
     var isItemsViewPresented = false
-    var errorMessage = String()
+    var errorMessage = ""
     var visibleNavItemButtons = MainViewController.VisibleNavItemButtons.none
 }
 
@@ -24,9 +24,7 @@ extension MainViewControllerMock: MainViewControllerProtocol {
         isEmptyViewHidden = hidden
     }
 
-    func setNavItemButtons(
-        _ state: MainViewController.VisibleNavItemButtons
-    ) {
+    func setNavItemButtons(_ state: MainViewController.VisibleNavItemButtons) {
         visibleNavItemButtons = state
     }
 

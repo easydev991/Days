@@ -50,7 +50,7 @@ extension MainPresenter: MainPresenterProtocol {
                 dataSource?.set(items: items)
                 let isListEmpty = items.isEmpty
                 view?.reload(isListEmpty: isListEmpty)
-                view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.text)
+                view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.localized)
                 view?.setNavItemButtons(MainModel.navItemState(for: items.count))
                 view?.setEmptyView(hidden: !isListEmpty)
             case .failure(let error):
@@ -89,7 +89,7 @@ extension MainPresenter: MainPresenterProtocol {
             if let error = error {
                 view?.showError(error.localizedDescription)
             } else {
-                view?.set(title: itemsCount == .zero ? nil : Text.Main.viewTitle.text)
+                view?.set(title: itemsCount == .zero ? nil : Text.Main.viewTitle.localized)
                 view?.setNavItemButtons(MainModel.navItemState(for: itemsCount))
                 view?.setEmptyView(hidden: itemsCount != .zero)
                 completion?()

@@ -6,7 +6,5 @@ final class ItemRouterMock {
 }
 
 extension ItemRouterMock: ItemRouterProtocol {
-    func dismissViewController() {
-        didDismiss.toggle()
-    }
+    func dismissViewController() { didDismiss.toggle() }
 }

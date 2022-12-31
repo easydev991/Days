@@ -11,64 +11,63 @@ protocol ItemViewControllerProtocol: AnyObject {
 }
 
 final class ItemViewController: UIViewController {
-    // MARK: - UI
     private lazy var hStack: UIStackView = {
-        let stack = UIStackView(
-            arrangedSubviews: [
-                cancelButton, titleLabel, saveButton
-            ]
-        )
+        let stack = UIStackView(arrangedSubviews: [cancelButton, titleLabel, saveButton])
         stack.spacing = Layout.Insets.average
         stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.accessibilityIdentifier = Identifier.hStack.text
         return stack
     }()
-    private lazy var separatorView: UIView = {
+
+    private let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityIdentifier = Identifier.separatorView.text
         return view
     }()
-    private lazy var titleLabel: UILabel = {
+
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Text.Item.viewTitle.text
+        label.text = Text.Item.viewTitle.localized
         label.font = .preferredFont(forTextStyle: .headline, compatibleWith: nil)
         label.textColor = .adaptiveText
-        label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = Identifier.titleLabel.text
         return label
     }()
+
     private lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: closeButtonAction)
-        button.setTitle(Text.Button.cancel.text, for: .normal)
+        button.setTitle(Text.Button.cancel.localized, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = Identifier.cancelButton.text
         return button
     }()
+
     private lazy var closeButtonAction = UIAction { [weak presenter] _ in
         presenter?.finishFlow()
     }
+
     private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: saveButtonAction)
-        button.setTitle(Text.Button.done.text, for: .normal)
+        button.setTitle(Text.Button.done.localized, for: .normal)
         button.tintColor = .buttonTint
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = Identifier.saveButton.text
         return button
     }()
-    private lazy var saveButtonAction = UIAction { [unowned self] _ in
-        saveAction()
-    }
+
+    private lazy var saveButtonAction = UIAction { [unowned self] _ in saveAction() }
+
     private lazy var itemTitleTextField: UITextField = {
         let field = UITextField()
         field.delegate = self
         field.attributedPlaceholder = .init(
-            string: Text.Item.titlePlaceholder.text,
+            string: Text.Item.titlePlaceholder.localized,
             attributes: [.foregroundColor: UIColor.systemGray]
         )
         field.textColor = .adaptiveText
@@ -78,13 +77,15 @@ final class ItemViewController: UIViewController {
         field.accessibilityIdentifier = Identifier.itemTitleTextField.text
         return field
     }()
+
     private lazy var editingChangedAction = UIAction { [weak presenter] action in
         let textField = action.sender as? UITextField
         presenter?.checkNameForLettersIn(text: textField?.text)
     }
-    private lazy var itemDatePicker: UIDatePicker = {
+
+    private let itemDatePicker: UIDatePicker = {
         let picker = UIDatePicker()
-        picker.maximumDate = Date()
+        picker.maximumDate = .now
         picker.datePickerMode = .date
         picker.backgroundColor = .mainBackground
         picker.preferredDatePickerStyle = .wheels
@@ -94,12 +95,10 @@ final class ItemViewController: UIViewController {
         picker.accessibilityIdentifier = Identifier.itemDatePicker.text
         return picker
     }()
-    
-    // MARK: - Properties
+
     var presenter: ItemPresenterProtocol?
     weak var delegate: ItemViewControllerDelegate?
-    
-    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -112,9 +111,8 @@ final class ItemViewController: UIViewController {
     }
 }
 
-// MARK: - ItemViewControllerProtocol
 extension ItemViewController: ItemViewControllerProtocol {
-    func saveAction(){
+    func saveAction() {
         if let text = itemTitleTextField.text {
             delegate?.takeItem(
                 with: text,
@@ -128,12 +126,9 @@ extension ItemViewController: ItemViewControllerProtocol {
         saveButton.isEnabled = enabled
     }
 
-    func dismiss() {
-        dismiss(animated: true)
-    }
+    func dismiss() { dismiss(animated: true) }
 }
 
-// MARK: - UITextFieldDelegate
 extension ItemViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text, !text.isEmpty else { return false }
@@ -142,7 +137,6 @@ extension ItemViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - Private methods
 private extension ItemViewController {
     enum Identifier: String {
         case rootView, hStack, separatorView, titleLabel, cancelButton,
@@ -155,23 +149,21 @@ private extension ItemViewController {
     func setupUI() {
         view.accessibilityIdentifier = Identifier.rootView.text
         view.backgroundColor = .mainBackground
-        [hStack, separatorView, itemTitleTextField, itemDatePicker].forEach(view.addSubview)
-        NSLayoutConstraint.activate(
-            [
-                saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor),
-                hStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.Insets.standard),
-                hStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.Insets.standard),
-                hStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Layout.Insets.standard),
-                separatorView.topAnchor.constraint(equalTo: hStack.bottomAnchor, constant: Layout.Insets.average),
-                separatorView.leftAnchor.constraint(equalTo: hStack.leftAnchor),
-                separatorView.rightAnchor.constraint(equalTo: hStack.rightAnchor),
-                separatorView.heightAnchor.constraint(equalToConstant: 1),
-                itemTitleTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.Insets.average),
-                itemTitleTextField.leftAnchor.constraint(equalTo: hStack.leftAnchor),
-                itemTitleTextField.rightAnchor.constraint(equalTo: hStack.rightAnchor),
-                itemDatePicker.topAnchor.constraint(equalTo: itemTitleTextField.bottomAnchor, constant: Layout.Insets.standard),
-                itemDatePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ]
-        )
+        [hStack, separatorView, itemTitleTextField, itemDatePicker].forEach { view.addSubview($0) }
+        NSLayoutConstraint.activate([
+            saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor),
+            hStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.Insets.standard),
+            hStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Layout.Insets.standard),
+            hStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Layout.Insets.standard),
+            separatorView.topAnchor.constraint(equalTo: hStack.bottomAnchor, constant: Layout.Insets.average),
+            separatorView.leftAnchor.constraint(equalTo: hStack.leftAnchor),
+            separatorView.rightAnchor.constraint(equalTo: hStack.rightAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1),
+            itemTitleTextField.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: Layout.Insets.average),
+            itemTitleTextField.leftAnchor.constraint(equalTo: hStack.leftAnchor),
+            itemTitleTextField.rightAnchor.constraint(equalTo: hStack.rightAnchor),
+            itemDatePicker.topAnchor.constraint(equalTo: itemTitleTextField.bottomAnchor, constant: Layout.Insets.standard),
+            itemDatePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
 }

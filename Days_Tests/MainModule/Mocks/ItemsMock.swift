@@ -1,19 +1,11 @@
 import Foundation
 @testable import Days
 
-struct ItemsMock {
-    static var oneItem = Item(title: "", date: Date())
-    static var items: [Item] {
-        var result = [Item]()
-        (.zero...9).forEach { index in
-            let newItem = Item(title: "Item_\(index)", date: Date())
-            result.append(newItem)
-        }
-        return result
-    }
-    static var itemsCount = items.count
-    static var randomIndex: Int {
-        .random(in: .zero...itemsCount - 1)
-    }
+enum ItemsMock: Sendable {
+    static let oneItem = Item(title: "", date: .now)
+
+    static let items = (.zero...9).map { Item(title: "Item_\($0)", date: .now) }
+
+    static var randomIndex: Int { .random(in: .zero...items.count - 1) }
 }
 
