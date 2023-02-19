@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "feedbacksender",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OlegEremenko991/FeedbackSender",
+      "state" : {
+        "revision" : "f1344cbd04a9baef7cc135947efb7c68c256b225",
+        "version" : "1.0.1"
+      }
+    },
+    {
       "identity" : "realm-cocoa",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-cocoa.git",
