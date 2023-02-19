@@ -42,7 +42,7 @@ extension MainInteractor: MainInteractorProtocol {
         _ item: Item?,
         completion: @escaping OptionalErrorVoidBlock
     ) {
-        guard let item = item else {
+        guard let item else {
             return
         }
         itemStorage.remove(item: item, completion: completion)

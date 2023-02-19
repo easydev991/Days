@@ -46,14 +46,14 @@ extension MainPresenter: MainPresenterProtocol {
     func requestItems() {
         interactor?.loadItems(sortedBy: sortModel) { [weak dataSource, weak view] result in
             switch result {
-            case .success(let items):
+            case let .success(items):
                 dataSource?.set(items: items)
                 let isListEmpty = items.isEmpty
                 view?.reload(isListEmpty: isListEmpty)
                 view?.set(title: isListEmpty ? nil : Text.Main.viewTitle.localized)
                 view?.setNavItemButtons(MainModel.navItemState(for: items.count))
                 view?.setEmptyView(hidden: !isListEmpty)
-            case .failure(let error):
+            case let .failure(error):
                 view?.showError(error.localizedDescription)
             }
         }
@@ -71,7 +71,7 @@ extension MainPresenter: MainPresenterProtocol {
         interactor?.saveItem(
             .init(title: title, date: date)
         ) { [weak self, weak view] error in
-            if let error = error {
+            if let error {
                 view?.showError(error.localizedDescription)
             } else {
                 self?.requestItems()
@@ -86,7 +86,7 @@ extension MainPresenter: MainPresenterProtocol {
         let itemForRemoval = dataSource.removeItem(at: index)
         let itemsCount = dataSource.itemsCount
         interactor?.removeItem(itemForRemoval) { [weak view] error in
-            if let error = error {
+            if let error {
                 view?.showError(error.localizedDescription)
             } else {
                 view?.set(title: itemsCount == .zero ? nil : Text.Main.viewTitle.localized)
@@ -99,7 +99,8 @@ extension MainPresenter: MainPresenterProtocol {
 }
 
 private extension MainPresenter {
-    @objc func reloadAfterDeletion() {
+    @objc
+    func reloadAfterDeletion() {
         dataSource.removeAllData()
         view?.set(title: nil)
         view?.setNavItemButtons(MainModel.navItemState(for: .zero))

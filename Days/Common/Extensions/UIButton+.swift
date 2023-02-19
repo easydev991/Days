@@ -4,7 +4,7 @@ extension UIButton {
     enum CustomStyle {
         case sunflower, dangerRed
     }
-    
+
     static func makeButton(
         title: String,
         style: CustomStyle = .sunflower

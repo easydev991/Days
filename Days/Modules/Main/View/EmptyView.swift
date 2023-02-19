@@ -56,7 +56,7 @@ private extension EmptyView {
     enum Identifier: String {
         case vStack, titleLabel, addNewItemButton
         var text: String {
-            "EmptyView" + "_" + self.rawValue
+            "EmptyView" + "_" + rawValue
         }
     }
 

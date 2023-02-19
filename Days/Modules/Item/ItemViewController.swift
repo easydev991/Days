@@ -85,7 +85,7 @@ final class ItemViewController: UIViewController {
 
     private let itemDatePicker: UIDatePicker = {
         let picker = UIDatePicker()
-        picker.maximumDate = .now
+        picker.maximumDate = .init()
         picker.datePickerMode = .date
         picker.backgroundColor = .mainBackground
         picker.preferredDatePickerStyle = .wheels
@@ -142,7 +142,7 @@ private extension ItemViewController {
         case rootView, hStack, separatorView, titleLabel, cancelButton,
              saveButton, itemTitleTextField, itemDatePicker
         var text: String {
-            "ItemVC" + "_" + self.rawValue
+            "ItemVC" + "_" + rawValue
         }
     }
 

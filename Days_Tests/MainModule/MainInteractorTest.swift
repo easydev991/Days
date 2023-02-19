@@ -1,5 +1,5 @@
-import XCTest
 @testable import Days
+import XCTest
 
 final class MainInteractorTest: XCTestCase {
     var presenter: MainPresenterMock!
@@ -25,7 +25,7 @@ final class MainInteractorTest: XCTestCase {
         let mockItems = ItemsMock.items
         interactor.loadItems(sortedBy: .init(.dateAscending)) { result in
             switch result {
-            case .success(let items):
+            case let .success(items):
                 XCTAssertNotEqual(0, items.count)
                 XCTAssertEqual(mockItems.count, items.count)
             case .failure:
@@ -35,7 +35,7 @@ final class MainInteractorTest: XCTestCase {
     }
 
     func testSaveItem() {
-        presenter.saveItem(with: "test", and: .now)
+        presenter.saveItem(with: "test", and: .init())
         XCTAssertEqual(1, presenter.dataSource.itemsCount)
     }
 

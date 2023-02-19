@@ -1,5 +1,5 @@
-import Foundation
 @testable import Days
+import Foundation
 
 final class MainPresenterMock {
     var viewController: MainViewControllerProtocol!
@@ -18,16 +18,16 @@ extension MainPresenterMock: MainPresenterProtocol {
         interactor.removeItem(itemForRemoval) { _ in completion?() }
     }
 
-    func sortBy(_ sort: SortBy) {}
+    func sortBy(_: SortBy) {}
 
     func addItemTapped() {}
 
-    func updateSortModel(sortBy: ItemSort, ascending: Bool) {}
+    func updateSortModel(sortBy _: ItemSort, ascending _: Bool) {}
 
     func requestItems() {
         interactor.loadItems(sortedBy: .init(.dateAscending)) { [weak dataSource] result in
             switch result {
-            case .success(let items):
+            case let .success(items):
                 dataSource?.set(items: items)
             case .failure:
                 break

@@ -3,6 +3,23 @@
 - The app supports both English and Russian languages
 - UI-elements have color options for both light and dark mode
 
+## Project setup
+
+1. Clone the repo
+2. Open project folder in terminal 
+```shell
+cd Days 2.1
+```
+3. Setup hooks directory
+```shell
+git config core.hooksPath githooks
+```
+4. Grant permission to `pre-commit` hook
+```shell
+chmod +x pre-commit
+```
+5. Open the project in `Xcode` and wait for packages to resolve
+
 ## What you can do with this app
 
 1. Create records with "+" button

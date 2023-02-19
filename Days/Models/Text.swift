@@ -30,7 +30,7 @@ enum Text {
                 return NSLocalizedString("Items list is empty", comment: "")
             case .today:
                 return NSLocalizedString("today", comment: "")
-            case .daysPast(let count):
+            case let .daysPast(count):
                 return .localizedStringWithFormat(
                     NSLocalizedString("daysPast", comment: "days ago"),
                     count

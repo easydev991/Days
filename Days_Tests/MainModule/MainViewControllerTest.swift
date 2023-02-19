@@ -1,5 +1,5 @@
-import XCTest
 @testable import Days
+import XCTest
 
 final class MainViewControllerTest: XCTestCase {
     var presenter: MainPresenterMock!
@@ -65,7 +65,7 @@ final class MainViewControllerTest: XCTestCase {
 
 private extension MainViewControllerTest {
     var _testItem: Item {
-        Item(title: "Title", date: .now)
+        Item(title: "Title", date: .init())
     }
 
     var sortButton: UIBarButtonItem? {

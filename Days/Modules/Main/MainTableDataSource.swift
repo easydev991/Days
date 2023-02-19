@@ -27,8 +27,8 @@ final class MainDataSource: NSObject, MainDataSourceService {
     }
 
     func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
+        _: UITableView,
+        numberOfRowsInSection _: Int
     ) -> Int {
         itemsCount
     }

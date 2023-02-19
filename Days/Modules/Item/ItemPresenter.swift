@@ -18,7 +18,7 @@ extension ItemPresenter: ItemPresenterProtocol {
     }
 
     func checkNameForLettersIn(text: String?) {
-        if let text = text {
+        if let text {
             view?.setSaveButton(enabled: text.containsLetter)
         } else {
             view?.setSaveButton(enabled: false)

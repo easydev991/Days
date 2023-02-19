@@ -1,8 +1,8 @@
-import UIKit
 @testable import Days
+import UIKit
 
 final class MainViewControllerMock {
-    var title: String? = nil
+    var title: String?
     var reloadComplete = false
     var isEmptyViewHidden = false
     var isErrorShown = false
@@ -12,7 +12,7 @@ final class MainViewControllerMock {
 }
 
 extension MainViewControllerMock: MainViewControllerProtocol {
-    func reload(isListEmpty: Bool) {
+    func reload(isListEmpty _: Bool) {
         reloadComplete.toggle()
     }
 
@@ -33,9 +33,9 @@ extension MainViewControllerMock: MainViewControllerProtocol {
         errorMessage = message
     }
 
-    func takeItem(with name: String, and date: Date) {}
+    func takeItem(with _: String, and _: Date) {}
 
-    func present(_ viewController: UIViewController) {
+    func present(_: UIViewController) {
         isItemsViewPresented.toggle()
     }
 }

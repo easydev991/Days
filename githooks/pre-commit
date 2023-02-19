@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "master" ]; then
+  echo "Please create a pull request instead of committing to main branch"
+  exit 1
+fi
+
+SCRIPTDIR=$(dirname "$0")
+SWIFTFORMATDIR="$(dirname "$SCRIPTDIR")"
+
+if ! $SWIFTFORMATDIR/swiftformat . --lint; then
+  # Need to run swiftformat .
+  echo ""
+  echo "Seems like you should format your code"
+  echo "Run this terminal command from the project folder:"
+  echo "$SWIFTFORMATDIR/swiftformat ."
+  exit 1
+else
+  # Format is OK
+  exit 0
+fi
