@@ -5,6 +5,8 @@
 
 ## Project setup
 
+### First steps
+
 1. Clone the repo
 2. Open project folder in terminal 
 ```shell
@@ -19,6 +21,21 @@ git config core.hooksPath githooks
 chmod +x pre-commit
 ```
 5. Open the `xcodeproj`-file and wait for `Xcode` to resolve the packages
+
+### Code formatting
+
+- The project uses [swiftformat (0.50.9)](https://github.com/nicklockwood/SwiftFormat) for code formatting
+- Code formatting rules can be found in [.swiftformat](.swiftformat)
+- All rules are listed [here](https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md)
+
+### How it works
+1. Before each commit a pre-commit hook checks for code formatting
+2. If any rules are broken, you will get an error and a string with terminal command to run `swiftformat` correctly
+
+### How to update`swiftformat`
+1. Open this [page](https://github.com/nicklockwood/SwiftFormat/releases)
+2. Download `swiftformat.zip`
+3. Change old file with a new one
 
 ## What you can do with this app
 
