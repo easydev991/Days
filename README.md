@@ -32,7 +32,8 @@ chmod +x pre-commit
 1. Before each commit a pre-commit hook checks for code formatting
 2. If any rules are broken, you will get an error and a string with terminal command to run `swiftformat` correctly
 
-### How to update`swiftformat`
+### How to update `swiftformat`
+
 1. Open this [page](https://github.com/nicklockwood/SwiftFormat/releases)
 2. Download `swiftformat.zip`
 3. Change old file with a new one
