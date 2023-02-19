@@ -1,5 +1,5 @@
-import XCTest
 @testable import Days
+import XCTest
 
 final class MainModelTest: XCTestCase {
     func testNavigationItemState_none() {
@@ -19,7 +19,7 @@ final class MainModelTest: XCTestCase {
 
     func testTextFrom_today() {
         let todayText = Text.Main.today.localized
-        XCTAssertEqual(todayText, MainModel.textFrom(date: .now))
+        XCTAssertEqual(todayText, MainModel.textFrom(date: .init()))
     }
 
     func testTextFrom_yesterday() {
@@ -27,18 +27,18 @@ final class MainModelTest: XCTestCase {
         let yesterday = Calendar.current.date(
             byAdding: .day,
             value: -1,
-            to: .now
+            to: .init()
         )
         XCTAssertEqual(daysPastForOneDayText, MainModel.textFrom(date: yesterday!))
     }
 
     func testTextFrom_manyDays() {
-        let randomInt = Int.random(in: 5...50)
+        let randomInt = Int.random(in: 5 ... 50)
         let daysPastForManyDaysText = Text.Main.daysPast(randomInt).localized
         let oldDate = Calendar.current.date(
             byAdding: .day,
             value: -randomInt,
-            to: .now
+            to: .init()
         )
         XCTAssertEqual(daysPastForManyDaysText, MainModel.textFrom(date: oldDate!))
     }

@@ -1,7 +1,7 @@
-import UIKit
 @testable import Days
+import UIKit
 
-final class ItemViewControllerMock  {
+final class ItemViewControllerMock {
     var delegate: ItemViewControllerDelegate!
     var saveButtonEnabled = false
 }

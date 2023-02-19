@@ -137,7 +137,7 @@ extension MainViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(
             style: .destructive,
             title: nil
-        ) { [weak presenter] _,_,_ in
+        ) { [weak presenter] _, _, _ in
             presenter?.removeItem(at: indexPath.row) {
                 tableView.deleteRows(
                     at: [indexPath],
@@ -155,7 +155,7 @@ private extension MainViewController {
     enum Identifier: String {
         case rootView, sortingButton, addNewItemButton, emptyView, tableView
         var text: String {
-            "MainVC" + "_" + self.rawValue
+            "MainVC" + "_" + rawValue
         }
     }
 
@@ -178,7 +178,7 @@ private extension MainViewController {
     func sortButtonTapped() {
         if let sortOptions = presenter?.availableSortOptions {
             let alertActions = sortOptions.map { option in
-                return UIAlertAction(
+                UIAlertAction(
                     title: option.title,
                     style: .default
                 ) { [weak presenter] _ in

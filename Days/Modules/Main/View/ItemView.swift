@@ -32,6 +32,7 @@ final class ItemView: UIView {
         label.accessibilityIdentifier = Identifier.titleLabel.text
         return label
     }()
+
     private let daysLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -42,7 +43,7 @@ final class ItemView: UIView {
         return label
     }()
 
-    override init(frame: CGRect) {
+    override init(frame _: CGRect) {
         super.init(frame: .zero)
         setupUI()
     }
@@ -63,7 +64,7 @@ private extension ItemView {
     enum Identifier: String {
         case container, hStack, titleLabel, daysLabel
         var text: String {
-            "ItemView" + "_" + self.rawValue
+            "ItemView" + "_" + rawValue
         }
     }
 

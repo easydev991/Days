@@ -1,12 +1,13 @@
 import CoreGraphics
 
 struct Layout {
-    struct Button {
+    enum Button {
         static let height = CGFloat(48)
     }
-    struct Insets {
+
+    enum Insets {
         static let standard = CGFloat(16)
-        static let average  = standard/2
-        static let small    = standard/4
+        static let average = standard / 2
+        static let small = standard / 4
     }
 }

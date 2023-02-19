@@ -52,7 +52,7 @@ extension SettingsViewModel: SettingsViewModelProtocol {
 
     func deleteAllData(completion: @escaping DeletionResult) {
         deletionService.clearDatabase { error in
-            if let error = error {
+            if let error {
                 completion(.failure(error))
             } else {
                 completion(.success(Text.Settings.deletionSuccess.localized))

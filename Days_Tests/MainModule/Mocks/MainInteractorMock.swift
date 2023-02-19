@@ -2,17 +2,17 @@
 
 final class MainInteractorMock: MainInteractorProtocol {
     func loadItems(
-        sortedBy model: ItemSortModel,
+        sortedBy _: ItemSortModel,
         completion: @escaping ItemsVoidResult
     ) {
         completion(.success(ItemsMock.items))
     }
 
-    func saveItem(_ item: Item, completion: OptionalErrorVoidBlock) {
+    func saveItem(_: Item, completion: OptionalErrorVoidBlock) {
         completion(nil)
     }
 
-    func removeItem(_ item: Item?, completion: OptionalErrorVoidBlock) {
+    func removeItem(_: Item?, completion: OptionalErrorVoidBlock) {
         completion(nil)
     }
 }

@@ -1,6 +1,6 @@
-import UIKit
-import StoreKit
 import MessageUI
+import StoreKit
+import UIKit
 
 final class SettingsViewController: UIViewController {
     private let viewModel: SettingsViewModelProtocol
@@ -17,7 +17,8 @@ final class SettingsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -94,8 +95,8 @@ extension SettingsViewController: SettingsViewDelegate {
 extension SettingsViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(
         _ controller: MFMailComposeViewController,
-        didFinishWith result: MFMailComposeResult,
-        error: Error?
+        didFinishWith _: MFMailComposeResult,
+        error _: Error?
     ) {
         controller.dismiss(animated: true)
     }
@@ -105,7 +106,7 @@ private extension SettingsViewController {
     enum Identifier: String {
         case rootView, settingsView
         var text: String {
-            "SettingsVC" + "_" + self.rawValue
+            "SettingsVC" + "_" + rawValue
         }
     }
 

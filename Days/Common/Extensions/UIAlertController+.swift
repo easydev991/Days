@@ -14,7 +14,7 @@ extension UIAlertController {
             message: message,
             preferredStyle: style
         )
-        if let actions = actions {
+        if let actions {
             actions.forEach {
                 alert.addAction($0)
             }

@@ -1,5 +1,5 @@
-import XCTest
 @testable import Days
+import XCTest
 
 final class ItemPresenterTest: XCTestCase {
     var presenter: ItemPresenter!

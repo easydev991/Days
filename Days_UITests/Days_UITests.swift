@@ -89,7 +89,7 @@ private extension Days_UITests {
     var tableView: XCUIElement { app.tables["MainVC_tableView"] }
     var rememberEventButton: XCUIElement { app.buttons["EmptyView_addNewItemButton"] }
     var itemViewController: XCUIElement { app.otherElements["ItemVC_rootView"] }
-    var closeItemVCButton: XCUIElement { app.buttons["ItemVC_cancelButton"]}
+    var closeItemVCButton: XCUIElement { app.buttons["ItemVC_cancelButton"] }
     var saveItemButton: XCUIElement { app.buttons["ItemVC_saveButton"] }
     var itemTitleTextField: XCUIElement { app.textFields["ItemVC_itemTitleTextField"] }
     var sortingButton: XCUIElement { app.buttons["MainVC_sortingButton"] }
@@ -105,7 +105,7 @@ private extension Days_UITests {
     var successAlertCloseButton: XCUIElement { successAlert.buttons["Close"] }
 
     func makeTestItems(count: Int) {
-        (.zero...count-1).forEach { index in
+        (.zero ... count - 1).forEach { index in
             makeTestItem(
                 title: "Test item \(index)",
                 isListEmpty: index == .zero

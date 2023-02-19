@@ -29,17 +29,17 @@ struct ItemSortModel {
     init(_ sort: SortBy) {
         switch sort {
         case .dateAscending:
-            sortBy = .date
-            ascending = true
+            self.sortBy = .date
+            self.ascending = true
         case .dateDescending:
-            sortBy = .date
-            ascending = false
+            self.sortBy = .date
+            self.ascending = false
         case .titleAscending:
-            sortBy = .title
-            ascending = true
+            self.sortBy = .title
+            self.ascending = true
         case .titleDescending:
-            sortBy = .title
-            ascending = false
+            self.sortBy = .title
+            self.ascending = false
         }
     }
 

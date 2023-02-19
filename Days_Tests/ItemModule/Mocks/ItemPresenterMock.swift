@@ -8,7 +8,7 @@ final class ItemPresenterMock {
 extension ItemPresenterMock: ItemPresenterProtocol {
     func viewDidLoad() {}
 
-    func checkNameForLettersIn(text: String?) {}
+    func checkNameForLettersIn(text _: String?) {}
 
     func finishFlow() {}
 }
