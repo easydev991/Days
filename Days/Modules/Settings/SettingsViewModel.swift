@@ -1,41 +1,33 @@
+import FeedbackSender
 import Foundation
 
 protocol SettingsViewModelProtocol {
     var viewTitle: String { get }
-    var feedbackRecipients: [String] { get }
-    var emailSubjectText: String { get }
-    var emailMessageBody: String { get }
     var sendEmailErrorMessage: String { get }
     var isDeleteButtonHidden: Bool { get }
     var deletionDisclaimer: String { get }
     func deleteAllData(completion: @escaping DeletionResult)
+    func sendFeedback()
 
     typealias DeletionResult = (Result<String, Error>) -> Void
 }
 
 final class SettingsViewModel {
+    private let feedbackService: FeedbackSender
     private let deletionService: DeletionServiceProtocol
 
-    init(deletionService: DeletionServiceProtocol) {
+    init(
+        deletionService: DeletionServiceProtocol,
+        feedbackService: FeedbackSender = FeedbackSenderImp()
+    ) {
         self.deletionService = deletionService
+        self.feedbackService = feedbackService
     }
 }
 
 extension SettingsViewModel: SettingsViewModelProtocol {
     var viewTitle: String {
         Text.Settings.viewTitle.localized
-    }
-
-    var feedbackRecipients: [String] {
-        ["o.n.eremenko@gmail.com"]
-    }
-
-    var emailSubjectText: String {
-        Text.Settings.feedbackSubject.localized
-    }
-
-    var emailMessageBody: String {
-        Text.Settings.feedbackBody.localized
     }
 
     var sendEmailErrorMessage: String {
@@ -59,5 +51,13 @@ extension SettingsViewModel: SettingsViewModelProtocol {
                 NotificationCenter.default.post(name: .allDataHasBeedDeleted, object: nil)
             }
         }
+    }
+
+    func sendFeedback() {
+        feedbackService.sendFeedback(
+            subject: Text.Settings.feedbackSubject.localized,
+            messageBody: Text.Settings.feedbackBody.localized,
+            recipients: ["o.n.eremenko@gmail.com"]
+        )
     }
 }

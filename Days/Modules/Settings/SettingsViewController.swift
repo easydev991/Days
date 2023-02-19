@@ -36,15 +36,7 @@ final class SettingsViewController: UIViewController {
 extension SettingsViewController: SettingsViewDelegate {
     func feedbackButtonTapped() {
         if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setToRecipients(viewModel.feedbackRecipients)
-            mail.setMessageBody(
-                viewModel.emailMessageBody,
-                isHTML: true
-            )
-            mail.setSubject(viewModel.emailSubjectText)
-            present(mail, animated: true)
+            viewModel.sendFeedback()
         } else {
             presentSimpleAlert(
                 title: Text.Alert.error.localized,
@@ -89,16 +81,6 @@ extension SettingsViewController: SettingsViewDelegate {
             exitStyle: .cancel
         )
         present(alert)
-    }
-}
-
-extension SettingsViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(
-        _ controller: MFMailComposeViewController,
-        didFinishWith _: MFMailComposeResult,
-        error _: Error?
-    ) {
-        controller.dismiss(animated: true)
     }
 }
 

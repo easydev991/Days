@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6704889B29A231A00062D3AB /* FeedbackSender in Frameworks */ = {isa = PBXBuildFile; productRef = 6704889A29A231A00062D3AB /* FeedbackSender */; };
 		6705D12C24B988B300A07BDC /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D12B24B988B300A07BDC /* MainPresenter.swift */; };
 		6705D12E24B988BC00A07BDC /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D12D24B988BC00A07BDC /* MainInteractor.swift */; };
 		6705D13024B988CD00A07BDC /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6705D12F24B988CD00A07BDC /* MainConfigurator.swift */; };
@@ -180,6 +181,7 @@
 			files = (
 				67C90F1427086A4A00F257C9 /* RealmSwift in Frameworks */,
 				67C90F1227086A4A00F257C9 /* Realm in Frameworks */,
+				6704889B29A231A00062D3AB /* FeedbackSender in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +466,7 @@
 			packageProductDependencies = (
 				67C90F1127086A4A00F257C9 /* Realm */,
 				67C90F1327086A4A00F257C9 /* RealmSwift */,
+				6704889A29A231A00062D3AB /* FeedbackSender */,
 			);
 			productName = "Days 2.1";
 			productReference = 67D5FB8924A8D74400F9ED26 /* Days.app */;
@@ -504,6 +507,7 @@
 			mainGroup = 67D5FB8024A8D74400F9ED26;
 			packageReferences = (
 				67C90F1027086A4A00F257C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				6704889929A231A00062D3AB /* XCRemoteSwiftPackageReference "FeedbackSender" */,
 			);
 			productRefGroup = 67D5FB8A24A8D74400F9ED26 /* Products */;
 			projectDirPath = "";
@@ -981,6 +985,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6704889929A231A00062D3AB /* XCRemoteSwiftPackageReference "FeedbackSender" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OlegEremenko991/FeedbackSender";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		67C90F1027086A4A00F257C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
@@ -992,6 +1004,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6704889A29A231A00062D3AB /* FeedbackSender */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6704889929A231A00062D3AB /* XCRemoteSwiftPackageReference "FeedbackSender" */;
+			productName = FeedbackSender;
+		};
 		67C90F1127086A4A00F257C9 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67C90F1027086A4A00F257C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
