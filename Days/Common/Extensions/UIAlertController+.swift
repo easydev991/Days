@@ -15,9 +15,7 @@ extension UIAlertController {
             preferredStyle: style
         )
         if let actions {
-            actions.forEach {
-                alert.addAction($0)
-            }
+            actions.forEach(alert.addAction)
         }
         let exit = UIAlertAction.exitAction(with: exitStyle)
         alert.addAction(exit)

@@ -18,7 +18,7 @@ extension UIImage {
     }
 }
 
-public extension UIImage {
+extension UIImage {
     convenience init?(
         color: UIColor,
         size: CGSize = .init(width: 1, height: 1)
@@ -29,7 +29,6 @@ public extension UIImage {
         UIRectFill(rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
         guard let cgImage = image?.cgImage else { return nil }
         self.init(cgImage: cgImage)
     }

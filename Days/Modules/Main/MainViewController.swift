@@ -162,7 +162,7 @@ private extension MainViewController {
     func setupUI() {
         view.backgroundColor = .mainBackground
         view.accessibilityIdentifier = Identifier.rootView.text
-        [tableView, emptyView].forEach { view.addSubview($0) }
+        [tableView, emptyView].forEach(view.addSubview)
         NSLayoutConstraint.activate(
             [
                 tableView.topAnchor.constraint(equalTo: view.topAnchor),
