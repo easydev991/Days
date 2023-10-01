@@ -11,13 +11,13 @@ enum SortBy: CaseIterable {
     var title: String {
         switch self {
         case .dateAscending:
-            return Text.Alert.dateAscending.localized
+            Text.Alert.dateAscending.localized
         case .dateDescending:
-            return Text.Alert.dateDescending.localized
+            Text.Alert.dateDescending.localized
         case .titleAscending:
-            return Text.Alert.titleAscending.localized
+            Text.Alert.titleAscending.localized
         case .titleDescending:
-            return Text.Alert.titleDescending.localized
+            Text.Alert.titleDescending.localized
         }
     }
 }
@@ -46,9 +46,9 @@ struct ItemSortModel {
     var sorting: SortBy {
         switch sortBy {
         case .title:
-            return ascending ? .titleAscending : .titleDescending
+            ascending ? .titleAscending : .titleDescending
         case .date:
-            return ascending ? .dateAscending : .dateDescending
+            ascending ? .dateAscending : .dateDescending
         }
     }
 }
