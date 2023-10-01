@@ -24,7 +24,7 @@ chmod +x pre-commit
 
 ### Code formatting
 
-- The project uses [swiftformat (0.50.9)](https://github.com/nicklockwood/SwiftFormat) for code formatting
+- The project uses [swiftformat (0.52.6)](https://github.com/nicklockwood/SwiftFormat) for code formatting
 - Code formatting rules can be found in [.swiftformat](.swiftformat)
 - All rules are listed [here](https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md)
 
