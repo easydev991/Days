@@ -25,18 +25,18 @@ enum Text {
         var localized: String {
             switch self {
             case .viewTitle:
-                return NSLocalizedString("Days have passed", comment: "MainVC title")
+                NSLocalizedString("Days have passed", comment: "MainVC title")
             case .emptyList:
-                return NSLocalizedString("Items list is empty", comment: "")
+                NSLocalizedString("Items list is empty", comment: "")
             case .today:
-                return NSLocalizedString("today", comment: "")
+                NSLocalizedString("today", comment: "")
             case let .daysPast(count):
-                return .localizedStringWithFormat(
+                .localizedStringWithFormat(
                     NSLocalizedString("daysPast", comment: "days ago"),
                     count
                 )
             case .sortBy:
-                return NSLocalizedString("Sort by", comment: "")
+                NSLocalizedString("Sort by", comment: "")
             }
         }
     }

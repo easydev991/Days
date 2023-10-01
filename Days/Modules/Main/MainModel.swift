@@ -12,9 +12,9 @@ struct MainModel {
 
     static func navItemState(for itemsCount: Int) -> MainViewController.VisibleNavItemButtons {
         switch itemsCount {
-        case .zero: return .none
-        case 1: return .add
-        default: return .sortAndAdd
+        case .zero: .none
+        case 1: .add
+        default: .sortAndAdd
         }
     }
 }

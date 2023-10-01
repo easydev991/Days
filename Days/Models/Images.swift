@@ -8,9 +8,9 @@ enum Images {
         var image: UIImage? {
             switch self {
             case .home:
-                return .init(systemName: "house.fill")
+                .init(systemName: "house.fill")
             case .settings:
-                return .init(systemName: "gear")
+                .init(systemName: "gear")
             }
         }
     }
@@ -21,7 +21,7 @@ enum Images {
         var image: UIImage? {
             switch self {
             case .sort:
-                return .init(systemName: "arrow.up.arrow.down")
+                .init(systemName: "arrow.up.arrow.down")
             }
         }
     }
