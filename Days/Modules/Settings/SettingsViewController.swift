@@ -93,6 +93,7 @@ private extension SettingsViewController {
     }
 
     func setupUI() {
+        view.backgroundColor = .mainBackground
         view.accessibilityIdentifier = Identifier.rootView.text
         navigationItem.title = viewModel.viewTitle
         view.addSubview(settingsView)

@@ -21,7 +21,7 @@ extension UIButton {
             for: .normal
         )
         button.setBackgroundImage(
-            .init(color: style == .sunflower ? .sunflower : .redPressed),
+            .init(color: style == .sunflower ? .sunflowerPressed : .redPressed),
             for: .highlighted
         )
         button.setTitleColor(.black, for: .normal)
