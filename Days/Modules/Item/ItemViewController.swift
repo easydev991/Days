@@ -149,7 +149,7 @@ private extension ItemViewController {
     func setupUI() {
         view.accessibilityIdentifier = Identifier.rootView.text
         view.backgroundColor = .mainBackground
-        [hStack, separatorView, itemTitleTextField, itemDatePicker].forEach { view.addSubview($0) }
+        [hStack, separatorView, itemTitleTextField, itemDatePicker].forEach(view.addSubview)
         NSLayoutConstraint.activate([
             saveButton.widthAnchor.constraint(equalTo: cancelButton.widthAnchor),
             hStack.topAnchor.constraint(equalTo: view.topAnchor, constant: Layout.Insets.standard),
