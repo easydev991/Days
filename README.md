@@ -3,6 +3,9 @@
 - The app supports both English and Russian languages
 - UI-elements have color options for both light and dark mode
 
+## Status
+The repo is archived because I am busy with other apps and new technologies
+
 ## Project setup
 
 ### First steps
